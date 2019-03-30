@@ -2,15 +2,20 @@ import React, { Component, Fragment } from 'react';
 import Table from './Table';
 
 export default class UserInput extends Component {
-  // todo: currently, if user changes rows or column input table is wiped
   state = {
     chartType: '',
+    showSetup: true,
+    showTable: false,
     rows: 0,
     columns: 0,
   };
 
   handleSubmit = e => {
     e.preventDefault();
+    this.setState({
+      showSetup: false,
+      showTable: true,
+    });
   };
 
   handleChange = e => {
@@ -33,30 +38,42 @@ export default class UserInput extends Component {
   render() {
     return (
       <Fragment>
-        <h5>What kind of chart would you like to make?</h5>
-        <select name='chartType' onChange={this.handleChange}>
-          <option value=''></option>
-          <option value='line'>Line</option>
-        </select>
         {
-          this.state.chartType[0]
+          this.state.showSetup
             ?
           <Fragment>
-            <h5>How many rows and columns?</h5>
-            <form onSubmit={this.handleSubmit}>
-              <input onChange={this.handleChange} type='number' min='0' name='rows' placeholder='Number of rows' />
-              <input onChange={this.handleChange} type='number' min='0' name='columns' placeholder='Number of columns' />
-            </form>
+            <h5>What kind of chart would you like to make?</h5>
+            <select name='chartType' onChange={this.handleChange}>
+              <option value=''></option>
+              <option value='line'>Line</option>
+            </select>
             {
-              (this.state.rows > 0 && this.state.columns > 0)
+              this.state.chartType[0]
                 ?
               <Fragment>
-                <h5>What data would you like to display?</h5>
-                <Table x={this.state.rows} y={this.state.columns} />
+                <h5>How many rows and columns?</h5>
+                <form onSubmit={this.handleSubmit}>
+                  <input onChange={this.handleChange} type='number' min='0' name='rows' placeholder='Number of rows' />
+                  <input onChange={this.handleChange} type='number' min='0' name='columns' placeholder='Number of columns' />
+                  <input type='submit' value='Go' />
+                </form>
               </Fragment>
                 :
               null
             }
+          </Fragment>
+            :
+          null
+        }
+        {
+          this.state.showTable
+            ?
+          <Fragment>
+            <h5>What data would you like to display?</h5>
+            <Table
+              x={this.state.rows}
+              y={this.state.columns}
+            />
           </Fragment>
             :
           null
