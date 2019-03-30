@@ -29,7 +29,7 @@ export default class UserInput extends Component {
       });
     } else if (e.target.name === 'chartType') {
       this.setState({
-        chartType: e.target.value
+        chartType: e.target.value,
       });
       this.props.chartType(e.target.value);
     };
@@ -64,8 +64,7 @@ export default class UserInput extends Component {
           </Fragment>
             :
           null
-        }
-        {
+        } {
           this.state.showTable
             ?
           <Fragment>
@@ -73,6 +72,7 @@ export default class UserInput extends Component {
             <Table
               x={this.state.rows}
               y={this.state.columns}
+              setGrid={this.props.setGrid}
             />
           </Fragment>
             :

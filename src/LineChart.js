@@ -1,11 +1,12 @@
 import React, { Component, Fragment } from 'react';
+import { Line } from 'react-chartjs-2';
 
 export default class LineChart extends Component {
 
   render() {
     return (
       <Fragment>
-        <h5>hi</h5>
+        <Line data={this.props.data} />
       </Fragment>
     );
   };

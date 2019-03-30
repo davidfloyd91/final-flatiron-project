@@ -54,11 +54,12 @@ export default class Table extends Component {
           ...this.state.grid[x].slice(y)
         ]
       },
+    }, () => {
+      this.props.setGrid(this.state.grid);
     });
   };
 
   render() {
-    console.log(this.state.grid)
     return (
       <Fragment>
         {this.renderRows()}
