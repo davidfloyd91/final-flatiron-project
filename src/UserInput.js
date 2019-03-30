@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import Table from './Table';
 
 export default class UserInput extends Component {
+  // todo: currently, if user changes rows or column input table is wiped
   state = {
     rows: 0,
     columns: 0,
