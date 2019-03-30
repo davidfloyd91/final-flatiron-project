@@ -31,3 +31,11 @@
     transform: rotate(360deg);
   }
 }
+
+.row {
+  display: block;
+}
+
+.cell {
+  display: inline;
+}
