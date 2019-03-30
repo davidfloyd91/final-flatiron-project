@@ -58,6 +58,7 @@ export default class Table extends Component {
   };
 
   render() {
+    console.log(this.state.grid)
     return (
       <Fragment>
         {this.renderRows()}
