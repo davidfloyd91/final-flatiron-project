@@ -19,7 +19,6 @@ export default class Sandbox extends Component {
   };
 
   render() {
-    console.log(this.state.grid)
     return (
       <Fragment>
         <h1>New {this.state.chartType} chart</h1>

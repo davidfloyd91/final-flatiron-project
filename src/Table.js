@@ -12,7 +12,7 @@ export default class Table extends Component {
     let grid = {};
 
     for (let y = 0; y < this.props.y; y++) {
-      row = [...row, {value: ''}];
+      row = [...row, {value: null}];
     };
 
     for (let x = 0; x < this.props.x; x++) {
