@@ -7,7 +7,7 @@ export default class UserInput extends Component {
     showSetup: true,
     showTable: false,
     rows: 0,
-    columns: 0,
+    columns: 2,
   };
 
   handleSubmit = e => {
@@ -53,8 +53,8 @@ export default class UserInput extends Component {
               <Fragment>
                 <h5>How many rows and columns?</h5>
                 <form onSubmit={this.handleSubmit}>
-                  <input onChange={this.handleChange} type='number' min='0' name='rows' placeholder='Number of rows' />
-                  <input onChange={this.handleChange} type='number' min='0' name='columns' placeholder='Number of columns' />
+                  <input onChange={this.handleChange} type='number' min='0' name='rows' placeholder='Number of rows' value={this.state.rows} />
+                  <input onChange={this.handleChange} type='number' min='0' name='columns' placeholder='Number of columns' value={this.state.columns} />
                   <input type='submit' value='Go' />
                 </form>
               </Fragment>

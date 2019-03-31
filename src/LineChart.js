@@ -1,7 +1,12 @@
 import React, { Component, Fragment } from 'react';
+import ReactDOMServer from 'react-dom/server';
 import { Line } from 'react-chartjs-2';
 
 export default class LineChart extends Component {
+
+  handleClick = elems => {
+    console.log(elems);
+  };
 
   // this data is structured like you hate data and yourself
   render() {
@@ -42,9 +47,14 @@ export default class LineChart extends Component {
       ]
     };
 
+    const chart = <Line data={data} getElementAtEvent={this.handleClick} />;
+    const chartHtml = ReactDOMServer.renderToString(chart);
+
+    console.log(chartHtml);
+
     return (
       <Fragment>
-        <Line data={data} />
+        {chart}
       </Fragment>
     );
   };
