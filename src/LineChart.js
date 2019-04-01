@@ -1,15 +1,27 @@
-import React, { Component, Fragment } from 'react';
-import ReactDOMServer from 'react-dom/server';
-import { Line } from 'react-chartjs-2';
+// thanks and praise to this guy https://blog.bitsrc.io/customizing-chart-js-in-react-2199fa81530a
+
+import React, { Component } from 'react';
+import Chart from 'chart.js';
+let newChart;
 
 export default class LineChart extends Component {
+  chartRef = React.createRef();
 
-  handleClick = elems => {
-    console.log(elems);
+  componentDidMount() {
+    this.buildChart();
   };
 
-  // this data is structured like you hate data and yourself
-  render() {
+  componentDidUpdate() {
+    this.buildChart();
+  };
+
+  buildChart = () => {
+    const myChartRef = this.chartRef.current.getContext("2d");
+
+    if (typeof newChart !== "undefined") {
+      newChart.destroy();
+    };
+
     const keys = Object.keys(this.props.data);
 
     const labels = keys.map(k => {
@@ -20,42 +32,34 @@ export default class LineChart extends Component {
       return parseInt(this.props.data[k][1].value);
     });
 
-    const data = {
-      labels: labels,
-      datasets: [
-        {
-          label: 'My First dataset',
-          fill: false,
-          lineTension: 0.1,
-          backgroundColor: 'rgba(75,192,192,0.4)',
-          borderColor: 'rgba(75,192,192,1)',
-          borderCapStyle: 'butt',
-          borderDash: [],
-          borderDashOffset: 0.0,
-          borderJoinStyle: 'miter',
-          pointBorderColor: 'rgba(75,192,192,1)',
-          pointBackgroundColor: '#fff',
-          pointBorderWidth: 1,
-          pointHoverRadius: 5,
-          pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-          pointHoverBorderColor: 'rgba(220,220,220,1)',
-          pointHoverBorderWidth: 2,
-          pointRadius: 1,
-          pointHitRadius: 10,
-          data: chartData
-        }
-      ]
-    };
+    newChart = new Chart(myChartRef, {
+      type: "line",
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            label: "Sales",
+            fill: false,
+            data: chartData,
+            borderColor: "#6610f2"
+          }
+        ]
+      },
+      options: {
 
-    const chart = <Line data={data} getElementAtEvent={this.handleClick} />;
-    const chartHtml = ReactDOMServer.renderToString(chart);
+      }
+    });
+  };
 
-    console.log(chartHtml);
-
+  // this data is structured like you hate data and yourself
+  render() {
     return (
-      <Fragment>
-        {chart}
-      </Fragment>
+      <div>
+        <canvas
+          id="myChart"
+          ref={this.chartRef}
+        />
+      </div>
     );
   };
 };
