@@ -25,7 +25,8 @@ export default class Sandbox extends Component {
       <Fragment>
         <h1>New {this.state.chartType} chart</h1>
         <UserInput
-          chartType={this.chartType}
+          changeChartType={this.chartType}
+          chartType={this.state.chartType}
           setGrid={this.setGrid}
         />
         {

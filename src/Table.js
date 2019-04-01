@@ -48,7 +48,11 @@ export default class Table extends Component {
     this.setState({
       grid: [
         ...this.state.grid.slice(0, x - 1),
-        [...this.state.grid[x - 1].slice(0, y - 1), value, ...this.state.grid[x - 1].slice(y)],
+        [
+          ...this.state.grid[x - 1].slice(0, y - 1),
+          value,
+          ...this.state.grid[x - 1].slice(y)
+        ],
         ...this.state.grid.slice(x)
       ],
     }, () => {

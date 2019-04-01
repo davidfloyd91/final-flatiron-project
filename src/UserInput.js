@@ -3,11 +3,15 @@ import Table from './Table';
 
 export default class UserInput extends Component {
   state = {
-    chartType: '',
+    // chartType: '',
     showSetup: true,
     showTable: false,
-    rows: 0,
+    rows: 10,
     columns: 2,
+  };
+
+  clearChartType = () => {
+    this.props.changeChartType('');
   };
 
   handleSubmit = e => {
@@ -28,10 +32,7 @@ export default class UserInput extends Component {
         columns: e.target.value,
       });
     } else if (e.target.name === 'chartType') {
-      this.setState({
-        chartType: e.target.value,
-      });
-      this.props.chartType(e.target.value);
+      this.props.changeChartType(e.target.value);
     };
   };
 
@@ -42,20 +43,29 @@ export default class UserInput extends Component {
           this.state.showSetup
             ?
           <Fragment>
-            <h5>What kind of chart would you like to make?</h5>
-            <select name='chartType' onChange={this.handleChange}>
-              <option value=''></option>
-              <option value='line'>Line</option>
-              <option value='bar'>Bar</option>
-              <option value='pie'>Pie</option>
-            </select>
             {
-              this.state.chartType[0]
+              this.props.chartType[0]
+                ?
+              <Fragment>
+                <button onClick={this.clearChartType}>Change chart type</button>
+              </Fragment>
+                :
+              <Fragment>
+                <h5>What kind of chart would you like to make?</h5>
+                <select name='chartType' onChange={this.handleChange}>
+                  <option value=''></option>
+                  <option value='line'>Line</option>
+                  <option value='bar'>Bar</option>
+                  <option value='pie'>Pie</option>
+                </select>
+              </Fragment>
+            } {
+              this.props.chartType[0]
                 ?
               <Fragment>
                 <h5>How many rows of data would you like to input?</h5>
                 <form onSubmit={this.handleSubmit}>
-                  <input onChange={this.handleChange} type='number' min='0' name='rows' placeholder='Number of rows' value={this.state.rows} />
+                  <input onChange={this.handleChange} type='number' min='1' name='rows' placeholder='Number of rows' value={this.state.rows} />
                   {/*<input onChange={this.handleChange} type='number' min='0' name='columns' placeholder='Number of columns' value={this.state.columns} />*/}
                   <input type='submit' value='Go' />
                 </form>
