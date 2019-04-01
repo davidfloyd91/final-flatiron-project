@@ -39,3 +39,9 @@
 .cell {
   display: inline;
 }
+
+.table-head {
+  display: inline-block;
+  width: 131px;
+  padding-left: 1px;
+}

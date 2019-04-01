@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import Row from './Row';
+import Cell from './Cell';
 import './App.css';
 
 export default class Table extends Component {
@@ -62,6 +63,7 @@ export default class Table extends Component {
   render() {
     return (
       <Fragment>
+        <span className='table-head'>Labels</span><span className='table-head'>Values</span>
         {this.renderRows()}
       </Fragment>
     );
