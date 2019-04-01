@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import CSVReader from 'react-csv-reader';
 import Table from './Table';
 
 export default class UserInput extends Component {
@@ -8,6 +9,10 @@ export default class UserInput extends Component {
     showTable: false,
     rows: 10,
     columns: 2,
+  };
+
+  handleForce = grid => {
+    this.props.setGrid(grid);
   };
 
   clearChartType = () => {
@@ -54,6 +59,7 @@ export default class UserInput extends Component {
               this.props.chartType[0]
                 ?
               <Fragment>
+                <h5>Warning: changing chart type will erase any data you've input</h5>
                 <button onClick={this.clearChartType}>Change chart type</button>
               </Fragment>
                 :
@@ -83,7 +89,10 @@ export default class UserInput extends Component {
               this.props.chartType[0] && this.state.input === 'csv'
                 ?
               <Fragment>
-                <h5>Youre a building machine Dave just a bit more</h5>
+                <h5>Upload your CSV file below:</h5>
+                <CSVReader
+                  onFileLoaded={this.handleForce}
+                />
               </Fragment>
                 :
               this.props.chartType[0] && this.state.input === 'manual'

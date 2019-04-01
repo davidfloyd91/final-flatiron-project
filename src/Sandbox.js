@@ -31,12 +31,18 @@ export default class Sandbox extends Component {
         />
         {
           this.state.chartType === 'line'
-          ? <LineChart data={this.state.grid} />
-          : this.state.chartType === 'bar'
-          ? <BarChart data={this.state.grid} />
-          : this.state.chartType === 'pie'
-          ? <PieChart data={this.state.grid} />
-          : null
+            ? 
+          <LineChart data={this.state.grid} />
+            : 
+          this.state.chartType === 'bar'
+            ? 
+          <BarChart data={this.state.grid} />
+            : 
+          this.state.chartType === 'pie'
+            ? 
+          <PieChart data={this.state.grid} />
+            : 
+          null
         }
       </Fragment>
     );
