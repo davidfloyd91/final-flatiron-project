@@ -32,6 +32,10 @@
   }
 }
 
+.container {
+  margin: 0 15px;
+}
+
 .row {
   display: block;
 }

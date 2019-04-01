@@ -49,6 +49,7 @@ export default class UserInput extends Component {
   };
 
   render() {
+    console.log(this.state.input)
     return (
       <Fragment>
         {
@@ -56,13 +57,8 @@ export default class UserInput extends Component {
             ?
           <Fragment>
             {
-              this.props.chartType[0]
+              !this.props.chartType[0]
                 ?
-              <Fragment>
-                <h5>Warning: changing chart type will erase any data you've input</h5>
-                <button onClick={this.clearChartType}>Change chart type</button>
-              </Fragment>
-                :
               <Fragment>
                 <h5>What kind of chart would you like to make?</h5>
                 <select name='chartType' onChange={this.handleChange}>
@@ -72,17 +68,18 @@ export default class UserInput extends Component {
                   <option value='pie'>Pie</option>
                 </select>
               </Fragment>
-            } {
+                :
               this.props.chartType[0] && !this.state.input[0]
                 ?
-                <Fragment>
-                  <h5>How would you like to input your data?</h5>
-                  <select name='input' onChange={this.handleChange}>
-                    <option value=''></option>
-                    <option value='csv'>CSV</option>
-                    <option value='manual'>Manually</option>
-                  </select>
-                </Fragment>
+              <Fragment>
+                <button onClick={this.clearChartType}>Change chart type</button>
+                <h5>How would you like to input your data?</h5>
+                <select name='input' onChange={this.handleChange}>
+                  <option value=''></option>
+                  <option value='csv'>Upload CSV</option>
+                  <option value='manual'>Manually</option>
+                </select>
+              </Fragment>
                 :
               null
             } {

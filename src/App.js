@@ -5,9 +5,9 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <Fragment>
+      <div className='container'>
         <Sandbox />
-      </Fragment>
+      </div>
     );
   }
 }
