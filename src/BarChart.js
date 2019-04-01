@@ -22,14 +22,12 @@ export default class BarChart extends Component {
       newChart.destroy();
     };
 
-    const keys = Object.keys(this.props.data);
-
-    const labels = keys.map(k => {
-      return this.props.data[k][0].value;
+    const labels = this.props.data.map(a => {
+      return a[0];
     });
 
-    const chartData = keys.map(k => {
-      return parseInt(this.props.data[k][1].value);
+    const chartData = this.props.data.map(a => {
+      return parseInt(a[1]);
     });
 
     newChart = new Chart(myChartRef, {
@@ -51,7 +49,6 @@ export default class BarChart extends Component {
     });
   };
 
-  // this data is structured like you hate data and yourself
   render() {
     return (
       <div>

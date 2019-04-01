@@ -7,7 +7,7 @@ import PieChart from './PieChart';
 export default class Sandbox extends Component {
   state = {
     chartType: '',
-    grid: {},
+    grid: [],
   };
 
   chartType = chartType => {
