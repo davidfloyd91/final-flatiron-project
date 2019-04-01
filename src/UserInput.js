@@ -3,7 +3,7 @@ import Table from './Table';
 
 export default class UserInput extends Component {
   state = {
-    // chartType: '',
+    input: '',
     showSetup: true,
     showTable: false,
     rows: 10,
@@ -12,6 +12,9 @@ export default class UserInput extends Component {
 
   clearChartType = () => {
     this.props.changeChartType('');
+    this.setState({
+      input: '',
+    });
   };
 
   handleSubmit = e => {
@@ -33,6 +36,10 @@ export default class UserInput extends Component {
       });
     } else if (e.target.name === 'chartType') {
       this.props.changeChartType(e.target.value);
+    } else if (e.target.name === 'input') {
+      this.setState({
+        input: e.target.value,
+      });
     };
   };
 
@@ -60,7 +67,26 @@ export default class UserInput extends Component {
                 </select>
               </Fragment>
             } {
-              this.props.chartType[0]
+              this.props.chartType[0] && !this.state.input[0]
+                ?
+                <Fragment>
+                  <h5>How would you like to input your data?</h5>
+                  <select name='input' onChange={this.handleChange}>
+                    <option value=''></option>
+                    <option value='csv'>CSV</option>
+                    <option value='manual'>Manually</option>
+                  </select>
+                </Fragment>
+                :
+              null
+            } {
+              this.props.chartType[0] && this.state.input === 'csv'
+                ?
+              <Fragment>
+                <h5>Youre a building machine Dave just a bit more</h5>
+              </Fragment>
+                :
+              this.props.chartType[0] && this.state.input === 'manual'
                 ?
               <Fragment>
                 <h5>How many rows of data would you like to input?</h5>
