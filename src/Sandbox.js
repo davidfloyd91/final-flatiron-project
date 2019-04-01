@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import UserInput from './UserInput';
 import LineChart from './LineChart';
+import BarChart from './BarChart';
 
 export default class Sandbox extends Component {
   state = {
@@ -29,6 +30,8 @@ export default class Sandbox extends Component {
         {
           this.state.chartType === 'line'
           ? <LineChart data={this.state.grid} />
+          : this.state.chartType === 'bar'
+          ? <BarChart data={this.state.grid} />
           : null
         }
       </Fragment>

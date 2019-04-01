@@ -46,6 +46,7 @@ export default class UserInput extends Component {
             <select name='chartType' onChange={this.handleChange}>
               <option value=''></option>
               <option value='line'>Line</option>
+              <option value='bar'>Bar</option>
             </select>
             {
               this.state.chartType[0]
