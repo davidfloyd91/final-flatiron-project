@@ -49,7 +49,6 @@ export default class UserInput extends Component {
   };
 
   render() {
-    console.log(this.state.input)
     return (
       <Fragment>
         {
