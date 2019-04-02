@@ -45,8 +45,8 @@ export default class UserInput extends Component {
       this.setState({
         input: e.target.value,
       });
-    } else if (e.target.name === 'title') {
-      this.props.setTitle(e.target.value);
+    } else if (e.target.name === 'label') {
+      this.props.setLabel(e.target.value);
     };
   };
 
@@ -126,9 +126,9 @@ export default class UserInput extends Component {
           this.props.chartType[0] && this.props.chartType !== 'pie'
             ?
           <Fragment>
-            <h5>How would you like to label your data?</h5>
+            <h5>What would you like to label your data?</h5>
             <form onSubmit={this.handleSubmit}>
-              <input onChange={this.handleChange} name='title' />
+              <input onChange={this.handleChange} name='label' />
             </form>
           </Fragment>
             :

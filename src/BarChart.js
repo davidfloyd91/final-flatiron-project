@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import Chart from 'chart.js';
-let newChart, title;
+let newChart, label;
 
 export default class BarChart extends Component {
   chartRef = React.createRef();
@@ -30,7 +30,7 @@ export default class BarChart extends Component {
       return parseInt(a[1]);
     });
 
-    title = this.props.title;
+    label = this.props.label;
 
     newChart = new Chart(myChartRef, {
       type: "bar",
@@ -38,7 +38,7 @@ export default class BarChart extends Component {
         labels: labels,
         datasets: [
           {
-            label: title,
+            label: label,
             fill: false,
             data: chartData,
             borderColor: "#6610f2"
