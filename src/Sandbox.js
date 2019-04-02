@@ -25,8 +25,9 @@ export default class Sandbox extends Component {
   };
 
   customize = (name, value) => {
+    console.log(name, value)
     if ((name === 'min' || name === 'max') &&
-    isNaN(value)) {
+    (isNaN(value) || value === '')) {
       // maybe not the best way to handle this
       this.setState({
         min: -10,
