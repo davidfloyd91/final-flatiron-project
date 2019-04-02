@@ -39,7 +39,7 @@ export default class CustomizationFields extends Component {
                   :
                 null
               } {
-                this.props.chartType === 'line'
+                this.props.chartType !== 'pie'
                   ?
                 <Fragment>
                   {/* taken from https://www.w3schools.com/colors/colors_wheels.asp */}
