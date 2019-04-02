@@ -54,7 +54,6 @@ export default class Sandbox extends Component {
             ?
           <PieChart
             data={this.state.grid}
-            title={this.state.title}
           />
             :
           null

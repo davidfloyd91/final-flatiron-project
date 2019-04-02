@@ -36,7 +36,6 @@ export default class PieChart extends Component {
         labels: labels,
         datasets: [
           {
-            label: "Sales",
             fill: false,
             data: chartData,
             borderColor: "#6610f2"

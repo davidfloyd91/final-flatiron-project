@@ -91,10 +91,6 @@ export default class UserInput extends Component {
                 <CSVReader
                   onFileLoaded={this.handleForce}
                 />
-                <h5>How would you like to label your data?</h5>
-                <form onSumbit={this.handleSubmit}>
-                  <input onChange={this.handleChange} name='title' />
-                </form>
               </Fragment>
                 :
               this.props.chartType[0] && this.state.input === 'manual'
@@ -105,10 +101,6 @@ export default class UserInput extends Component {
                   <input onChange={this.handleChange} type='number' min='1' name='rows' placeholder='Number of rows' value={this.state.rows} />
                   {/*<input onChange={this.handleChange} type='number' min='0' name='columns' placeholder='Number of columns' value={this.state.columns} />*/}
                   <input type='submit' value='Go' />
-                </form>
-                <h5>How would you like to label your data?</h5>
-                <form onSumbit={this.handleSubmit}>
-                  <input onChange={this.handleChange} name='title' />
                 </form>
               </Fragment>
                 :
@@ -127,6 +119,17 @@ export default class UserInput extends Component {
               y={this.state.columns}
               setGrid={this.props.setGrid}
             />
+          </Fragment>
+            :
+          null
+        } {
+          this.props.chartType[0] && this.props.chartType !== 'pie'
+            ?
+          <Fragment>
+            <h5>How would you like to label your data?</h5>
+            <form onSubmit={this.handleSubmit}>
+              <input onChange={this.handleChange} name='title' />
+            </form>
           </Fragment>
             :
           null
