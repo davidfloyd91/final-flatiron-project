@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import Chart from 'chart.js';
-let newChart, title, label;
+let newChart, title, label, min, max;
 
 export default class BarChart extends Component {
   chartRef = React.createRef();
@@ -32,6 +32,8 @@ export default class BarChart extends Component {
 
     label = this.props.label;
     title = this.props.title;
+    min = this.props.min;
+    max = this.props.max;
 
     newChart = new Chart(myChartRef, {
       type: "bar",
@@ -50,6 +52,14 @@ export default class BarChart extends Component {
         title: {
             display: true,
             text: title
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              min: parseInt(min),
+              max: parseInt(max)
+            }
+          }]
         }
       }
     });

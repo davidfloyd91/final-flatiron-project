@@ -21,14 +21,18 @@ export default class CustomizationFields extends Component {
           <Fragment>
             <h5>Customize your chart</h5>
             <form onSubmit={this.handleSubmit}>
-              <label for='title'>Title </label>
+              <label htmlFor='title'>Title </label>
               <input onChange={this.handleChange} name='title' />
               {
                 this.props.chartType !== 'pie'
                   ?
                 <Fragment>
-                  <label for='label'> Label </label>
+                  <label htmlFor='label'> Label </label>
                   <input onChange={this.handleChange} name='label' />
+                  <label htmlFor='min'> Vertical min </label>
+                  <input onChange={this.handleChange} name='min' />
+                  <label htmlFor='max'> Vertical max </label>
+                  <input onChange={this.handleChange} name='max' />
                 </Fragment>
                   :
                 null

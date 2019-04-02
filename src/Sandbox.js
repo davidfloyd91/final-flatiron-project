@@ -10,6 +10,8 @@ export default class Sandbox extends Component {
     grid: [],
     title: '',
     label: '',
+    min: -10,
+    max: 10,
   };
 
   chartType = chartType => {
@@ -23,9 +25,18 @@ export default class Sandbox extends Component {
   };
 
   customize = (name, value) => {
-    this.setState({
-      [name]: value,
-    });
+    if ((name === 'min' || name === 'max') &&
+    isNaN(value)) {
+      // maybe not the best way to handle this
+      this.setState({
+        min: -10,
+        max: 10,
+      });
+    } else {
+      this.setState({
+        [name]: value,
+      });
+    };
   };
 
   render() {
@@ -45,6 +56,9 @@ export default class Sandbox extends Component {
             data={this.state.grid}
             label={this.state.label}
             title={this.state.title}
+            min={this.state.min}
+            max={this.state.max}
+            ticks={this.state.ticks}
           />
             :
           this.state.chartType === 'bar'
@@ -53,6 +67,8 @@ export default class Sandbox extends Component {
             data={this.state.grid}
             label={this.state.label}
             title={this.state.title}
+            min={this.state.min}
+            max={this.state.max}
           />
             :
           this.state.chartType === 'pie'

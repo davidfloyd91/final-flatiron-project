@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import Sandbox from './Sandbox';
 import './App.css';
 
@@ -9,7 +9,7 @@ class App extends Component {
         <Sandbox />
       </div>
     );
-  }
-}
+  };
+};
 
 export default App;
