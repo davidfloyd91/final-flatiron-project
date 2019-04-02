@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import CSVReader from 'react-csv-reader';
 import Table from './Table';
+import CustomizationFields from './CustomizationFields';
 
 export default class UserInput extends Component {
   state = {
@@ -45,8 +46,6 @@ export default class UserInput extends Component {
       this.setState({
         input: e.target.value,
       });
-    } else if (e.target.name === 'label') {
-      this.props.setLabel(e.target.value);
     };
   };
 
@@ -122,18 +121,13 @@ export default class UserInput extends Component {
           </Fragment>
             :
           null
-        } {
-          this.props.chartType[0] && this.props.chartType !== 'pie'
-            ?
-          <Fragment>
-            <h5>What would you like to label your data?</h5>
-            <form onSubmit={this.handleSubmit}>
-              <input onChange={this.handleChange} name='label' />
-            </form>
-          </Fragment>
-            :
-          null
         }
+        <CustomizationFields
+          showSetupToFalse={this.handleSubmit}
+          showTableToTrue={this.handleSubmit}
+          setLabel={this.props.setLabel}
+          chartType={this.props.chartType}
+        />
       </Fragment>
     );
   };
