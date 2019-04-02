@@ -33,6 +33,8 @@ export default class CustomizationFields extends Component {
                   <input onChange={this.handleChange} name='min' />
                   <label htmlFor='max'> Vertical max </label>
                   <input onChange={this.handleChange} name='max' />
+                  <label htmlFor='ticks'> Tick value </label>
+                  <input onChange={this.handleChange} name='ticks' />
                 </Fragment>
                   :
                 null

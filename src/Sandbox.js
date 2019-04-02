@@ -12,6 +12,7 @@ export default class Sandbox extends Component {
     label: '',
     min: -10,
     max: 10,
+    ticks: null,
   };
 
   chartType = chartType => {
@@ -25,13 +26,17 @@ export default class Sandbox extends Component {
   };
 
   customize = (name, value) => {
-    console.log(name, value)
     if ((name === 'min' || name === 'max') &&
     (isNaN(value) || value === '')) {
       // maybe not the best way to handle this
       this.setState({
         min: -10,
         max: 10,
+      });
+    } else if ((name === 'ticks') &&
+    (isNaN(value) || value === '')) {
+      this.setState({
+        ticks: null,
       });
     } else {
       this.setState({
@@ -70,6 +75,7 @@ export default class Sandbox extends Component {
             title={this.state.title}
             min={this.state.min}
             max={this.state.max}
+            ticks={this.state.ticks}
           />
             :
           this.state.chartType === 'pie'

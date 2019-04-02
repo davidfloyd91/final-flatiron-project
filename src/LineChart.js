@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import Chart from 'chart.js';
-let newChart, title, label, min, max;
+let newChart, title, label, min, max, ticks;
 
 export default class LineChart extends Component {
   chartRef = React.createRef();
@@ -34,6 +34,7 @@ export default class LineChart extends Component {
     label = this.props.label;
     min = this.props.min;
     max = this.props.max;
+    ticks = this.props.ticks;
 
     newChart = new Chart(myChartRef, {
       type: "line",
@@ -57,7 +58,8 @@ export default class LineChart extends Component {
           yAxes: [{
             ticks: {
               min: parseInt(min),
-              max: parseInt(max)
+              max: parseInt(max),
+              stepSize: parseInt(ticks)
             }
           }]
         }
