@@ -27,7 +27,7 @@ export default class BarChart extends Component {
     });
 
     const chartData = this.props.data.map(a => {
-      return parseInt(a[1]);
+      return parseFloat(a[1]);
     });
 
     // setting min and max values, ticks doesn't appear to work with horizontal bars
@@ -75,9 +75,9 @@ export default class BarChart extends Component {
         scales: {
           yAxes: [{
             ticks: {
-              min: parseInt(min),
-              max: parseInt(max),
-              stepSize: parseInt(ticks)
+              min: parseFloat(min),
+              max: parseFloat(max),
+              stepSize: parseFloat(ticks)
             }
           }]
         }

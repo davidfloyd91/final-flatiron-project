@@ -27,7 +27,7 @@ export default class LineChart extends Component {
     });
 
     const chartData = this.props.data.map(a => {
-      return parseInt(a[1]);
+      return parseFloat(a[1]);
     });
 
     const title = this.props.title;
