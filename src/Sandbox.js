@@ -26,22 +26,17 @@ export default class Sandbox extends Component {
   };
 
   customize = (name, value) => {
-    if ((name === 'min' || name === 'max') &&
+    if ((name === 'min') &&
     (isNaN(value) || value === '')) {
-      // maybe not the best way to handle this
-      this.setState({
-        min: -10,
-        max: 10,
-      });
+      this.setState({ min: -10 });
+    } else if ((name === 'max') &&
+    (isNaN(value) || value === '')) {
+      this.setState({ max: -10 });
     } else if ((name === 'ticks') &&
     (isNaN(value) || value === '')) {
-      this.setState({
-        ticks: null,
-      });
+      this.setState({ ticks: null });
     } else {
-      this.setState({
-        [name]: value,
-      });
+      this.setState({ [name]: value });
     };
   };
 
