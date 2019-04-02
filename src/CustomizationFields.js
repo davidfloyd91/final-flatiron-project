@@ -9,7 +9,7 @@ export default class CustomizationFields extends Component {
   };
 
   handleChange = e => {
-    this.props.customize(e.target.name, e.target.value);
+    this.props.customize(e);
   };
 
   render() {
@@ -60,7 +60,21 @@ export default class CustomizationFields extends Component {
                   </select>
                 </Fragment>
                   :
-                null
+                <Fragment>
+                  <label> Colors </label>
+                  <input onChange={this.handleChange} type='checkbox' name='colors' value='#0080FF' />Light blue
+                  <input onChange={this.handleChange} type='checkbox' name='colors' value='#00FFFF' />Cyan
+                  <input onChange={this.handleChange} type='checkbox' name='colors' value='#0000FF' />Blue
+                  <input onChange={this.handleChange} type='checkbox' name='colors' value='#8000FF' />Purple
+                  <input onChange={this.handleChange} type='checkbox' name='colors' value='#FF00FF' />Magenta
+                  <input onChange={this.handleChange} type='checkbox' name='colors' value='#FF0080' />Red-pink
+                  <input onChange={this.handleChange} type='checkbox' name='colors' value='#FF0000' />Red
+                  <input onChange={this.handleChange} type='checkbox' name='colors' value='#FF8000' />Orange
+                  <input onChange={this.handleChange} type='checkbox' name='colors' value='#FFFF00' />Yellow
+                  <input onChange={this.handleChange} type='checkbox' name='colors' value='#80FF00' />Light green
+                  <input onChange={this.handleChange} type='checkbox' name='colors' value='#00FF00' />Green
+                  <input onChange={this.handleChange} type='checkbox' name='colors' value='#00FF80' />Weird green
+                </Fragment>
               }
             </form>
           </Fragment>

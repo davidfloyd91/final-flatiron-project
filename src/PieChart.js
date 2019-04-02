@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import Chart from 'chart.js';
-let newChart, title;
+let newChart, title, colors;
 
 export default class PieChart extends Component {
   chartRef = React.createRef();
@@ -31,6 +31,7 @@ export default class PieChart extends Component {
     });
 
     title = this.props.title;
+    colors = this.props.colors;
 
     newChart = new Chart(myChartRef, {
       type: "pie",
@@ -40,7 +41,7 @@ export default class PieChart extends Component {
           {
             fill: false,
             data: chartData,
-            borderColor: "#0080FF"
+            backgroundColor: colors
           }
         ]
       },
