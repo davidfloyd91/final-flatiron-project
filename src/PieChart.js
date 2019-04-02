@@ -40,7 +40,7 @@ export default class PieChart extends Component {
           {
             fill: false,
             data: chartData,
-            borderColor: "#6610f2"
+            borderColor: "#0080FF"
           }
         ]
       },

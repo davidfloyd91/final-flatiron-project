@@ -13,6 +13,7 @@ export default class Sandbox extends Component {
     min: -10,
     max: 10,
     ticks: null,
+    color: '#0080FF',
   };
 
   chartType = chartType => {
@@ -60,6 +61,7 @@ export default class Sandbox extends Component {
             min={this.state.min}
             max={this.state.max}
             ticks={this.state.ticks}
+            color={this.state.color}
           />
             :
           this.state.chartType === 'bar'

@@ -45,7 +45,7 @@ export default class BarChart extends Component {
             label: label,
             fill: false,
             data: chartData,
-            borderColor: "#6610f2"
+            borderColor: "#0080FF"
           }
         ]
       },
