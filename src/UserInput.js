@@ -45,6 +45,8 @@ export default class UserInput extends Component {
       this.setState({
         input: e.target.value,
       });
+    } else if (e.target.name === 'title') {
+      this.props.setTitle(e.target.value);
     };
   };
 
@@ -89,6 +91,10 @@ export default class UserInput extends Component {
                 <CSVReader
                   onFileLoaded={this.handleForce}
                 />
+                <h5>How would you like to label your data?</h5>
+                <form onSumbit={this.handleSubmit}>
+                  <input onChange={this.handleChange} name='title' />
+                </form>
               </Fragment>
                 :
               this.props.chartType[0] && this.state.input === 'manual'
@@ -99,6 +105,10 @@ export default class UserInput extends Component {
                   <input onChange={this.handleChange} type='number' min='1' name='rows' placeholder='Number of rows' value={this.state.rows} />
                   {/*<input onChange={this.handleChange} type='number' min='0' name='columns' placeholder='Number of columns' value={this.state.columns} />*/}
                   <input type='submit' value='Go' />
+                </form>
+                <h5>How would you like to label your data?</h5>
+                <form onSumbit={this.handleSubmit}>
+                  <input onChange={this.handleChange} name='title' />
                 </form>
               </Fragment>
                 :
