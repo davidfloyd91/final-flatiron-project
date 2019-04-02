@@ -63,7 +63,7 @@ export default class Table extends Component {
   render() {
     return (
       <Fragment>
-        <span className='table-head'>Labels</span><span className='table-head'>Values</span>
+        <h5 className='table-head'>Labels</h5><h5 className='table-head'>Values</h5>
         {this.renderRows()}
       </Fragment>
     );
