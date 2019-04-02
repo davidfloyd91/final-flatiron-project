@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import Chart from 'chart.js';
-let newChart, label;
+let newChart, title, label;
 
 export default class BarChart extends Component {
   chartRef = React.createRef();
@@ -31,6 +31,7 @@ export default class BarChart extends Component {
     });
 
     label = this.props.label;
+    title = this.props.title;
 
     newChart = new Chart(myChartRef, {
       type: "bar",
@@ -46,7 +47,10 @@ export default class BarChart extends Component {
         ]
       },
       options: {
-
+        title: {
+            display: true,
+            text: title
+        }
       }
     });
   };

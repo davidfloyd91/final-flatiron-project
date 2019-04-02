@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import Chart from 'chart.js';
-let newChart, label;
+let newChart, title, label;
 
 export default class LineChart extends Component {
   chartRef = React.createRef();
@@ -30,6 +30,7 @@ export default class LineChart extends Component {
       return parseInt(a[1]);
     });
 
+    title = this.props.title;
     label = this.props.label;
 
     newChart = new Chart(myChartRef, {
@@ -46,7 +47,10 @@ export default class LineChart extends Component {
         ]
       },
       options: {
-
+        title: {
+            display: true,
+            text: title
+        }
       }
     });
   };

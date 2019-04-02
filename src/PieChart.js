@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import Chart from 'chart.js';
-let newChart;
+let newChart, title;
 
 export default class PieChart extends Component {
   chartRef = React.createRef();
@@ -30,6 +30,8 @@ export default class PieChart extends Component {
       return parseInt(a[1]);
     });
 
+    title = this.props.title;
+
     newChart = new Chart(myChartRef, {
       type: "pie",
       data: {
@@ -43,7 +45,10 @@ export default class PieChart extends Component {
         ]
       },
       options: {
-
+        title: {
+            display: true,
+            text: title
+        }
       }
     });
   };

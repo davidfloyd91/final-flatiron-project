@@ -16,13 +16,23 @@ export default class CustomizationFields extends Component {
     return (
       <Fragment>
         {
-          this.props.chartType[0] && this.props.chartType !== 'pie'
+          this.props.chartType[0]
             ?
           <Fragment>
             <h5>Customize your chart</h5>
             <form onSubmit={this.handleSubmit}>
-              <label for='label'>Label </label>
-              <input onChange={this.handleChange} name='label' />
+              <label for='title'>Title </label>
+              <input onChange={this.handleChange} name='title' />
+              {
+                this.props.chartType !== 'pie'
+                  ?
+                <Fragment>
+                  <label for='label'> Label </label>
+                  <input onChange={this.handleChange} name='label' />
+                </Fragment>
+                  :
+                null
+              }
             </form>
           </Fragment>
             :

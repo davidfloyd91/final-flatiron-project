@@ -44,6 +44,7 @@ export default class Sandbox extends Component {
           <LineChart
             data={this.state.grid}
             label={this.state.label}
+            title={this.state.title}
           />
             :
           this.state.chartType === 'bar'
@@ -51,12 +52,14 @@ export default class Sandbox extends Component {
           <BarChart
             data={this.state.grid}
             label={this.state.label}
+            title={this.state.title}
           />
             :
           this.state.chartType === 'pie'
             ?
           <PieChart
             data={this.state.grid}
+            title={this.state.title}
           />
             :
           null
