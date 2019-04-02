@@ -33,19 +33,13 @@ export default class UserInput extends Component {
 
   handleChange = e => {
     if (e.target.name === 'rows') {
-      this.setState({
-        rows: e.target.value,
-      });
+      this.setState({ rows: e.target.value });
     } else if (e.target.name === 'columns') {
-      this.setState({
-        columns: e.target.value,
-      });
+      this.setState({ columns: e.target.value });
     } else if (e.target.name === 'chartType') {
       this.props.changeChartType(e.target.value);
     } else if (e.target.name === 'input') {
-      this.setState({
-        input: e.target.value,
-      });
+      this.setState({ input: e.target.value });
     };
   };
 
@@ -125,7 +119,7 @@ export default class UserInput extends Component {
         <CustomizationFields
           showSetupToFalse={this.handleSubmit}
           showTableToTrue={this.handleSubmit}
-          setLabel={this.props.setLabel}
+          customize={this.props.customize}
           chartType={this.props.chartType}
         />
       </Fragment>

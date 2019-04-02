@@ -1,18 +1,15 @@
 import React, { Component, Fragment } from 'react';
-import CSVReader from 'react-csv-reader';
-import Table from './Table';
 
 export default class CustomizationFields extends Component {
   handleSubmit = e => {
     e.preventDefault();
-    this.props.showSetupToFalse();
-    this.props.showTableToTrue();
+    // what exactly are these next two lines doing?
+    this.props.showSetupToFalse(e);
+    this.props.showTableToTrue(e);
   };
 
   handleChange = e => {
-    if (e.target.name === 'label') {
-      this.props.setLabel(e.target.value);
-    };
+    this.props.customize(e.target.name, e.target.value);
   };
 
   render() {
@@ -22,8 +19,9 @@ export default class CustomizationFields extends Component {
           this.props.chartType[0] && this.props.chartType !== 'pie'
             ?
           <Fragment>
-            <h5>What would you like to label your data?</h5>
+            <h5>Customize your chart</h5>
             <form onSubmit={this.handleSubmit}>
+              <label for='label'>Label </label>
               <input onChange={this.handleChange} name='label' />
             </form>
           </Fragment>

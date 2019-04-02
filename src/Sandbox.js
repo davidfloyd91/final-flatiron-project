@@ -8,6 +8,7 @@ export default class Sandbox extends Component {
   state = {
     chartType: '',
     grid: [],
+    title: '',
     label: '',
   };
 
@@ -21,8 +22,10 @@ export default class Sandbox extends Component {
     this.setState({ grid });
   };
 
-  setLabel = label => {
-    this.setState({ label });
+  customize = (name, value) => {
+    this.setState({
+      [name]: value,
+    });
   };
 
   render() {
@@ -33,7 +36,7 @@ export default class Sandbox extends Component {
           changeChartType={this.chartType}
           chartType={this.state.chartType}
           setGrid={this.setGrid}
-          setLabel={this.setLabel}
+          customize={this.customize}
         />
         {
           this.state.chartType === 'line'
