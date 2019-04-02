@@ -16,6 +16,7 @@ export default class Sandbox extends Component {
     ticks: null,
     color: '#0080FF',
     colors: '',
+    horizontal: false,
   };
 
   chartType = chartType => {
@@ -50,6 +51,8 @@ export default class Sandbox extends Component {
       };
       // behavior here isn't ideal: deciding which item is which color requires clicking the checkboxes in the right order
       this.setState({ colors });
+    } else if (name === 'horizontal') {
+      this.setState({ horizontal: !this.state.horizontal })
     } else {
       this.setState({ [name]: value });
     };
@@ -64,6 +67,7 @@ export default class Sandbox extends Component {
           chartType={this.state.chartType}
           setGrid={this.setGrid}
           customize={this.customize}
+          horizontal={this.state.horizontal}
         />
         {
           this.state.chartType === 'line'
@@ -88,6 +92,7 @@ export default class Sandbox extends Component {
             max={this.state.max}
             ticks={this.state.ticks}
             colors={this.state.colors}
+            horizontal={this.state.horizontal}
           />
             :
           this.state.chartType === 'pie'

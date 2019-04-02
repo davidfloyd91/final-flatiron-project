@@ -30,13 +30,21 @@ export default class BarChart extends Component {
       return parseInt(a[1]);
     });
 
+    // setting min and max values, ticks doesn't appear to work with horizontal bars
+    let type;
+    if (this.props.horizontal) {
+      type = 'horizontalBar';
+    } else {
+      type = 'bar';
+    };
+
     const label = this.props.label;
     const title = this.props.title;
     const min = this.props.min;
     const max = this.props.max;
     const ticks = this.props.ticks;
-    let colors = this.props.colors;
 
+    let colors = this.props.colors;
     if (colors[0]) {
       let divisor = Math.floor(chartData.length / colors.length) + 1;
       if (divisor > 0) {
@@ -47,7 +55,7 @@ export default class BarChart extends Component {
     };
 
     newChart = new Chart(myChartRef, {
-      type: "bar",
+      type: type,
       data: {
         labels: labels,
         datasets: [

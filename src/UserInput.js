@@ -121,6 +121,7 @@ export default class UserInput extends Component {
           showTableToTrue={this.handleSubmit}
           customize={this.props.customize}
           chartType={this.props.chartType}
+          horizontal={this.props.horizontal}
         />
       </Fragment>
     );

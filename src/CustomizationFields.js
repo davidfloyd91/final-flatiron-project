@@ -77,6 +77,21 @@ export default class CustomizationFields extends Component {
                 </Fragment>
               }
             </form>
+            {
+              this.props.chartType === 'bar'
+                ?
+              <Fragment>
+                {
+                  this.props.horizontal
+                    ?
+                  <button onClick={this.handleChange} name='horizontal'>Switch to vertical bars</button>
+                    :
+                  <button onClick={this.handleChange} name='horizontal'>Switch to horizontal bars</button>
+                }
+              </Fragment>
+                :
+              null
+            }
           </Fragment>
             :
           null
