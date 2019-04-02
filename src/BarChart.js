@@ -35,7 +35,16 @@ export default class BarChart extends Component {
     const min = this.props.min;
     const max = this.props.max;
     const ticks = this.props.ticks;
-    const color = this.props.color;
+    let colors = this.props.colors;
+
+    if (colors[0]) {
+      let divisor = Math.floor(chartData.length / colors.length) + 1;
+      if (divisor > 0) {
+        for (let i = 0; i < divisor - 1; i++) {
+          colors = [...colors, ...this.props.colors]
+        };
+      };
+    };
 
     newChart = new Chart(myChartRef, {
       type: "bar",
@@ -46,7 +55,7 @@ export default class BarChart extends Component {
             label: label,
             fill: false,
             data: chartData,
-            backgroundColor: color
+            backgroundColor: colors
           }
         ]
       },
