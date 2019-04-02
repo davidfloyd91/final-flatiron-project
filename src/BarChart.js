@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import Chart from 'chart.js';
-let newChart, title, label, min, max, ticks, color;
+let newChart;
 
 export default class BarChart extends Component {
   chartRef = React.createRef();
@@ -30,12 +30,12 @@ export default class BarChart extends Component {
       return parseInt(a[1]);
     });
 
-    label = this.props.label;
-    title = this.props.title;
-    min = this.props.min;
-    max = this.props.max;
-    ticks = this.props.ticks;
-    color = this.props.color;
+    const label = this.props.label;
+    const title = this.props.title;
+    const min = this.props.min;
+    const max = this.props.max;
+    const ticks = this.props.ticks;
+    const color = this.props.color;
 
     newChart = new Chart(myChartRef, {
       type: "bar",

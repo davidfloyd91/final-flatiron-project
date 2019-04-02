@@ -29,31 +29,33 @@ export default class Sandbox extends Component {
   };
 
   customize = (e) => {
-    if ((e.target.name === 'min') &&
-    (isNaN(e.target.value) || e.target.value === '')) {
+    let name = e.target.name;
+    let value = e.target.value;
+
+    if ((name === 'min') &&
+    (isNaN(value) || value === '')) {
       this.setState({ min: -10 });
-    } else if ((e.target.name === 'max') &&
-    (isNaN(e.target.value) || e.target.value === '')) {
+    } else if ((name === 'max') &&
+    (isNaN(value) || value === '')) {
       this.setState({ max: -10 });
-    } else if ((e.target.name === 'ticks') &&
-    (isNaN(e.target.value) || e.target.value === '')) {
+    } else if ((name === 'ticks') &&
+    (isNaN(value) || value === '')) {
       this.setState({ ticks: null });
-    } else if (e.target.name === 'colors') {
+    } else if (name === 'colors') {
       if (e.target.checked) {
-        colors = [...new Set([...this.state.colors, e.target.value])];
+        colors = [...new Set([...this.state.colors, value])];
       } else {
-        let i = this.state.colors.indexOf(e.target.value);
-        colors = this.state.colors.splice(i, 1);
+        let i = this.state.colors.indexOf(value);
+        colors = [...this.state.colors.slice(0, i), ...this.state.colors.slice(i + 1)];
       };
-      // there is a strange bug when you uncheck
+      // behavior here isn't ideal: deciding which item is which color requires clicking the checkboxes in the right order
       this.setState({ colors });
     } else {
-      this.setState({ [e.target.name]: e.target.value });
+      this.setState({ [name]: value });
     };
   };
 
   render() {
-    console.log(this.state.colors)
     return (
       <Fragment>
         <h1>New {this.state.chartType} chart</h1>
