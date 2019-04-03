@@ -3,14 +3,12 @@ import Chart from 'chart.js';
 let newChart;
 
 export default class UserChart extends Component {
-  // define "chart_id" prop to use to fetch data
-
   chartRef = React.createRef();
 
   componentDidMount() {
     fetch(`http://localhost:3000/charts/${this.props.chartId}`)
     .then(r => r.json())
-    .then(chart => this.buildChart(chart.data));
+    .then(chart => {console.log(chart); this.buildChart(chart.data)});
   };
 
   componentDidUpdate() {
