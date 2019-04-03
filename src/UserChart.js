@@ -6,9 +6,10 @@ export default class UserChart extends Component {
   chartRef = React.createRef();
 
   componentDidMount() {
-    fetch(`http://localhost:3000/charts/${this.props.chartId}`)
-    .then(r => r.json())
-    .then(chart => {console.log(chart); this.buildChart(chart.data)});
+  //   fetch(`http://localhost:3000/charts/${this.props.chartId}`)
+  //   .then(r => r.json())
+  //   .then(chart => {console.log(chart); this.buildChart(chart.data)});
+    this.buildChart();
   };
 
   componentDidUpdate() {
@@ -22,7 +23,7 @@ export default class UserChart extends Component {
       newChart.destroy();
     };
 
-    newChart = new Chart(myChartRef, data);
+    newChart = new Chart(myChartRef, this.props.data);
   };
 
   render() {

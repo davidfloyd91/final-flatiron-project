@@ -8,9 +8,9 @@ export default class Nav extends Component {
         {
           this.props.new
             ?
-          <button onClick={this.props.toggleNew}>Go to the dashboard</button>
+          <button onClick={this.props.toggleNew}>Go to dashboard</button>
             :
-          <button onClick={this.props.toggleNew}>Go to the sandbox</button>
+          <button onClick={this.props.toggleNew}>Go to sandbox</button>
         }
       </div>
     );
