@@ -32,20 +32,7 @@ var LineGraph = function (_React$Component) {
         value: function componentDidMount() {
             var myChartRef = this.chartRef.current.getContext("2d");
 
-            new Chart(myChartRef, {
-                type: "line",
-                data: {
-                    //Bring in data
-                    labels: ["Jan", "Feb", "March"],
-                    datasets: [{
-                        label: "Sales",
-                        data: [86, 67, 91]
-                    }]
-                },
-                options: {
-                    //Customize chart options
-                }
-            });
+            new Chart(myChartRef, { type: "line", data: { labels: ["Jan", "Feb", "March"], datasets: [{ label: "Sales", data: [86, 67, 91] }] }, options: {} });
         }
     }, {
         key: "render",
