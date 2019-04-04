@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import Chart from 'chart.js';
-let newChart;
+let newChart, fullData;
 
 export default class LineChart extends Component {
   chartRef = React.createRef();
@@ -37,7 +37,7 @@ export default class LineChart extends Component {
     const ticks = this.props.ticks;
     const color = this.props.color;
 
-    newChart = new Chart(myChartRef, {
+    fullData = {
       type: "line",
       data: {
         labels: labels,
@@ -65,7 +65,10 @@ export default class LineChart extends Component {
           }]
         }
       }
-    });
+    };
+
+    console.log(JSON.stringify(fullData));
+    newChart = new Chart(myChartRef, fullData);
   };
 
   render() {
@@ -75,6 +78,7 @@ export default class LineChart extends Component {
           id="myChart"
           ref={this.chartRef}
         />
+        <button onClick={() => this.props.saveChart(fullData)}>Save chart</button>
       </div>
     );
   };

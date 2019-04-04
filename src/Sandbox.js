@@ -13,10 +13,27 @@ export default class Sandbox extends Component {
     label: '',
     min: -10,
     max: 10,
-    ticks: null,
+    ticks: 0,
     color: '#0080FF',
     colors: '',
     horizontal: false,
+    warn: '',
+  };
+
+  saveChart = data => {
+    // fetch('http://localhost:3000/charts', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Accept': 'application/json',
+    //     'Content-Type': 'application/json'
+    //   },
+    //   // what in god's name is happening
+    //   body: ({
+    //     user_id: 1,
+    //     data: data
+    //   })
+    // })
+    // .then(r => r.json())
   };
 
   chartType = chartType => {
@@ -25,8 +42,29 @@ export default class Sandbox extends Component {
     });
   };
 
-  setGrid = grid => {
-    this.setState({ grid });
+  setGrid = firstGrid => {
+    let grid = [];
+    let i = 0;
+
+    this.setState({
+      warn: ''
+    }, () => {
+      firstGrid.forEach(row => {
+        if (row[1] && isNaN(parseFloat(row[1]))) {
+          grid.push([row[0], "0"]);
+          i++;
+        } else if (!row[1]) {
+          return;
+        } else {
+          grid.push([...row]);
+        };
+      });
+
+      this.setState({
+        grid,
+        warn: `Warning: ${i} y-value(s) not recognized and set to 0. Consider editing your CSV.`,
+      });
+    });
   };
 
   customize = (e) => {
@@ -41,7 +79,7 @@ export default class Sandbox extends Component {
       this.setState({ max: -10 });
     } else if ((name === 'ticks') &&
     (isNaN(value) || value === '')) {
-      this.setState({ ticks: null });
+      this.setState({ ticks: 0});
     } else if (name === 'colors') {
       if (e.target.checked) {
         colors = [...new Set([...this.state.colors, value])];
@@ -70,6 +108,12 @@ export default class Sandbox extends Component {
           horizontal={this.state.horizontal}
         />
         {
+          this.state.warn[0]
+            ?
+          <h5>{this.state.warn}</h5>
+            :
+          null
+        } {
           this.state.chartType === 'line'
             ?
           <LineChart
@@ -80,6 +124,7 @@ export default class Sandbox extends Component {
             max={this.state.max}
             ticks={this.state.ticks}
             color={this.state.color}
+            saveChart={this.saveChart}
           />
             :
           this.state.chartType === 'bar'
