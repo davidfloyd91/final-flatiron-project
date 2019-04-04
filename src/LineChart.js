@@ -58,9 +58,9 @@ export default class LineChart extends Component {
         scales: {
           yAxes: [{
             ticks: {
-              min: parseInt(min),
-              max: parseInt(max),
-              stepSize: parseInt(ticks)
+              min: parseFloat(min),
+              max: parseFloat(max),
+              stepSize: parseFloat(ticks)
             }
           }]
         }

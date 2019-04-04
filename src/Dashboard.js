@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ChartPreview from './ChartPreview';
 import UserChart from './UserChart';
 import './App.css';
-let displayData;
+let data;
 
 export default class Dashboard extends Component {
   state = {
@@ -44,7 +44,7 @@ export default class Dashboard extends Component {
   };
 
   displayData = () => {
-    let data = {...this.state.chart.data};
+    data = {...this.state.chart.data};
     let datasets = [...this.state.chart.data.data._datasets];
     delete data.data._datasets;
     data.data.datasets = datasets;
