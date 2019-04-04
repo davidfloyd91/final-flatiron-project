@@ -45,9 +45,11 @@ export default class Dashboard extends Component {
 
   displayData = () => {
     data = {...this.state.chart.data};
-    let datasets = [...this.state.chart.data.data._datasets];
-    delete data.data._datasets;
-    data.data.datasets = datasets;
+    if (this.state.chart.data.data._datasets) {
+      let datasets = [...this.state.chart.data.data._datasets];
+      delete data.data._datasets;
+      data.data.datasets = datasets;
+    };
 
     return data;
   };
