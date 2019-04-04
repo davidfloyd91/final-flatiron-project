@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import Chart from 'chart.js';
-let newChart;
+let newChart, saveData;
 
 export default class PieChart extends Component {
   chartRef = React.createRef();
@@ -42,11 +42,11 @@ export default class PieChart extends Component {
       };
     };
 
-    newChart = new Chart(myChartRef, {
+    saveData = {
       type: "pie",
       data: {
         labels: labels,
-        datasets: [
+        _datasets: [
           {
             fill: false,
             data: chartData,
@@ -60,7 +60,23 @@ export default class PieChart extends Component {
             text: title
         }
       }
-    });
+    };
+
+    let fullData = {...saveData};
+    delete fullData.data;
+
+    fullData.data = {
+      labels: labels,
+      datasets: [
+        {
+          fill: false,
+          data: chartData,
+          backgroundColor: colors
+        }
+      ]
+    };
+
+    newChart = new Chart(myChartRef, fullData);
   };
 
   render() {
@@ -70,6 +86,7 @@ export default class PieChart extends Component {
           id="myChart"
           ref={this.chartRef}
         />
+        <button onClick={() => this.props.saveChart(saveData)}>Save chart</button>
       </div>
     );
   };

@@ -146,6 +146,7 @@ export default class Sandbox extends Component {
             data={this.state.grid}
             title={this.state.title}
             colors={this.state.colors}
+            saveChart={this.saveChart}
           />
             :
           null
