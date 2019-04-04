@@ -41,7 +41,7 @@ export default class LineChart extends Component {
       type: "line",
       data: {
         labels: labels,
-        datasets: [
+        _datasets: [
           {
             label: label,
             fill: false,
@@ -67,7 +67,6 @@ export default class LineChart extends Component {
       }
     };
 
-    console.log(JSON.stringify(fullData));
     newChart = new Chart(myChartRef, fullData);
   };
 

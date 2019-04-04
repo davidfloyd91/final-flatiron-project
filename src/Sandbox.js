@@ -3,6 +3,7 @@ import UserInput from './UserInput';
 import LineChart from './LineChart';
 import BarChart from './BarChart';
 import PieChart from './PieChart';
+import Flatted, {parse, stringify} from 'flatted/esm';
 let colors;
 
 export default class Sandbox extends Component {
@@ -20,20 +21,29 @@ export default class Sandbox extends Component {
     warn: '',
   };
 
-  saveChart = data => {
-    // fetch('http://localhost:3000/charts', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Accept': 'application/json',
-    //     'Content-Type': 'application/json'
-    //   },
-    //   // what in god's name is happening
-    //   body: ({
-    //     user_id: 1,
-    //     data: data
-    //   })
-    // })
-    // .then(r => r.json())
+  saveChart = cData => {
+    // console.log(Flatted.stringify({
+    //   user_id: 1,
+    //   data: data
+    // }))
+
+    console.log(cData)
+    // debugger
+
+    fetch('http://localhost:3000/charts', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      // what in god's name is happening
+      body: JSON.stringify({
+        user_id: 1,
+        data: cData
+      })
+    })
+    .then(r => r.json())
+    .then(console.log)
   };
 
   chartType = chartType => {
