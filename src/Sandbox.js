@@ -21,29 +21,19 @@ export default class Sandbox extends Component {
     warn: '',
   };
 
-  saveChart = cData => {
-    // console.log(Flatted.stringify({
-    //   user_id: 1,
-    //   data: data
-    // }))
-
-    console.log(cData)
-    // debugger
-
+  saveChart = data => {
     fetch('http://localhost:3000/charts', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      // what in god's name is happening
       body: JSON.stringify({
         user_id: 1,
-        data: cData
+        data: data
       })
     })
     .then(r => r.json())
-    .then(console.log)
   };
 
   chartType = chartType => {

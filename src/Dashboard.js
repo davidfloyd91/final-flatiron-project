@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ChartPreview from './ChartPreview';
 import UserChart from './UserChart';
 import './App.css';
+let displayData;
 
 export default class Dashboard extends Component {
   state = {
@@ -42,6 +43,15 @@ export default class Dashboard extends Component {
     });
   };
 
+  displayData = () => {
+    let data = {...this.state.chart.data};
+    let datasets = [...this.state.chart.data.data._datasets];
+    delete data.data._datasets;
+    data.data.datasets = datasets;
+
+    return data;
+  };
+
   render() {
     return (
       <div className='container'>
@@ -49,7 +59,7 @@ export default class Dashboard extends Component {
         {
           this.state.chartId > 0
             ?
-          <UserChart data={this.state.chart.data} />
+          <UserChart data={this.displayData()} />
             :
           null
         }

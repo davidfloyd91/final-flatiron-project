@@ -67,21 +67,20 @@ export default class LineChart extends Component {
       }
     };
 
-    let fullData = {
-      ...saveData,
-      data: {
-        ...saveData.data,
-        datasets: [
-          {
-            label: label,
-            fill: false,
-            data: chartData,
-            borderColor: color
-          }
-        ]
-      }
+    let fullData = {...saveData};
+    delete fullData.data;
+
+    fullData.data = {
+      labels: labels,
+      datasets: [
+        {
+          label: label,
+          fill: false,
+          data: chartData,
+          borderColor: color
+        }
+      ]
     };
-    delete fullData._datasets;
 
     newChart = new Chart(myChartRef, fullData);
   };
