@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import Chart from 'chart.js';
-let newChart;
+let newChart, saveData;
 
 export default class BarChart extends Component {
   chartRef = React.createRef();
@@ -54,11 +54,11 @@ export default class BarChart extends Component {
       };
     };
 
-    newChart = new Chart(myChartRef, {
+    saveData = {
       type: type,
       data: {
         labels: labels,
-        datasets: [
+        _datasets: [
           {
             label: label,
             fill: false,
@@ -82,7 +82,24 @@ export default class BarChart extends Component {
           }]
         }
       }
-    });
+    };
+
+    let fullData = {...saveData};
+    delete fullData.data;
+
+    fullData.data = {
+      labels: labels,
+      datasets: [
+        {
+          label: label,
+          fill: false,
+          data: chartData,
+          backgroundColor: colors
+        }
+      ]
+    };
+
+    newChart = new Chart(myChartRef, fullData);
   };
 
   render() {
@@ -92,6 +109,7 @@ export default class BarChart extends Component {
           id="myChart"
           ref={this.chartRef}
         />
+        <button onClick={() => this.props.saveChart(saveData)}>Save chart</button>
       </div>
     );
   };

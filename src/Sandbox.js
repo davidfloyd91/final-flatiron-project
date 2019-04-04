@@ -3,7 +3,6 @@ import UserInput from './UserInput';
 import LineChart from './LineChart';
 import BarChart from './BarChart';
 import PieChart from './PieChart';
-import Flatted, {parse, stringify} from 'flatted/esm';
 let colors;
 
 export default class Sandbox extends Component {
@@ -138,6 +137,7 @@ export default class Sandbox extends Component {
             ticks={this.state.ticks}
             colors={this.state.colors}
             horizontal={this.state.horizontal}
+            saveChart={this.saveChart}
           />
             :
           this.state.chartType === 'pie'
