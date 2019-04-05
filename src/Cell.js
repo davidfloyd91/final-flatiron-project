@@ -19,14 +19,31 @@ export default class Cell extends Component {
   render() {
     return (
       <Fragment>
-        <form onSubmit={this.handleBlur} className='cell'>
-          <input
-            type='text'
-            value={this.state.value}
-            onChange={this.handleChange}
-            onBlur={this.handleBlur}
-          />
-        </form>
+        {
+          this.props.y === 1
+            ?
+          <form onSubmit={this.handleBlur} className='cell'>
+            <input
+              type='text'
+              value={this.state.value}
+              onChange={this.handleChange}
+              onBlur={this.handleBlur}
+            />
+          </form>
+            :
+          this.props.y === 2
+            ?
+          <form onSubmit={this.handleBlur} className='cell'>
+            <input
+              type='number'
+              value={this.state.value}
+              onChange={this.handleChange}
+              onBlur={this.handleBlur}
+            />
+          </form>
+            :
+          null
+        }
       </Fragment>
     );
   };
