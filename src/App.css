@@ -33,7 +33,7 @@
 }
 
 .container {
-  margin: 0 15px;
+  margin: 15px;
   width: 1000px;
 }
 
@@ -60,17 +60,33 @@
   border: solid;
   border-color: black;
   border-width: 1px;
+  margin: 10px;
+  overflow: hidden;
 }
 
 .previewImg {
   border-color: black;
   border: solid;
+  width: 150px;
 }
 
 .previewContainer {
-  height: 200px;
+  height: 206px;
   width: 1000px;
   white-space: nowrap;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
   display: inline-block;
+}
+
+.previewHeader {
+  height: 10px;
+  position: relative;
+  top: 5px;
+}
+
+.previewImgContainer {
+  position: relative;
+  margin: 30px auto auto auto;
+  width: 150px;
 }
