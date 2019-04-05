@@ -6,9 +6,6 @@ export default class UserChart extends Component {
   chartRef = React.createRef();
 
   componentDidMount() {
-  //   fetch(`http://localhost:3000/charts/${this.props.chartId}`)
-  //   .then(r => r.json())
-  //   .then(chart => {console.log(chart); this.buildChart(chart.data)});
     this.buildChart();
   };
 

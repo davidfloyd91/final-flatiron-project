@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 class CustomizationFields extends Component {
   handleSubmit = e => {
     e.preventDefault();
-    // what exactly are these next two lines doing?
     this.props.showSetupToFalse(e);
     this.props.showTableToTrue(e);
   };
