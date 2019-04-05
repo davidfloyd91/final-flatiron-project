@@ -72,7 +72,7 @@ class Dashboard extends Component {
               ?
             <Fragment>
               <UserChart data={this.displayData()} />
-              <button onClick={this.deleteChart}></button>
+              <button onClick={this.deleteChart}>Delete chart</button>
             </Fragment>
               :
             <h5 className='center'>Click on a chart above to display it here</h5>
