@@ -6,19 +6,12 @@ import './App.css';
 let data;
 
 class Dashboard extends Component {
-  // state = {
-  //   charts: [],
-  //   chartId: 0,
-  //   chart: null
-  // };
-
   componentDidMount() {
     fetch(`http://localhost:3000/users/${this.props.userId}`)
     .then(r => r.json())
     .then(user => {
       let charts = user.charts;
       this.props.dispatch({ type: 'SET_CHARTS', payload: charts });
-      // this.setState({ charts });
     });
   };
 
@@ -29,11 +22,6 @@ class Dashboard extends Component {
 
     this.props.dispatch({ type: 'SET_CHART_ID', payload: chartId });
     this.props.dispatch({ type: 'SET_CHART', payload: chart });
-
-    // this.setState({
-    //   chartId,
-    //   chart
-    // });
   };
 
   renderPreviews = () => {
@@ -57,7 +45,7 @@ class Dashboard extends Component {
         data.data.datasets = datasets;
       };
     };
-    
+
     return data;
   };
 

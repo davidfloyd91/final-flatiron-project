@@ -5,14 +5,6 @@ import Table from './Table';
 import CustomizationFields from './CustomizationFields';
 
 class UserInput extends Component {
-  // state = {
-    // input: '',
-    // showSetup: true,
-    // showTable: false,
-    // rows: 10,
-    // columns: 2,
-  // };
-
   handleForce = grid => {
     this.props.setGrid(grid);
   };
@@ -20,33 +12,23 @@ class UserInput extends Component {
   clearChartType = () => {
     this.props.changeChartType('');
     this.props.dispatch({ type: 'SET_INPUT', payload: '' });
-    // this.setState({
-    //   input: '',
-    // });
   };
 
   handleSubmit = e => {
     e.preventDefault();
     this.props.dispatch({ type: 'SET_SHOW_SETUP', payload: false });
     this.props.dispatch({ type: 'SET_SHOW_TABLE', payload: true });
-    // this.setState({
-    //   showSetup: false,
-    //   showTable: true,
-    // });
   };
 
   handleChange = e => {
     if (e.target.name === 'rows') {
       this.props.dispatch({ type: 'SET_ROWS', payload: e.target.value });
-      // this.setState({ rows: e.target.value });
     } else if (e.target.name === 'columns') {
       this.props.dispatch({ type: 'SET_COLUMNS', payload: e.target.value });
-      // this.setState({ columns: e.target.value });
     } else if (e.target.name === 'chartType') {
       this.props.changeChartType(e.target.value);
     } else if (e.target.name === 'input') {
       this.props.dispatch({ type: 'SET_INPUT', payload: e.target.value });
-      // this.setState({ input: e.target.value });
     };
   };
 

@@ -11,9 +11,6 @@ class Sandbox extends Component {
     this.props.dispatch({
       type: 'SET_CHART_TYPE', payload: chartType
     })
-    // this.setState({
-    //   chartType,
-    // });
   };
 
   saveChart = data => {
@@ -37,9 +34,6 @@ class Sandbox extends Component {
 
     this.props.dispatch({
       type: 'WARN', payload: ''
-
-    // this.setState({
-    //   warn: ''
     });
 
     firstGrid.forEach(row => {
@@ -60,10 +54,6 @@ class Sandbox extends Component {
     if (i > 0) {
       this.props.dispatch({
         type: 'WARN', payload: `Warning: ${i} y-value(s) not recognized and set to 0. Consider editing your CSV.`
-
-      // this.setState({
-      //   grid,
-      //   warn: `Warning: ${i} y-value(s) not recognized and set to 0. Consider editing your CSV.`,
       });
     };
   };
@@ -75,15 +65,12 @@ class Sandbox extends Component {
     if ((name === 'min') &&
     (isNaN(value) || value === '')) {
       this.props.dispatch({ type: 'SET_MIN', payload: -10 });
-      // this.setState({ min: -10 });
     } else if ((name === 'max') &&
     (isNaN(value) || value === '')) {
       this.props.dispatch({ type: 'SET_MAX', payload: 10 });
-      // this.setState({ max: -10 });
     } else if ((name === 'ticks') &&
     (isNaN(value) || value === '')) {
       this.props.dispatch({ type: 'SET_TICKS', payload: 0 });
-      // this.setState({ ticks: 0});
     } else if (name === 'colors') {
       if (e.target.checked) {
         colors = [...new Set([...this.props.colors, value])];
@@ -93,13 +80,10 @@ class Sandbox extends Component {
       };
       // behavior here isn't ideal: deciding which item is which color requires clicking the checkboxes in the right order
       this.props.dispatch({ type: 'SET_COLORS', payload: colors})
-      // this.setState({ colors });
     } else if (name === 'horizontal') {
       this.props.dispatch({ type: 'TOGGLE_HORIZONTAL' })
-      // this.setState({ horizontal: !this.state.horizontal })
     } else {
       this.props.dispatch({ type: 'SET_NAME_TO_VALUE', payload: { key: name, value: value } })
-      // this.setState({ [name]: value });
     };
   };
 

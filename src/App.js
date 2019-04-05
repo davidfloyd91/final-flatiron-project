@@ -10,10 +10,6 @@ class App extends Component {
     this.props.dispatch({
       type: 'TOGGLE_NEW'
     });
-
-   // this.setState({
-   //   new: !this.state.new,
-   // });
  };
 
   render() {
