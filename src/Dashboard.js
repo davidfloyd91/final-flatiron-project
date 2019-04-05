@@ -30,6 +30,7 @@ class Dashboard extends Component {
         <ChartPreview
           key={chart.id}
           chartId={chart.id}
+          chart={chart}
           showChart={this.showChart}
         />
       );
@@ -52,14 +53,18 @@ class Dashboard extends Component {
   render() {
     return (
       <div className='container'>
-        {this.props.charts ? this.renderPreviews() : null}
-        {
-          this.props.chartId > 0
-            ?
-          <UserChart data={this.displayData()} />
-            :
-          null
-        }
+        <div className='previewContainer'>
+          {this.props.charts ? this.renderPreviews() : null}
+        </div>
+        <div className='container'>
+          {
+            this.props.chartId > 0
+              ?
+            <UserChart data={this.displayData()} />
+              :
+            null
+          }
+        </div>
       </div>
     );
   };

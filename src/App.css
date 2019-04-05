@@ -34,6 +34,7 @@
 
 .container {
   margin: 0 15px;
+  width: 1000px;
 }
 
 .row {
@@ -49,4 +50,27 @@
   width: 131px;
   padding-left: 1px;
   margin-bottom: 2px;
+}
+
+.card {
+  width: 300px;
+  display: inline-block;
+  height: 186px;
+  text-align: center;
+  border: solid;
+  border-color: black;
+  border-width: 1px;
+}
+
+.previewImg {
+  border-color: black;
+  border: solid;
+}
+
+.previewContainer {
+  height: 200px;
+  width: 1000px;
+  white-space: nowrap;
+  overflow: auto;
+  display: inline-block;
 }
