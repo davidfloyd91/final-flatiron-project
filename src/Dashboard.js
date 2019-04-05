@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import ChartPreview from './ChartPreview';
 import UserChart from './UserChart';
@@ -13,6 +13,17 @@ class Dashboard extends Component {
       let charts = user.charts;
       this.props.dispatch({ type: 'SET_CHARTS', payload: charts });
     });
+  };
+
+  deleteChart = () => {
+    fetch(`http://localhost:3000/charts/${this.props.chartId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(r => r.json)
+    .then(console.log)
   };
 
   showChart = chartId => {
@@ -60,7 +71,10 @@ class Dashboard extends Component {
           {
             this.props.chartId > 0
               ?
-            <UserChart data={this.displayData()} />
+            <Fragment>
+              <UserChart data={this.displayData()} />
+              <button onClick={this.deleteChart}></button>
+            </Fragment>
               :
             <h5 className='center'>Click on a chart above to display it here</h5>
           }
