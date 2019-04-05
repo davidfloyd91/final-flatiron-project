@@ -23,7 +23,6 @@ class Dashboard extends Component {
       }
     })
     .then(r => r.json)
-    .then(console.log)
   };
 
   showChart = chartId => {
