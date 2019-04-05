@@ -14,6 +14,8 @@ class Sandbox extends Component {
   };
 
   saveChart = data => {
+    let okay = false;
+
     fetch('http://localhost:3000/charts', {
       method: 'POST',
       headers: {
@@ -25,7 +27,21 @@ class Sandbox extends Component {
         data: data
       })
     })
-    .then(r => r.json())
+    .then(r => {
+      if (r.ok) {
+        okay = true;
+      };
+      return r.json();
+    })
+    .then(data => {
+      if (okay) {
+        this.props.dispatch({ type: 'SET_CHART', payload: data });
+        // so like what's setting the chart id do?
+        this.props.dispatch({type: 'SET_CHART_ID', payload: data.id });
+        this.props.dispatch({type: 'TOGGLE_NEW' });
+        // you need to set so many other things to their defaults or the chart will still render on the "new" page
+      };
+    });
   };
 
   setGrid = firstGrid => {

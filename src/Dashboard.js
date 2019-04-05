@@ -30,6 +30,7 @@ class Dashboard extends Component {
       return c.id === chartId;
     });
 
+    // so like what's setting the chart id do?
     this.props.dispatch({ type: 'SET_CHART_ID', payload: chartId });
     this.props.dispatch({ type: 'SET_CHART', payload: chart });
   };

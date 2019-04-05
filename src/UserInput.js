@@ -58,7 +58,7 @@ class UserInput extends Component {
                 <button onClick={this.clearChartType}>Change chart type</button>
                 <h5>How would you like to input your data?</h5>
                 <select name='input' onChange={this.handleChange}>
-                  <option value=''></option>
+                  <option value=''>Choose a chart type</option>
                   <option value='csv'>Upload CSV</option>
                   <option value='manual'>Manually</option>
                 </select>
