@@ -40,32 +40,32 @@ class Sandbox extends Component {
 
     // this.setState({
     //   warn: ''
-    }, () => {
-      firstGrid.forEach(row => {
-        if (row[1] && isNaN(parseFloat(row[1]))) {
-          grid.push([row[0], "0"]);
-          i++;
-        } else if (!row[1]) {
-          return;
-        } else {
-          grid.push([...row]);
-        };
-      });
+    });
 
-      if (i > 0) {
-        this.props.dispatch({
-          type: 'SET_GRID', payload: grid
-        });
-
-        this.props.dispatch({
-          type: 'WARN', payload: `Warning: ${i} y-value(s) not recognized and set to 0. Consider editing your CSV.`
-
-        // this.setState({
-        //   grid,
-        //   warn: `Warning: ${i} y-value(s) not recognized and set to 0. Consider editing your CSV.`,
-        });
+    firstGrid.forEach(row => {
+      if (row[1] && isNaN(parseFloat(row[1]))) {
+        grid.push([row[0], "0"]);
+        i++;
+      } else if (!row[1]) {
+        return;
+      } else {
+        grid.push([...row]);
       };
     });
+
+    this.props.dispatch({
+      type: 'SET_GRID', payload: grid
+    });
+
+    if (i > 0) {
+      this.props.dispatch({
+        type: 'WARN', payload: `Warning: ${i} y-value(s) not recognized and set to 0. Consider editing your CSV.`
+
+      // this.setState({
+      //   grid,
+      //   warn: `Warning: ${i} y-value(s) not recognized and set to 0. Consider editing your CSV.`,
+      });
+    };
   };
 
   customize = (e) => {

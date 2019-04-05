@@ -1,8 +1,8 @@
 // thanks and praise to this guy https://blog.bitsrc.io/customizing-chart-js-in-react-2199fa81530a
 
 import React, { Component } from 'react';
-import Chart from 'chart.js';
 import { connect } from 'react-redux';
+import Chart from 'chart.js';
 let newChart, saveData;
 
 class BarChart extends Component {
@@ -125,9 +125,6 @@ function mapStateToProps(state) {
     max: state.max,
     ticks: state.ticks,
     colors: state.colors,
-    horizontal: state.horizontal,
-    // saveChart: saveChart
-    // couldn't tell you ^^^
   };
 };
 

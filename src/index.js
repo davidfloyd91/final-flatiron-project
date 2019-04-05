@@ -7,31 +7,37 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
 const initialState = {
-    chart: null,
-    chartId: 0,
-    charts: [],
-    chartType: '',
-    color: '#0080FF',
-    colors: '',
-    columns: 2,
-    horizontal: false,
-    input: '',
-    grid: [],
-    label: '',
-    max: 10,
-    min: -10,
-    new: false,
-    rows: 10,
-    showSetup: true,
-    showTable: false,
-    ticks: 0,
-    title: '',
-    userId: 1,
-    warn: ''
-  };
+  chart: null,
+  chartId: 0,
+  charts: [],
+  chartType: '',
+  color: '#0080FF',
+  colors: '',
+  columns: 2,
+  horizontal: false,
+  input: '',
+  grid: [],
+  label: '',
+  max: 10,
+  min: -10,
+  new: false,
+  rows: 10,
+  showSetup: true,
+  showTable: false,
+  ticks: 0,
+  title: '',
+  userId: 1,
+  warn: ''
+};
 
 function reducer(state = initialState, action) {
   switch (action.type) {
+    case 'SET_CHART':
+      return {...state, chart: action.payload}
+    case 'SET_CHART_ID':
+      return {...state, chartId: action.payload }
+    case 'SET_CHARTS':
+      return {...state, charts: action.payload }
     case 'SET_CHART_TYPE':
       return { ...state, chartType: action.payload }
     case 'TOGGLE_NEW':
@@ -62,12 +68,6 @@ function reducer(state = initialState, action) {
       return {...state, columns: action.payload }
     case 'SET_GRID':
       return {...state, grid: action.payload }
-    case 'SET_CHARTS':
-      return {...state, charts: action.payload }
-    case 'SET_CHART_ID':
-      return {...state, chartId: action.payload }
-    case 'SET_CHART':
-      return {...state, chart: action.payload}
     default:
       return state;
   };

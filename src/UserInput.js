@@ -132,7 +132,12 @@ class UserInput extends Component {
 function mapStateToProps(state) {
   return {
     chartType: state.chartType,
-    horizontal: state.horizontal
+    horizontal: state.horizontal,
+    showSetup: state.showSetup,
+    input: state.input,
+    rows: state.rows,
+    columns: state.columns,
+    showTable: state.showTable
   };
 };
 
