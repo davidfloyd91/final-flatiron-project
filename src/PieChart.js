@@ -1,5 +1,3 @@
-// thanks and praise to this guy https://blog.bitsrc.io/customizing-chart-js-in-react-2199fa81530a
-
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Chart from 'chart.js';

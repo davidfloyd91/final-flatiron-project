@@ -89,7 +89,7 @@ class Sandbox extends Component {
 
   render() {
     return (
-      <Fragment>
+      <div className='container'>
         <h1>New {this.props.chartType} chart</h1>
         <UserInput
           changeChartType={this.chartType}
@@ -111,7 +111,7 @@ class Sandbox extends Component {
           ? <PieChart saveChart={this.saveChart} />
           : null
         }
-      </Fragment>
+      </div>
     );
   };
 };

@@ -4,13 +4,13 @@ import './App.css';
 export default class Nav extends Component {
   render() {
     return (
-      <div className='container'>
+      <div className='nav'>
         {
           this.props.new
             ?
-          <button onClick={this.props.toggleNew}>Go to dashboard</button>
+          <button className='navButton' onClick={this.props.toggleNew}>GO TO YOUR DASHBOARD</button>
             :
-          <button onClick={this.props.toggleNew}>Go to sandbox</button>
+          <button className='navButton' onClick={this.props.toggleNew}>MAKE A NEW CHART</button>
         }
       </div>
     );

@@ -62,7 +62,7 @@ class Dashboard extends Component {
               ?
             <UserChart data={this.displayData()} />
               :
-            null
+            <h5 className='center'>Click on a chart above to display it here</h5>
           }
         </div>
       </div>

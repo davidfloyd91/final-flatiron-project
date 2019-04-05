@@ -62,12 +62,15 @@
   border-width: 1px;
   margin: 5px;
   overflow: hidden;
+  border-radius: 5px;
 }
 
 .previewImg {
   border-color: black;
   border: solid;
+  border-width: 1px;
   width: 125px;
+  border-radius: 5px;
 }
 
 .previewContainer {
@@ -89,4 +92,31 @@
   position: relative;
   margin: 25px auto auto auto;
   width: 150px;
+}
+
+.center {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.nav {
+  background-color: black;
+  width: 85%;
+  margin: 0 auto;
+  height: 50px;
+}
+
+.navButton {
+  position: relative;
+  height: 100%;
+  width: 25%;
+  border-color: white;
+  border-width: thin;
+  border-right: solid;
+  border-left: none;
+  border-top: none;
+  border-bottom: none;
+  color: white;
+  background-color: black;
+  font-size: 11pt;
 }
