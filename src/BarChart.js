@@ -2,9 +2,10 @@
 
 import React, { Component } from 'react';
 import Chart from 'chart.js';
+import { connect } from 'react-redux';
 let newChart, saveData;
 
-export default class BarChart extends Component {
+class BarChart extends Component {
   chartRef = React.createRef();
 
   componentDidMount() {
@@ -114,3 +115,20 @@ export default class BarChart extends Component {
     );
   };
 };
+
+function mapStateToProps(state) {
+  return {
+    data: state.grid,
+    label: state.label,
+    title: state.title,
+    min: state.min,
+    max: state.max,
+    ticks: state.ticks,
+    colors: state.colors,
+    horizontal: state.horizontal,
+    // saveChart: saveChart
+    // couldn't tell you ^^^
+  };
+};
+
+export default connect(mapStateToProps)(BarChart);

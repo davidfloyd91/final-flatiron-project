@@ -1,27 +1,35 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Sandbox from './Sandbox';
 import Dashboard from './Dashboard';
 import Nav from './Nav';
 import './App.css';
 
-export default class App extends Component {
-  state = {
-    new: false,
-    userId: 1,
-  };
-
+class App extends Component {
   toggleNew = () => {
-   this.setState({
-     new: !this.state.new,
-   });
+    this.props.dispatch({
+      type: 'TOGGLE_NEW'
+    });
+
+   // this.setState({
+   //   new: !this.state.new,
+   // });
  };
 
   render() {
     return (
       <div className='container'>
-        <Nav new={this.state.new} toggleNew={this.toggleNew} />
-        {this.state.new ? <Sandbox /> : <Dashboard userId={this.state.userId} />}
+        <Nav new={this.props.new} toggleNew={this.toggleNew} />
+        {this.props.new ? <Sandbox /> : <Dashboard userId={this.props.userId} />}
       </div>
     );
   };
 };
+
+function mapStateToProps(state) {
+  return {
+    new: state.new
+  };
+};
+
+export default connect(mapStateToProps)(App);

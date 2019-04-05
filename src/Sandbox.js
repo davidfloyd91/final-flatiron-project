@@ -1,25 +1,12 @@
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
 import UserInput from './UserInput';
 import LineChart from './LineChart';
 import BarChart from './BarChart';
 import PieChart from './PieChart';
 let colors;
 
-export default class Sandbox extends Component {
-  state = {
-    chartType: '',
-    grid: [],
-    title: '',
-    label: '',
-    min: -10,
-    max: 10,
-    ticks: 0,
-    color: '#0080FF',
-    colors: '',
-    horizontal: false,
-    warn: '',
-  };
-
+class Sandbox extends Component {
   saveChart = data => {
     fetch('http://localhost:3000/charts', {
       method: 'POST',
@@ -36,17 +23,23 @@ export default class Sandbox extends Component {
   };
 
   chartType = chartType => {
-    this.setState({
-      chartType,
-    });
+    this.props.dispatch({
+      type: 'SET_CHART_TYPE', payload: chartType
+    })
+    // this.setState({
+    //   chartType,
+    // });
   };
 
   setGrid = firstGrid => {
     let grid = [];
     let i = 0;
 
-    this.setState({
-      warn: ''
+    this.props.dispatch({
+      type: 'WARN', payload: ''
+
+    // this.setState({
+    //   warn: ''
     }, () => {
       firstGrid.forEach(row => {
         if (row[1] && isNaN(parseFloat(row[1]))) {
@@ -59,12 +52,23 @@ export default class Sandbox extends Component {
         };
       });
 
-      this.setState({
-        grid,
-        warn: `Warning: ${i} y-value(s) not recognized and set to 0. Consider editing your CSV.`,
-      });
+      if (i > 0) {
+        this.props.dispatch({
+          type: 'SET_GRID'
+        });
+
+        this.props.dispatch({
+          type: 'WARN', payload: `Warning: ${i} y-value(s) not recognized and set to 0. Consider editing your CSV.`
+
+        // this.setState({
+        //   grid,
+        //   warn: `Warning: ${i} y-value(s) not recognized and set to 0. Consider editing your CSV.`,
+        });
+      };
     });
   };
+
+  // THIS IS WHERE YOU STOPPED
 
   customize = (e) => {
     let name = e.target.name;
@@ -81,10 +85,10 @@ export default class Sandbox extends Component {
       this.setState({ ticks: 0});
     } else if (name === 'colors') {
       if (e.target.checked) {
-        colors = [...new Set([...this.state.colors, value])];
+        colors = [...new Set([...this.props.colors, value])];
       } else {
-        let i = this.state.colors.indexOf(value);
-        colors = [...this.state.colors.slice(0, i), ...this.state.colors.slice(i + 1)];
+        let i = this.props.colors.indexOf(value);
+        colors = [...this.props.colors.slice(0, i), ...this.props.colors.slice(i + 1)];
       };
       // behavior here isn't ideal: deciding which item is which color requires clicking the checkboxes in the right order
       this.setState({ colors });
@@ -98,7 +102,7 @@ export default class Sandbox extends Component {
   render() {
     return (
       <Fragment>
-        <h1>New {this.state.chartType} chart</h1>
+        <h1>New {this.props.chartType} chart</h1>
         <UserInput
           changeChartType={this.chartType}
           chartType={this.state.chartType}
@@ -107,13 +111,13 @@ export default class Sandbox extends Component {
           horizontal={this.state.horizontal}
         />
         {
-          this.state.warn[0]
+          this.props.warn[0]
             ?
-          <h5>{this.state.warn}</h5>
+          <h5>{this.props.warn}</h5>
             :
           null
         } {
-          this.state.chartType === 'line'
+          this.props.chartType === 'line'
             ?
           <LineChart
             data={this.state.grid}
@@ -126,21 +130,11 @@ export default class Sandbox extends Component {
             saveChart={this.saveChart}
           />
             :
-          this.state.chartType === 'bar'
+          this.props.chartType === 'bar'
             ?
-          <BarChart
-            data={this.state.grid}
-            label={this.state.label}
-            title={this.state.title}
-            min={this.state.min}
-            max={this.state.max}
-            ticks={this.state.ticks}
-            colors={this.state.colors}
-            horizontal={this.state.horizontal}
-            saveChart={this.saveChart}
-          />
+          <BarChart />
             :
-          this.state.chartType === 'pie'
+          this.props.chartType === 'pie'
             ?
           <PieChart
             data={this.state.grid}
@@ -155,3 +149,13 @@ export default class Sandbox extends Component {
     );
   };
 };
+
+function mapStateToProps(state) {
+  return {
+    chartType: state.chartType,
+    colors: state.colors,
+    warn: state.warn
+  };
+};
+
+export default connect(mapStateToProps)(Sandbox);
