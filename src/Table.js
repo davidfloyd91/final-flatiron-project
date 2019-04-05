@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
 import Row from './Row';
 import './App.css';
 
-export default class Table extends Component {
+class Table extends Component {
   state = {
     grid: [],
   };
@@ -69,3 +70,12 @@ export default class Table extends Component {
     );
   };
 };
+
+function mapStateToProps(state) {
+  return {
+    x: state.rows,
+    y: state.columns
+  };
+};
+
+export default connect(mapStateToProps)(Table);

@@ -20,7 +20,7 @@ class App extends Component {
     return (
       <div className='container'>
         <Nav new={this.props.new} toggleNew={this.toggleNew} />
-        {this.props.new ? <Sandbox /> : <Dashboard userId={this.props.userId} />}
+        {this.props.new ? <Sandbox /> : <Dashboard />}
       </div>
     );
   };

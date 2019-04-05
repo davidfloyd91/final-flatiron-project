@@ -7,6 +7,15 @@ import PieChart from './PieChart';
 let colors;
 
 class Sandbox extends Component {
+  chartType = chartType => {
+    this.props.dispatch({
+      type: 'SET_CHART_TYPE', payload: chartType
+    })
+    // this.setState({
+    //   chartType,
+    // });
+  };
+
   saveChart = data => {
     fetch('http://localhost:3000/charts', {
       method: 'POST',
@@ -20,15 +29,6 @@ class Sandbox extends Component {
       })
     })
     .then(r => r.json())
-  };
-
-  chartType = chartType => {
-    this.props.dispatch({
-      type: 'SET_CHART_TYPE', payload: chartType
-    })
-    // this.setState({
-    //   chartType,
-    // });
   };
 
   setGrid = firstGrid => {
@@ -54,7 +54,7 @@ class Sandbox extends Component {
 
       if (i > 0) {
         this.props.dispatch({
-          type: 'SET_GRID'
+          type: 'SET_GRID', payload: grid
         });
 
         this.props.dispatch({
@@ -68,21 +68,22 @@ class Sandbox extends Component {
     });
   };
 
-  // THIS IS WHERE YOU STOPPED
-
   customize = (e) => {
     let name = e.target.name;
     let value = e.target.value;
 
     if ((name === 'min') &&
     (isNaN(value) || value === '')) {
-      this.setState({ min: -10 });
+      this.props.dispatch({ type: 'SET_MIN', payload: -10 });
+      // this.setState({ min: -10 });
     } else if ((name === 'max') &&
     (isNaN(value) || value === '')) {
-      this.setState({ max: -10 });
+      this.props.dispatch({ type: 'SET_MAX', payload: 10 });
+      // this.setState({ max: -10 });
     } else if ((name === 'ticks') &&
     (isNaN(value) || value === '')) {
-      this.setState({ ticks: 0});
+      this.props.dispatch({ type: 'SET_TICKS', payload: 0 });
+      // this.setState({ ticks: 0});
     } else if (name === 'colors') {
       if (e.target.checked) {
         colors = [...new Set([...this.props.colors, value])];
@@ -91,11 +92,14 @@ class Sandbox extends Component {
         colors = [...this.props.colors.slice(0, i), ...this.props.colors.slice(i + 1)];
       };
       // behavior here isn't ideal: deciding which item is which color requires clicking the checkboxes in the right order
-      this.setState({ colors });
+      this.props.dispatch({ type: 'SET_COLORS', payload: colors})
+      // this.setState({ colors });
     } else if (name === 'horizontal') {
-      this.setState({ horizontal: !this.state.horizontal })
+      this.props.dispatch({ type: 'TOGGLE_HORIZONTAL' })
+      // this.setState({ horizontal: !this.state.horizontal })
     } else {
-      this.setState({ [name]: value });
+      this.props.dispatch({ type: 'SET_NAME_TO_VALUE', payload: { key: name, value: value } })
+      // this.setState({ [name]: value });
     };
   };
 
@@ -105,10 +109,8 @@ class Sandbox extends Component {
         <h1>New {this.props.chartType} chart</h1>
         <UserInput
           changeChartType={this.chartType}
-          chartType={this.state.chartType}
           setGrid={this.setGrid}
           customize={this.customize}
-          horizontal={this.state.horizontal}
         />
         {
           this.props.warn[0]
@@ -118,32 +120,12 @@ class Sandbox extends Component {
           null
         } {
           this.props.chartType === 'line'
-            ?
-          <LineChart
-            data={this.state.grid}
-            label={this.state.label}
-            title={this.state.title}
-            min={this.state.min}
-            max={this.state.max}
-            ticks={this.state.ticks}
-            color={this.state.color}
-            saveChart={this.saveChart}
-          />
-            :
-          this.props.chartType === 'bar'
-            ?
-          <BarChart />
-            :
-          this.props.chartType === 'pie'
-            ?
-          <PieChart
-            data={this.state.grid}
-            title={this.state.title}
-            colors={this.state.colors}
-            saveChart={this.saveChart}
-          />
-            :
-          null
+          ? <LineChart saveChart={this.saveChart} />
+          : this.props.chartType === 'bar'
+          ? <BarChart saveChart={this.saveChart} />
+          : this.props.chartType === 'pie'
+          ? <PieChart saveChart={this.saveChart} />
+          : null
         }
       </Fragment>
     );

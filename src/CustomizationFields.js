@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
 
-export default class CustomizationFields extends Component {
+
+class CustomizationFields extends Component {
   handleSubmit = e => {
     e.preventDefault();
     // what exactly are these next two lines doing?
@@ -100,3 +102,12 @@ export default class CustomizationFields extends Component {
     );
   };
 };
+
+function mapStateToProps(state) {
+  return {
+    chartType: state.chartType,
+    horizontal: state.horizontal
+  };
+};
+
+export default connect(mapStateToProps)(CustomizationFields);

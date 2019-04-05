@@ -1,10 +1,11 @@
 // thanks and praise to this guy https://blog.bitsrc.io/customizing-chart-js-in-react-2199fa81530a
 
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Chart from 'chart.js';
 let newChart, saveData;
 
-export default class PieChart extends Component {
+class PieChart extends Component {
   chartRef = React.createRef();
 
   componentDidMount() {
@@ -91,3 +92,13 @@ export default class PieChart extends Component {
     );
   };
 };
+
+function mapStateToProps(state) {
+  return {
+    data: state.grid,
+    title: state.title,
+    colors: state.colors
+  };
+};
+
+export default connect(mapStateToProps)(PieChart);

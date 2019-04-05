@@ -1,16 +1,17 @@
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
 import CSVReader from 'react-csv-reader';
 import Table from './Table';
 import CustomizationFields from './CustomizationFields';
 
-export default class UserInput extends Component {
-  state = {
-    input: '',
-    showSetup: true,
-    showTable: false,
-    rows: 10,
-    columns: 2,
-  };
+class UserInput extends Component {
+  // state = {
+    // input: '',
+    // showSetup: true,
+    // showTable: false,
+    // rows: 10,
+    // columns: 2,
+  // };
 
   handleForce = grid => {
     this.props.setGrid(grid);
@@ -18,28 +19,34 @@ export default class UserInput extends Component {
 
   clearChartType = () => {
     this.props.changeChartType('');
-    this.setState({
-      input: '',
-    });
+    this.props.dispatch({ type: 'SET_INPUT', payload: '' });
+    // this.setState({
+    //   input: '',
+    // });
   };
 
   handleSubmit = e => {
     e.preventDefault();
-    this.setState({
-      showSetup: false,
-      showTable: true,
-    });
+    this.props.dispatch({ type: 'SET_SHOW_SETUP', payload: false });
+    this.props.dispatch({ type: 'SET_SHOW_TABLE', payload: true });
+    // this.setState({
+    //   showSetup: false,
+    //   showTable: true,
+    // });
   };
 
   handleChange = e => {
     if (e.target.name === 'rows') {
-      this.setState({ rows: e.target.value });
+      this.props.dispatch({ type: 'SET_ROWS', payload: e.target.value });
+      // this.setState({ rows: e.target.value });
     } else if (e.target.name === 'columns') {
-      this.setState({ columns: e.target.value });
+      this.props.dispatch({ type: 'SET_COLUMNS', payload: e.target.value });
+      // this.setState({ columns: e.target.value });
     } else if (e.target.name === 'chartType') {
       this.props.changeChartType(e.target.value);
     } else if (e.target.name === 'input') {
-      this.setState({ input: e.target.value });
+      this.props.dispatch({ type: 'SET_INPUT', payload: e.target.value });
+      // this.setState({ input: e.target.value });
     };
   };
 
@@ -47,7 +54,7 @@ export default class UserInput extends Component {
     return (
       <Fragment>
         {
-          this.state.showSetup
+          this.props.showSetup
             ?
           <Fragment>
             {
@@ -63,7 +70,7 @@ export default class UserInput extends Component {
                 </select>
               </Fragment>
                 :
-              this.props.chartType[0] && !this.state.input[0]
+              this.props.chartType[0] && !this.props.input[0]
                 ?
               <Fragment>
                 <button onClick={this.clearChartType}>Change chart type</button>
@@ -77,7 +84,7 @@ export default class UserInput extends Component {
                 :
               null
             } {
-              this.props.chartType[0] && this.state.input === 'csv'
+              this.props.chartType[0] && this.props.input === 'csv'
                 ?
               <Fragment>
                 <h5>Upload your CSV file below:</h5>
@@ -86,13 +93,13 @@ export default class UserInput extends Component {
                 />
               </Fragment>
                 :
-              this.props.chartType[0] && this.state.input === 'manual'
+              this.props.chartType[0] && this.props.input === 'manual'
                 ?
               <Fragment>
                 <h5>How many rows of data would you like to input?</h5>
                 <form onSubmit={this.handleSubmit}>
-                  <input onChange={this.handleChange} type='number' min='1' name='rows' placeholder='Number of rows' value={this.state.rows} />
-                  {/*<input onChange={this.handleChange} type='number' min='0' name='columns' placeholder='Number of columns' value={this.state.columns} />*/}
+                  <input onChange={this.handleChange} type='number' min='1' name='rows' placeholder='Number of rows' value={this.props.rows} />
+                  {/*<input onChange={this.handleChange} type='number' min='0' name='columns' placeholder='Number of columns' value={this.props.columns} />*/}
                   <input type='submit' value='Go' />
                 </form>
               </Fragment>
@@ -103,15 +110,11 @@ export default class UserInput extends Component {
             :
           null
         } {
-          this.state.showTable
+          this.props.showTable
             ?
           <Fragment>
             <h5>What data would you like to display?</h5>
-            <Table
-              x={this.state.rows}
-              y={this.state.columns}
-              setGrid={this.props.setGrid}
-            />
+            <Table setGrid={this.props.setGrid} />
           </Fragment>
             :
           null
@@ -120,10 +123,17 @@ export default class UserInput extends Component {
           showSetupToFalse={this.handleSubmit}
           showTableToTrue={this.handleSubmit}
           customize={this.props.customize}
-          chartType={this.props.chartType}
-          horizontal={this.props.horizontal}
         />
       </Fragment>
     );
   };
 };
+
+function mapStateToProps(state) {
+  return {
+    chartType: state.chartType,
+    horizontal: state.horizontal
+  };
+};
+
+export default connect(mapStateToProps)(UserInput);

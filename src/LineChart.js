@@ -1,10 +1,11 @@
 // thanks and praise to this guy https://blog.bitsrc.io/customizing-chart-js-in-react-2199fa81530a
 
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Chart from 'chart.js';
 let newChart, saveData;
 
-export default class LineChart extends Component {
+class LineChart extends Component {
   chartRef = React.createRef();
 
   componentDidMount() {
@@ -97,3 +98,17 @@ export default class LineChart extends Component {
     );
   };
 };
+
+function mapStateToProps(state) {
+  return {
+    data: state.grid,
+    label: state.label,
+    title: state.title,
+    min: state.min,
+    max: state.max,
+    ticks: state.ticks,
+    color: state.color,
+  };
+};
+
+export default connect(mapStateToProps)(LineChart);
