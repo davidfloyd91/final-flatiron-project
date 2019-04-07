@@ -6,17 +6,14 @@ import * as serviceWorker from './serviceWorker';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
-const initialState = {
-  chart: null,
-  chartId: 0,
-  charts: [],
+const defaultState = {
   chartType: '',
   color: '#0080FF',
-  colors: '',
+  colors: [],
   columns: 2,
+  grid: [],
   horizontal: false,
   input: '',
-  grid: [],
   label: '',
   max: 10,
   min: -10,
@@ -26,12 +23,22 @@ const initialState = {
   showTable: false,
   ticks: 0,
   title: '',
-  userId: 1,
   warn: ''
+};
+
+const initialState = {
+  chart: null,
+  chartId: 0,
+  charts: [],
+  chartType: '',
+  userId: 1,
+  ...defaultState
 };
 
 function reducer(state = initialState, action) {
   switch (action.type) {
+    case 'SET_DEFAULT':
+      return {...state, ...defaultState}
     case 'SET_CHART':
       return {...state, chart: action.payload}
     case 'SET_CHART_ID':
@@ -40,34 +47,34 @@ function reducer(state = initialState, action) {
       return {...state, charts: action.payload }
     case 'SET_CHART_TYPE':
       return { ...state, chartType: action.payload }
-    case 'TOGGLE_NEW':
-      return { ...state, new: !state.new }
-    case 'WARN':
-      return { ...state, warn: action.payload }
-    case 'SET_MIN':
-      return { ...state, min: action.payload }
-    case 'SET_MAX':
-      return { ...state, max: action.payload }
-    case 'SET_TICKS':
-      return { ...state, ticks: action.payload }
-    case 'SET_COLORS':
-      return { ...state, colors: action.payload }
-    case 'TOGGLE_HORIZONTAL':
-      return { ...state, horizontal: !state.horizontal }
-    case 'SET_NAME_TO_VALUE':
-      return { ...state, [action.payload.key]: action.payload.value }
-    case 'SET_INPUT':
-      return { ...state, input: action.payload }
-    case 'SET_SHOW_SETUP':
-      return {...state, showSetup: action.payload }
-    case 'SET_SHOW_TABLE':
-      return {...state, showTable: action.payload }
-    case 'SET_ROWS':
-      return {...state, rows: action.payload }
+    case 'SET_COLOR':
+      return { ...state, color: action.payload }
     case 'SET_COLUMNS':
       return {...state, columns: action.payload }
     case 'SET_GRID':
       return {...state, grid: action.payload }
+    case 'TOGGLE_HORIZONTAL':
+      return { ...state, horizontal: !state.horizontal }
+    case 'SET_INPUT':
+      return { ...state, input: action.payload }
+    case 'SET_MAX':
+      return { ...state, max: action.payload }
+    case 'SET_MIN':
+      return { ...state, min: action.payload }
+    case 'TOGGLE_NEW':
+      return { ...state, new: !state.new }
+    case 'SET_ROWS':
+      return {...state, rows: action.payload }
+    case 'SET_SHOW_SETUP':
+      return {...state, showSetup: action.payload }
+    case 'SET_SHOW_TABLE':
+      return {...state, showTable: action.payload }
+    case 'SET_TICKS':
+      return { ...state, ticks: action.payload }
+    case 'WARN':
+      return { ...state, warn: action.payload }
+    case 'SET_NAME_TO_VALUE':
+      return { ...state, [action.payload.key]: action.payload.value }
     default:
       return state;
   };
