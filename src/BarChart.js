@@ -29,7 +29,6 @@ class BarChart extends Component {
       return parseFloat(a[1]);
     });
 
-    // setting min and max values, ticks doesn't work with horizontal bars
     let type;
     if (this.props.horizontal) {
       type = 'horizontalBar';
@@ -116,13 +115,14 @@ class BarChart extends Component {
 
 function mapStateToProps(state) {
   return {
-    data: state.grid,
-    label: state.label,
-    title: state.title,
-    min: state.min,
-    max: state.max,
-    ticks: state.ticks,
     colors: state.colors,
+    data: state.grid,
+    horizontal: state.horizontal,
+    label: state.label,
+    max: state.max,
+    min: state.min,
+    ticks: state.ticks,
+    title: state.title,
   };
 };
 

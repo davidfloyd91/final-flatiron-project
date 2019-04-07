@@ -1,6 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 
+// currently you can't set min, max or tick size on horizontal charts -- why/how to fix?
+
+// also you need to generally have fields here fill in with the current state values -- when you toggle between vertical and horizontal bars (maybe other situations), the fields are empty but the old values are still in state
 
 class CustomizationFields extends Component {
   handleSubmit = e => {
@@ -30,12 +33,20 @@ class CustomizationFields extends Component {
                 <Fragment>
                   <label htmlFor='label'> Label </label>
                   <input onChange={this.handleChange} name='label' />
-                  <label htmlFor='min'> Vertical min </label>
-                  <input onChange={this.handleChange} name='min' />
-                  <label htmlFor='max'> Vertical max </label>
-                  <input onChange={this.handleChange} name='max' />
-                  <label htmlFor='ticks'> Tick value </label>
-                  <input onChange={this.handleChange} name='ticks' />
+                  {
+                    this.props.horizontal
+                      ?
+                    null
+                      :
+                    <Fragment>
+                      <label htmlFor='min'> Vertical min </label>
+                      <input onChange={this.handleChange} name='min' />
+                      <label htmlFor='max'> Vertical max </label>
+                      <input onChange={this.handleChange} name='max' />
+                      <label htmlFor='ticks'> Tick value </label>
+                      <input onChange={this.handleChange} name='ticks' />
+                    </Fragment>
+                  }
                 </Fragment>
                   :
                 null

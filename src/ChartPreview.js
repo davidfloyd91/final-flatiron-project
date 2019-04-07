@@ -11,11 +11,12 @@ export default class ChartPreview extends Component {
         <div className='previewImgContainer'>
           {
             this.props.chart.data.type === 'line'
-            ? <img className='previewImg' src='/assets/linePreview.png' />
-            : this.props.chart.data.type === 'bar'
-            ? <img className='previewImg' src='/assets/barPreview.png' />
+            ? <img className='previewImg' alt='line chart' src='/assets/linePreview.png' />
+            : (this.props.chart.data.type === 'bar'
+            || this.props.chart.data.type === 'horizontalBar')
+            ? <img className='previewImg' alt='bar chart' src='/assets/barPreview.png' />
             : this.props.chart.data.type === 'pie'
-            ? <img className='previewImg' src='/assets/piePreview.png' />
+            ? <img className='previewImg' alt='pie chart' src='/assets/piePreview.png' />
             : null
           }
         </div>
