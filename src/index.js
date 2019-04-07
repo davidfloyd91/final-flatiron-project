@@ -6,6 +6,8 @@ import * as serviceWorker from './serviceWorker';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
+// there's probably a more efficient way to accomplish things than SET_CHART_ID
+
 const defaultState = {
   chartType: '',
   color: '#0080FF',
@@ -39,6 +41,9 @@ function reducer(state = initialState, action) {
   switch (action.type) {
     case 'SET_DEFAULT':
       return {...state, ...defaultState}
+    case 'SET_NAME_TO_VALUE':
+      return { ...state, [action.payload.key]: action.payload.value }
+
     case 'SET_CHART':
       return {...state, chart: action.payload}
     case 'SET_CHART_ID':
@@ -49,6 +54,8 @@ function reducer(state = initialState, action) {
       return { ...state, chartType: action.payload }
     case 'SET_COLOR':
       return { ...state, color: action.payload }
+    case 'SET_COLORS':
+      return { ...state, colors: action.payload }
     case 'SET_COLUMNS':
       return {...state, columns: action.payload }
     case 'SET_GRID':
@@ -73,8 +80,7 @@ function reducer(state = initialState, action) {
       return { ...state, ticks: action.payload }
     case 'WARN':
       return { ...state, warn: action.payload }
-    case 'SET_NAME_TO_VALUE':
-      return { ...state, [action.payload.key]: action.payload.value }
+
     default:
       return state;
   };

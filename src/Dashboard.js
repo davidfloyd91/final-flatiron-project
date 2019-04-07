@@ -16,13 +16,35 @@ class Dashboard extends Component {
   };
 
   deleteChart = () => {
+    let okay = false;
+    const index = this.props.charts.findIndex(chart => {
+      return chart.id === this.props.chartId;
+    });
+
+    const charts = [
+      ...this.props.charts.slice(0, index),
+      ...this.props.charts.slice(index + 1)
+    ];
+
     fetch(`http://localhost:3000/charts/${this.props.chartId}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
       }
     })
-    .then(r => r.json)
+    .then(r => {
+      if (r.ok) {
+        okay = true;
+      };
+      return r.json();
+    })
+    .then(data => {
+      if (okay) {
+        this.props.dispatch({ type: 'SET_CHART_ID', payload: 0 });
+        this.props.dispatch({ type: 'SET_CHARTS', payload: charts });
+        this.props.dispatch({ type: 'SET_CHART', payload: null });
+      };
+    });
   };
 
   showChart = chartId => {
@@ -30,7 +52,6 @@ class Dashboard extends Component {
       return c.id === chartId;
     });
 
-    // so like what's setting the chart id do?
     this.props.dispatch({ type: 'SET_CHART_ID', payload: chartId });
     this.props.dispatch({ type: 'SET_CHART', payload: chart });
   };

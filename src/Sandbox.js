@@ -36,7 +36,6 @@ class Sandbox extends Component {
     .then(data => {
       if (okay) {
         this.props.dispatch({ type: 'SET_CHART', payload: data });
-        // what's setting the chart id do?
         this.props.dispatch({ type: 'SET_CHART_ID', payload: data.id });
         this.props.dispatch({ type: 'SET_DEFAULT' });
       };

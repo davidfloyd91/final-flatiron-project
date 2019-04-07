@@ -29,7 +29,7 @@ class BarChart extends Component {
       return parseFloat(a[1]);
     });
 
-    // setting min and max values, ticks doesn't appear to work with horizontal bars
+    // setting min and max values, ticks doesn't work with horizontal bars
     let type;
     if (this.props.horizontal) {
       type = 'horizontalBar';
