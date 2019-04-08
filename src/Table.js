@@ -2,15 +2,12 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import Row from './Row';
 import './App.css';
+let grid;
 
 class Table extends Component {
-  state = {
-    grid: [],
-  };
-
   componentDidMount() {
+    grid = this.props.grid;
     let row = [];
-    let grid = [];
 
     for (let y = 0; y < this.props.y; y++) {
       row = [...row, null];
@@ -20,7 +17,7 @@ class Table extends Component {
       grid = [...grid, row];
     };
 
-    this.setState({ grid });
+    this.props.setGrid(grid);
   };
 
   renderRows = () => {
@@ -40,30 +37,30 @@ class Table extends Component {
             y={this.props.y}
             newValue={this.newValue}
           />
-          <button onClick={this.removeRow}> - </button>
+          <button onClick={() => this.removeRow(x)}> - </button>
         </div>
       );
     });
   };
 
-  removeRow = () => {
-    console.log('lol')
+  removeRow = x => {
+    grid = [...grid.slice(0, x), ...grid.slice(x + 1)];
+    this.props.dispatch({ type: 'SET_GRID', payload: grid });
+    this.props.dispatch({ type: 'SET_ROWS', payload: this.props.x - 1 })
   };
 
   newValue = (value, x, y) => {
-    this.setState({
-      grid: [
-        ...this.state.grid.slice(0, x - 1),
-        [
-          ...this.state.grid[x - 1].slice(0, y - 1),
-          value,
-          ...this.state.grid[x - 1].slice(y)
-        ],
-        ...this.state.grid.slice(x)
+    grid = [
+      ...grid.slice(0, x - 1),
+      [
+        ...grid[x - 1].slice(0, y - 1),
+        value,
+        ...grid[x - 1].slice(y)
       ],
-    }, () => {
-      this.props.setGrid(this.state.grid);
-    });
+      ...grid.slice(x)
+    ];
+
+    this.props.dispatch({ type: 'SET_GRID', payload: grid });
   };
 
   render() {
@@ -78,6 +75,7 @@ class Table extends Component {
 
 function mapStateToProps(state) {
   return {
+    grid: state.grid,
     x: state.rows,
     y: state.columns
   };
