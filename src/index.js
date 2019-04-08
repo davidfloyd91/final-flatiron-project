@@ -23,6 +23,7 @@ const defaultState = {
   rows: 10,
   showSetup: true,
   showTable: false,
+  tension: 0.4,
   ticks: 0,
   title: '',
   warn: ''

@@ -45,6 +45,8 @@ class CustomizationFields extends Component {
                       <input onChange={this.handleChange} name='max' />
                       <label htmlFor='ticks'> Tick value </label>
                       <input onChange={this.handleChange} name='ticks' />
+                      <label htmlFor='tension'> Line tension </label>
+                      <input onChange={this.handleChange} name='tension' />
                     </Fragment>
                   }
                 </Fragment>
