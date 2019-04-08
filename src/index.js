@@ -9,7 +9,6 @@ import { Provider } from 'react-redux';
 // there's probably a more efficient way to accomplish things than SET_CHART_ID
 
 const defaultState = {
-  cellListening: true,
   chartType: '',
   color: '#0080FF',
   colors: ['#FF0000', '#FF8000', '#FFFF00', '#00FF00', '#0080FF', '#8000FF'],
@@ -18,6 +17,7 @@ const defaultState = {
   horizontal: false,
   input: '',
   label: '',
+  lastRemoved: '',
   max: 10,
   min: -10,
   new: false,
@@ -48,8 +48,6 @@ function reducer(state = initialState, action) {
     case 'SET_NAME_TO_VALUE':
       return { ...state, [action.payload.key]: action.payload.value }
 
-    case 'SET_CELL_LISTENING':
-      return {...state, cellListening: action.payload}
     case 'SET_CHART':
       return {...state, chart: action.payload}
     case 'SET_CHART_ID':
@@ -70,6 +68,8 @@ function reducer(state = initialState, action) {
       return { ...state, horizontal: !state.horizontal }
     case 'SET_INPUT':
       return { ...state, input: action.payload }
+    case 'SET_LAST_REMOVED':
+      return { ...state, lastRemoved: action.payload }
     case 'SET_MAX':
       return { ...state, max: action.payload }
     case 'SET_MIN':

@@ -21,6 +21,10 @@ class Table extends Component {
   };
 
   renderRows = () => {
+    if (this.props.grid.length > 0) {
+      grid = this.props.grid;
+    };
+
     if (grid && grid[0]) {
       return grid.map((row, x) => {
         return (
@@ -33,7 +37,6 @@ class Table extends Component {
               values={row}
               newValue={this.newValue}
             />
-            <button onClick={() => this.removeRow(x)}> x </button>
           </div>
         );
       });
@@ -51,13 +54,6 @@ class Table extends Component {
       ...grid.slice(x)
     ];
 
-    this.props.dispatch({ type: 'SET_GRID', payload: grid });
-  };
-
-  removeRow = x => {
-    grid = [...grid.slice(0, x), ...grid.slice(x + 1)];
-
-    this.props.dispatch({ type: 'SET_CELL_LISTENING', payload: false });
     this.props.dispatch({ type: 'SET_GRID', payload: grid });
   };
 
