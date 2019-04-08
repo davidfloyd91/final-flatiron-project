@@ -52,11 +52,17 @@ class Table extends Component {
     this.props.dispatch({ type: 'SET_GRID', payload: grid });
   };
 
+  addRow = () => {
+    grid = [...grid, [null, null]];
+    this.props.dispatch({ type: 'SET_GRID', payload: grid });
+  };
+
   render() {
     return (
       <Fragment>
         <h5 className='table-head'>Labels</h5><h5 className='table-head'>Values</h5>
         {this.renderRows()}
+        <button onClick={this.addRow}>Add a row</button>
       </Fragment>
     );
   };
