@@ -30,19 +30,12 @@ class Table extends Component {
               id={x}
               x={x}
               y={this.props.y}
-              values={row}
               newValue={this.newValue}
             />
-            <button onClick={() => this.removeRow(x)}> - </button>
           </div>
         );
       });
     };
-  };
-
-  removeRow = x => {
-    grid = [...grid.slice(0, x), ...grid.slice(x + 1)];
-    this.props.dispatch({ type: 'SET_GRID', payload: grid });
   };
 
   newValue = (value, x, y) => {
