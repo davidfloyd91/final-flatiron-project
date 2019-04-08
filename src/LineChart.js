@@ -21,16 +21,14 @@ class LineChart extends Component {
       newChart.destroy();
     };
 
-    const labels = this.props.data.map(a => {
-      return a[0];
-    });
-
     const chartData = this.props.data.map(a => {
       return parseFloat(a[1]);
     });
-
     const color = this.props.color;
     const label = this.props.label;
+    const labels = this.props.data.map(a => {
+      return a[0];
+    });
     const max = this.props.max;
     const min = this.props.min;
     const tension = this.props.tension;
