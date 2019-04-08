@@ -40,9 +40,14 @@ class Table extends Component {
             y={this.props.y}
             newValue={this.newValue}
           />
+          <button onClick={this.removeRow}> - </button>
         </div>
       );
     });
+  };
+
+  removeRow = () => {
+    console.log('lol')
   };
 
   newValue = (value, x, y) => {

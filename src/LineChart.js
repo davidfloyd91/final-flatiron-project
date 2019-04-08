@@ -24,16 +24,21 @@ class LineChart extends Component {
     const chartData = this.props.data.map(a => {
       return parseFloat(a[1]);
     });
+
     const color = this.props.color;
     const label = this.props.label;
+
     const labels = this.props.data.map(a => {
       return a[0];
     });
+
     const max = this.props.max;
     const min = this.props.min;
     const tension = this.props.tension;
     const ticks = this.props.ticks;
     const title = this.props.title;
+    const xLabel = this.props.xLabel;
+    const yLabel = this.props.yLabel;
 
     saveData = {
       type: "line",
@@ -60,6 +65,16 @@ class LineChart extends Component {
               min: parseFloat(min),
               max: parseFloat(max),
               stepSize: parseFloat(ticks)
+            },
+            scaleLabel: {
+              display: true,
+              labelString: yLabel
+            }
+          }],
+          xAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: xLabel
             }
           }]
         }
@@ -109,6 +124,8 @@ function mapStateToProps(state) {
     tension: state.tension,
     ticks: state.ticks,
     title: state.title,
+    xLabel: state.xLabel,
+    yLabel: state.yLabel
   };
 };
 

@@ -21,28 +21,12 @@ class BarChart extends Component {
       newChart.destroy();
     };
 
-    const labels = this.props.data.map(a => {
-      return a[0];
-    });
-
     const chartData = this.props.data.map(a => {
       return parseFloat(a[1]);
     });
 
-    let type;
-    if (this.props.horizontal) {
-      type = 'horizontalBar';
-    } else {
-      type = 'bar';
-    };
-
-    const label = this.props.label;
-    const title = this.props.title;
-    const min = this.props.min;
-    const max = this.props.max;
-    const ticks = this.props.ticks;
-
     let colors = this.props.colors;
+
     if (colors[0]) {
       let divisor = Math.floor(chartData.length / colors.length) + 1;
       if (divisor > 0) {
@@ -51,6 +35,27 @@ class BarChart extends Component {
         };
       };
     };
+
+    const label = this.props.label;
+
+    const labels = this.props.data.map(a => {
+      return a[0];
+    });
+
+    const max = this.props.max;
+    const min = this.props.min;
+    const ticks = this.props.ticks;
+    const title = this.props.title;
+
+    let type;
+    if (this.props.horizontal) {
+      type = 'horizontalBar';
+    } else {
+      type = 'bar';
+    };
+
+    const xLabel = this.props.xLabel;
+    const yLabel = this.props.yLabel;
 
     saveData = {
       type: type,
@@ -76,6 +81,16 @@ class BarChart extends Component {
               min: parseFloat(min),
               max: parseFloat(max),
               stepSize: parseFloat(ticks)
+            },
+            scaleLabel: {
+              display: true,
+              labelString: yLabel
+            }
+          }],
+          xAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: xLabel
             }
           }]
         }
@@ -124,6 +139,8 @@ function mapStateToProps(state) {
     min: state.min,
     ticks: state.ticks,
     title: state.title,
+    xLabel: state.xLabel,
+    yLabel: state.yLabel
   };
 };
 

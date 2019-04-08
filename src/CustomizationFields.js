@@ -33,6 +33,10 @@ class CustomizationFields extends Component {
                 <Fragment>
                   <label htmlFor='label'> Label </label>
                   <input onChange={this.handleChange} name='label' />
+                  <label htmlFor='xLabel'> Horizontal axis label </label>
+                  <input onChange={this.handleChange} name='xLabel' />
+                  <label htmlFor='yLabel'> Vertical axis label </label>
+                  <input onChange={this.handleChange} name='yLabel' />
                   {
                     this.props.horizontal
                       ?

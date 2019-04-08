@@ -26,7 +26,9 @@ const defaultState = {
   tension: 0.4,
   ticks: 0,
   title: '',
-  warn: ''
+  warn: '',
+  xLabel: '',
+  yLabel: ''
 };
 
 const initialState = {
