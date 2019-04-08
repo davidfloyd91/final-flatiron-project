@@ -21,32 +21,28 @@ class Table extends Component {
   };
 
   renderRows = () => {
-    let xArray = [];
-
-    for (let x = 0; x < this.props.x; x++) {
-      xArray.push(x);
+    if (grid && grid[0]) {
+      return grid.map((row, x) => {
+        return (
+          <div className='row' key={x}>
+            <Row
+              key={x}
+              id={x}
+              x={x}
+              y={this.props.y}
+              values={row}
+              newValue={this.newValue}
+            />
+            <button onClick={() => this.removeRow(x)}> - </button>
+          </div>
+        );
+      });
     };
-
-    return xArray.map(x => {
-      return (
-        <div className='row' key={x}>
-          <Row
-            key={x}
-            id={x}
-            x={x}
-            y={this.props.y}
-            newValue={this.newValue}
-          />
-          <button onClick={() => this.removeRow(x)}> - </button>
-        </div>
-      );
-    });
   };
 
   removeRow = x => {
     grid = [...grid.slice(0, x), ...grid.slice(x + 1)];
     this.props.dispatch({ type: 'SET_GRID', payload: grid });
-    this.props.dispatch({ type: 'SET_ROWS', payload: this.props.x - 1 })
   };
 
   newValue = (value, x, y) => {
