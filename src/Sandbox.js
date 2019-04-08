@@ -82,6 +82,7 @@ class Sandbox extends Component {
     let name = e.target.name;
     let value = e.target.value;
 
+    // so many of these could probably be abstracted
     if ((name === 'min') &&
     (isNaN(value) || value === '')) {
       this.props.dispatch({ type: 'SET_MIN', payload: -10 });
@@ -91,6 +92,9 @@ class Sandbox extends Component {
     } else if ((name === 'ticks') &&
     (isNaN(value) || value === '')) {
       this.props.dispatch({ type: 'SET_TICKS', payload: 0 });
+    } else if ((name === 'tension') &&
+    (isNaN(value) || value === '')) {
+      this.props.dispatch({ type: 'SET_TENSION', payload: 0.4 });
     } else if (name === 'colors') {
       if (e.target.checked) {
         colors = [...new Set([...this.props.colors, value])];

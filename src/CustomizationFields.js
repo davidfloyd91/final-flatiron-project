@@ -40,13 +40,13 @@ class CustomizationFields extends Component {
                       :
                     <Fragment>
                       <label htmlFor='min'> Vertical min </label>
-                      <input onChange={this.handleChange} name='min' />
+                      <input onChange={this.handleChange} name='min' placeholder={this.props.min} />
                       <label htmlFor='max'> Vertical max </label>
-                      <input onChange={this.handleChange} name='max' />
+                      <input onChange={this.handleChange} name='max' placeholder={this.props.max} />
                       <label htmlFor='ticks'> Tick value </label>
                       <input onChange={this.handleChange} name='ticks' />
                       <label htmlFor='tension'> Line tension </label>
-                      <input onChange={this.handleChange} name='tension' />
+                      <input onChange={this.handleChange} name='tension' placeholder={this.props.tension} />
                     </Fragment>
                   }
                 </Fragment>
@@ -118,7 +118,10 @@ class CustomizationFields extends Component {
 function mapStateToProps(state) {
   return {
     chartType: state.chartType,
-    horizontal: state.horizontal
+    horizontal: state.horizontal,
+    max: state.max,
+    min: state.min,
+    tension: state.tension,
   };
 };
 

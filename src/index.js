@@ -77,6 +77,8 @@ function reducer(state = initialState, action) {
       return {...state, showSetup: action.payload }
     case 'SET_SHOW_TABLE':
       return {...state, showTable: action.payload }
+    case 'SET_TENSION':
+      return { ...state, tension: action.payload }
     case 'SET_TICKS':
       return { ...state, ticks: action.payload }
     case 'WARN':
