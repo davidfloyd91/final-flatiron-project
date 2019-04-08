@@ -30,8 +30,10 @@ class Table extends Component {
               id={x}
               x={x}
               y={this.props.y}
+              values={row}
               newValue={this.newValue}
             />
+            <button onClick={() => this.removeRow(x)}> x </button>
           </div>
         );
       });
@@ -49,6 +51,13 @@ class Table extends Component {
       ...grid.slice(x)
     ];
 
+    this.props.dispatch({ type: 'SET_GRID', payload: grid });
+  };
+
+  removeRow = x => {
+    grid = [...grid.slice(0, x), ...grid.slice(x + 1)];
+
+    this.props.dispatch({ type: 'SET_CELL_LISTENING', payload: false });
     this.props.dispatch({ type: 'SET_GRID', payload: grid });
   };
 
@@ -70,6 +79,7 @@ class Table extends Component {
 
 function mapStateToProps(state) {
   return {
+    cellListening: state.cellListening,
     grid: state.grid,
     x: state.rows,
     y: state.columns

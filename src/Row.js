@@ -20,6 +20,7 @@ export default class Row extends Component {
           key={keyId}
           x={this.props.x + 1}
           y={y + 1}
+          defaultValue={this.props.values[y]}
           newValue={this.newValue}
         />
       );
