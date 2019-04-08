@@ -63,6 +63,7 @@
   margin: 5px;
   overflow: hidden;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .previewImg {

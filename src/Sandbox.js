@@ -13,6 +13,12 @@ class Sandbox extends Component {
     })
   };
 
+  discardChart = () => {
+    // hacky but looks fine
+    this.props.dispatch({ type: 'SET_DEFAULT' });
+    this.props.dispatch({ type: 'TOGGLE_NEW' });
+  };
+
   saveChart = data => {
     let okay = false;
 
@@ -104,7 +110,7 @@ class Sandbox extends Component {
   render() {
     return (
       <div className='container'>
-        <h1>New {this.props.chartType} chart</h1>
+        <h1 className='center'>New {this.props.chartType} chart</h1>
         <UserInput
           changeChartType={this.chartType}
           setGrid={this.setGrid}
@@ -118,11 +124,11 @@ class Sandbox extends Component {
           null
         } {
           this.props.chartType === 'line'
-          ? <LineChart saveChart={this.saveChart} />
+          ? <LineChart saveChart={this.saveChart} discardChart={this.discardChart} />
           : this.props.chartType === 'bar'
-          ? <BarChart saveChart={this.saveChart} />
+          ? <BarChart saveChart={this.saveChart} discardChart={this.discardChart} />
           : this.props.chartType === 'pie'
-          ? <PieChart saveChart={this.saveChart} />
+          ? <PieChart saveChart={this.saveChart} discardChart={this.discardChart} />
           : null
         }
       </div>

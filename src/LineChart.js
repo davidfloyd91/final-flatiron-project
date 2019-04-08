@@ -92,6 +92,7 @@ class LineChart extends Component {
           ref={this.chartRef}
         />
         <button onClick={() => this.props.saveChart(saveData)}>Save chart</button>
+        <button onClick={this.props.discardChart}>Discard chart</button>
       </div>
     );
   };
@@ -99,13 +100,13 @@ class LineChart extends Component {
 
 function mapStateToProps(state) {
   return {
+    color: state.color,
     data: state.grid,
     label: state.label,
-    title: state.title,
-    min: state.min,
     max: state.max,
+    min: state.min,
     ticks: state.ticks,
-    color: state.color,
+    title: state.title,
   };
 };
 

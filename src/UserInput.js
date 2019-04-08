@@ -20,13 +20,15 @@ class UserInput extends Component {
     this.props.dispatch({ type: 'SET_SHOW_TABLE', payload: true });
   };
 
+  handleClick = chartType => {
+    this.props.dispatch({ type: 'SET_CHART_TYPE', payload: chartType });
+  };
+
   handleChange = e => {
     if (e.target.name === 'rows') {
       this.props.dispatch({ type: 'SET_ROWS', payload: e.target.value });
     } else if (e.target.name === 'columns') {
       this.props.dispatch({ type: 'SET_COLUMNS', payload: e.target.value });
-    } else if (e.target.name === 'chartType') {
-      this.props.changeChartType(e.target.value);
     } else if (e.target.name === 'input') {
       this.props.dispatch({ type: 'SET_INPUT', payload: e.target.value });
     };
@@ -42,15 +44,20 @@ class UserInput extends Component {
             {
               !this.props.chartType[0]
                 ?
-              <Fragment>
-                <h5>What kind of chart would you like to make?</h5>
-                <select name='chartType' onChange={this.handleChange}>
-                  <option value=''></option>
-                  <option value='line'>Line</option>
-                  <option value='bar'>Bar</option>
-                  <option value='pie'>Pie</option>
-                </select>
-              </Fragment>
+              <div className='center'>
+                <div className='card' onClick={() => this.handleClick('line')}>
+                  <h5>Line</h5>
+                  <img className='previewImg' alt='line chart' src='/assets/linePreview.png' />
+                </div>
+                <div className='card' onClick={() => this.handleClick('bar')}>
+                  <h5>Bar</h5>
+                  <img className='previewImg' alt='bar chart' src='/assets/barPreview.png' />
+                </div>
+                <div className='card' onClick={() => this.handleClick('pie')}>
+                  <h5>Pie</h5>
+                  <img className='previewImg' alt='pie chart' src='/assets/piePreview.png' />
+                </div>
+              </div>
                 :
               this.props.chartType[0] && !this.props.input[0]
                 ?
@@ -114,11 +121,11 @@ class UserInput extends Component {
 function mapStateToProps(state) {
   return {
     chartType: state.chartType,
+    columns: state.columns,
     horizontal: state.horizontal,
-    showSetup: state.showSetup,
     input: state.input,
     rows: state.rows,
-    columns: state.columns,
+    showSetup: state.showSetup,
     showTable: state.showTable
   };
 };

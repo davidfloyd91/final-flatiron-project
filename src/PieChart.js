@@ -86,6 +86,7 @@ class PieChart extends Component {
           ref={this.chartRef}
         />
         <button onClick={() => this.props.saveChart(saveData)}>Save chart</button>
+        <button onClick={this.props.discardChart}>Discard chart</button>
       </div>
     );
   };
