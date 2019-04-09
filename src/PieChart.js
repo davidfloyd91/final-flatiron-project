@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import Chart from 'chart.js';
 let newChart, saveData;
@@ -87,7 +87,16 @@ class PieChart extends Component {
           id="myChart"
           ref={this.chartRef}
         />
-        <button onClick={() => this.props.saveChart(saveData)}>Save chart</button>
+        {
+          this.props.edit
+            ?
+          <Fragment>
+            <button onClick={() => this.props.updateChart(saveData)}>Save changes</button>
+            <button onClick={() => this.props.saveChart(saveData)}>Save as new chart</button>
+          </Fragment>
+            :
+          <button onClick={() => this.props.saveChart(saveData)}>Save chart</button>
+        }
       </div>
     );
   };

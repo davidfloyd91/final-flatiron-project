@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import Chart from 'chart.js';
 let newChart, saveData;
@@ -21,89 +21,48 @@ class BarChart extends Component {
       newChart.destroy();
     };
 
-    let chartData, colors, fullData, horizontal, label, labels, max, min, ticks, title, type, xLabel, yLabel;
+    let chartData, colors, fullData, label, labels, max, min, ticks, title, type, xLabel, yLabel;
 
-      chartData = this.props.data.map(a => {
-        return parseFloat(a[1]);
-      });
+    chartData = this.props.data.map(a => {
+      return parseFloat(a[1]);
+    });
 
-      colors = this.props.colors;
+    colors = this.props.colors;
 
-      if (colors[0]) {
-        let divisor = Math.floor(chartData.length / colors.length) + 1;
-        if (divisor > 0) {
-          for (let i = 0; i < divisor - 1; i++) {
-            colors = [...colors, ...this.props.colors]
-          };
+    if (colors[0]) {
+      let divisor = Math.floor(chartData.length / colors.length) + 1;
+      if (divisor > 0) {
+        for (let i = 0; i < divisor - 1; i++) {
+          colors = [...colors, ...this.props.colors]
         };
       };
+    };
 
-      label = this.props.label;
+    label = this.props.label;
 
-      labels = this.props.data.map(a => {
-        return a[0];
-      });
+    labels = this.props.data.map(a => {
+      return a[0];
+    });
 
-      max = this.props.max;
-      min = this.props.min;
-      ticks = this.props.ticks;
-      title = this.props.title;
+    max = this.props.max;
+    min = this.props.min;
+    ticks = this.props.ticks;
+    title = this.props.title;
 
-      if (this.props.horizontal) {
-        type = 'horizontalBar';
-      } else {
-        type = 'bar';
-      };
+    if (this.props.horizontal) {
+      type = 'horizontalBar';
+    } else {
+      type = 'bar';
+    };
 
-      xLabel = this.props.xLabel;
-      yLabel = this.props.yLabel;
+    xLabel = this.props.xLabel;
+    yLabel = this.props.yLabel;
 
-      saveData = {
-        type: type,
-        data: {
-          labels: labels,
-          _datasets: [
-            {
-              label: label,
-              fill: false,
-              data: chartData,
-              backgroundColor: colors
-            }
-          ]
-        },
-        options: {
-          title: {
-              display: true,
-              text: title
-          },
-          scales: {
-            yAxes: [{
-              ticks: {
-                min: parseFloat(min),
-                max: parseFloat(max),
-                stepSize: parseFloat(ticks)
-              },
-              scaleLabel: {
-                display: true,
-                labelString: yLabel
-              }
-            }],
-            xAxes: [{
-              scaleLabel: {
-                display: true,
-                labelString: xLabel
-              }
-            }]
-          }
-        }
-      };
-
-      fullData = {...saveData};
-
-      delete fullData.data;
-      fullData.data = {
+    saveData = {
+      type: type,
+      data: {
         labels: labels,
-        datasets: [
+        _datasets: [
           {
             label: label,
             fill: false,
@@ -111,7 +70,48 @@ class BarChart extends Component {
             backgroundColor: colors
           }
         ]
-      };
+      },
+      options: {
+        title: {
+            display: true,
+            text: title
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              min: parseFloat(min),
+              max: parseFloat(max),
+              stepSize: parseFloat(ticks)
+            },
+            scaleLabel: {
+              display: true,
+              labelString: yLabel
+            }
+          }],
+          xAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: xLabel
+            }
+          }]
+        }
+      }
+    };
+
+    fullData = {...saveData};
+
+    delete fullData.data;
+    fullData.data = {
+      labels: labels,
+      datasets: [
+        {
+          label: label,
+          fill: false,
+          data: chartData,
+          backgroundColor: colors
+        }
+      ]
+    };
 
     newChart = new Chart(myChartRef, fullData);
   };
@@ -123,7 +123,16 @@ class BarChart extends Component {
           id="myChart"
           ref={this.chartRef}
         />
-        <button onClick={() => this.props.saveChart(saveData)}>Save chart</button>
+        {
+          this.props.edit
+            ?
+          <Fragment>
+            <button onClick={() => this.props.updateChart(saveData)}>Save changes</button>
+            <button onClick={() => this.props.saveChart(saveData)}>Save as new chart</button>
+          </Fragment>
+            :
+          <button onClick={() => this.props.saveChart(saveData)}>Save chart</button>
+        }
         {/*<button onClick={this.props.discardChart}>Discard chart</button>*/}
       </div>
     );

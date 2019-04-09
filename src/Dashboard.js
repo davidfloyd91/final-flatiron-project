@@ -101,6 +101,9 @@ class Dashboard extends Component {
     if (type === 'line') {
       let color = data.data.datasets[0].borderColor;
       this.props.dispatch({type: 'SET_COLOR', payload: color });
+
+      let tension = data.data.datsets[0].lineTension;
+      this.props.dispatch({ type: 'SET_TENSION', payload: tension });
     };
 
     this.props.dispatch({ type: 'SET_EDIT', payload: true });

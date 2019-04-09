@@ -19,6 +19,10 @@ class Sandbox extends Component {
     this.props.dispatch({ type: 'TOGGLE_NEW' });
   };
 
+  updateChart = data => {
+    console.log('we\'re all very impressed dave')
+  };
+
   saveChart = data => {
     let okay = false;
 
@@ -137,14 +141,17 @@ class Sandbox extends Component {
             this.props.chartType === 'line'
             ? <LineChart
                 saveChart={this.saveChart}
+                updateChart={this.updateChart}
               />
             : (this.props.chartType === 'bar' || this.props.chartType === 'horizontalBar')
             ? <BarChart
                 saveChart={this.saveChart}
+                updateChart={this.updateChart}
               />
             : this.props.chartType === 'pie'
             ? <PieChart
                 saveChart={this.saveChart}
+                updateChart={this.updateChart}
               />
             : null
         } {
