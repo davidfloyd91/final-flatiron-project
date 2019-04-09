@@ -2,9 +2,9 @@ import React, { Component, Fragment } from 'react';
 import Cell from './Cell';
 
 export default class Row extends Component {
-  newValue = (value, x, y) => {
-    this.props.newValue(value, x, y);
-  };
+  // newValue = (value, x, y) => {
+  //   this.props.newValue(value, x, y);
+  // };
 
   renderCells = () => {
     let yArray = [];
@@ -20,7 +20,8 @@ export default class Row extends Component {
           key={keyId}
           x={this.props.x + 1}
           y={y + 1}
-          newValue={this.newValue}
+          value={this.props.values[y]}
+          newValue={this.props.newValue}
         />
       );
     });

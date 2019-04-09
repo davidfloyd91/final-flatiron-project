@@ -1,19 +1,16 @@
 import React, { Component, Fragment } from 'react';
 
 export default class Cell extends Component {
-  state = {
-    value: '',
-  };
+  // state = {
+  //   value: '',
+  // };
 
   handleChange = e => {
-    this.setState({
-      value: e.target.value,
-    });
+    this.props.newValue(e.target.value, this.props.x, this.props.y);
   };
 
-  handleBlur = e => {
+  handleSubmit = e => {
     e.preventDefault();
-    this.props.newValue(this.state.value, this.props.x, this.props.y);
   };
 
   render() {
@@ -22,21 +19,21 @@ export default class Cell extends Component {
         {
           this.props.y === 1
             ?
-          <form onSubmit={this.handleBlur} className='cell'>
+          <form onSubmit={this.handleSubmit} className='cell'>
             <input
               type='text'
+              value={this.props.value}
               onChange={this.handleChange}
-              onBlur={this.handleBlur}
             />
           </form>
             :
           this.props.y === 2
             ?
-          <form onSubmit={this.handleBlur} className='cell'>
+          <form onSubmit={this.handleSubmit} className='cell'>
             <input
               type='number'
+              value={this.props.value}
               onChange={this.handleChange}
-              onBlur={this.handleBlur}
             />
           </form>
             :

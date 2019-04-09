@@ -30,6 +30,7 @@ class Table extends Component {
               id={x}
               x={x}
               y={this.props.y}
+              values={grid[x]}
               newValue={this.newValue}
             />
           </div>
@@ -58,6 +59,7 @@ class Table extends Component {
   };
 
   render() {
+    console.log(this.props.grid);
     return (
       <Fragment>
         <h5 className='table-head'>Labels</h5><h5 className='table-head'>Values</h5>
