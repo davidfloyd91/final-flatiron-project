@@ -101,7 +101,6 @@
 }
 
 .nav {
-  background-color: black;
   width: 85%;
   margin: 0 auto;
   height: 50px;
@@ -109,7 +108,8 @@
 
 .navButton {
   position: relative;
-  height: 100%;
+  top: 0px;
+  height: 50px;
   width: 25%;
   border-color: white;
   border-width: thin;
@@ -120,4 +120,59 @@
   color: white;
   background-color: black;
   font-size: 11pt;
+  cursor: pointer;
+}
+
+.deadNavButton {
+  position: relative;
+  top: 0px;
+  height: 50px;
+  width: 50%;
+  border-color: white;
+  border-width: thin;
+  border-right: solid;
+  border-left: none;
+  border-top: none;
+  border-bottom: none;
+  color: white;
+  background-color: black;
+  font-size: 17pt;
+}
+
+.right {
+  float: right
+}
+
+.left {
+  float: left
+}
+
+.customizationCard {
+  width: 233.3px;
+  border: solid;
+  border-color: black;
+  border-width: 1px;
+  border-radius: 5px;
+  height: 323.6px;
+  border: 25px auto;
+  display: inline-block;
+  margin: 0px 8.8px;
+  text-align: center;
+}
+
+.customizationHeader {
+  margin: 20px auto;
+  text-align: center;
+}
+
+.customizationPane {
+  column-count: 3;
+  column-width: 250px;
+  column-gap: 25px;
+  height: 415px;
+}
+
+.customizationPaneHeader {
+  column-span: all;
+  text-align: center;
 }

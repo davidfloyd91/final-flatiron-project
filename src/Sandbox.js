@@ -114,7 +114,7 @@ class Sandbox extends Component {
   render() {
     return (
       <div className='container'>
-        <h1 className='center'>New {this.props.chartType} chart</h1>
+        <h4 className='center'>New {this.props.chartType} chart</h4>
         <UserInput
           changeChartType={this.chartType}
           setGrid={this.setGrid}

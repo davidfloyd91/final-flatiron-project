@@ -18,49 +18,58 @@ class CustomizationFields extends Component {
 
   render() {
     return (
-      <Fragment>
+      <div className='customizationPane'>
+        <h4 className='customizationPaneHeader'>Customize your chart</h4>
         {
           this.props.chartType[0]
             ?
           <Fragment>
-            <h5>Customize your chart</h5>
             <form onSubmit={this.handleSubmit}>
-              <label htmlFor='title'>Title </label>
-              <input onChange={this.handleChange} name='title' />
+              <div className='customizationCard left'>
+                <h4 className='customizationHeader'>Labels</h4>
+                <label htmlFor='title'>Title </label>
+                <input onChange={this.handleChange} name='title' />
+                {
+                  this.props.chartType !== 'pie'
+                    ?
+                  <Fragment>
+                    <label htmlFor='label'> Label </label>
+                    <input onChange={this.handleChange} name='label' />
+                    <label htmlFor='xLabel'> Horizontal axis label </label>
+                    <input onChange={this.handleChange} name='xLabel' />
+                    <label htmlFor='yLabel'> Vertical axis label </label>
+                    <input onChange={this.handleChange} name='yLabel' />
+                  </Fragment>
+                    :
+                  null
+                }
+            </div>
+            <div className='customizationCard'>
+              <h4 className='customizationHeader'>Scales</h4>
               {
-                this.props.chartType !== 'pie'
+                this.props.horizontal
                   ?
-                <Fragment>
-                  <label htmlFor='label'> Label </label>
-                  <input onChange={this.handleChange} name='label' />
-                  <label htmlFor='xLabel'> Horizontal axis label </label>
-                  <input onChange={this.handleChange} name='xLabel' />
-                  <label htmlFor='yLabel'> Vertical axis label </label>
-                  <input onChange={this.handleChange} name='yLabel' />
-                  {
-                    this.props.horizontal
-                      ?
-                    null
-                      :
-                    <Fragment>
-                      <label htmlFor='min'> Vertical min </label>
-                      <input onChange={this.handleChange} name='min' placeholder={this.props.min} />
-                      <label htmlFor='max'> Vertical max </label>
-                      <input onChange={this.handleChange} name='max' placeholder={this.props.max} />
-                      <label htmlFor='ticks'> Tick value </label>
-                      <input onChange={this.handleChange} name='ticks' />
-                      <label htmlFor='tension'> Line tension </label>
-                      <input onChange={this.handleChange} name='tension' placeholder={this.props.tension} />
-                    </Fragment>
-                  }
-                </Fragment>
-                  :
                 null
-              } {
+                  :
+                <Fragment>
+                  <label htmlFor='min'> Vertical min </label>
+                  <input onChange={this.handleChange} name='min' placeholder={this.props.min} />
+                  <label htmlFor='max'> Vertical max </label>
+                  <input onChange={this.handleChange} name='max' placeholder={this.props.max} />
+                  <label htmlFor='ticks'> Tick value </label>
+                  <input onChange={this.handleChange} name='ticks' />
+                </Fragment>
+              }
+            </div>
+            <div className='customizationCard'>
+              <h4 className='customizationHeader'>Line</h4>
+              {
                 this.props.chartType === 'line'
                   ?
                 <Fragment>
                   {/* taken from https://www.w3schools.com/colors/colors_wheels.asp */}
+                  <label htmlFor='tension'> Line tension </label>
+                  <input onChange={this.handleChange} name='tension' placeholder={this.props.tension} />
                   <label htmlFor='color'> Color </label>
                   <select name='color' onChange={this.handleChange}>
                     <option value='#0080FF'>Light blue</option>
@@ -166,6 +175,7 @@ class CustomizationFields extends Component {
                   />Weird green |
                 </Fragment>
               }
+            </div>
             </form>
             {
               this.props.chartType === 'bar'
@@ -186,7 +196,7 @@ class CustomizationFields extends Component {
             :
           null
         }
-      </Fragment>
+      </div>
     );
   };
 };
