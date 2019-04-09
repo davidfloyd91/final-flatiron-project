@@ -6,6 +6,7 @@ let grid;
 
 class Table extends Component {
   componentDidMount() {
+    console.log(this.props.grid);
     grid = this.props.grid;
     let row = [];
 
@@ -30,8 +31,9 @@ class Table extends Component {
               id={x}
               x={x}
               y={this.props.y}
-              values={grid[x]}
+              values={grid[x]/*should this be `row`?*/}
               newValue={this.newValue}
+              removeRow={this.removeRow}
             />
           </div>
         );
@@ -55,7 +57,20 @@ class Table extends Component {
 
   addRow = () => {
     grid = [...grid, [null, null]];
+
     this.props.dispatch({ type: 'SET_GRID', payload: grid });
+
+    // not sure if this is necesary
+    this.props.dispatch({ type: 'SET_ROWS', payload: grid.length });
+  };
+
+  removeRow = x => {
+    grid = [...grid.slice(0, x), ...grid.slice(x + 1)];
+
+    this.props.dispatch({ type: 'SET_GRID', payload: grid })
+
+    // not sure if this is necesary
+    this.props.dispatch({ type: 'SET_ROWS', payload: grid.length });
   };
 
   render() {

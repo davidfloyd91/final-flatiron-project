@@ -1,10 +1,6 @@
 import React, { Component, Fragment } from 'react';
 
 export default class Cell extends Component {
-  // state = {
-  //   value: '',
-  // };
-
   handleChange = e => {
     this.props.newValue(e.target.value, this.props.x, this.props.y);
   };
