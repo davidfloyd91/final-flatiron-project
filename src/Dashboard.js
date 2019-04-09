@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import ChartPreview from './ChartPreview';
 import UserChart from './UserChart';
 import './App.css';
-let data;
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -134,19 +133,6 @@ class Dashboard extends Component {
     });
   };
 
-  displayData = () => {
-    if (this.props.chart) {
-      data = {...this.props.chart.data};
-      if (this.props.chart.data.data._datasets) {
-        let datasets = [...this.props.chart.data.data._datasets];
-        delete data.data._datasets;
-        data.data.datasets = datasets;
-      };
-    };
-
-    return data;
-  };
-
   render() {
     return (
       <div className='container'>
@@ -159,7 +145,7 @@ class Dashboard extends Component {
             this.props.chartId > 0
               ?
             <Fragment>
-              <UserChart data={this.displayData()} />
+              <UserChart />
               <button onClick={this.editChart}>Edit chart</button>
               <button onClick={this.deleteChart}>Delete chart</button>
             </Fragment>

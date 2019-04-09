@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Chart from 'chart.js';
-let newChart;
+let newChart, displayData;
 
-export default class UserChart extends Component {
+class UserChart extends Component {
   chartRef = React.createRef();
 
   componentDidMount() {
@@ -13,14 +14,27 @@ export default class UserChart extends Component {
     this.buildChart();
   };
 
-  buildChart = data => {
+  getDisplayData = () => {
+    if (this.props.chart) {
+      displayData = {...this.props.chart.data};
+      if (this.props.chart.data.data._datasets) {
+        let datasets = [...this.props.chart.data.data._datasets];
+        delete displayData.data._datasets;
+        displayData.data.datasets = datasets;
+      };
+    };
+
+    return displayData;
+  };
+
+  buildChart = () => {
     const myChartRef = this.chartRef.current.getContext("2d");
 
     if (typeof newChart !== "undefined") {
       newChart.destroy();
     };
 
-    newChart = new Chart(myChartRef, this.props.data);
+    newChart = new Chart(myChartRef, this.getDisplayData());
   };
 
   render() {
@@ -34,3 +48,11 @@ export default class UserChart extends Component {
     );
   };
 };
+
+function mapStateToProps(state) {
+  return {
+    chart: state.chart
+  };
+};
+
+export default connect(mapStateToProps)(UserChart);

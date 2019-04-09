@@ -20,7 +20,31 @@ class Sandbox extends Component {
   };
 
   updateChart = data => {
-    console.log('we\'re all very impressed dave')
+    let okay = false;
+    const id = this.props.chart.id;
+
+    fetch(`http://localhost:3000/charts/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        data: data
+      })
+    })
+    .then(r => {
+      if (r.ok) {
+        okay = true;
+      };
+      return r.json()
+    })
+    .then(data => {
+      if (okay) {
+        this.props.dispatch({ type: 'SET_CHART', payload: data })
+        this.props.dispatch({ type: 'SET_CHART_ID', payload: id });
+        this.props.dispatch({ type: 'SET_DEFAULT' });
+      };
+    });
   };
 
   saveChart = data => {
