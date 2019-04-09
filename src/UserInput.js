@@ -120,8 +120,10 @@ class UserInput extends Component {
 
 function mapStateToProps(state) {
   return {
+    chart: state.chart,
     chartType: state.chartType,
     columns: state.columns,
+    edit: state.edit,
     horizontal: state.horizontal,
     input: state.input,
     rows: state.rows,

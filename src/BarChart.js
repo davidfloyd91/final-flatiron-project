@@ -97,19 +97,25 @@ class BarChart extends Component {
       }
     };
 
-    let fullData = {...saveData};
-    delete fullData.data;
+    let fullData;
 
-    fullData.data = {
-      labels: labels,
-      datasets: [
-        {
-          label: label,
-          fill: false,
-          data: chartData,
-          backgroundColor: colors
-        }
-      ]
+    if (this.props.edit) {
+      fullData = this.props.chart.data;
+    } else {
+      fullData = {...saveData};
+
+      delete fullData.data;
+      fullData.data = {
+        labels: labels,
+        datasets: [
+          {
+            label: label,
+            fill: false,
+            data: chartData,
+            backgroundColor: colors
+          }
+        ]
+      };
     };
 
     newChart = new Chart(myChartRef, fullData);
@@ -123,7 +129,7 @@ class BarChart extends Component {
           ref={this.chartRef}
         />
         <button onClick={() => this.props.saveChart(saveData)}>Save chart</button>
-        <button onClick={this.props.discardChart}>Discard chart</button>
+        {/*<button onClick={this.props.discardChart}>Discard chart</button>*/}
       </div>
     );
   };
@@ -131,8 +137,10 @@ class BarChart extends Component {
 
 function mapStateToProps(state) {
   return {
+    chart: state.chart,
     colors: state.colors,
     data: state.grid,
+    edit: state.edit,
     horizontal: state.horizontal,
     label: state.label,
     max: state.max,

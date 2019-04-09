@@ -61,18 +61,24 @@ class PieChart extends Component {
       }
     };
 
-    let fullData = {...saveData};
-    delete fullData.data;
+    let fullData;
 
-    fullData.data = {
-      labels: labels,
-      datasets: [
-        {
-          fill: false,
-          data: chartData,
-          backgroundColor: colors
-        }
-      ]
+    if (this.props.edit) {
+      fullData = this.props.chart.data;
+    } else {
+      fullData = {...saveData};
+
+      delete fullData.data;
+      fullData.data = {
+        labels: labels,
+        datasets: [
+          {
+            fill: false,
+            data: chartData,
+            backgroundColor: colors
+          }
+        ]
+      };
     };
 
     newChart = new Chart(myChartRef, fullData);
@@ -86,7 +92,6 @@ class PieChart extends Component {
           ref={this.chartRef}
         />
         <button onClick={() => this.props.saveChart(saveData)}>Save chart</button>
-        <button onClick={this.props.discardChart}>Discard chart</button>
       </div>
     );
   };
@@ -94,7 +99,9 @@ class PieChart extends Component {
 
 function mapStateToProps(state) {
   return {
+    chart: state.chart,
     data: state.grid,
+    edit: state.edit,
     title: state.title,
     colors: state.colors
   };

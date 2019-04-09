@@ -13,6 +13,7 @@ const defaultState = {
   color: '#0080FF',
   colors: ['#FF0000', '#FF8000', '#FFFF00', '#00FF00', '#0080FF', '#8000FF'],
   columns: 2,
+  edit: false,
   grid: [],
   horizontal: false,
   input: '',
@@ -61,6 +62,8 @@ function reducer(state = initialState, action) {
       return { ...state, colors: action.payload }
     case 'SET_COLUMNS':
       return {...state, columns: action.payload }
+    case 'SET_EDIT':
+      return {...state, edit: action.payload }
     case 'SET_GRID':
       return {...state, grid: action.payload }
     case 'TOGGLE_HORIZONTAL':

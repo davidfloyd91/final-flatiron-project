@@ -81,20 +81,26 @@ class LineChart extends Component {
       }
     };
 
-    let fullData = {...saveData};
-    delete fullData.data;
+    let fullData;
 
-    fullData.data = {
-      labels: labels,
-      datasets: [
-        {
-          label: label,
-          fill: false,
-          data: chartData,
-          borderColor: color,
-          lineTension: tension
-        }
-      ]
+    if (this.props.edit) {
+      fullData = this.props.chart.data;
+    } else {
+      fullData = {...saveData};
+
+      delete fullData.data;
+      fullData.data = {
+        labels: labels,
+        datasets: [
+          {
+            label: label,
+            fill: false,
+            data: chartData,
+            borderColor: color,
+            lineTension: tension
+          }
+        ]
+      };
     };
 
     newChart = new Chart(myChartRef, fullData);
@@ -108,7 +114,7 @@ class LineChart extends Component {
           ref={this.chartRef}
         />
         <button onClick={() => this.props.saveChart(saveData)}>Save chart</button>
-        <button onClick={this.props.discardChart}>Discard chart</button>
+        {/*<button onClick={this.props.discardChart}>Discard chart</button>*/}
       </div>
     );
   };
@@ -116,8 +122,10 @@ class LineChart extends Component {
 
 function mapStateToProps(state) {
   return {
+    chart: state.chart,
     color: state.color,
     data: state.grid,
+    edit: state.edit,
     label: state.label,
     max: state.max,
     min: state.min,

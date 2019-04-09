@@ -47,6 +47,13 @@ class Dashboard extends Component {
     });
   };
 
+  editChart = () => {
+    let type = this.props.chart.data.type;
+    
+    this.props.dispatch({ type: 'SET_CHART_TYPE', payload: type })
+    this.props.dispatch({ type: 'SET_EDIT', payload: true });
+  };
+
   showChart = chartId => {
     let chart = this.props.charts.find(c => {
       return c.id === chartId;
@@ -95,6 +102,7 @@ class Dashboard extends Component {
               ?
             <Fragment>
               <UserChart data={this.displayData()} />
+              <button onClick={this.editChart}>Edit chart</button>
               <button onClick={this.deleteChart}>Delete chart</button>
             </Fragment>
               :

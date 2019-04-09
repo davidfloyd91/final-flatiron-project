@@ -114,7 +114,13 @@ class Sandbox extends Component {
   render() {
     return (
       <div className='container'>
-        <h4 className='center'>New {this.props.chartType} chart</h4>
+        {
+          this.props.edit
+            ?
+          <h4 className='center'>Edit {this.props.chartType} chart</h4>
+            :
+          <h4 className='center'>New {this.props.chartType} chart</h4>
+        }
         <UserInput
           changeChartType={this.chartType}
           setGrid={this.setGrid}
@@ -127,13 +133,25 @@ class Sandbox extends Component {
             :
           null
         } {
-          this.props.chartType === 'line'
-          ? <LineChart saveChart={this.saveChart} discardChart={this.discardChart} />
-          : this.props.chartType === 'bar'
-          ? <BarChart saveChart={this.saveChart} discardChart={this.discardChart} />
-          : this.props.chartType === 'pie'
-          ? <PieChart saveChart={this.saveChart} discardChart={this.discardChart} />
-          : null
+            this.props.chartType === 'line'
+            ? <LineChart
+                saveChart={this.saveChart}
+              />
+            : this.props.chartType === 'bar'
+            ? <BarChart
+                saveChart={this.saveChart}
+              />
+            : this.props.chartType === 'pie'
+            ? <PieChart
+                saveChart={this.saveChart}
+              />
+            : null
+        } {
+          this.props.edit
+            ?
+          <button onClick={this.discardChart}>Discard changes</button>
+            :
+          <button onClick={this.discardChart}>Discard chart</button>
         }
       </div>
     );
@@ -142,8 +160,10 @@ class Sandbox extends Component {
 
 function mapStateToProps(state) {
   return {
+    chart: state.chart,
     chartType: state.chartType,
     colors: state.colors,
+    edit: state.edit,
     warn: state.warn
   };
 };

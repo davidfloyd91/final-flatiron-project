@@ -16,7 +16,7 @@ class App extends Component {
     return (
       <div className='container'>
         <Nav new={this.props.new} toggleNew={this.toggleNew} />
-        {this.props.new ? <Sandbox /> : <Dashboard />}
+        {(this.props.new || this.props.edit)? <Sandbox /> : <Dashboard />}
       </div>
     );
   };
@@ -24,6 +24,7 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
+    edit: state.edit,
     new: state.new
   };
 };
