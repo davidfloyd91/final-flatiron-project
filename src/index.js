@@ -66,10 +66,12 @@ function reducer(state = initialState, action) {
       return {...state, edit: action.payload }
     case 'SET_GRID':
       return {...state, grid: action.payload }
-    case 'TOGGLE_HORIZONTAL':
-      return { ...state, horizontal: !state.horizontal }
+    case 'SET_HORIZONTAL':
+      return { ...state, horizontal: action.payload }
     case 'SET_INPUT':
       return { ...state, input: action.payload }
+    case 'SET_LABEL':
+      return {...state, label: action.payload}
     case 'SET_MAX':
       return { ...state, max: action.payload }
     case 'SET_MIN':
@@ -86,8 +88,14 @@ function reducer(state = initialState, action) {
       return { ...state, tension: action.payload }
     case 'SET_TICKS':
       return { ...state, ticks: action.payload }
+    case 'SET_TITLE':
+      return {...state, title: action.payload}
     case 'WARN':
       return { ...state, warn: action.payload }
+    case 'SET_X_LABEL':
+      return {...state, xLabel: action.payload}
+    case 'SET_Y_LABEL':
+      return {...state, yLabel: action.payload}
 
     default:
       return state;

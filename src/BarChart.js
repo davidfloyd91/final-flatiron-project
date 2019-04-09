@@ -21,87 +21,83 @@ class BarChart extends Component {
       newChart.destroy();
     };
 
-    const chartData = this.props.data.map(a => {
-      return parseFloat(a[1]);
-    });
+    let chartData, colors, fullData, horizontal, label, labels, max, min, ticks, title, type, xLabel, yLabel;
 
-    let colors = this.props.colors;
+      chartData = this.props.data.map(a => {
+        return parseFloat(a[1]);
+      });
 
-    if (colors[0]) {
-      let divisor = Math.floor(chartData.length / colors.length) + 1;
-      if (divisor > 0) {
-        for (let i = 0; i < divisor - 1; i++) {
-          colors = [...colors, ...this.props.colors]
+      colors = this.props.colors;
+
+      if (colors[0]) {
+        let divisor = Math.floor(chartData.length / colors.length) + 1;
+        if (divisor > 0) {
+          for (let i = 0; i < divisor - 1; i++) {
+            colors = [...colors, ...this.props.colors]
+          };
         };
       };
-    };
 
-    const label = this.props.label;
+      label = this.props.label;
 
-    const labels = this.props.data.map(a => {
-      return a[0];
-    });
+      labels = this.props.data.map(a => {
+        return a[0];
+      });
 
-    const max = this.props.max;
-    const min = this.props.min;
-    const ticks = this.props.ticks;
-    const title = this.props.title;
+      max = this.props.max;
+      min = this.props.min;
+      ticks = this.props.ticks;
+      title = this.props.title;
 
-    let type;
-    if (this.props.horizontal) {
-      type = 'horizontalBar';
-    } else {
-      type = 'bar';
-    };
+      if (this.props.horizontal) {
+        type = 'horizontalBar';
+      } else {
+        type = 'bar';
+      };
 
-    const xLabel = this.props.xLabel;
-    const yLabel = this.props.yLabel;
+      xLabel = this.props.xLabel;
+      yLabel = this.props.yLabel;
 
-    saveData = {
-      type: type,
-      data: {
-        labels: labels,
-        _datasets: [
-          {
-            label: label,
-            fill: false,
-            data: chartData,
-            backgroundColor: colors
-          }
-        ]
-      },
-      options: {
-        title: {
-            display: true,
-            text: title
+      saveData = {
+        type: type,
+        data: {
+          labels: labels,
+          _datasets: [
+            {
+              label: label,
+              fill: false,
+              data: chartData,
+              backgroundColor: colors
+            }
+          ]
         },
-        scales: {
-          yAxes: [{
-            ticks: {
-              min: parseFloat(min),
-              max: parseFloat(max),
-              stepSize: parseFloat(ticks)
-            },
-            scaleLabel: {
+        options: {
+          title: {
               display: true,
-              labelString: yLabel
-            }
-          }],
-          xAxes: [{
-            scaleLabel: {
-              display: true,
-              labelString: xLabel
-            }
-          }]
+              text: title
+          },
+          scales: {
+            yAxes: [{
+              ticks: {
+                min: parseFloat(min),
+                max: parseFloat(max),
+                stepSize: parseFloat(ticks)
+              },
+              scaleLabel: {
+                display: true,
+                labelString: yLabel
+              }
+            }],
+            xAxes: [{
+              scaleLabel: {
+                display: true,
+                labelString: xLabel
+              }
+            }]
+          }
         }
-      }
-    };
+      };
 
-    let fullData;
-
-    if (this.props.edit) {
-      fullData = this.props.chart.data;
-    } else {
       fullData = {...saveData};
 
       delete fullData.data;
@@ -116,7 +112,6 @@ class BarChart extends Component {
           }
         ]
       };
-    };
 
     newChart = new Chart(myChartRef, fullData);
   };
@@ -138,6 +133,7 @@ class BarChart extends Component {
 function mapStateToProps(state) {
   return {
     chart: state.chart,
+    chartType: state.chartType,
     colors: state.colors,
     data: state.grid,
     edit: state.edit,

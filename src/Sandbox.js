@@ -105,7 +105,8 @@ class Sandbox extends Component {
       // behavior here isn't ideal: deciding which item is which color requires clicking the checkboxes in the right order
       this.props.dispatch({ type: 'SET_COLORS', payload: colors})
     } else if (name === 'horizontal') {
-      this.props.dispatch({ type: 'TOGGLE_HORIZONTAL' })
+      // sorry if i broke this
+      this.props.dispatch({ type: 'SET_HORIZONTAL', payload: !this.props.horizontal })
     } else {
       this.props.dispatch({ type: 'SET_NAME_TO_VALUE', payload: { key: name, value: value } })
     };
@@ -137,7 +138,7 @@ class Sandbox extends Component {
             ? <LineChart
                 saveChart={this.saveChart}
               />
-            : this.props.chartType === 'bar'
+            : (this.props.chartType === 'bar' || this.props.chartType === 'horizontalBar')
             ? <BarChart
                 saveChart={this.saveChart}
               />
@@ -164,6 +165,7 @@ function mapStateToProps(state) {
     chartType: state.chartType,
     colors: state.colors,
     edit: state.edit,
+    horizontal: state.horizontal,
     warn: state.warn
   };
 };

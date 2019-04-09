@@ -48,9 +48,54 @@ class Dashboard extends Component {
   };
 
   editChart = () => {
-    let type = this.props.chart.data.type;
-    
-    this.props.dispatch({ type: 'SET_CHART_TYPE', payload: type })
+    let data = this.props.chart.data;
+
+    // let chartData = null;
+    let colors = [...new Set(data.data.datasets[0].backgroundColor)];
+    let fullData = null;
+    let horizontal;
+    if (data.type === 'horizontalBar') {
+      horizontal = true;
+    } else if (data.type === 'bar') {
+      horizontal = false;
+    };
+    let label = data.data.datasets[0].label;
+    // let labels = null;
+    let max = data.options.scales.yAxes[0].ticks.max;
+    let min = data.options.scales.yAxes[0].ticks.min;
+    let ticks = data.options.scales.yAxes[0].ticks.stepSize;
+    let title = data.options.title.text;
+    let type = data.type;
+    let xLabel = data.options.scales.xAxes[0].scaleLabel.labelString;
+    let yLabel = data.options.scales.yAxes[0].scaleLabel.labelString;
+
+    let grid = [];
+    data.data.labels.forEach(label => {
+      grid = [...grid, [label]]
+    });
+
+    for (let i = 0; i < grid.length; i++) {
+      grid[i] = [...grid[i], data.data.datasets[0].data[i]]
+    };
+
+    console.log(grid);
+
+    this.props.dispatch({ type: 'SET_GRID', payload: grid });
+    this.props.dispatch({ type: 'SET_COLORS', payload: colors });
+    // fullData
+    // this.props.dispatch({ type: '', payload: '' });
+    this.props.dispatch({ type: 'SET_HORIZONTAL', payload: horizontal });
+    this.props.dispatch({ type: 'SET_LABEL', payload: label });
+    // labels
+    // this.props.dispatch({ type: '', payload: '' });
+    this.props.dispatch({ type: 'SET_MAX', payload: max });
+    this.props.dispatch({ type: 'SET_MIN', payload: min });
+    this.props.dispatch({ type: 'SET_TICKS', payload: ticks });
+    this.props.dispatch({ type: 'SET_TITLE', payload: title });
+    this.props.dispatch({ type: 'SET_CHART_TYPE', payload: type });
+    this.props.dispatch({ type: 'SET_X_LABEL', payload: xLabel });
+    this.props.dispatch({ type: 'SET_Y_LABEL', payload: yLabel });
+
     this.props.dispatch({ type: 'SET_EDIT', payload: true });
   };
 
@@ -119,7 +164,8 @@ function mapStateToProps(state) {
     userId: state.userId,
     charts: state.charts,
     chart: state.chart,
-    chartId: state.chartId
+    chartId: state.chartId,
+    grid: state.grid // just to log it
   };
 };
 
