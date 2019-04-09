@@ -21,24 +21,26 @@ class LineChart extends Component {
       newChart.destroy();
     };
 
-    const chartData = this.props.data.map(a => {
+    let chartData, color, fullData, label, labels, max, min, tension, ticks, title, xLabel, yLabel;
+
+    chartData = this.props.data.map(a => {
       return parseFloat(a[1]);
     });
 
-    const color = this.props.color;
-    const label = this.props.label;
+    color = this.props.color;
+    label = this.props.label;
 
-    const labels = this.props.data.map(a => {
+    labels = this.props.data.map(a => {
       return a[0];
     });
 
-    const max = this.props.max;
-    const min = this.props.min;
-    const tension = this.props.tension;
-    const ticks = this.props.ticks;
-    const title = this.props.title;
-    const xLabel = this.props.xLabel;
-    const yLabel = this.props.yLabel;
+    max = this.props.max;
+    min = this.props.min;
+    tension = this.props.tension;
+    ticks = this.props.ticks;
+    title = this.props.title;
+    xLabel = this.props.xLabel;
+    yLabel = this.props.yLabel;
 
     saveData = {
       type: "line",
@@ -81,26 +83,20 @@ class LineChart extends Component {
       }
     };
 
-    let fullData;
+    fullData = {...saveData};
 
-    if (this.props.edit) {
-      fullData = this.props.chart.data;
-    } else {
-      fullData = {...saveData};
-
-      delete fullData.data;
-      fullData.data = {
-        labels: labels,
-        datasets: [
-          {
-            label: label,
-            fill: false,
-            data: chartData,
-            borderColor: color,
-            lineTension: tension
-          }
-        ]
-      };
+    delete fullData.data;
+    fullData.data = {
+      labels: labels,
+      datasets: [
+        {
+          label: label,
+          fill: false,
+          data: chartData,
+          borderColor: color,
+          lineTension: tension
+        }
+      ]
     };
 
     newChart = new Chart(myChartRef, fullData);

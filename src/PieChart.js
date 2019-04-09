@@ -21,16 +21,18 @@ class PieChart extends Component {
       newChart.destroy();
     };
 
-    const labels = this.props.data.map(a => {
+    let chartData, colors, fullData, labels, title;
+
+    labels = this.props.data.map(a => {
       return a[0];
     });
 
-    const chartData = this.props.data.map(a => {
+    chartData = this.props.data.map(a => {
       return parseFloat(a[1]);
     });
 
-    const title = this.props.title;
-    let colors = this.props.colors;
+    title = this.props.title;
+    colors = this.props.colors;
 
     if (colors[0]) {
       let divisor = Math.floor(chartData.length / colors.length) + 1;
@@ -61,24 +63,18 @@ class PieChart extends Component {
       }
     };
 
-    let fullData;
+    fullData = {...saveData};
 
-    if (this.props.edit) {
-      fullData = this.props.chart.data;
-    } else {
-      fullData = {...saveData};
-
-      delete fullData.data;
-      fullData.data = {
-        labels: labels,
-        datasets: [
-          {
-            fill: false,
-            data: chartData,
-            backgroundColor: colors
-          }
-        ]
-      };
+    delete fullData.data;
+    fullData.data = {
+      labels: labels,
+      datasets: [
+        {
+          fill: false,
+          data: chartData,
+          backgroundColor: colors
+        }
+      ]
     };
 
     newChart = new Chart(myChartRef, fullData);

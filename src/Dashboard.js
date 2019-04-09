@@ -50,25 +50,6 @@ class Dashboard extends Component {
   editChart = () => {
     let data = this.props.chart.data;
 
-    // let chartData = null;
-    let colors = [...new Set(data.data.datasets[0].backgroundColor)];
-    let fullData = null;
-    let horizontal;
-    if (data.type === 'horizontalBar') {
-      horizontal = true;
-    } else if (data.type === 'bar') {
-      horizontal = false;
-    };
-    let label = data.data.datasets[0].label;
-    // let labels = null;
-    let max = data.options.scales.yAxes[0].ticks.max;
-    let min = data.options.scales.yAxes[0].ticks.min;
-    let ticks = data.options.scales.yAxes[0].ticks.stepSize;
-    let title = data.options.title.text;
-    let type = data.type;
-    let xLabel = data.options.scales.xAxes[0].scaleLabel.labelString;
-    let yLabel = data.options.scales.yAxes[0].scaleLabel.labelString;
-
     let grid = [];
     data.data.labels.forEach(label => {
       grid = [...grid, [label]]
@@ -78,23 +59,49 @@ class Dashboard extends Component {
       grid[i] = [...grid[i], data.data.datasets[0].data[i]]
     };
 
-    console.log(grid);
-
     this.props.dispatch({ type: 'SET_GRID', payload: grid });
-    this.props.dispatch({ type: 'SET_COLORS', payload: colors });
-    // fullData
-    // this.props.dispatch({ type: '', payload: '' });
-    this.props.dispatch({ type: 'SET_HORIZONTAL', payload: horizontal });
-    this.props.dispatch({ type: 'SET_LABEL', payload: label });
-    // labels
-    // this.props.dispatch({ type: '', payload: '' });
-    this.props.dispatch({ type: 'SET_MAX', payload: max });
-    this.props.dispatch({ type: 'SET_MIN', payload: min });
-    this.props.dispatch({ type: 'SET_TICKS', payload: ticks });
+
+    let title = data.options.title.text;
     this.props.dispatch({ type: 'SET_TITLE', payload: title });
+
+    let type = data.type;
     this.props.dispatch({ type: 'SET_CHART_TYPE', payload: type });
-    this.props.dispatch({ type: 'SET_X_LABEL', payload: xLabel });
-    this.props.dispatch({ type: 'SET_Y_LABEL', payload: yLabel });
+
+    if (type !== 'line') {
+      let colors = [...new Set(data.data.datasets[0].backgroundColor)];
+      this.props.dispatch({ type: 'SET_COLORS', payload: colors });
+    };
+
+    if (type !== 'pie') {
+      let horizontal = false;
+      if (data.type === 'horizontalBar') {
+        horizontal = true;
+      };
+      this.props.dispatch({ type: 'SET_HORIZONTAL', payload: horizontal });
+
+      let label = data.data.datasets[0].label;
+      this.props.dispatch({ type: 'SET_LABEL', payload: label });
+
+      let max = data.options.scales.yAxes[0].ticks.max;
+      this.props.dispatch({ type: 'SET_MAX', payload: max });
+
+      let min = data.options.scales.yAxes[0].ticks.min;
+      this.props.dispatch({ type: 'SET_MIN', payload: min });
+
+      let ticks = data.options.scales.yAxes[0].ticks.stepSize;
+      this.props.dispatch({ type: 'SET_TICKS', payload: ticks });
+
+      let xLabel = data.options.scales.xAxes[0].scaleLabel.labelString;
+      this.props.dispatch({ type: 'SET_X_LABEL', payload: xLabel });
+
+      let yLabel = data.options.scales.yAxes[0].scaleLabel.labelString;
+      this.props.dispatch({ type: 'SET_Y_LABEL', payload: yLabel });
+    };
+
+    if (type === 'line') {
+      let color = data.data.datasets[0].borderColor;
+      this.props.dispatch({type: 'SET_COLOR', payload: color });
+    };
 
     this.props.dispatch({ type: 'SET_EDIT', payload: true });
   };
