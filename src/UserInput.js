@@ -87,7 +87,7 @@ class UserInput extends Component {
               <Fragment>
                 <h5>How many rows of data would you like to input?</h5>
                 <form onSubmit={this.handleSubmit}>
-                  <input onChange={this.handleChange} type='number' min='1' name='rows' placeholder='Number of rows' value={this.props.rows} />
+                  <input onChange={this.handleChange} type='number' min='0' name='rows' placeholder='Number of rows' value={this.props.rows} />
                   {/*<input onChange={this.handleChange} type='number' min='0' name='columns' placeholder='Number of columns' value={this.props.columns} />*/}
                   <input type='submit' value='Go' />
                 </form>

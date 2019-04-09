@@ -107,6 +107,9 @@ class Dashboard extends Component {
     };
 
     this.props.dispatch({ type: 'SET_EDIT', payload: true });
+    this.props.dispatch({ type: 'SET_ROWS', payload: 0 });
+    this.props.dispatch({ type: 'SET_SHOW_TABLE', payload: true });
+    this.props.dispatch({ type: 'SET_INPUT', payload: 'manual' });
   };
 
   showChart = chartId => {
