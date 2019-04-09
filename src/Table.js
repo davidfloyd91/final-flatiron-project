@@ -30,7 +30,9 @@ class Table extends Component {
               id={x}
               x={x}
               y={this.props.y}
+              values={row}
               newValue={this.newValue}
+              removeRow={this.removeRow}
             />
           </div>
         );
@@ -55,6 +57,11 @@ class Table extends Component {
   addRow = () => {
     grid = [...grid, [null, null]];
     this.props.dispatch({ type: 'SET_GRID', payload: grid });
+  };
+
+  removeRow = x => {
+    grid = [...grid.slice(0, x), ...grid.slice(x + 1)];
+    this.props.dispatch({ type: 'SET_GRID', payload: grid })
   };
 
   render() {

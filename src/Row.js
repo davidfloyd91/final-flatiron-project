@@ -20,6 +20,7 @@ export default class Row extends Component {
           key={keyId}
           x={this.props.x + 1}
           y={y + 1}
+          value={this.props.values[y]}
           newValue={this.newValue}
         />
       );
@@ -30,6 +31,7 @@ export default class Row extends Component {
     return (
       <Fragment>
         {this.renderCells()}
+        <button onClick={() => this.props.removeRow(this.props.x)}> - </button>
       </Fragment>
     );
   };
