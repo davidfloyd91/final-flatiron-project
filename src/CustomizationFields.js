@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 // also you need to generally have fields here fill in with the current state values -- when you toggle between vertical and horizontal bars (maybe other situations), the fields are empty but the old values are still in state
 
 class CustomizationFields extends Component {
+  // make 'placeholder' value and move from onChange to onBlur and onSubmit?
   handleSubmit = e => {
     e.preventDefault();
     this.props.showTableToTrue(e);
@@ -69,6 +70,8 @@ class CustomizationFields extends Component {
                   {/* taken from https://www.w3schools.com/colors/colors_wheels.asp */}
                   <label htmlFor='tension'> Line tension </label>
                   <input onChange={this.handleChange} name='tension' placeholder={this.props.tension} />
+                  <label htmlFor='radius'> Point radius </label>
+                  <input onChange={this.handleChange} name='radius' placeholder={this.props.radius} />
                   <label htmlFor='color'> Color </label>
                   <select name='color' onChange={this.handleChange}>
                     <option value='#0080FF'>Light blue</option>
@@ -208,6 +211,7 @@ function mapStateToProps(state) {
     label: state.label,
     max: state.max,
     min: state.min,
+    radius: state.radius,
     tension: state.tension,
     ticks: state.ticks,
     title: state.title,

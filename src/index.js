@@ -21,6 +21,7 @@ const defaultState = {
   max: 10,
   min: -10,
   new: false,
+  radius: 3,
   rows: 10,
   showTable: false,
   tension: 0.4,
@@ -75,6 +76,8 @@ function reducer(state = initialState, action) {
       return { ...state, max: action.payload }
     case 'SET_MIN':
       return { ...state, min: action.payload }
+    case 'SET_RADIUS':
+      return {...state, radius: action.payload}
     case 'TOGGLE_NEW':
       return { ...state, new: !state.new }
     case 'SET_ROWS':

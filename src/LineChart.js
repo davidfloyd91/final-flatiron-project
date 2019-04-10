@@ -21,7 +21,7 @@ class LineChart extends Component {
       newChart.destroy();
     };
 
-    let chartData, color, fullData, label, labels, max, min, tension, ticks, title, xLabel, yLabel;
+    let chartData, color, fullData, label, labels, max, min, radius, tension, ticks, title, xLabel, yLabel;
 
     chartData = this.props.data.map(a => {
       return parseFloat(a[1]);
@@ -36,6 +36,7 @@ class LineChart extends Component {
 
     max = this.props.max;
     min = this.props.min;
+    radius = this.props.radius;
     tension = this.props.tension;
     ticks = this.props.ticks;
     title = this.props.title;
@@ -52,7 +53,8 @@ class LineChart extends Component {
             fill: false,
             data: chartData,
             borderColor: color,
-            lineTension: tension
+            lineTension: tension,
+            pointRadius: radius
           }
         ]
       },
@@ -94,7 +96,8 @@ class LineChart extends Component {
           fill: false,
           data: chartData,
           borderColor: color,
-          lineTension: tension
+          lineTension: tension,
+          pointRadius: radius
         }
       ]
     };
@@ -134,6 +137,7 @@ function mapStateToProps(state) {
     label: state.label,
     max: state.max,
     min: state.min,
+    radius: state.radius,
     tension: state.tension,
     ticks: state.ticks,
     title: state.title,

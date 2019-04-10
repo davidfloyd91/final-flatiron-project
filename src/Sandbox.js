@@ -123,6 +123,9 @@ class Sandbox extends Component {
     } else if ((name === 'tension') &&
     (isNaN(value) || value === '' || value.match(/\s+/))) {
       this.props.dispatch({ type: 'SET_TENSION', payload: 0.4 });
+    } else if ((name === 'radius') &&
+    (isNaN(value) || value === '' || value.match(/\s+/))) {
+      this.props.dispatch({ type: 'SET_RADIUS', payload: 3 });
     } else if (name === 'colors') {
       if (e.target.checked) {
         colors = [...new Set([...this.props.colors, value])];
