@@ -22,7 +22,6 @@ const defaultState = {
   min: -10,
   new: false,
   rows: 10,
-  showSetup: true,
   showTable: false,
   tension: 0.4,
   ticks: 0,
@@ -80,8 +79,6 @@ function reducer(state = initialState, action) {
       return { ...state, new: !state.new }
     case 'SET_ROWS':
       return {...state, rows: action.payload }
-    case 'SET_SHOW_SETUP':
-      return {...state, showSetup: action.payload }
     case 'SET_SHOW_TABLE':
       return {...state, showTable: action.payload }
     case 'SET_TENSION':

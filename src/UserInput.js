@@ -26,10 +26,10 @@ class UserInput extends Component {
   handleChange = e => {
     if (e.target.name === 'rows') {
       this.props.dispatch({ type: 'SET_ROWS', payload: e.target.value });
-      this.props.dispatch({ type: 'SET_SHOW_TABLE', payload: true });
+      // this.props.dispatch({ type: 'SET_SHOW_TABLE', payload: true });
     } else if (e.target.name === 'columns') {
       this.props.dispatch({ type: 'SET_COLUMNS', payload: e.target.value });
-      this.props.dispatch({ type: 'SET_SHOW_TABLE', payload: true });
+      // this.props.dispatch({ type: 'SET_SHOW_TABLE', payload: true });
     } else if (e.target.name === 'input') {
       this.props.dispatch({ type: 'SET_INPUT', payload: e.target.value });
     };
@@ -108,7 +108,6 @@ class UserInput extends Component {
               }
             </Fragment>
             <CustomizationFields
-              showSetupToFalse={this.handleSubmit}
               showTableToTrue={this.handleSubmit}
               customize={this.props.customize}
             />
@@ -130,7 +129,6 @@ function mapStateToProps(state) {
     horizontal: state.horizontal,
     input: state.input,
     rows: state.rows,
-    showSetup: state.showSetup,
     showTable: state.showTable
   };
 };

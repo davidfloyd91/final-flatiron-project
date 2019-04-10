@@ -8,7 +8,6 @@ import { connect } from 'react-redux';
 class CustomizationFields extends Component {
   handleSubmit = e => {
     e.preventDefault();
-    this.props.showSetupToFalse(e);
     this.props.showTableToTrue(e);
   };
 
