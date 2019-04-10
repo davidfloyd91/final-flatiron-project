@@ -76,7 +76,9 @@ class Table extends Component {
     return (
       <Fragment>
         <h5 className='table-head'>Labels</h5><h5 className='table-head'>Values</h5>
-        {this.renderRows()}
+        <div className='table'>
+          {this.renderRows()}
+        </div>
         <button onClick={this.addRow}>Add a row</button>
       </Fragment>
     );

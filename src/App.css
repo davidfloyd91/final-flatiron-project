@@ -159,7 +159,7 @@
   border-color: black;
   border-width: 1px;
   border-radius: 5px;
-  height: 323.6px;
+  height: 280px;
   border: 25px auto;
   display: inline-block;
   margin: 0px 8.8px;
@@ -181,4 +181,10 @@
 .customizationPaneHeader {
   column-span: all;
   text-align: center;
+}
+
+.table {
+  height: 210px;
+  width: 265px;
+  overflow-y: scroll;
 }

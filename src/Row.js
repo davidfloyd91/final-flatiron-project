@@ -2,10 +2,6 @@ import React, { Component, Fragment } from 'react';
 import Cell from './Cell';
 
 export default class Row extends Component {
-  // newValue = (value, x, y) => {
-  //   this.props.newValue(value, x, y);
-  // };
-
   renderCells = () => {
     let yArray = [];
     for (let y = 0; y < this.props.y; y++) {
@@ -31,7 +27,7 @@ export default class Row extends Component {
     return (
       <Fragment>
         {this.renderCells()}
-        <button onClick={() => this.props.removeRow(this.props.x)}> - </button>
+        <button onClick={() => this.props.removeRow(this.props.x)}> × </button>
       </Fragment>
     );
   };
