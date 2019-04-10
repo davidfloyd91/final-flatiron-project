@@ -31,6 +31,7 @@ export default class Row extends Component {
     return (
       <Fragment>
         {this.renderCells()}
+        <button onClick={() => this.props.removeRow(this.props.x)}> - </button>
       </Fragment>
     );
   };
