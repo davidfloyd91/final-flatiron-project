@@ -25,7 +25,7 @@ class Nav extends Component {
             :
           <button className='navButton left' onClick={this.toggleNew}>NEW CHART</button>
         }
-        <button className='navButton right'>
+        <button className='navButtonRight right'>
           USERSTUFFIGUESS
         </button>
         <button className='navButtonDead'>

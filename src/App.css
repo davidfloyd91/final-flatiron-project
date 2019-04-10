@@ -38,6 +38,12 @@
   }
 }
 
+/* End default */
+
+.bottom {
+  /* tbd get that data input some room though */
+}
+
 .card {
   width: 243px;
   display: inline-block;
@@ -82,7 +88,7 @@
 }
 
 .container {
-  margin: 15px auto;
+  margin: 0 auto;
   width: 85%;
 }
 
@@ -150,7 +156,7 @@
 
 .nav {
   width: 85%;
-  margin: 0 auto;
+  margin: 0 auto 15px auto;
   height: 50px;
 }
 
@@ -160,7 +166,7 @@
   height: 50px;
   width: 25%;
   border-color: white;
-  border-width: thin;
+  border-width: 0.25px;
   border-right: solid;
   border-left: none;
   border-top: none;
@@ -177,14 +183,31 @@
   height: 50px;
   width: 50%;
   border-color: white;
-  border-width: thin;
-  border-right: solid;
+  border-width: 0.25px;
+  border-right: none;
   border-left: none;
   border-top: none;
   border-bottom: none;
   color: white;
   background-color: black;
   font-size: 17pt;
+}
+
+.navButtonRight {
+  position: relative;
+  top: 0px;
+  height: 50px;
+  width: 25%;
+  border-color: white;
+  border-width: 0.25px;
+  border-right: none;
+  border-left: solid;
+  border-top: none;
+  border-bottom: none;
+  color: white;
+  background-color: black;
+  font-size: 11pt;
+  cursor: pointer;
 }
 
 .previewContainer {
@@ -232,10 +255,12 @@
 }
 
 .tableHead {
+  float: left;
   display: inline-block;
-  width: 131px;
-  padding-left: 1px;
+  width: 98px;
+  padding-left: 16px;
   margin-bottom: 2px;
+  text-align: left;
 }
 
 .smallHead {
@@ -244,6 +269,15 @@
   display: block;
   margin-top: 6px;
   margin-bottom: 2px;
+}
+
+.smallHeadInline {
+  font-weight: bold;
+  font-size: 9pt;
+  display: inline;
+  margin-top: 6px;
+  margin-bottom: 2px;
+  margin-right: 5px;
 }
 
 /* COLORS LIST */

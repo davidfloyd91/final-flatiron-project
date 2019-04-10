@@ -27,7 +27,7 @@ class CustomizationFields extends Component {
                 this.props.chartType !== 'pie'
                   ?
                 <Fragment>
-                  <label htmlFor='label' className='smallHead'> Label </label>
+                  <label htmlFor='label' className='smallHead'> Line label </label>
                   <input onChange={this.handleChange} name='label' value={this.props.label} className='customizationInput' />
                   <label htmlFor='xLabel' className='smallHead'> Horizontal axis label </label>
                   <input onChange={this.handleChange} name='xLabel' value={this.props.xLabel} className='customizationInput' />
@@ -239,9 +239,9 @@ class CustomizationFields extends Component {
                   ?
                 <div className='customizationCard center'>
                   <h4 className='customizationHeader'>Scales</h4>
-                  <label htmlFor='min' className='smallHead'> Vertical min </label>
+                  <label htmlFor='min' className='smallHead'> Vertical minimum </label>
                   <input onChange={this.handleChange} name='min' placeholder={this.props.min} className='customizationInput' />
-                  <label htmlFor='max' className='smallHead'> Vertical max </label>
+                  <label htmlFor='max' className='smallHead'> Vertical maximum </label>
                   <input onChange={this.handleChange} name='max' placeholder={this.props.max} className='customizationInput' />
                   <label htmlFor='ticks' className='smallHead'> Tick value </label>
                   <input onChange={this.handleChange} name='ticks' placeholder={this.props.ticks} className='customizationInput' />

@@ -75,8 +75,8 @@ class Table extends Component {
   render() {
     return (
       <div className='center'>
-        <h5 className='tableHead'>Labels</h5><h5 className='tableHead'>Values</h5>
         <div className='table'>
+          <h5 className='tableHead'>Labels</h5><h5 className='tableHead'>Values</h5>
           {this.renderRows()}
         </div>
         <button onClick={this.addRow}>Add a row</button>

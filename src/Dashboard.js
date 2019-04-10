@@ -136,7 +136,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div className='container'>
-        <h4 className='center'>Saved charts</h4>
+        <h4 className='customizationPaneHeader'>Saved charts</h4>
         <div className='previewContainer'>
           {this.props.charts ? this.renderPreviews() : null}
         </div>

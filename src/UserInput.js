@@ -67,24 +67,25 @@ class UserInput extends Component {
               {
                 !this.props.input[0]
                   ?
-                <Fragment>
-                  <button onClick={this.clearChartType}>Change chart type</button>
-                  <h5>How would you like to input your data?</h5>
+                <div className='bottom center'>
+                  {/*<button onClick={this.clearChartType}>Change chart type</button>*/}
+                  <h4 className='customizationPaneHeader'>Input your data</h4>
+                  <label className='smallHeadInline' for='input'>How would you like to input your data?</label>
                   <select name='input' onChange={this.handleChange}>
                     <option value=''> </option>
                     <option value='csv'>Upload CSV</option>
                     <option value='manual'>Manually</option>
                   </select>
-                </Fragment>
+                </div>
                   :
                 this.props.input === 'csv'
                   ?
-                <Fragment>
+                <div className='center'>
                   <h5>Upload your CSV file below:</h5>
                   <CSVReader
                     onFileLoaded={this.handleForce}
                   />
-                </Fragment>
+                </div>
                   :
                 this.props.input === 'manual'
                   ?
@@ -93,18 +94,17 @@ class UserInput extends Component {
                     this.props.showTable
                       ?
                     <Fragment>
-                      <h5>What data would you like to display?</h5>
                       <Table setGrid={this.props.setGrid} />
                     </Fragment>
                       :
-                    <Fragment>
+                    <div className='center'>
                       <h5>How many rows of data would you like to input?</h5>
                       <form onSubmit={this.handleSubmit}>
                         <input onChange={this.handleChange} type='number' min='0' name='rows' placeholder='Number of rows' value={this.props.rows} />
                         {/*<input onChange={this.handleChange} type='number' min='0' name='columns' placeholder='Number of columns' value={this.props.columns} />*/}
                         <input type='submit' value='Go' />
                       </form>
-                    </Fragment>
+                    </div>
                   }
                 </Fragment>
                   :

@@ -147,9 +147,9 @@ class Sandbox extends Component {
         {
           this.props.edit
             ?
-          <h4 className='center'>Edit {this.props.chartType} chart</h4>
+          <h4 className='customizationPaneHeader'>Edit {this.props.chartType} chart</h4>
             :
-          <h4 className='center'>New {this.props.chartType} chart</h4>
+          <h4 className='customizationPaneHeader'>New {this.props.chartType} chart</h4>
         } {
             this.props.chartType === 'line'
             ? <LineChart
