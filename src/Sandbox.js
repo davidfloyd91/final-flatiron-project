@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import UserInput from './UserInput';
 import LineChart from './LineChart';
@@ -141,6 +141,7 @@ class Sandbox extends Component {
   };
 
   render() {
+    console.log(!!this.props.chartType[0])
     return (
       <div className='container'>
         {
@@ -179,11 +180,19 @@ class Sandbox extends Component {
               />
             : null
         } {
-          this.props.edit
+          this.props.chartType[0]
             ?
-          <button onClick={this.discardChart}>Discard changes</button>
+          <Fragment>
+            {
+              this.props.edit
+                ?
+              <button onClick={this.discardChart}>Discard changes</button>
+                :
+              <button onClick={this.discardChart}>Discard chart</button>
+            }
+          </Fragment>
             :
-          <button onClick={this.discardChart}>Discard chart</button>
+          null
         }
       </div>
     );
