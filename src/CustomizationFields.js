@@ -18,14 +18,14 @@ class CustomizationFields extends Component {
 
   render() {
     return (
-      <div className='customizationPane'>
+      <div className={(this.props.chartType === 'pie' || (this.props.chartType === 'bar' && this.props.horizontal)) ? 'customizationPanePie' : 'customizationPane'}>
         <h4 className='customizationPaneHeader'>Customize your chart</h4>
         {
           this.props.chartType[0]
             ?
           <Fragment>
             {/*<form onSubmit={this.handleSubmit}>*/}
-              <div className='customizationCard left'>
+              <div className={(this.props.chartType === 'pie' || (this.props.chartType === 'bar' && this.props.horizontal)) ? 'customizationCardPie left' : 'customizationCard left'}>
                 <h4 className='customizationHeader'>Labels</h4>
                 <label htmlFor='title' className='smallHead'>Title </label>
                 <input onChange={this.handleChange} name='title' value={this.props.title} className='customizationInput' />
@@ -39,12 +39,27 @@ class CustomizationFields extends Component {
                     <input onChange={this.handleChange} name='xLabel' value={this.props.xLabel} className='customizationInput' />
                     <label htmlFor='yLabel' className='smallHead'> Vertical axis label </label>
                     <input onChange={this.handleChange} name='yLabel' value={this.props.yLabel} className='customizationInput' />
+                    {
+                      this.props.chartType === 'bar'
+                        ?
+                      <Fragment>
+                        {
+                          this.props.horizontal
+                            ?
+                          <button className='customizationButton' onClick={this.handleChange} name='horizontal'>Switch to vertical bars</button>
+                            :
+                          <button className='customizationButton' onClick={this.handleChange} name='horizontal'>Switch to horizontal bars</button>
+                        }
+                      </Fragment>
+                        :
+                      null
+                    }
                   </Fragment>
                     :
                   null
                 }
             </div>
-            <div className='customizationCard right'>
+            <div className={(this.props.chartType === 'pie' || (this.props.chartType === 'bar' && this.props.horizontal)) ? 'customizationCardPie right' : 'customizationCard right'}>
               <h4 className='customizationHeader'>Line</h4>
               {
                 this.props.chartType === 'line'
@@ -135,7 +150,7 @@ class CustomizationFields extends Component {
                   :
                 <Fragment>
                   <label className='smallHead'> Colors </label>
-                  <div className='colorsContainer'>
+                  <div className={(this.props.chartType === 'pie' || (this.props.chartType === 'bar' && this.props.horizontal)) ? 'colorsContainerPie' : 'colorsContainer'}>
                     <input
                       onChange={this.handleChange}
                       type='checkbox'
@@ -242,21 +257,6 @@ class CustomizationFields extends Component {
               }
             </Fragment>
             {/*</form>*/}
-            {
-              this.props.chartType === 'bar'
-                ?
-              <Fragment>
-                {
-                  this.props.horizontal
-                    ?
-                  <button onClick={this.handleChange} name='horizontal'>Switch to vertical bars</button>
-                    :
-                  <button onClick={this.handleChange} name='horizontal'>Switch to horizontal bars</button>
-                }
-              </Fragment>
-                :
-              null
-            }
           </Fragment>
             :
           null

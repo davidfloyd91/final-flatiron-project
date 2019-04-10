@@ -61,19 +61,56 @@
   text-align: center;
 }
 
+.colorBox {
+  display: inline;
+  font-size: 9pt;
+  border-radius: 5px;
+  margin-left: 2px;
+  margin-right: 6px;
+}
+
+.colorsContainer {
+  width: 60%;
+  line-height: 18pt;
+  margin: 0 auto;
+}
+
+.colorsContainerPie {
+  width: 65%;
+  line-height: 18pt;
+  margin: 0 auto;
+}
+
 .container {
   margin: 15px auto;
   width: 85%;
 }
 
+.customizationButton {
+  width: 77%;
+  margin-top: 18px;
+}
+
 .customizationCard {
-  width: 200px;
+  width: 30%;
   border: solid;
   border-color: black;
   border-width: 1px;
   border-radius: 5px;
   height: 305px;
   text-align: center;
+  overflow-y: scroll;
+}
+
+.customizationCardPie {
+  width: 45%;
+  border: solid;
+  border-color: black;
+  border-width: 1px;
+  border-radius: 5px;
+  height: 305px;
+  text-align: center;
+  overflow-y: scroll;
 }
 
 .customizationHeader {
@@ -89,12 +126,18 @@
 
 .customizationPane {
   margin: 0 auto;
-  max-width: 80%;
+  width: 80%;
   height: 360px;
 }
 
 .customizationPaneHeader {
   text-align: center;
+}
+
+.customizationPanePie {
+  margin: 0 auto;
+  width: 47%;
+  height: 360px;
 }
 
 .left {
@@ -198,13 +241,7 @@
   margin-bottom: 2px;
 }
 
-.colorBox {
-  display: inline;
-  font-size: 9pt;
-  border-radius: 5px;
-  margin-left: 2px;
-  margin-right: 6px;
-}
+/* COLORS LIST */
 
 .lightBlue {
   color: #0080FF;
@@ -266,8 +303,4 @@
   background-color: #00FF80;
 }
 
-.colorsContainer {
-  width: 68%;
-  line-height: 18pt;
-  margin: 0 auto;
-}
+/* END COLORS LIST */
