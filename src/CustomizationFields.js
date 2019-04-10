@@ -56,108 +56,171 @@ class CustomizationFields extends Component {
                   <label htmlFor='radius' className='smallHead'> Point radius </label>
                   <input onChange={this.handleChange} name='radius' placeholder={this.props.radius} className='customizationInput' />
                   <label htmlFor='color' className='smallHead'> Color </label>
-                  <select name='color' onChange={this.handleChange}>
-                    <option value='#0080FF'>Light blue</option>
-                    <option value='#00FFFF'>Cyan</option>
-                    <option value='#0000FF'>Blue</option>
-                    <option value='#8000FF'>Purple</option>
-                    <option value='#FF00FF'>Magenta</option>
-                    <option value='#FF0080'>Red-pink</option>
-                    <option value='#FF0000'>Red</option>
-                    <option value='#FF8000'>Orange</option>
-                    <option value='#FFFF00'>Yellow</option>
-                    <option value='#80FF00'>Light green</option>
-                    <option value='#00FF00'>Green</option>
-                    <option value='#00FF80'>Weird green</option>
-                  </select>
+                  <div className='colorsContainer'>
+                    <input
+                      onChange={this.handleChange}
+                      type='radio'
+                      name='color'
+                      value='#0080FF'
+                      selected={this.props.color === '#0080FF'}
+                    /><div className='colorBox lightBlue'>FILLTEXT</div>
+                    <input
+                      onChange={this.handleChange}
+                      type='radio'
+                      name='color'
+                      value='#00FFFF'
+                    /><div className='colorBox cyan'>FILLTEXT</div>
+                    <input
+                      onChange={this.handleChange}
+                      type='radio'
+                      name='color'
+                      value='#0000FF'
+                    /><div className='colorBox blue'>FILLTEXT</div>
+                    <input
+                      onChange={this.handleChange}
+                      type='radio'
+                      name='color'
+                      value='#8000FF'
+                    /><div className='colorBox purple'>FILLTEXT</div>
+                    <input
+                      onChange={this.handleChange}
+                      type='radio'
+                      name='color'
+                      value='#FF00FF'
+                    /><div className='colorBox magenta'>FILLTEXT</div>
+                    <input
+                      onChange={this.handleChange}
+                      type='radio'
+                      name='color'
+                      value='#FF0080'
+                    /><div className='colorBox redPink'>FILLTEXT</div>
+                    <input
+                      onChange={this.handleChange}
+                      type='radio'
+                      name='color'
+                      value='#FF0000'
+                    /><div className='colorBox red'>FILLTEXT</div>
+                    <input
+                      onChange={this.handleChange}
+                      type='radio'
+                      name='color'
+                      value='#FF8000'
+                    /><div className='colorBox orange'>FILLTEXT</div>
+                    <input
+                      onChange={this.handleChange}
+                      type='radio'
+                      name='color'
+                      value='#FFFF00'
+                    /><div className='colorBox yellow'>FILLTEXT</div>
+                    <input
+                      onChange={this.handleChange}
+                      type='radio'
+                      name='color'
+                      value='#80FF00'
+                    /><div className='colorBox lightGreen'>FILLTEXT</div>
+                    <input
+                      onChange={this.handleChange}
+                      type='radio'
+                      name='color'
+                      value='#00FF00'
+                    /><div className='colorBox green'>FILLTEXT</div>
+                    <input
+                      onChange={this.handleChange}
+                      type='radio'
+                      name='color'
+                      value='#00FF80'
+                    /><div className='colorBox weirdGreen'>FILLTEXT</div>
+                  </div>
                 </Fragment>
                   :
                 <Fragment>
                   <label className='smallHead'> Colors </label>
-                  <input
-                    onChange={this.handleChange}
-                    type='checkbox'
-                    name='colors'
-                    value='#0080FF'
-                    checked={this.props.colors.includes('#0080FF')}
-                  />Light blue |
-                  <input
-                    onChange={this.handleChange}
-                    type='checkbox'
-                    name='colors'
-                    value='#00FFFF'
-                    checked={this.props.colors.includes('#00FFFF')}
-                  />Cyan |
-                  <input
-                    onChange={this.handleChange}
-                    type='checkbox'
-                    name='colors'
-                    value='#0000FF'
-                    checked={this.props.colors.includes('#0000FF')}
-                  />Blue |
-                  <input
-                    onChange={this.handleChange}
-                    type='checkbox'
-                    name='colors'
-                    value='#8000FF'
-                    checked={this.props.colors.includes('#8000FF')}
-                  />Purple |
-                  <input
-                    onChange={this.handleChange}
-                    type='checkbox'
-                    name='colors'
-                    value='#FF00FF'
-                    checked={this.props.colors.includes('#FF00FF')}
-                  />Magenta |
-                  <input
-                    onChange={this.handleChange}
-                    type='checkbox'
-                    name='colors'
-                    value='#FF0080'
-                    checked={this.props.colors.includes('#FF0080')}
-                  />Red-pink |
-                  <input
-                    onChange={this.handleChange}
-                    type='checkbox'
-                    name='colors'
-                    value='#FF0000'
-                    checked={this.props.colors.includes('#FF0000')}
-                  />Red |
-                  <input
-                    onChange={this.handleChange}
-                    type='checkbox'
-                    name='colors'
-                    value='#FF8000'
-                    checked={this.props.colors.includes('#FF8000')}
-                  />Orange |
-                  <input
-                    onChange={this.handleChange}
-                    type='checkbox'
-                    name='colors'
-                    value='#FFFF00'
-                    checked={this.props.colors.includes('#FFFF00')}
-                  />Yellow |
-                  <input
-                    onChange={this.handleChange}
-                    type='checkbox'
-                    name='colors'
-                    value='#80FF00'
-                    checked={this.props.colors.includes('#80FF00')}
-                  />Light green |
-                  <input
-                    onChange={this.handleChange}
-                    type='checkbox'
-                    name='colors'
-                    value='#00FF00'
-                    checked={this.props.colors.includes('#00FF00')}
-                  />Green |
-                  <input
-                    onChange={this.handleChange}
-                    type='checkbox'
-                    name='colors'
-                    value='#00FF80'
-                    checked={this.props.colors.includes('#00FF80')}
-                  />Weird green |
+                  <div className='colorsContainer'>
+                    <input
+                      onChange={this.handleChange}
+                      type='checkbox'
+                      name='colors'
+                      value='#0080FF'
+                      checked={this.props.colors.includes('#0080FF')}
+                    /><div className='colorBox lightBlue'>FILLTEXT</div>
+                    <input
+                      onChange={this.handleChange}
+                      type='checkbox'
+                      name='colors'
+                      value='#00FFFF'
+                      checked={this.props.colors.includes('#00FFFF')}
+                    /><div className='colorBox cyan'>FILLTEXT</div>
+                    <input
+                      onChange={this.handleChange}
+                      type='checkbox'
+                      name='colors'
+                      value='#0000FF'
+                      checked={this.props.colors.includes('#0000FF')}
+                    /><div className='colorBox blue'>FILLTEXT</div>
+                    <input
+                      onChange={this.handleChange}
+                      type='checkbox'
+                      name='colors'
+                      value='#8000FF'
+                      checked={this.props.colors.includes('#8000FF')}
+                    /><div className='colorBox purple'>FILLTEXT</div>
+                    <input
+                      onChange={this.handleChange}
+                      type='checkbox'
+                      name='colors'
+                      value='#FF00FF'
+                      checked={this.props.colors.includes('#FF00FF')}
+                    /><div className='colorBox magenta'>FILLTEXT</div>
+                    <input
+                      onChange={this.handleChange}
+                      type='checkbox'
+                      name='colors'
+                      value='#FF0080'
+                      checked={this.props.colors.includes('#FF0080')}
+                    /><div className='colorBox redPink'>FILLTEXT</div>
+                    <input
+                      onChange={this.handleChange}
+                      type='checkbox'
+                      name='colors'
+                      value='#FF0000'
+                      checked={this.props.colors.includes('#FF0000')}
+                    /><div className='colorBox red'>FILLTEXT</div>
+                    <input
+                      onChange={this.handleChange}
+                      type='checkbox'
+                      name='colors'
+                      value='#FF8000'
+                      checked={this.props.colors.includes('#FF8000')}
+                    /><div className='colorBox orange'>FILLTEXT</div>
+                    <input
+                      onChange={this.handleChange}
+                      type='checkbox'
+                      name='colors'
+                      value='#FFFF00'
+                      checked={this.props.colors.includes('#FFFF00')}
+                    /><div className='colorBox yellow'>FILLTEXT</div>
+                    <input
+                      onChange={this.handleChange}
+                      type='checkbox'
+                      name='colors'
+                      value='#80FF00'
+                      checked={this.props.colors.includes('#80FF00')}
+                    /><div className='colorBox lightGreen'>FILLTEXT</div>
+                    <input
+                      onChange={this.handleChange}
+                      type='checkbox'
+                      name='colors'
+                      value='#00FF00'
+                      checked={this.props.colors.includes('#00FF00')}
+                    /><div className='colorBox green'>FILLTEXT</div>
+                    <input
+                      onChange={this.handleChange}
+                      type='checkbox'
+                      name='colors'
+                      value='#00FF80'
+                      checked={this.props.colors.includes('#00FF80')}
+                    /><div className='colorBox weirdGreen'>FILLTEXT</div>
+                  </div>
                 </Fragment>
               }
             </div>
@@ -205,6 +268,7 @@ class CustomizationFields extends Component {
 
 function mapStateToProps(state) {
   return {
+    color: state.color,
     colors: state.colors,
     chartType: state.chartType,
     horizontal: state.horizontal,
