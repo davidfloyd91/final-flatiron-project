@@ -59,6 +59,10 @@ class UserInput extends Component {
           this.props.chartType[0]
             ?
           <Fragment>
+            <CustomizationFields
+              showTableToTrue={this.handleSubmit}
+              customize={this.props.customize}
+            />
             <Fragment>
               {
                 !this.props.input[0]
@@ -79,6 +83,7 @@ class UserInput extends Component {
                   <h5>Upload your CSV file below:</h5>
                   <CSVReader
                     onFileLoaded={this.handleForce}
+                    className='center'
                   />
                 </Fragment>
                   :
@@ -107,10 +112,7 @@ class UserInput extends Component {
                 null
               }
             </Fragment>
-            <CustomizationFields
-              showTableToTrue={this.handleSubmit}
-              customize={this.props.customize}
-            />
+            {/* hereherehereherehere */}
           </Fragment>
             :
           null

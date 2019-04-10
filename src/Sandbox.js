@@ -152,18 +152,6 @@ class Sandbox extends Component {
           <h4 className='center'>Edit {this.props.chartType} chart</h4>
             :
           <h4 className='center'>New {this.props.chartType} chart</h4>
-        }
-        <UserInput
-          changeChartType={this.chartType}
-          setGrid={this.setGrid}
-          customize={this.customize}
-        />
-        {
-          this.props.warn[0]
-            ?
-          <h5>{this.props.warn}</h5>
-            :
-          null
         } {
             this.props.chartType === 'line'
             ? <LineChart
@@ -193,6 +181,18 @@ class Sandbox extends Component {
               <button onClick={this.discardChart}>Discard chart</button>
             }
           </Fragment>
+            :
+          null
+        }
+        <UserInput
+          changeChartType={this.chartType}
+          setGrid={this.setGrid}
+          customize={this.customize}
+        />
+        {
+          this.props.warn[0]
+            ?
+          <h5>{this.props.warn}</h5>
             :
           null
         }

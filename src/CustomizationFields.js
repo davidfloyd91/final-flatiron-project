@@ -6,11 +6,6 @@ import { connect } from 'react-redux';
 // also you need to generally have fields here fill in with the current state values -- when you toggle between vertical and horizontal bars (maybe other situations), the fields are empty but the old values are still in state
 
 class CustomizationFields extends Component {
-  // make 'placeholder' value and move from onChange to onBlur and onSubmit?
-  handleSubmit = e => {
-    e.preventDefault();
-    this.props.showTableToTrue(e);
-  };
 
   handleChange = e => {
     this.props.customize(e);
@@ -24,40 +19,39 @@ class CustomizationFields extends Component {
           this.props.chartType[0]
             ?
           <Fragment>
-            {/*<form onSubmit={this.handleSubmit}>*/}
-              <div className={(this.props.chartType === 'pie' || (this.props.chartType === 'bar' && this.props.horizontal)) ? 'customizationCardPie left' : 'customizationCard left'}>
-                <h4 className='customizationHeader'>Labels</h4>
-                <label htmlFor='title' className='smallHead'>Title </label>
-                <input onChange={this.handleChange} name='title' value={this.props.title} className='customizationInput' />
-                {
-                  this.props.chartType !== 'pie'
-                    ?
-                  <Fragment>
-                    <label htmlFor='label' className='smallHead'> Label </label>
-                    <input onChange={this.handleChange} name='label' value={this.props.label} className='customizationInput' />
-                    <label htmlFor='xLabel' className='smallHead'> Horizontal axis label </label>
-                    <input onChange={this.handleChange} name='xLabel' value={this.props.xLabel} className='customizationInput' />
-                    <label htmlFor='yLabel' className='smallHead'> Vertical axis label </label>
-                    <input onChange={this.handleChange} name='yLabel' value={this.props.yLabel} className='customizationInput' />
-                    {
-                      this.props.chartType === 'bar'
-                        ?
-                      <Fragment>
-                        {
-                          this.props.horizontal
-                            ?
-                          <button className='customizationButton' onClick={this.handleChange} name='horizontal'>Switch to vertical bars</button>
-                            :
-                          <button className='customizationButton' onClick={this.handleChange} name='horizontal'>Switch to horizontal bars</button>
-                        }
-                      </Fragment>
-                        :
-                      null
-                    }
-                  </Fragment>
-                    :
-                  null
-                }
+            <div className={(this.props.chartType === 'pie' || (this.props.chartType === 'bar' && this.props.horizontal)) ? 'customizationCardPie left' : 'customizationCard left'}>
+              <h4 className='customizationHeader'>Labels</h4>
+              <label htmlFor='title' className='smallHead'>Title </label>
+              <input onChange={this.handleChange} name='title' value={this.props.title} className='customizationInput' />
+              {
+                this.props.chartType !== 'pie'
+                  ?
+                <Fragment>
+                  <label htmlFor='label' className='smallHead'> Label </label>
+                  <input onChange={this.handleChange} name='label' value={this.props.label} className='customizationInput' />
+                  <label htmlFor='xLabel' className='smallHead'> Horizontal axis label </label>
+                  <input onChange={this.handleChange} name='xLabel' value={this.props.xLabel} className='customizationInput' />
+                  <label htmlFor='yLabel' className='smallHead'> Vertical axis label </label>
+                  <input onChange={this.handleChange} name='yLabel' value={this.props.yLabel} className='customizationInput' />
+                  {
+                    this.props.chartType === 'bar'
+                      ?
+                    <Fragment>
+                      {
+                        this.props.horizontal
+                          ?
+                        <button className='customizationButton' onClick={this.handleChange} name='horizontal'>Switch to vertical bars</button>
+                          :
+                        <button className='customizationButton' onClick={this.handleChange} name='horizontal'>Switch to horizontal bars</button>
+                      }
+                    </Fragment>
+                      :
+                    null
+                  }
+                </Fragment>
+                  :
+                null
+              }
             </div>
             <div className={(this.props.chartType === 'pie' || (this.props.chartType === 'bar' && this.props.horizontal)) ? 'customizationCardPie right' : 'customizationCard right'}>
               <h4 className='customizationHeader'>Line</h4>
@@ -256,7 +250,6 @@ class CustomizationFields extends Component {
                 null
               }
             </Fragment>
-            {/*</form>*/}
           </Fragment>
             :
           null
