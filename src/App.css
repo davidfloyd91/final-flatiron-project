@@ -184,7 +184,7 @@
 }
 
 .table {
-  height: 210px;
+  max-height: 210px;
   width: 265px;
   overflow-y: scroll;
 }

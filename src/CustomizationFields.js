@@ -16,6 +16,7 @@ class CustomizationFields extends Component {
   };
 
   render() {
+    console.log(this.props.horizontal)
     return (
       <div className='customizationPane'>
         <h4 className='customizationPaneHeader'>Customize your chart</h4>
@@ -43,23 +44,23 @@ class CustomizationFields extends Component {
                   null
                 }
             </div>
-            <div className='customizationCard'>
-              <h4 className='customizationHeader'>Scales</h4>
+            <Fragment>
               {
-                this.props.horizontal
+                (this.props.chartType !== 'pie' && !this.props.horizontal)
                   ?
-                null
-                  :
-                <Fragment>
+                <div className='customizationCard'>
+                  <h4 className='customizationHeader'>Scales</h4>
                   <label htmlFor='min'> Vertical min </label>
                   <input onChange={this.handleChange} name='min' placeholder={this.props.min} />
                   <label htmlFor='max'> Vertical max </label>
                   <input onChange={this.handleChange} name='max' placeholder={this.props.max} />
                   <label htmlFor='ticks'> Tick value </label>
                   <input onChange={this.handleChange} name='ticks' />
-                </Fragment>
+                </div>
+                  :
+                null
               }
-            </div>
+            </Fragment>
             <div className='customizationCard'>
               <h4 className='customizationHeader'>Line</h4>
               {
