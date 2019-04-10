@@ -1,19 +1,33 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './App.css';
 
-export default class Nav extends Component {
-  render() {
-    return (
+class Nav extends Component {
+  toggleNew = () => {
+    this.props.dispatch({ type: 'TOGGLE_NEW' });
+ };
 
+ setEditToFalse = () => {
+   this.props.dispatch({ type: 'SET_DEFAULT' });
+ };
+
+  render() {
+    console.log(this.props.edit, this.props.new)
+    return (
       <div className='nav'>
         {
           this.props.new
             ?
-          <button className='navButton left' onClick={this.props.toggleNew}>SAVED CHARTS</button>
+          <button className='navButton left' onClick={this.toggleNew}>SAVED CHARTS</button>
             :
-          <button className='navButton left' onClick={this.props.toggleNew}>NEW CHART</button>
+          this.props.edit
+            ?
+          <button className='navButton left' onClick={this.setEditToFalse}>SAVED CHARTS</button>
+            :
+          <button className='navButton left' onClick={this.toggleNew}>NEW CHART</button>
         }
         <button className='navButton right'>
+          USERSTUFFIGUESS
         </button>
         <button className='deadNavButton'>
           SALP
@@ -22,3 +36,12 @@ export default class Nav extends Component {
     );
   };
 };
+
+function mapStateToProps(state) {
+  return {
+    edit: state.edit,
+    new: state.new
+  };
+};
+
+export default connect(mapStateToProps)(Nav);

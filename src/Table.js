@@ -6,7 +6,6 @@ let grid;
 
 class Table extends Component {
   componentDidMount() {
-    console.log(this.props.grid);
     grid = this.props.grid;
     let row = [];
 
@@ -31,7 +30,7 @@ class Table extends Component {
               id={x}
               x={x}
               y={this.props.y}
-              values={grid[x]/*should this be `row`?*/}
+              values={row}
               newValue={this.newValue}
               removeRow={this.removeRow}
             />

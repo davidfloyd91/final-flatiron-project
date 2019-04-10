@@ -6,17 +6,15 @@ import Nav from './Nav';
 import './App.css';
 
 class App extends Component {
-  toggleNew = () => {
-    this.props.dispatch({
-      type: 'TOGGLE_NEW'
-    });
- };
-
   render() {
     return (
       <div className='container'>
-        <Nav new={this.props.new} toggleNew={this.toggleNew} />
-        {(this.props.new || this.props.edit)? <Sandbox /> : <Dashboard />}
+        <Nav />
+        {
+          (this.props.new || this.props.edit)
+          ? <Sandbox />
+          : <Dashboard />
+        }
       </div>
     );
   };
