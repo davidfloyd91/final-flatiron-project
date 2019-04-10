@@ -74,13 +74,13 @@ class Table extends Component {
 
   render() {
     return (
-      <Fragment>
+      <div className='center'>
         <h5 className='tableHead'>Labels</h5><h5 className='tableHead'>Values</h5>
         <div className='table'>
           {this.renderRows()}
         </div>
         <button onClick={this.addRow}>Add a row</button>
-      </Fragment>
+      </div>
     );
   };
 };

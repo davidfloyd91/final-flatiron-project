@@ -14,7 +14,6 @@ class Sandbox extends Component {
   };
 
   discardChart = () => {
-    // hacky but looks fine
     this.props.dispatch({ type: 'SET_DEFAULT' });
     this.props.dispatch({ type: 'TOGGLE_NEW' });
   };
@@ -110,7 +109,6 @@ class Sandbox extends Component {
     let name = e.target.name;
     let value = e.target.value;
 
-    // so many of these could probably be abstracted
     if ((name === 'min') &&
     (isNaN(value) || value === '' || value.match(/\s+/))) {
       this.props.dispatch({ type: 'SET_MIN', payload: -10 });

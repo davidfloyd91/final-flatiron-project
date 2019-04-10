@@ -121,7 +121,6 @@
 .customizationInput {
   width: 75%;
   text-align: center;
-  /* border-radius: 5px; */
 }
 
 .customizationPane {
@@ -138,6 +137,11 @@
   margin: 0 auto;
   width: 47%;
   height: 360px;
+}
+
+.danger {
+  color: #FF0000;
+  font-weight: bold;
 }
 
 .left {
@@ -222,8 +226,9 @@
 
 .table {
   max-height: 220px;
-  width: 265px;
+  width: 275px;
   overflow-y: scroll;
+  margin: 0 auto;
 }
 
 .tableHead {

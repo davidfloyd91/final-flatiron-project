@@ -83,7 +83,6 @@ class UserInput extends Component {
                   <h5>Upload your CSV file below:</h5>
                   <CSVReader
                     onFileLoaded={this.handleForce}
-                    className='center'
                   />
                 </Fragment>
                   :
