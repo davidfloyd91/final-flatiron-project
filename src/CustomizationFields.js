@@ -16,7 +16,6 @@ class CustomizationFields extends Component {
   };
 
   render() {
-    console.log(this.props.horizontal)
     return (
       <div className='customizationPane'>
         <h4 className='customizationPaneHeader'>Customize your chart</h4>
@@ -28,17 +27,17 @@ class CustomizationFields extends Component {
               <div className='customizationCard left'>
                 <h4 className='customizationHeader'>Labels</h4>
                 <label htmlFor='title'>Title </label>
-                <input onChange={this.handleChange} name='title' />
+                <input onChange={this.handleChange} name='title' value={this.props.title} />
                 {
                   this.props.chartType !== 'pie'
                     ?
                   <Fragment>
                     <label htmlFor='label'> Label </label>
-                    <input onChange={this.handleChange} name='label' />
+                    <input onChange={this.handleChange} name='label' value={this.props.label} />
                     <label htmlFor='xLabel'> Horizontal axis label </label>
-                    <input onChange={this.handleChange} name='xLabel' />
+                    <input onChange={this.handleChange} name='xLabel' value={this.props.xLabel} />
                     <label htmlFor='yLabel'> Vertical axis label </label>
-                    <input onChange={this.handleChange} name='yLabel' />
+                    <input onChange={this.handleChange} name='yLabel' value={this.props.yLabel} />
                   </Fragment>
                     :
                   null
@@ -55,7 +54,7 @@ class CustomizationFields extends Component {
                   <label htmlFor='max'> Vertical max </label>
                   <input onChange={this.handleChange} name='max' placeholder={this.props.max} />
                   <label htmlFor='ticks'> Tick value </label>
-                  <input onChange={this.handleChange} name='ticks' />
+                  <input onChange={this.handleChange} name='ticks' placeholder={this.props.ticks} />
                 </div>
                   :
                 null
@@ -206,9 +205,14 @@ function mapStateToProps(state) {
     colors: state.colors,
     chartType: state.chartType,
     horizontal: state.horizontal,
+    label: state.label,
     max: state.max,
     min: state.min,
     tension: state.tension,
+    ticks: state.ticks,
+    title: state.title,
+    xLabel: state.xLabel,
+    yLabel: state.yLabel
   };
 };
 

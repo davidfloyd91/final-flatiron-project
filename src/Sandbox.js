@@ -112,16 +112,16 @@ class Sandbox extends Component {
 
     // so many of these could probably be abstracted
     if ((name === 'min') &&
-    (isNaN(value) || value === '')) {
+    (isNaN(value) || value === '' || value.match(/\s+/))) {
       this.props.dispatch({ type: 'SET_MIN', payload: -10 });
     } else if ((name === 'max') &&
-    (isNaN(value) || value === '')) {
+    (isNaN(value) || value === '' || value.match(/\s+/))) {
       this.props.dispatch({ type: 'SET_MAX', payload: 10 });
     } else if ((name === 'ticks') &&
-    (isNaN(value) || value === '')) {
+    (isNaN(value) || value === '' || value.match(/\s+/))) {
       this.props.dispatch({ type: 'SET_TICKS', payload: 0 });
     } else if ((name === 'tension') &&
-    (isNaN(value) || value === '')) {
+    (isNaN(value) || value === '' || value.match(/\s+/))) {
       this.props.dispatch({ type: 'SET_TENSION', payload: 0.4 });
     } else if (name === 'colors') {
       if (e.target.checked) {
