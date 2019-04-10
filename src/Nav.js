@@ -28,7 +28,7 @@ class Nav extends Component {
         <button className='navButton right'>
           USERSTUFFIGUESS
         </button>
-        <button className='deadNavButton'>
+        <button className='navButtonDead'>
           SALP
         </button>
       </div>

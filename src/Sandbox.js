@@ -144,7 +144,6 @@ class Sandbox extends Component {
   };
 
   render() {
-    console.log(!!this.props.chartType[0])
     return (
       <div className='container'>
         {

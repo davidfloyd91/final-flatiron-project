@@ -38,26 +38,6 @@
   }
 }
 
-.container {
-  margin: 15px auto;
-  width: 85%;
-}
-
-.row {
-  display: block;
-}
-
-.cell {
-  display: inline;
-}
-
-.table-head {
-  display: inline-block;
-  width: 131px;
-  padding-left: 1px;
-  margin-bottom: 2px;
-}
-
 .card {
   width: 243px;
   display: inline-block;
@@ -72,38 +52,52 @@
   cursor: pointer;
 }
 
-.previewImg {
-  border-color: black;
-  border: solid;
-  border-width: 1px;
-  width: 125px;
-  border-radius: 5px;
-}
-
-.previewContainer {
-  height: 170px;
-  width: 100%;
-  white-space: nowrap;
-  overflow-x: auto;
-  overflow-y: hidden;
-  display: inline-block;
-}
-
-.previewHeader {
-  height: 8px;
-  position: relative;
-  top: 0;
-}
-
-.previewImgContainer {
-  position: relative;
-  margin: 25px auto auto auto;
-  width: 150px;
+.cell {
+  display: inline;
 }
 
 .center {
   margin: 0 auto;
   text-align: center;
+}
+
+.container {
+  margin: 15px auto;
+  width: 85%;
+}
+
+.customizationCard {
+  width: 200px;
+  border: solid;
+  border-color: black;
+  border-width: 1px;
+  border-radius: 5px;
+  height: 280px;
+  text-align: center;
+}
+
+.customizationHeader {
+  margin: 20px auto;
+  text-align: center;
+}
+
+.customizationInput {
+  width: 75%;
+  text-align: center;
+}
+
+.customizationPane {
+  margin: 0 auto;
+  max-width: 80%;
+  height: 360px;
+}
+
+.customizationPaneHeader {
+  text-align: center;
+}
+
+.left {
+  float: left;
 }
 
 .nav {
@@ -129,7 +123,7 @@
   cursor: pointer;
 }
 
-.deadNavButton {
+.navButtonDead {
   position: relative;
   top: 0px;
   height: 50px;
@@ -145,46 +139,60 @@
   font-size: 17pt;
 }
 
-.right {
-  float: right
-}
-
-.left {
-  float: left
-}
-
-.customizationCard {
-  width: 233.3px;
-  border: solid;
-  border-color: black;
-  border-width: 1px;
-  border-radius: 5px;
-  height: 280px;
-  border: 25px auto;
+.previewContainer {
+  height: 170px;
+  width: 100%;
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
   display: inline-block;
-  margin: 0px 8.8px;
-  text-align: center;
 }
 
-.customizationHeader {
-  margin: 20px auto;
-  text-align: center;
+.previewHeader {
+  height: 8px;
+  position: relative;
+  top: 0;
 }
 
-.customizationPane {
-  column-count: 3;
-  column-width: 250px;
-  column-gap: 25px;
-  height: 415px;
+.previewImg {
+  border-color: black;
+  border: solid;
+  border-width: 1px;
+  width: 125px;
+  border-radius: 5px;
 }
 
-.customizationPaneHeader {
-  column-span: all;
-  text-align: center;
+.previewImgContainer {
+  position: relative;
+  margin: 25px auto auto auto;
+  width: 150px;
+}
+
+.right {
+  float: right;
+}
+
+.row {
+  display: block;
 }
 
 .table {
-  max-height: 210px;
+  max-height: 220px;
   width: 265px;
   overflow-y: scroll;
+}
+
+.tableHead {
+  display: inline-block;
+  width: 131px;
+  padding-left: 1px;
+  margin-bottom: 2px;
+}
+
+.smallHead {
+  font-weight: bold;
+  font-size: 9pt;
+  display: block;
+  margin-top: 6px;
+  margin-bottom: 2px;
 }
