@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import ChartPreview from './ChartPreview';
 import UserChart from './UserChart';
+import EmbedCode from './EmbedCode';
 import './App.css';
 
 class Dashboard extends Component {
@@ -149,6 +150,7 @@ class Dashboard extends Component {
               <UserChart />
               <button onClick={this.editChart}>Edit chart</button>
               <button onClick={this.deleteChart}>Delete chart</button>
+              <EmbedCode />
             </Fragment>
               :
             <h5 className='center'>Click on a chart above to display it here</h5>
