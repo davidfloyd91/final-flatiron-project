@@ -14,28 +14,28 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var LineGraph = function (_React$Component) {
-  _inherits(LineGraph, _React$Component);
+var Funnnn = function (_React$Component) {
+  _inherits(Funnnn, _React$Component);
 
-  function LineGraph() {
+  function Funnnn() {
     var _ref;
 
     var _temp, _this, _ret;
 
-    _classCallCheck(this, LineGraph);
+    _classCallCheck(this, Funnnn);
 
     for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = LineGraph.__proto__ || Object.getPrototypeOf(LineGraph)).call.apply(_ref, [this].concat(args))), _this), _this.chartRef = React.createRef(), _temp), _possibleConstructorReturn(_this, _ret);
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Funnnn.__proto__ || Object.getPrototypeOf(Funnnn)).call.apply(_ref, [this].concat(args))), _this), _this.chartRef = React.createRef(), _temp), _possibleConstructorReturn(_this, _ret);
   }
 
-  _createClass(LineGraph, [{
+  _createClass(Funnnn, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var myChartRef = this.chartRef.current.getContext("2d");
-      new Chart(myChartRef, { type: "line", data: { labels: ["Jan", "Feb", "March"], datasets: [{ label: "Sales", data: [86, 67, 91] }] }, options: {} });
+      new Chart(myChartRef, { type: "pie", data: { labels: ["Jan", "Feb", "March"], datasets: [{ data: [86, 67, 91] }] } });
     }
   }, {
     key: "render",
@@ -51,10 +51,10 @@ var LineGraph = function (_React$Component) {
     }
   }]);
 
-  return LineGraph;
+  return Funnnn;
 }(React.Component);
 
 ;
 
 var domContainer = document.querySelector('#embed_container');
-ReactDOM.render(React.createElement(LineGraph, null), domContainer);
+ReactDOM.render(React.createElement(Funnnn, null), domContainer);

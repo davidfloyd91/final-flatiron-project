@@ -6,12 +6,12 @@
 // $ npm install babel-cli@6 babel-preset-react-app@3
 // $ npx babel --watch embed --out-dir . --presets react-app/prod
 
-class LineGraph extends React.Component {
+class Funnnn extends React.Component {
   chartRef = React.createRef();
 
   componentDidMount() {
     const myChartRef = this.chartRef.current.getContext("2d");
-    new Chart(myChartRef, {type: "line", data: {labels: ["Jan", "Feb", "March"], datasets: [{label: "Sales", data: [86, 67, 91]}]}, options: {}});
+    new Chart(myChartRef, {type: "pie", data: {labels: ["Jan", "Feb", "March"], datasets: [{data: [86, 67, 91]}]}});
   };
 
   render() {
@@ -27,4 +27,4 @@ class LineGraph extends React.Component {
 };
 
 let domContainer = document.querySelector('#embed_container');
-ReactDOM.render(<LineGraph />, domContainer);
+ReactDOM.render(<Funnnn />, domContainer);

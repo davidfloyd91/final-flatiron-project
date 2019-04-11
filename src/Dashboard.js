@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import ChartPreview from './ChartPreview';
 import UserChart from './UserChart';
+import EmbedCode from './EmbedCode'
 import './App.css';
 
 class Dashboard extends Component {
@@ -141,6 +142,7 @@ class Dashboard extends Component {
           {this.props.charts ? this.renderPreviews() : null}
         </div>
         <div className='container'>
+          <Fragment>
           {
             this.props.chartId > 0
               ?
@@ -152,6 +154,8 @@ class Dashboard extends Component {
               :
             <h5 className='center'>Click on a chart above to display it here</h5>
           }
+          </Fragment>
+          <EmbedCode />
         </div>
       </div>
     );
