@@ -7,11 +7,15 @@ class UserChart extends Component {
   chartRef = React.createRef();
 
   componentDidMount() {
-    this.buildChart();
+    if (this.props.chart) {
+      this.buildChart();
+    };
   };
 
   componentDidUpdate() {
-    this.buildChart();
+    if (this.props.chart) {
+      this.buildChart();
+    };
   };
 
   getDisplayData = () => {
@@ -38,14 +42,20 @@ class UserChart extends Component {
   };
 
   render() {
-    return (
-      <div>
-        <canvas
-          id="myChart"
-          ref={this.chartRef}
-        />
-      </div>
-    );
+    if (this.props.chart) {
+      return (
+        <div>
+          <canvas
+            id="myChart"
+            ref={this.chartRef}
+          />
+          <button onClick={this.props.editChart}>Edit chart</button>
+          <button onClick={this.props.deleteChart}>Delete chart</button>
+        </div>
+      );
+    } else {
+      return null;
+    };
   };
 };
 

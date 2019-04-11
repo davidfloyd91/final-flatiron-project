@@ -147,9 +147,7 @@ class Dashboard extends Component {
             this.props.chartId > 0
               ?
             <Fragment>
-              <UserChart />
-              <button onClick={this.editChart}>Edit chart</button>
-              <button onClick={this.deleteChart}>Delete chart</button>
+              <UserChart editChart={this.editChart} deleteChart={this.deleteChart} />
               <EmbedCode />
             </Fragment>
               :

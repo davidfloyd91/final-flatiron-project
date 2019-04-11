@@ -7,6 +7,10 @@ class Nav extends Component {
     this.props.dispatch({ type: 'TOGGLE_NEW' });
  };
 
+ clearChart = () => {
+   this.props.dispatch({ type: 'SET_CHART', payload: null });
+ };
+
  setEditToFalse = () => {
    this.props.dispatch({ type: 'SET_DEFAULT' });
  };
@@ -23,7 +27,7 @@ class Nav extends Component {
             ?
           <button className='navButton left' onClick={this.setEditToFalse}>SAVED CHARTS</button>
             :
-          <button className='navButton left' onClick={this.toggleNew}>NEW CHART</button>
+          <button className='navButton left' onClick={() => {this.toggleNew(); this.clearChart();}}>NEW CHART</button>
         }
         <button className='navButtonRight right'>
           USERSTUFFIGUESS
