@@ -18,9 +18,12 @@ class Sandbox extends Component {
     this.props.dispatch({ type: 'TOGGLE_NEW' });
   };
 
-  updateChart = data => {
+  updateChart = (saveData, embedData) => {
     let okay = false;
     const id = this.props.chart.id;
+
+    console.log(saveData)
+    // it posts [object Object] for both saveData and embedData
 
     fetch(`http://localhost:3000/charts/${id}`, {
       method: 'PATCH',
@@ -28,7 +31,8 @@ class Sandbox extends Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        data: data
+        data: saveData,
+        embed: "<iframe srcdoc=\"<div id='embed_container'></div><script src='https://unpkg.com/react@16/umd/react.development.js' crossorigin></script><script src='https://unpkg.com/react-dom@16/umd/react-dom.development.js' crossorigin></script><script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js' crossorigin></script><canvas id='chart' width='800' height='450'></canvas><script>new Chart(document.getElementById('chart'), {" + saveData + "});</script>\"></iframe>"
       })
     })
     .then(r => {
@@ -46,8 +50,10 @@ class Sandbox extends Component {
     });
   };
 
-  saveChart = data => {
+  saveChart = (saveData, embedData) => {
     let okay = false;
+
+    console.log(embedData)
 
     fetch('http://localhost:3000/charts', {
       method: 'POST',
@@ -57,7 +63,23 @@ class Sandbox extends Component {
       },
       body: JSON.stringify({
         user_id: 1,
-        data: data
+        data: saveData,
+        embed: `
+          <iframe srcdoc="
+              <div id='embed_container'></div>
+
+              <script src='https://unpkg.com/react@16/umd/react.development.js' crossorigin></script>
+              <script src='https://unpkg.com/react-dom@16/umd/react-dom.development.js' crossorigin></script>
+              <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js' crossorigin></script>
+
+              <canvas id='chart' width='800' height='450'></canvas>
+              <script>
+              new Chart(document.getElementById('chart'), {
+                ${embedData}
+              });
+          </script>"
+          ></iframe>
+        `
       })
     })
     .then(r => {

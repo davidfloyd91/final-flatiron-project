@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import Chart from 'chart.js';
-let newChart, saveData;
+let newChart, saveData, fullData;
 
 class LineChart extends Component {
   chartRef = React.createRef();
@@ -21,7 +21,7 @@ class LineChart extends Component {
       newChart.destroy();
     };
 
-    let chartData, color, fullData, label, labels, max, min, radius, tension, ticks, title, xLabel, yLabel;
+    let chartData, color, label, labels, max, min, radius, tension, ticks, title, xLabel, yLabel;
 
     chartData = this.props.data.map(a => {
       return parseFloat(a[1]);
@@ -116,11 +116,11 @@ class LineChart extends Component {
           this.props.edit
             ?
           <Fragment>
-            <button onClick={() => this.props.updateChart(saveData)}>Save changes</button>
-            <button onClick={() => this.props.saveChart(saveData)}>Save as new chart</button>
+            <button onClick={() => this.props.updateChart(saveData, fullData)}>Save changes</button>
+            <button onClick={() => this.props.saveChart(saveData, fullData)}>Save as new chart</button>
           </Fragment>
             :
-          <button onClick={() => this.props.saveChart(saveData)}>Save chart</button>
+          <button onClick={() => this.props.saveChart(saveData, fullData)}>Save chart</button>
         }
         {/*<button onClick={this.props.discardChart}>Discard chart</button>*/}
       </div>

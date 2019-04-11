@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import Chart from 'chart.js';
-let newChart, saveData;
+let newChart, saveData, fullData;
 
 class PieChart extends Component {
   chartRef = React.createRef();
@@ -21,7 +21,7 @@ class PieChart extends Component {
       newChart.destroy();
     };
 
-    let chartData, colors, fullData, labels, title;
+    let chartData, colors, labels, title;
 
     labels = this.props.data.map(a => {
       return a[0];
@@ -91,11 +91,11 @@ class PieChart extends Component {
           this.props.edit
             ?
           <Fragment>
-            <button onClick={() => this.props.updateChart(saveData)}>Save changes</button>
-            <button onClick={() => this.props.saveChart(saveData)}>Save as new chart</button>
+            <button onClick={() => this.props.updateChart(saveData, fullData)}>Save changes</button>
+            <button onClick={() => this.props.saveChart(saveData, fullData)}>Save as new chart</button>
           </Fragment>
             :
-          <button onClick={() => this.props.saveChart(saveData)}>Save chart</button>
+          <button onClick={() => this.props.saveChart(saveData, fullData)}>Save chart</button>
         }
       </div>
     );
