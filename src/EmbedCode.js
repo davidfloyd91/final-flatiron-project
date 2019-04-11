@@ -6,22 +6,22 @@ class EmbedCode extends Component {
     return (
       <div>
         <p>
-        {/*<!DOCTYPE html>
-        <html lang="en" dir="ltr">
-          <head>
-            <meta charset="utf-8">
-            <title></title>
-          </head>
-          <body>
-            <div id="embed_container"></div>
+        &lt;!DOCTYPE html&gt;
+        &lt;html lang="en" dir="ltr"&gt;
+          &lt;head&gt;
+            &lt;meta charset="utf-8"&gt;
+            &lt;title&gt;&lt;/title&gt;
+          &lt;/head&gt;
+          &lt;body&gt;
+            &lt;div id="embed_container"&gt;&lt;/div&gt;
 
-            <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-            <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js" crossorigin></script>
+            &lt;script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin&gt;&lt;/script&gt;
+            &lt;script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin&gt;&lt;/script&gt;
+            &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js" crossorigin&gt;&lt;/script&gt;
 
-            <script type="text/javascript" src="Embed.js"></script>
-          </body>
-        </html>*/}
+            &lt;script type="text/javascript" src="Embed.js"&gt;&lt;/script&gt;
+          &lt;/body&gt;
+        &lt;/html&gt;
         </p>
       </div>
     );
