@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-let width, height;
 
 class EmbedCode extends Component {
   data = () => {
