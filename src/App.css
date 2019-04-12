@@ -152,15 +152,17 @@
 
 .embedCode {
   width: 100%;
-  margin: 0 auto;
+  margin: 30px auto;
   height: 70px;
   overflow-y: scroll;
   font-size: 10pt;
   border-color: black;
-  border-style: solid;
-  border-width: 0.25px;
+  border: solid;
+  border-width: 0.6px;
   border-radius: 5px;
   overflow-wrap: break-word;
+  font-family: monospace;
+  cursor: pointer;
 }
 
 .left {
