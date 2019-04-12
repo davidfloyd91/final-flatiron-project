@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-let copyData;
 
 class EmbedCode extends Component {
   embedRef = React.createRef();
@@ -13,16 +12,13 @@ class EmbedCode extends Component {
   };
 
   handleClick = () => {
-    const embed = this.embedRef;
-    embed.select();
+    this.embedRef.select();
     document.execCommand('copy');
   };
 
   render() {
     if (this.data()) {
-      let showData = `&lt;iframe srcdoc="&lt;div id='embed_container'&gt;&lt;/div&gt;&lt;script src='https://unpkg.com/react@16/umd/react.development.js' crossorigin&gt;&lt;/script&gt;&lt;script src='https://unpkg.com/react-dom@16/umd/react-dom.development.js' crossorigin&gt;&lt;/script&gt;&lt;script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js' crossorigin&gt;&lt;/script&gt;&lt;canvas id='bar-chart' width='1000px' height='800px'&gt;&lt;/canvas&gt;&lt;script&gt;new Chart(document.getElementById('bar-chart'),${this.data()});&lt;/script&gt;" width="1000px" height="800px"&gt;&lt;/iframe&gt;`
-
-      copyData = showData.replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+      const copyData = `<iframe srcdoc="<div id='embed_container'></div><script src='https://unpkg.com/react@16/umd/react.development.js' crossorigin></script><script src='https://unpkg.com/react-dom@16/umd/react-dom.development.js' crossorigin></script><script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js' crossorigin></script><canvas id='bar-chart' width='1000px' height='800px'></canvas><script>new Chart(document.getElementById('bar-chart'),${this.data()});</script>" width="1000px" height="800px"></iframe>`
 
       return (
         <textarea className='embedCode' value={copyData} onClick={this.handleClick} ref={code => {this.embedRef = code;}} />
