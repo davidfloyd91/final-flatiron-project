@@ -9,10 +9,6 @@ class EmbedCode extends Component {
     if (this.props.chart) {
       let data = this.props.chart.data;
       if (data.data._datasets) {
-      //   if (data.data.datasets) {
-      //     delete data.data.datasets;
-        // };
-      //   console.log(data.data)
         embedCode = JSON.stringify(data).replace(/"/g, '\'').replace('_datasets', 'datasets');
       } else if (data.data.datasets) {
         let datasets = data.data.datasets;

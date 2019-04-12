@@ -10,8 +10,8 @@ import { Provider } from 'react-redux';
 
 const defaultState = {
   chartType: '',
-  color: '#0080FF',
-  colors: ['#FF0000', '#FF8000', '#FFFF00', '#00FF00', '#0080FF', '#8000FF'],
+  color: '#3c40c6',
+  colors: ['#ff3f34', '#ffa801', '#ffd32a', '#05c46b', '#0fbcf9', '#575fcf'],
   columns: 2,
   edit: false,
   grid: [],
