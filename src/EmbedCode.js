@@ -9,12 +9,12 @@ class EmbedCode extends Component {
     if (this.props.chart) {
       let data = this.props.chart.data;
       if (data.data._datasets) {
-        embedCode = JSON.stringify(data).replace(/"/g, '\'').replace('_datasets', 'datasets');
+        embedCode = JSON.stringify(data).replace(/'/g, '\\\'').replace(/"/g, '\'').replace('_datasets', 'datasets');
       } else if (data.data.datasets) {
         let datasets = data.data.datasets;
         data.data._datasets = datasets;
         delete data.data.dastasets;
-        embedCode = JSON.stringify(data).replace(/"/g, '\'').replace('_datasets', 'datasets');
+        embedCode = JSON.stringify(data).replace(/'/g, '\\\'').replace(/"/g, '\'').replace('_datasets', 'datasets');
       };
     };
 
