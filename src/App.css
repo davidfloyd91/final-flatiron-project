@@ -152,7 +152,7 @@
 
 .embedCode {
   width: 100%;
-  margin: 30px auto;
+  margin: 0 auto 50px auto;
   height: 70px;
   overflow-y: scroll;
   font-size: 10pt;
