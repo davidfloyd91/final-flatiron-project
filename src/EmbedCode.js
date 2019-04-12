@@ -5,10 +5,24 @@ class EmbedCode extends Component {
   embedRef = React.createRef();
 
   data = () => {
+    let embedCode;
     if (this.props.chart) {
       let data = this.props.chart.data;
-      return JSON.stringify(data).replace(/"/g, '\'').replace('_datasets', 'datasets');
+      if (data.data._datasets) {
+      //   if (data.data.datasets) {
+      //     delete data.data.datasets;
+        // };
+      //   console.log(data.data)
+        embedCode = JSON.stringify(data).replace(/"/g, '\'').replace('_datasets', 'datasets');
+      } else if (data.data.datasets) {
+        let datasets = data.data.datasets;
+        data.data._datasets = datasets;
+        delete data.data.dastasets;
+        embedCode = JSON.stringify(data).replace(/"/g, '\'').replace('_datasets', 'datasets');
+      };
     };
+
+    return embedCode;
   };
 
   handleClick = () => {

@@ -59,7 +59,6 @@ class CustomizationFields extends Component {
                 this.props.chartType === 'line'
                   ?
                 <Fragment>
-                  {/* taken from https://www.w3schools.com/colors/colors_wheels.asp */}
                   <label htmlFor='tension' className='smallHead'> Line tension </label>
                   <input onChange={this.handleChange} name='tension' placeholder={this.props.tension} className='customizationInput' />
                   <label htmlFor='radius' className='smallHead'> Point radius </label>
@@ -70,165 +69,242 @@ class CustomizationFields extends Component {
                       onChange={this.handleChange}
                       type='radio'
                       name='color'
-                      value='#0080FF'
-                      selected={this.props.color === '#0080FF'}
-                    /><div className='colorBox lightBlue'>FILLTEXT</div>
+                      value='#05c46b'
+                    /><div className='colorBox highlighterPink'>FILLTEXT</div>
                     <input
                       onChange={this.handleChange}
                       type='radio'
                       name='color'
-                      value='#00FFFF'
-                    /><div className='colorBox cyan'>FILLTEXT</div>
+                      value='#575fcf'
+                    /><div className='colorBox darkPeriwinkle'>FILLTEXT</div>
                     <input
                       onChange={this.handleChange}
                       type='radio'
                       name='color'
-                      value='#0000FF'
-                    /><div className='colorBox blue'>FILLTEXT</div>
+                      value='#4bcffa'
+                    /><div className='colorBox megaman'>FILLTEXT</div>
                     <input
                       onChange={this.handleChange}
                       type='radio'
                       name='color'
-                      value='#8000FF'
-                    /><div className='colorBox purple'>FILLTEXT</div>
+                      value='#34e7e4'
+                    /><div className='colorBox freshTurquoise'>FILLTEXT</div>
                     <input
                       onChange={this.handleChange}
                       type='radio'
                       name='color'
-                      value='#FF00FF'
-                    /><div className='colorBox magenta'>FILLTEXT</div>
+                      value='#0be881'
+                    /><div className='colorBox mintGreen'>FILLTEXT</div>
                     <input
                       onChange={this.handleChange}
                       type='radio'
                       name='color'
-                      value='#FF0080'
-                    /><div className='colorBox redPink'>FILLTEXT</div>
+                      value='#f53b57'
+                    /><div className='colorBox sizzlingRed'>FILLTEXT</div>
                     <input
                       onChange={this.handleChange}
                       type='radio'
                       name='color'
-                      value='#FF0000'
-                    /><div className='colorBox red'>FILLTEXT</div>
+                      value='#3c40c6'
+                    /><div className='colorBox freeSpeechBlue'>FILLTEXT</div>
                     <input
                       onChange={this.handleChange}
                       type='radio'
                       name='color'
-                      value='#FF8000'
-                    /><div className='colorBox orange'>FILLTEXT</div>
+                      value='#0fbcf9'
+                    /><div className='colorBox spiroDiscoBall'>FILLTEXT</div>
                     <input
                       onChange={this.handleChange}
                       type='radio'
                       name='color'
-                      value='#FFFF00'
-                    /><div className='colorBox yellow'>FILLTEXT</div>
+                      value='#00d8d6'
+                    /><div className='colorBox jadeDust'>FILLTEXT</div>
                     <input
                       onChange={this.handleChange}
                       type='radio'
                       name='color'
-                      value='#80FF00'
-                    /><div className='colorBox lightGreen'>FILLTEXT</div>
+                      value='#05c46b'
+                    /><div className='colorBox greenTeal'>FILLTEXT</div>
                     <input
                       onChange={this.handleChange}
                       type='radio'
                       name='color'
-                      value='#00FF00'
-                    /><div className='colorBox green'>FILLTEXT</div>
+                      value='#ffc048'
+                    /><div className='colorBox narenjiOrange'>FILLTEXT</div>
                     <input
                       onChange={this.handleChange}
                       type='radio'
                       name='color'
-                      value='#00FF80'
-                    /><div className='colorBox weirdGreen'>FILLTEXT</div>
+                      value='#ffdd59'
+                    /><div className='colorBox yrielYellow'>FILLTEXT</div>
+                    <input
+                      onChange={this.handleChange}
+                      type='radio'
+                      name='color'
+                      value='#ff5e57'
+                    /><div className='colorBox sunsetOrange'>FILLTEXT</div>
+                    <input
+                      onChange={this.handleChange}
+                      type='radio'
+                      name='color'
+                      value='#ffa801'
+                    /><div className='colorBox chromeYellow'>FILLTEXT</div>
+                    <input
+                      onChange={this.handleChange}
+                      type='radio'
+                      name='color'
+                      value='#ffd32a'
+                    /><div className='colorBox vibrantYellow'>FILLTEXT</div>
+                    <input
+                      onChange={this.handleChange}
+                      type='radio'
+                      name='color'
+                      value='#ff3f34'
+                    /><div className='colorBox redOrange'>FILLTEXT</div>
+                    <input
+                      onChange={this.handleChange}
+                      type='radio'
+                      name='color'
+                      value='#808e9b'
+                    /><div className='colorBox londonSquare'>FILLTEXT</div>
+                    <input
+                      onChange={this.handleChange}
+                      type='radio'
+                      name='color'
+                      value='#d2dae2'
+                    /><div className='colorBox hintOfElusiveBlue'>FILLTEXT</div>
                   </div>
                 </Fragment>
                   :
                 <Fragment>
                   <label className='smallHead'> Colors </label>
                   <div className={(this.props.chartType === 'pie' || (this.props.chartType === 'bar' && this.props.horizontal)) ? 'colorsContainerPie' : 'colorsContainer'}>
-                    <input
-                      onChange={this.handleChange}
-                      type='checkbox'
-                      name='colors'
-                      value='#0080FF'
-                      checked={this.props.colors.includes('#0080FF')}
-                    /><div className='colorBox lightBlue'>FILLTEXT</div>
-                    <input
-                      onChange={this.handleChange}
-                      type='checkbox'
-                      name='colors'
-                      value='#00FFFF'
-                      checked={this.props.colors.includes('#00FFFF')}
-                    /><div className='colorBox cyan'>FILLTEXT</div>
-                    <input
-                      onChange={this.handleChange}
-                      type='checkbox'
-                      name='colors'
-                      value='#0000FF'
-                      checked={this.props.colors.includes('#0000FF')}
-                    /><div className='colorBox blue'>FILLTEXT</div>
-                    <input
-                      onChange={this.handleChange}
-                      type='checkbox'
-                      name='colors'
-                      value='#8000FF'
-                      checked={this.props.colors.includes('#8000FF')}
-                    /><div className='colorBox purple'>FILLTEXT</div>
-                    <input
-                      onChange={this.handleChange}
-                      type='checkbox'
-                      name='colors'
-                      value='#FF00FF'
-                      checked={this.props.colors.includes('#FF00FF')}
-                    /><div className='colorBox magenta'>FILLTEXT</div>
-                    <input
-                      onChange={this.handleChange}
-                      type='checkbox'
-                      name='colors'
-                      value='#FF0080'
-                      checked={this.props.colors.includes('#FF0080')}
-                    /><div className='colorBox redPink'>FILLTEXT</div>
-                    <input
-                      onChange={this.handleChange}
-                      type='checkbox'
-                      name='colors'
-                      value='#FF0000'
-                      checked={this.props.colors.includes('#FF0000')}
-                    /><div className='colorBox red'>FILLTEXT</div>
-                    <input
-                      onChange={this.handleChange}
-                      type='checkbox'
-                      name='colors'
-                      value='#FF8000'
-                      checked={this.props.colors.includes('#FF8000')}
-                    /><div className='colorBox orange'>FILLTEXT</div>
-                    <input
-                      onChange={this.handleChange}
-                      type='checkbox'
-                      name='colors'
-                      value='#FFFF00'
-                      checked={this.props.colors.includes('#FFFF00')}
-                    /><div className='colorBox yellow'>FILLTEXT</div>
-                    <input
-                      onChange={this.handleChange}
-                      type='checkbox'
-                      name='colors'
-                      value='#80FF00'
-                      checked={this.props.colors.includes('#80FF00')}
-                    /><div className='colorBox lightGreen'>FILLTEXT</div>
-                    <input
-                      onChange={this.handleChange}
-                      type='checkbox'
-                      name='colors'
-                      value='#00FF00'
-                      checked={this.props.colors.includes('#00FF00')}
-                    /><div className='colorBox green'>FILLTEXT</div>
-                    <input
-                      onChange={this.handleChange}
-                      type='checkbox'
-                      name='colors'
-                      value='#00FF80'
-                      checked={this.props.colors.includes('#00FF80')}
-                    /><div className='colorBox weirdGreen'>FILLTEXT</div>
+                  <input
+                    onChange={this.handleChange}
+                    type='checkbox'
+                    name='colors'
+                    value='#05c46b'
+                    checked={this.props.colors.includes('#05c46b')}
+                  /><div className='colorBox highlighterPink'>FILLTEXT</div>
+                  <input
+                    onChange={this.handleChange}
+                    type='checkbox'
+                    name='colors'
+                    value='#575fcf'
+                    checked={this.props.colors.includes('#575fcf')}
+                  /><div className='colorBox darkPeriwinkle'>FILLTEXT</div>
+                  <input
+                    onChange={this.handleChange}
+                    type='checkbox'
+                    name='colors'
+                    value='#4bcffa'
+                    checked={this.props.colors.includes('#4bcffa')}
+                  /><div className='colorBox megaman'>FILLTEXT</div>
+                  <input
+                    onChange={this.handleChange}
+                    type='checkbox'
+                    name='colors'
+                    value='#34e7e4'
+                    checked={this.props.colors.includes('#34e7e4')}
+                  /><div className='colorBox freshTurquoise'>FILLTEXT</div>
+                  <input
+                    onChange={this.handleChange}
+                    type='checkbox'
+                    name='colors'
+                    value='#0be881'
+                    checked={this.props.colors.includes('#0be881')}
+                  /><div className='colorBox mintGreen'>FILLTEXT</div>
+                  <input
+                    onChange={this.handleChange}
+                    type='checkbox'
+                    name='colors'
+                    value='#f53b57'
+                    checked={this.props.colors.includes('#f53b57')}
+                  /><div className='colorBox sizzlingRed'>FILLTEXT</div>
+                  <input
+                    onChange={this.handleChange}
+                    type='checkbox'
+                    name='colors'
+                    value='#3c40c6'
+                    checked={this.props.colors.includes('#3c40c6')}
+                  /><div className='colorBox freeSpeechBlue'>FILLTEXT</div>
+                  <input
+                    onChange={this.handleChange}
+                    type='checkbox'
+                    name='colors'
+                    value='#0fbcf9'
+                    checked={this.props.colors.includes('#0fbcf9')}
+                  /><div className='colorBox spiroDiscoBall'>FILLTEXT</div>
+                  <input
+                    onChange={this.handleChange}
+                    type='checkbox'
+                    name='colors'
+                    value='#00d8d6'
+                    checked={this.props.colors.includes('#00d8d6')}
+                  /><div className='colorBox jadeDust'>FILLTEXT</div>
+                  <input
+                    onChange={this.handleChange}
+                    type='checkbox'
+                    name='colors'
+                    value='#05c46b'
+                    checked={this.props.colors.includes('#05c46b')}
+                  /><div className='colorBox greenTeal'>FILLTEXT</div>
+                  <input
+                    onChange={this.handleChange}
+                    type='checkbox'
+                    name='colors'
+                    value='#ffc048'
+                    checked={this.props.colors.includes('#ffc048')}
+                  /><div className='colorBox narenjiOrange'>FILLTEXT</div>
+                  <input
+                    onChange={this.handleChange}
+                    type='checkbox'
+                    name='colors'
+                    value='#ffdd59'
+                    checked={this.props.colors.includes('#ffdd59')}
+                  /><div className='colorBox yrielYellow'>FILLTEXT</div>
+                  <input
+                    onChange={this.handleChange}
+                    type='checkbox'
+                    name='colors'
+                    value='#ff5e57'
+                    checked={this.props.colors.includes('#ff5e57')}
+                  /><div className='colorBox sunsetOrange'>FILLTEXT</div>
+                  <input
+                    onChange={this.handleChange}
+                    type='checkbox'
+                    name='colors'
+                    value='#ffa801'
+                    checked={this.props.colors.includes('#ffa801')}
+                  /><div className='colorBox chromeYellow'>FILLTEXT</div>
+                  <input
+                    onChange={this.handleChange}
+                    type='checkbox'
+                    name='colors'
+                    value='#ffd32a'
+                    checked={this.props.colors.includes('#ffd32a')}
+                  /><div className='colorBox vibrantYellow'>FILLTEXT</div>
+                  <input
+                    onChange={this.handleChange}
+                    type='checkbox'
+                    name='colors'
+                    value='#ff3f34'
+                    checked={this.props.colors.includes('#ff3f34')}
+                  /><div className='colorBox redOrange'>FILLTEXT</div>
+                  <input
+                    onChange={this.handleChange}
+                    type='checkbox'
+                    name='colors'
+                    value='#808e9b'
+                    checked={this.props.colors.includes('#808e9b')}
+                  /><div className='colorBox londonSquare'>FILLTEXT</div>
+                  <input
+                    onChange={this.handleChange}
+                    type='checkbox'
+                    name='colors'
+                    value='#d2dae2'
+                    checked={this.props.colors.includes('#d2dae2')}
+                  /><div className='colorBox hintOfElusiveBlue'>FILLTEXT</div>
                   </div>
                 </Fragment>
               }

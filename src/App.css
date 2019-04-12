@@ -296,65 +296,96 @@
 }
 
 /* COLORS LIST */
+/* colors courtesy of https://flatuicolors.com/palette/se */
 
-.lightBlue {
-  color: #0080FF;
-  background-color: #0080FF;
+.highlighterPink {
+  color: #05c46b;
+  background-color: #05c46b;
 }
 
-.cyan {
-  color: #00FFFF;
-  background-color: #00FFFF;
+.darkPeriwinkle {
+  color: #575fcf;
+  background-color: #575fcf;
 }
 
-.blue {
-  color: #0000FF;
-  background-color: #0000FF;
+.megaman {
+  color: #4bcffa;
+  background-color: #4bcffa;
 }
 
-.purple {
-  color: #8000FF;
-  background-color: #8000FF;
+.freshTurquoise {
+  color: #34e7e4;
+  background-color: #34e7e4;
 }
 
-.magenta {
-  color: #FF00FF;
-  background-color: #FF00FF;
+.mintGreen {
+  color: #0be881;
+  background-color: #0be881;
 }
 
-.redPink {
-  color: #FF0080;
-  background-color: #FF0080;
+.sizzlingRed {
+  color: #f53b57;
+  background-color: #f53b57;
 }
 
-.red {
-  color: #FF0000;
-  background-color: #FF0000;
+.freeSpeechBlue {
+  color: #3c40c6;
+  background-color: #3c40c6;
 }
 
-.orange {
-  color: #FF8000;
-  background-color: #FF8000;
+.spiroDiscoBall {
+  color: #0fbcf9;
+  background-color: #0fbcf9;
 }
 
-.yellow {
-  color: #FFFF00;
-  background-color: #FFFF00;
+.jadeDust {
+  color: #00d8d6;
+  background-color: #00d8d6;
 }
 
-.lightGreen {
-  color: #80FF00;
-  background-color: #80FF00;
+.greenTeal {
+  color: #05c46b;
+  background-color: #05c46b;
 }
 
-.green {
-  color: #00FF00;
-  background-color: #00FF00;
+.narenjiOrange {
+  color: #ffc048;
+  background-color: #ffc048;
 }
 
-.weirdGreen {
-  color: #00FF80;
-  background-color: #00FF80;
+.yrielYellow {
+  color: #ffdd59;
+  background-color: #ffdd59;
+}
+
+.sunsetOrange {
+  color: #ff5e57;
+  background-color: #ff5e57;
+}
+
+.chromeYellow {
+  color: #ffa801;
+  background-color: #ffa801;
+}
+
+.vibrantYellow {
+  color: #ffd32a;
+  background-color: #ffd32a;
+}
+
+.redOrange {
+  color: #ff3f34;
+  background-color: #ff3f34;
+}
+
+.londonSquare {
+  color: #808e9b;
+  background-color: #808e9b;
+}
+
+.hintOfElusiveBlue {
+  color: #d2dae2;
+  background-color: #d2dae2;
 }
 
 /* END COLORS LIST */
