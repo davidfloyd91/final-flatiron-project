@@ -5,6 +5,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 // there's probably a more efficient way to accomplish things than SET_CHART_ID
 
@@ -106,7 +107,9 @@ const store = createStore(reducer);
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Router>
+      <Route path='/' component={App} />
+    </Router>
   </Provider>,
 document.getElementById('root'));
 
