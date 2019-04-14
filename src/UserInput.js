@@ -26,10 +26,8 @@ class UserInput extends Component {
   handleChange = e => {
     if (e.target.name === 'rows') {
       this.props.dispatch({ type: 'SET_ROWS', payload: e.target.value });
-      // this.props.dispatch({ type: 'SET_SHOW_TABLE', payload: true });
     } else if (e.target.name === 'columns') {
       this.props.dispatch({ type: 'SET_COLUMNS', payload: e.target.value });
-      // this.props.dispatch({ type: 'SET_SHOW_TABLE', payload: true });
     } else if (e.target.name === 'input') {
       this.props.dispatch({ type: 'SET_INPUT', payload: e.target.value });
     };
@@ -67,7 +65,7 @@ class UserInput extends Component {
               {
                 !this.props.input[0]
                   ?
-                <div className='bottom center'>
+                <div className='bottom'>
                   {/*<button onClick={this.clearChartType}>Change chart type</button>*/}
                   <h4 className='customizationPaneHeader'>Input your data</h4>
                   <label className='smallHeadInline' for='input'>How would you like to input your data?</label>
@@ -80,7 +78,7 @@ class UserInput extends Component {
                   :
                 this.props.input === 'csv'
                   ?
-                <div className='center'>
+                <div className='bottom'>
                   <h5>Upload your CSV file below:</h5>
                   <CSVReader
                     onFileLoaded={this.handleForce}
@@ -93,11 +91,11 @@ class UserInput extends Component {
                   {
                     this.props.showTable
                       ?
-                    <Fragment>
+                    <div className='bottom'>
                       <Table setGrid={this.props.setGrid} />
-                    </Fragment>
+                    </div>
                       :
-                    <div className='center'>
+                    <div className='bottom'>
                       <h5>How many rows of data would you like to input?</h5>
                       <form onSubmit={this.handleSubmit}>
                         <input onChange={this.handleChange} type='number' min='0' name='rows' placeholder='Number of rows' value={this.props.rows} />
@@ -111,7 +109,6 @@ class UserInput extends Component {
                 null
               }
             </Fragment>
-            {/* hereherehereherehere */}
           </Fragment>
             :
           null
