@@ -68,8 +68,8 @@ class App extends Component {
 function mapStateToProps(state) {
   return {
     edit: state.edit,
-    new: state.new,
-    userId: state.userId
+    new: state.new //,
+    // userId: state.userId
   };
 };
 
