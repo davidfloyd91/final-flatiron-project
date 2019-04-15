@@ -7,8 +7,6 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-// there's probably a more efficient way to accomplish things than SET_CHART_ID
-
 const defaultState = {
   chartType: '',
   color: '#3c40c6',
@@ -35,7 +33,6 @@ const defaultState = {
 
 const initialState = {
   chart: null,
-  // chartId: 0,
   charts: [],
   chartType: '',
   userId: 0,
@@ -51,8 +48,6 @@ function reducer(state = initialState, action) {
 
     case 'SET_CHART':
       return { ...state, chart: action.payload }
-    // case 'SET_CHART_ID':
-    //   return { ...state, chartId: action.payload }
     case 'SET_CHARTS':
       return { ...state, charts: action.payload }
     case 'SET_CHART_TYPE':

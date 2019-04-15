@@ -30,9 +30,9 @@ class Login extends Component {
       if (r.errors) {
         alert(r.errors);
       } else {
-        localStorage.setItem('jwt', r.jwt)
+        localStorage.setItem('jwt', r.jwt);
         this.props.dispatch({ type: 'SET_USER_ID', payload: r.user.id });
-        this.props.history.push('/dashboard');
+        this.props.history.push('/charts');
       };
     });
   };
@@ -42,14 +42,14 @@ class Login extends Component {
       <Fragment>
         <Link to='/signup'>Sign up</Link>
         <form onSubmit={this.handleSubmit}>
-          <label for='username'>Username</label>
+          <label htmlFor='username'>Username</label>
           <input
             name='username'
             type='text'
             value={this.state.username}
             onChange={this.handleChange}
           />
-          <label for='password'>Password</label>
+          <label htmlFor='password'>Password</label>
           <input
             name='password'
             type='password'

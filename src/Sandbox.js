@@ -62,9 +62,8 @@ class Sandbox extends Component {
     })
     .then(data => {
       if (okay) {
-        this.props.history.push('/dashboard');
+        this.props.history.push('/charts');
         this.props.dispatch({ type: 'SET_CHART', payload: data })
-        this.props.dispatch({ type: 'SET_CHART_ID', payload: id });
         this.props.dispatch({ type: 'SET_DEFAULT' });
       };
     });
@@ -93,7 +92,7 @@ class Sandbox extends Component {
     .then(data => {
       if (okay) {
         this.props.dispatch({ type: 'SET_CHART', payload: data });
-        this.props.dispatch({ type: 'SET_CHART_ID', payload: data.id });
+        this.props.history.push(`/charts/${data.id}`)
         this.props.dispatch({ type: 'SET_DEFAULT' });
       };
     });

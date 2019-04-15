@@ -34,31 +34,12 @@ class Dashboard extends Component {
     if (this.props.userId > 0) {
       this.getCharts();
     };
-
-    // this.props.dispatch({ type: 'SET_CHART_ID', payload: this.props.match.params.id });
   };
 
   componentDidUpdate() {
     if (this.props.userId > 0 && this.state.gotCharts === false && this.props.charts.length === 0) {
       this.getCharts();
       this.setState({ gotCharts: true });
-    };
-
-    if (this.props.chart) {
-      // fix this next
-      // put in a route
-    };
-
-    if (this.props.charts.length > 0) {
-      let chart = this.props.charts.find(c => {
-        return c.id === this.props.match.params.id;
-      });
-
-      if (chart) {
-        this.props.dispatch({ type: 'SET_CHART', payload: chart });
-      // } else {
-      //   this.props.history.push('/charts');
-      };
     };
   };
 
@@ -96,9 +77,9 @@ class Dashboard extends Component {
     })
     .then(data => {
       if (okay) {
-        // this.props.dispatch({ type: 'SET_CHART_ID', payload: 0 });
         this.props.dispatch({ type: 'SET_CHARTS', payload: charts });
         this.props.dispatch({ type: 'SET_CHART', payload: null });
+        this.props.history.push('/charts');
       };
     });
   };
@@ -169,11 +150,6 @@ class Dashboard extends Component {
   };
 
   showChart = chart => {
-    // let chart = this.props.charts.find(c => {
-    //   return c.id === chartId;
-    // });
-
-    // this.props.dispatch({ type: 'SET_CHART_ID', payload: chartId });
     this.props.dispatch({ type: 'SET_CHART', payload: chart });
   };
 
@@ -202,7 +178,11 @@ class Dashboard extends Component {
             this.props.chart
               ?
             <Fragment>
-              <UserChart editChart={this.editChart} deleteChart={this.deleteChart} />
+              <UserChart
+                editChart={this.editChart}
+                deleteChart={this.deleteChart}
+                history={this.props.history}
+              />
               <EmbedCode />
             </Fragment>
               :
@@ -220,7 +200,6 @@ function mapStateToProps(state) {
     userId: state.userId,
     charts: state.charts,
     chart: state.chart,
-    // chartId: state.chartId,
     grid: state.grid // just to log it
   };
 };

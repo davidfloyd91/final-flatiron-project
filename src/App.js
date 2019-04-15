@@ -21,7 +21,6 @@ class App extends Component {
       })
       .then(r => r.json())
       .then(res => {
-        console.log(res);
         if (res.errors) {
           alert(res.errors);
         } else {
@@ -37,11 +36,6 @@ class App extends Component {
     return (
       <div className='container'>
         <Nav history={this.props.history} />
-        {/*
-          (this.props.new || this.props.edit)
-          ? <Sandbox />
-          : <Dashboard />
-        */}
         <Switch>
           <Route
             path='/charts/:id'
@@ -83,8 +77,6 @@ class App extends Component {
 function mapStateToProps(state) {
   return {
     userId: state.userId
-    // edit: state.edit,
-    // new: state.new
   };
 };
 

@@ -8,12 +8,14 @@ class UserChart extends Component {
 
   componentDidMount() {
     if (this.props.chart) {
+      this.props.history.push(`/charts/${this.props.chart.id}`);
       this.buildChart();
     };
   };
 
   componentDidUpdate() {
     if (this.props.chart) {
+      this.props.history.push(`/charts/${this.props.chart.id}`);
       this.buildChart();
     };
   };
