@@ -7,10 +7,23 @@ import './App.css';
 
 class Dashboard extends Component {
   componentDidMount() {
+    if (this.props.userId > 0) {
+      this.getCharts();
+    };
+  };
+
+  componentDidUpdate() {
+    if (this.props.userId > 0 && this.props.charts.length === 0) {
+      this.getCharts();
+    };
+  };
+
+  getCharts = () => {
     fetch(`http://localhost:3000/users/${this.props.userId}`)
     .then(r => r.json())
     .then(user => {
       let charts = user.charts;
+      console.log(user.charts)
       this.props.dispatch({ type: 'SET_CHARTS', payload: charts });
     });
   };
@@ -135,6 +148,7 @@ class Dashboard extends Component {
   };
 
   render() {
+    console.log(this.props.userId)
     return (
       <div className='container'>
         <h4 className='customizationPaneHeader'>Saved charts</h4>

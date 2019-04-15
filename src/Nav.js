@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import './App.css';
 
 class Nav extends Component {
+  // get rid of this
   toggleNew = () => {
     this.props.dispatch({ type: 'TOGGLE_NEW' });
  };
@@ -22,13 +24,13 @@ class Nav extends Component {
         {
           this.props.new
             ?
-          <button className='navButton left' onClick={() => {this.clearChart(); this.toggleNew();}}>SAVED CHARTS</button>
+          <Link to='/dashboard' className='navButton left' onClick={() => {this.clearChart();}}>SAVED CHARTS</Link>
             :
           this.props.edit
             ?
-          <button className='navButton left' onClick={() => {this.clearChart(); this.setEditToFalse();}}>SAVED CHARTS</button>
+          <Link to='/dashboard' className='navButton left' onClick={() => {this.clearChart(); this.setEditToFalse();}}>SAVED CHARTS</Link>
             :
-          <button className='navButton left' onClick={() => {this.toggleNew(); this.clearChart();}}>NEW CHART</button>
+          <Link to='/sandbox' className='navButton left' onClick={() => {this.clearChart();}}>NEW CHART</Link>
         }
         <button className='navButtonRight right'>
           USERSTUFFIGUESS

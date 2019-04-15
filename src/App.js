@@ -10,19 +10,25 @@ import Footer from './Footer';
 import './App.css';
 
 class App extends Component {
-  // componentDidMount() {
-  //   const jwt = localStorage.getItem('jwt');
-  //
-  //   if (jwt) {
-  //     fetch('http://localhost:3000/auto_login', {
-  //       headers: {
-  //         'Authorization': jwt
-  //       }
-  //     })
-  //     .then(r => r.json())
-  //     .then(console.log)
-  //   };
-  // };
+  componentDidMount() {
+    const jwt = localStorage.getItem('jwt');
+
+    if (jwt) {
+      fetch('http://localhost:3000/auto_login', {
+        headers: {
+          'Authorization': jwt
+        }
+      })
+      .then(r => r.json())
+      .then(r => {
+        if (r.errors) {
+          alert(r.errors);
+        } else {
+          this.props.dispatch({ type: 'SET_USER_ID', payload: r.id })
+        };
+      });
+    };
+  };
 
   render() {
     return (
@@ -68,8 +74,7 @@ class App extends Component {
 function mapStateToProps(state) {
   return {
     edit: state.edit,
-    new: state.new //,
-    // userId: state.userId
+    new: state.new
   };
 };
 

@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Switch, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class Login extends Component {
   state = {
@@ -26,29 +26,39 @@ class Login extends Component {
       body: JSON.stringify(this.state)
     })
     .then(r => r.json())
-    .then(console.log)
-    // {errors: "Sorry, we didn't recognize that username and password"}
+    .then(r => {
+      if (r.errors) {
+        alert(r.errors);
+      } else {
+        localStorage.setItem('jwt', r.jwt)
+        this.props.dispatch({ type: 'SET_USER_ID', payload: r.user.id });
+        this.props.history.push('dashboard');
+      };
+    });
   };
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label for='username'>Username</label>
-        <input
-          name='username'
-          type='text'
-          value={this.state.username}
-          onChange={this.handleChange}
-        />
-        <label for='password'>Password</label>
-        <input
-          name='password'
-          type='password'
-          value={this.state.password}
-          onChange={this.handleChange}
-        />
-        <button type='submit'>Submit</button>
-      </form>
+      <Fragment>
+        <Link to='/signup'>Sign up</Link>
+        <form onSubmit={this.handleSubmit}>
+          <label for='username'>Username</label>
+          <input
+            name='username'
+            type='text'
+            value={this.state.username}
+            onChange={this.handleChange}
+          />
+          <label for='password'>Password</label>
+          <input
+            name='password'
+            type='password'
+            value={this.state.password}
+            onChange={this.handleChange}
+          />
+          <button type='submit'>Submit</button>
+        </form>
+      </Fragment>
     );
   };
 };

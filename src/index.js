@@ -38,23 +38,23 @@ const initialState = {
   chartId: 0,
   charts: [],
   chartType: '',
-  userId: 1,
+  userId: 0,
   ...defaultState
 };
 
 function reducer(state = initialState, action) {
   switch (action.type) {
     case 'SET_DEFAULT':
-      return {...state, ...defaultState}
+      return { ...state, ...defaultState }
     case 'SET_NAME_TO_VALUE':
       return { ...state, [action.payload.key]: action.payload.value }
 
     case 'SET_CHART':
-      return {...state, chart: action.payload}
+      return { ...state, chart: action.payload }
     case 'SET_CHART_ID':
-      return {...state, chartId: action.payload }
+      return { ...state, chartId: action.payload }
     case 'SET_CHARTS':
-      return {...state, charts: action.payload }
+      return { ...state, charts: action.payload }
     case 'SET_CHART_TYPE':
       return { ...state, chartType: action.payload }
     case 'SET_COLOR':
@@ -62,41 +62,43 @@ function reducer(state = initialState, action) {
     case 'SET_COLORS':
       return { ...state, colors: action.payload }
     case 'SET_COLUMNS':
-      return {...state, columns: action.payload }
+      return { ...state, columns: action.payload }
     case 'SET_EDIT':
-      return {...state, edit: action.payload }
+      return { ...state, edit: action.payload }
     case 'SET_GRID':
-      return {...state, grid: action.payload }
+      return { ...state, grid: action.payload }
     case 'SET_HORIZONTAL':
       return { ...state, horizontal: action.payload }
     case 'SET_INPUT':
       return { ...state, input: action.payload }
     case 'SET_LABEL':
-      return {...state, label: action.payload}
+      return { ...state, label: action.payload }
     case 'SET_MAX':
       return { ...state, max: action.payload }
     case 'SET_MIN':
       return { ...state, min: action.payload }
     case 'SET_RADIUS':
-      return {...state, radius: action.payload}
+      return { ...state, radius: action.payload }
     case 'TOGGLE_NEW':
       return { ...state, new: !state.new }
     case 'SET_ROWS':
-      return {...state, rows: action.payload }
+      return { ...state, rows: action.payload }
     case 'SET_SHOW_TABLE':
-      return {...state, showTable: action.payload }
+      return { ...state, showTable: action.payload }
     case 'SET_TENSION':
       return { ...state, tension: action.payload }
     case 'SET_TICKS':
       return { ...state, ticks: action.payload }
     case 'SET_TITLE':
-      return {...state, title: action.payload}
+      return { ...state, title: action.payload }
+    case 'SET_USER_ID':
+      return { ...state, userId: action.payload }
     case 'WARN':
       return { ...state, warn: action.payload }
     case 'SET_X_LABEL':
-      return {...state, xLabel: action.payload}
+      return { ...state, xLabel: action.payload }
     case 'SET_Y_LABEL':
-      return {...state, yLabel: action.payload}
+      return { ...state, yLabel: action.payload }
 
     default:
       return state;

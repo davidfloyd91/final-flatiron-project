@@ -28,15 +28,19 @@ class Signup extends Component {
         body: JSON.stringify(this.state)
       })
       .then(r => r.json())
-      .then(console.log)
-      //
+      .then(r => {
+        if (r.errors) {
+          alert(r.errors);
+        } else {
+          this.props.history.push('/sandbox');
+        };
+      });
     } else {
-      alert('Sorry, those passwords don\'t match')
+      alert('Sorry, those passwords don\'t match');
     };
   };
 
   render() {
-    console.log(this.state)
     return (
       <form onSubmit={this.handleSubmit}>
         <label for='username'>Username</label>
@@ -46,7 +50,7 @@ class Signup extends Component {
           value={this.state.username}
           onChange={this.handleChange}
         />
-        <label for='email'>Email</label>
+        <label for='email'>Email (optional)</label>
         <input
           name='email'
           type='text'
