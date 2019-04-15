@@ -20,20 +20,23 @@ class App extends Component {
         }
       })
       .then(r => r.json())
-      .then(r => {
-        if (r.errors) {
-          alert(r.errors);
+      .then(res => {
+        console.log(res);
+        if (res.errors) {
+          alert(res.errors);
         } else {
-          this.props.dispatch({ type: 'SET_USER_ID', payload: r.id })
+          this.props.dispatch({ type: 'SET_USER_ID', payload: res.id })
         };
       });
+    } else {
+      this.props.history.push('/login');
     };
   };
 
   render() {
     return (
       <div className='container'>
-        <Nav />
+        <Nav history={this.props.history} />
         {/*
           (this.props.new || this.props.edit)
           ? <Sandbox />
@@ -41,15 +44,21 @@ class App extends Component {
         */}
         <Switch>
           <Route
-            path='/sandbox'
+            path='/charts/:id'
             render={routerProps => {
-              return <Sandbox {...routerProps} />
+              return <Dashboard {...routerProps} />
             }}
           />
           <Route
-            path='/dashboard'
+            path='/charts'
             render={routerProps => {
               return <Dashboard {...routerProps} />
+            }}
+          />
+          <Route
+            path='/sandbox'
+            render={routerProps => {
+              return <Sandbox {...routerProps} />
             }}
           />
           <Route
@@ -73,8 +82,9 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    edit: state.edit,
-    new: state.new
+    userId: state.userId
+    // edit: state.edit,
+    // new: state.new
   };
 };
 

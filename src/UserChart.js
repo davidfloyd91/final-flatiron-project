@@ -32,9 +32,9 @@ class UserChart extends Component {
   };
 
   buildChart = () => {
-    const myChartRef = this.chartRef.current.getContext("2d");
+    const myChartRef = this.chartRef.current.getContext('2d');
 
-    if (typeof newChart !== "undefined") {
+    if (typeof newChart !== 'undefined') {
       newChart.destroy();
     };
 
@@ -46,7 +46,7 @@ class UserChart extends Component {
       return (
         <div>
           <canvas
-            id="myChart"
+            id='myChart'
             ref={this.chartRef}
           />
           <button onClick={this.props.editChart}>Edit chart</button>

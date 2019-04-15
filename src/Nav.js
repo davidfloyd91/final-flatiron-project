@@ -4,19 +4,25 @@ import { Link } from 'react-router-dom';
 import './App.css';
 
 class Nav extends Component {
-  // get rid of this
   toggleNew = () => {
     this.props.dispatch({ type: 'TOGGLE_NEW' });
- };
+  };
 
- clearChart = () => {
-   this.props.dispatch({ type: 'SET_CHART_ID', payload: 0 });
-   this.props.dispatch({ type: 'SET_CHART', payload: null });
- };
+  clearChart = () => {
+    this.props.dispatch({ type: 'SET_CHART_ID', payload: 0 });
+    this.props.dispatch({ type: 'SET_CHART', payload: null });
+  };
 
- setEditToFalse = () => {
-   this.props.dispatch({ type: 'SET_DEFAULT' });
- };
+  setEditToFalse = () => {
+    this.props.dispatch({ type: 'SET_DEFAULT' });
+  };
+
+  logout = () => {
+		localStorage.removeItem('jwt');
+    this.props.history.push('/login');
+    this.props.dispatch({ type: 'SET_CHARTS', payload: [] });
+		this.props.dispatch({ type: 'SET_USER_ID', payload: 0 });
+	};
 
   render() {
     return (
@@ -24,20 +30,20 @@ class Nav extends Component {
         {
           this.props.new
             ?
-          <Link to='/dashboard' className='navButton left' onClick={() => {this.clearChart();}}>SAVED CHARTS</Link>
+          <Link to='/dashboard' className='navButton left' onClick={() => {this.clearChart(); this.toggleNew()}}>SAVED CHARTS</Link>
             :
           this.props.edit
             ?
           <Link to='/dashboard' className='navButton left' onClick={() => {this.clearChart(); this.setEditToFalse();}}>SAVED CHARTS</Link>
             :
-          <Link to='/sandbox' className='navButton left' onClick={() => {this.clearChart();}}>NEW CHART</Link>
+          <Link to='/charts' className='navButton left' onClick={() => {this.clearChart(); this.toggleNew()}}>NEW CHART</Link>
         }
-        <button className='navButtonRight right'>
-          USERSTUFFIGUESS
-        </button>
-        <button className='navButtonDead'>
+        <Link onClick={this.logout} className='navButtonRight right'>
+          LOG OUT
+        </Link>
+        <Link className='navButtonDead'>
           SALP
-        </button>
+        </Link>
       </div>
     );
   };
@@ -46,7 +52,8 @@ class Nav extends Component {
 function mapStateToProps(state) {
   return {
     edit: state.edit,
-    new: state.new
+    new: state.new,
+    userId: state.userId
   };
 };
 

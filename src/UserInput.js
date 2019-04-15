@@ -123,7 +123,7 @@ function mapStateToProps(state) {
     chart: state.chart,
     chartType: state.chartType,
     columns: state.columns,
-    edit: state.edit,
+    // edit: state.edit,
     horizontal: state.horizontal,
     input: state.input,
     rows: state.rows,

@@ -35,7 +35,7 @@ const defaultState = {
 
 const initialState = {
   chart: null,
-  chartId: 0,
+  // chartId: 0,
   charts: [],
   chartType: '',
   userId: 0,
@@ -51,8 +51,8 @@ function reducer(state = initialState, action) {
 
     case 'SET_CHART':
       return { ...state, chart: action.payload }
-    case 'SET_CHART_ID':
-      return { ...state, chartId: action.payload }
+    // case 'SET_CHART_ID':
+    //   return { ...state, chartId: action.payload }
     case 'SET_CHARTS':
       return { ...state, charts: action.payload }
     case 'SET_CHART_TYPE':

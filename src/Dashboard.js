@@ -6,15 +6,59 @@ import EmbedCode from './EmbedCode';
 import './App.css';
 
 class Dashboard extends Component {
+  state = {
+    gotCharts: false,
+  };
+
   componentDidMount() {
+    const jwt = localStorage.getItem('jwt');
+
+    if (jwt) {
+      fetch('http://localhost:3000/auto_login', {
+        headers: {
+          'Authorization': jwt
+        }
+      })
+      .then(r => r.json())
+      .then(res => {
+        if (res.errors) {
+          alert(res.errors);
+        } else {
+          this.props.dispatch({ type: 'SET_USER_ID', payload: res.id })
+        };
+      });
+    } else {
+      this.props.history.push('/login');
+    };
+
     if (this.props.userId > 0) {
       this.getCharts();
     };
+
+    // this.props.dispatch({ type: 'SET_CHART_ID', payload: this.props.match.params.id });
   };
 
   componentDidUpdate() {
-    if (this.props.userId > 0 && this.props.charts.length === 0) {
+    if (this.props.userId > 0 && this.state.gotCharts === false && this.props.charts.length === 0) {
       this.getCharts();
+      this.setState({ gotCharts: true });
+    };
+
+    if (this.props.chart) {
+      // fix this next
+      // put in a route
+    };
+
+    if (this.props.charts.length > 0) {
+      let chart = this.props.charts.find(c => {
+        return c.id === this.props.match.params.id;
+      });
+
+      if (chart) {
+        this.props.dispatch({ type: 'SET_CHART', payload: chart });
+      // } else {
+      //   this.props.history.push('/charts');
+      };
     };
   };
 
@@ -23,7 +67,6 @@ class Dashboard extends Component {
     .then(r => r.json())
     .then(user => {
       let charts = user.charts;
-      console.log(user.charts)
       this.props.dispatch({ type: 'SET_CHARTS', payload: charts });
     });
   };
@@ -31,7 +74,7 @@ class Dashboard extends Component {
   deleteChart = () => {
     let okay = false;
     const index = this.props.charts.findIndex(chart => {
-      return chart.id === this.props.chartId;
+      return chart.id === this.props.chart.id;
     });
 
     const charts = [
@@ -39,7 +82,7 @@ class Dashboard extends Component {
       ...this.props.charts.slice(index + 1)
     ];
 
-    fetch(`http://localhost:3000/charts/${this.props.chartId}`, {
+    fetch(`http://localhost:3000/charts/${this.props.chart.id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
@@ -53,7 +96,7 @@ class Dashboard extends Component {
     })
     .then(data => {
       if (okay) {
-        this.props.dispatch({ type: 'SET_CHART_ID', payload: 0 });
+        // this.props.dispatch({ type: 'SET_CHART_ID', payload: 0 });
         this.props.dispatch({ type: 'SET_CHARTS', payload: charts });
         this.props.dispatch({ type: 'SET_CHART', payload: null });
       };
@@ -125,12 +168,12 @@ class Dashboard extends Component {
     this.props.dispatch({ type: 'SET_INPUT', payload: 'manual' });
   };
 
-  showChart = chartId => {
-    let chart = this.props.charts.find(c => {
-      return c.id === chartId;
-    });
+  showChart = chart => {
+    // let chart = this.props.charts.find(c => {
+    //   return c.id === chartId;
+    // });
 
-    this.props.dispatch({ type: 'SET_CHART_ID', payload: chartId });
+    // this.props.dispatch({ type: 'SET_CHART_ID', payload: chartId });
     this.props.dispatch({ type: 'SET_CHART', payload: chart });
   };
 
@@ -139,16 +182,14 @@ class Dashboard extends Component {
       return (
         <ChartPreview
           key={chart.id}
-          chartId={chart.id}
           chart={chart}
-          showChart={this.showChart}
+          showChart={() => this.showChart(chart)}
         />
       );
     });
   };
 
   render() {
-    console.log(this.props.userId)
     return (
       <div className='container'>
         <h4 className='customizationPaneHeader'>Saved charts</h4>
@@ -158,7 +199,7 @@ class Dashboard extends Component {
         <div className='container'>
           <Fragment>
           {
-            this.props.chartId > 0
+            this.props.chart
               ?
             <Fragment>
               <UserChart editChart={this.editChart} deleteChart={this.deleteChart} />
@@ -179,7 +220,7 @@ function mapStateToProps(state) {
     userId: state.userId,
     charts: state.charts,
     chart: state.chart,
-    chartId: state.chartId,
+    // chartId: state.chartId,
     grid: state.grid // just to log it
   };
 };

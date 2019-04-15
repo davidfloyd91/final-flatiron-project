@@ -4,9 +4,32 @@ import UserInput from './UserInput';
 import LineChart from './LineChart';
 import BarChart from './BarChart';
 import PieChart from './PieChart';
+import App from './App';
 let colors;
 
 class Sandbox extends Component {
+  componentDidMount() {
+    const jwt = localStorage.getItem('jwt');
+
+    if (jwt) {
+      fetch('http://localhost:3000/auto_login', {
+        headers: {
+          'Authorization': jwt
+        }
+      })
+      .then(r => r.json())
+      .then(res => {
+        if (res.errors) {
+          alert(res.errors);
+        } else {
+          this.props.dispatch({ type: 'SET_USER_ID', payload: res.id })
+        };
+      });
+    } else {
+      this.props.history.push('/login');
+    };
+  };
+
   chartType = chartType => {
     this.props.dispatch({
       type: 'SET_CHART_TYPE', payload: chartType
@@ -39,6 +62,7 @@ class Sandbox extends Component {
     })
     .then(data => {
       if (okay) {
+        this.props.history.push('/dashboard');
         this.props.dispatch({ type: 'SET_CHART', payload: data })
         this.props.dispatch({ type: 'SET_CHART_ID', payload: id });
         this.props.dispatch({ type: 'SET_DEFAULT' });
@@ -56,7 +80,7 @@ class Sandbox extends Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        user_id: 1,
+        user_id: this.props.userId,
         data: data
       })
     })
@@ -85,7 +109,7 @@ class Sandbox extends Component {
 
     firstGrid.forEach(row => {
       if (row[1] && isNaN(parseFloat(row[1]))) {
-        grid.push([row[0], "0"]);
+        grid.push([row[0], '0']);
         i++;
       } else if (!row[1]) {
         return;
@@ -94,9 +118,7 @@ class Sandbox extends Component {
       };
     });
 
-    this.props.dispatch({
-      type: 'SET_GRID', payload: grid
-    });
+    this.props.dispatch({ type: 'SET_GRID', payload: grid });
 
     if (i > 0) {
       this.props.dispatch({
@@ -206,6 +228,7 @@ function mapStateToProps(state) {
     colors: state.colors,
     edit: state.edit,
     horizontal: state.horizontal,
+    userId: state.userId,
     warn: state.warn
   };
 };

@@ -32,7 +32,7 @@ class Login extends Component {
       } else {
         localStorage.setItem('jwt', r.jwt)
         this.props.dispatch({ type: 'SET_USER_ID', payload: r.user.id });
-        this.props.history.push('dashboard');
+        this.props.history.push('/dashboard');
       };
     });
   };

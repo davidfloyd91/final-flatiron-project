@@ -4,7 +4,7 @@ import './App.css';
 export default class ChartPreview extends Component {
   render() {
     return (
-      <div className='card' onClick={() => this.props.showChart(this.props.chartId)}>
+      <div className='card' onClick={this.props.showChart}>
         <div className='previewHeader'>
           <h5>{this.props.chart.data.options.title.text}</h5>
         </div>

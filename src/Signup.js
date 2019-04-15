@@ -32,7 +32,7 @@ class Signup extends Component {
         if (r.errors) {
           alert(r.errors);
         } else {
-          this.props.history.push('/sandbox');
+          this.props.history.push('/charts');
         };
       });
     } else {
