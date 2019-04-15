@@ -7,6 +7,7 @@ import './App.css';
 
 class Dashboard extends Component {
   state = {
+    // set to true in componentDidUpdate
     gotCharts: false,
   };
 
@@ -39,6 +40,7 @@ class Dashboard extends Component {
   componentDidUpdate() {
     if (this.props.userId > 0 && this.state.gotCharts === false && this.props.charts.length === 0) {
       this.getCharts();
+      // prevents an infinite loop when a user has no charts
       this.setState({ gotCharts: true });
     };
   };
@@ -199,8 +201,7 @@ function mapStateToProps(state) {
   return {
     userId: state.userId,
     charts: state.charts,
-    chart: state.chart,
-    grid: state.grid // just to log it
+    chart: state.chart
   };
 };
 
