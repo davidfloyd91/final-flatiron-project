@@ -1,21 +1,30 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+let embedCode;
 
 class EmbedCode extends Component {
   embedRef = React.createRef();
 
   data = () => {
-    let data, datasets;
     if (this.props.chart) {
-      data = {...this.props.chart.data};
+      let data = {...this.props.chart.data};
       if (this.props.chart.data.data.datasets) {
-        datasets = [...this.props.chart.data.data.datasets];
+        const datasets = [...this.props.chart.data.data.datasets];
         delete data.data.datasets;
         data.data._datasets = datasets;
       };
 
-      return JSON.stringify(data).replace(/'/g, '\\\'').replace(/"/g, '\'').replace('_datasets', 'datasets');
+      embedCode = this.convertToEmbedCode(data);
     };
+
+    return embedCode;
+  };
+
+  convertToEmbedCode = data => {
+    return JSON.stringify(data)
+    .replace(/'/g, '\\\'')
+    .replace(/"/g, '\'')
+    .replace('_datasets', 'datasets');
   };
 
   handleClick = () => {
@@ -25,7 +34,7 @@ class EmbedCode extends Component {
 
   render() {
     if (this.data()) {
-      const copyData = `<iframe srcdoc="<div id='embed_container'></div><script src='https://unpkg.com/react@16/umd/react.development.js' crossorigin></script><script src='https://unpkg.com/react-dom@16/umd/react-dom.development.js' crossorigin></script><script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js' crossorigin></script><canvas id='bar-chart' width='1000px' height='800px'></canvas><script>new Chart(document.getElementById('bar-chart'),${this.data()});</script>" width="1000px" height="800px"></iframe>`
+      const copyData = `<iframe srcdoc="<div id='embed_container'></div><script src='https://unpkg.com/react@16/umd/react.development.js' crossorigin></script><script src='https://unpkg.com/react-dom@16/umd/react-dom.development.js' crossorigin></script><script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js' crossorigin></script><canvas id='bar-chart' width='1000px' height='800px'></canvas><script>new Chart(document.getElementById('bar-chart'),${embedCode});</script>" width="1000px" height="800px"></iframe>`
 
       return (
         <Fragment>

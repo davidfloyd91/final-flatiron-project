@@ -16,9 +16,7 @@ class Sandbox extends Component {
   };
 
   chartType = chartType => {
-    this.props.dispatch({
-      type: 'SET_CHART_TYPE', payload: chartType
-    })
+    this.props.dispatch({ type: 'SET_CHART_TYPE', payload: chartType });
   };
 
   discardChart = () => {
@@ -48,7 +46,7 @@ class Sandbox extends Component {
     })
     .then(data => {
       if (okay) {
-        this.props.dispatch({ type: 'SET_CHART', payload: data })
+        this.props.dispatch({ type: 'SET_CHART', payload: data });
         this.props.dispatch({ type: 'SET_DEFAULT' });
         this.props.history.push(`/charts/${id}`);
       };
@@ -78,7 +76,7 @@ class Sandbox extends Component {
     .then(data => {
       if (okay) {
         this.props.dispatch({ type: 'SET_CHART', payload: data });
-        this.props.history.push(`/charts/${data.id}`)
+        this.props.history.push(`/charts/${data.id}`);
         this.props.dispatch({ type: 'SET_DEFAULT' });
       };
     });
