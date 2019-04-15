@@ -27,6 +27,7 @@ class Sandbox extends Component {
   };
 
   updateChart = data => {
+    console.log('update')
     let okay = false;
     const id = this.props.chart.id;
 
@@ -47,9 +48,9 @@ class Sandbox extends Component {
     })
     .then(data => {
       if (okay) {
-        this.props.history.push('/charts');
         this.props.dispatch({ type: 'SET_CHART', payload: data })
         this.props.dispatch({ type: 'SET_DEFAULT' });
+        this.props.history.push(`/charts/${id}`);
       };
     });
   };

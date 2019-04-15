@@ -130,6 +130,8 @@ class Dashboard extends Component {
       this.props.dispatch({ type: 'SET_TENSION', payload: tension });
     };
 
+    this.props.history.push(`/charts/${this.props.chart.id}/edit`);
+
     this.props.dispatch({ type: 'SET_EDIT', payload: true });
     this.props.dispatch({ type: 'SET_ROWS', payload: 0 });
     this.props.dispatch({ type: 'SET_SHOW_TABLE', payload: true });

@@ -26,8 +26,8 @@ class UserInput extends Component {
   handleChange = e => {
     if (e.target.name === 'rows') {
       this.props.dispatch({ type: 'SET_ROWS', payload: e.target.value });
-    } else if (e.target.name === 'columns') {
-      this.props.dispatch({ type: 'SET_COLUMNS', payload: e.target.value });
+    // } else if (e.target.name === 'columns') {
+    //   this.props.dispatch({ type: 'SET_COLUMNS', payload: e.target.value });
     } else if (e.target.name === 'input') {
       this.props.dispatch({ type: 'SET_INPUT', payload: e.target.value });
     };
@@ -66,9 +66,8 @@ class UserInput extends Component {
                 !this.props.input[0]
                   ?
                 <div className='bottom'>
-                  {/*<button onClick={this.clearChartType}>Change chart type</button>*/}
                   <h4 className='customizationPaneHeader'>Input your data</h4>
-                  <label className='smallHeadInline' for='input'>How would you like to input your data?</label>
+                  <label className='smallHeadInline' htmlFor='input'>How would you like to input your data?</label>
                   <select name='input' onChange={this.handleChange}>
                     <option value=''> </option>
                     <option value='csv'>Upload CSV</option>

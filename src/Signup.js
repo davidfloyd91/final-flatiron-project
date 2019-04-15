@@ -45,28 +45,28 @@ class Signup extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <label for='username'>Username</label>
+        <label htmlFor='username'>Username</label>
         <input
           name='username'
           type='text'
           value={this.state.username}
           onChange={this.handleChange}
         />
-        <label for='email'>Email (optional)</label>
+        <label htmlFor='email'>Email (optional)</label>
         <input
           name='email'
           type='text'
           value={this.state.email}
           onChange={this.handleChange}
         />
-        <label for='password'>Password</label>
+        <label htmlFor='password'>Password</label>
         <input
           name='password'
           type='password'
           value={this.state.password}
           onChange={this.handleChange}
         />
-        <label for='password'>Confirm password</label>
+        <label htmlFor='password'>Confirm password</label>
         <input
           name='confirmation'
           type='password'

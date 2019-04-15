@@ -36,7 +36,7 @@ class Nav extends Component {
             ?
           <Link to='/charts' className='navButton left' onClick={() => {this.clearChart(); this.setEditToFalse();}}>SAVED CHARTS</Link>
             :
-          <Link to='/sandbox' className='navButton left' onClick={() => {this.clearChart(); this.toggleNew()}}>NEW CHART</Link>
+          <Link to='/new' className='navButton left' onClick={() => {this.clearChart(); this.toggleNew()}}>NEW CHART</Link>
         }
         <Link onClick={this.logout} to='/login' className='navButtonRight right'>
           LOG OUT
