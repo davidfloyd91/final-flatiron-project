@@ -4,6 +4,7 @@ import ChartPreview from './ChartPreview';
 import UserChart from './UserChart';
 import EmbedCode from './EmbedCode';
 import './App.css';
+import { autoLogin } from './helpers';
 
 class Dashboard extends Component {
   state = {
@@ -14,23 +15,7 @@ class Dashboard extends Component {
   componentDidMount() {
     const jwt = localStorage.getItem('jwt');
 
-    if (jwt) {
-      fetch('http://localhost:3000/auto_login', {
-        headers: {
-          'Authorization': jwt
-        }
-      })
-      .then(r => r.json())
-      .then(res => {
-        if (res.errors) {
-          alert(res.errors);
-        } else {
-          this.props.dispatch({ type: 'SET_USER_ID', payload: res.id })
-        };
-      });
-    } else {
-      this.props.history.push('/login');
-    };
+    autoLogin(jwt, this.props);
 
     if (this.props.userId > 0) {
       this.getCharts();

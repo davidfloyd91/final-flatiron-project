@@ -5,29 +5,14 @@ import LineChart from './LineChart';
 import BarChart from './BarChart';
 import PieChart from './PieChart';
 import App from './App';
+import { autoLogin } from './helpers';
 let colors;
 
 class Sandbox extends Component {
   componentDidMount() {
     const jwt = localStorage.getItem('jwt');
 
-    if (jwt) {
-      fetch('http://localhost:3000/auto_login', {
-        headers: {
-          'Authorization': jwt
-        }
-      })
-      .then(r => r.json())
-      .then(res => {
-        if (res.errors) {
-          alert(res.errors);
-        } else {
-          this.props.dispatch({ type: 'SET_USER_ID', payload: res.id })
-        };
-      });
-    } else {
-      this.props.history.push('/login');
-    };
+    autoLogin(jwt, this.props);
   };
 
   chartType = chartType => {
