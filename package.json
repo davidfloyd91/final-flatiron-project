@@ -41,13 +41,13 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/davidfloyd91/final-flatiron-project.git"
+    "url": "git+https://github.com/davidfloyd91/Salp.git"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/davidfloyd91/final-flatiron-project/issues"
+    "url": "https://github.com/davidfloyd91/Salp/issues"
   },
-  "homepage": "https://github.com/davidfloyd91/final-flatiron-project#readme"
+  "homepage": "https://github.com/davidfloyd91/Salp#readme"
 }
