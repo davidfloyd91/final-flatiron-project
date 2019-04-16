@@ -17,6 +17,7 @@ class Dashboard extends Component {
     autoLogin(jwt, this.props);
 
     if (!this.props.chart) {
+      this.props.history.push('/charts');
       this.props.dispatch({ type: 'SET_LONG', payload: false });
     };
 
