@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Switch, Route } from 'react-router-dom';
+import { Link, Route, Switch } from 'react-router-dom';
 
 class Signup extends Component {
   componentDidMount(){
@@ -52,6 +52,7 @@ class Signup extends Component {
         <div className='customizationCardPie center'>
           <h4 className='customizationHeader'>Sign up
           </h4>
+          <Link className='customizationHeader' to='/login'>or log in</Link>
           <form onSubmit={this.handleSubmit}>
             <label className='smallHead' htmlFor='username'>Username</label>
             <input
