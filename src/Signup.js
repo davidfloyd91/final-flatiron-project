@@ -6,7 +6,7 @@ class Signup extends Component {
   componentDidMount(){
     this.props.dispatch({ type: 'SET_LONG', payload: false });
   };
-  
+
   state = {
     username: '',
     email: '',
@@ -48,37 +48,47 @@ class Signup extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label htmlFor='username'>Username</label>
-        <input
-          name='username'
-          type='text'
-          value={this.state.username}
-          onChange={this.handleChange}
-        />
-        <label htmlFor='email'>Email (optional)</label>
-        <input
-          name='email'
-          type='text'
-          value={this.state.email}
-          onChange={this.handleChange}
-        />
-        <label htmlFor='password'>Password</label>
-        <input
-          name='password'
-          type='password'
-          value={this.state.password}
-          onChange={this.handleChange}
-        />
-        <label htmlFor='password'>Confirm password</label>
-        <input
-          name='confirmation'
-          type='password'
-          value={this.state.confirmation}
-          onChange={this.handleChange}
-        />
-        <button type='submit'>Submit</button>
-      </form>
+      <div className='container'>
+        <div className='customizationCardPie center'>
+          <h4 className='customizationHeader'>Sign up
+          </h4>
+          <form onSubmit={this.handleSubmit}>
+            <label className='smallHead' htmlFor='username'>Username</label>
+            <input
+              className='customizationInput'
+              name='username'
+              type='text'
+              value={this.state.username}
+              onChange={this.handleChange}
+            />
+            <label className='smallHead' htmlFor='email'>Email (optional)</label>
+            <input
+              className='customizationInput'
+              name='email'
+              type='text'
+              value={this.state.email}
+              onChange={this.handleChange}
+            />
+            <label className='smallHead' htmlFor='password'>Password</label>
+            <input
+              className='customizationInput'
+              name='password'
+              type='password'
+              value={this.state.password}
+              onChange={this.handleChange}
+            />
+            <label className='smallHead' htmlFor='password'>Confirm password</label>
+            <input
+              className='customizationInput'
+              name='confirmation'
+              type='password'
+              value={this.state.confirmation}
+              onChange={this.handleChange}
+            />
+            <button type='submit'>Submit</button>
+          </form>
+        </div>
+      </div>
     );
   };
 };
