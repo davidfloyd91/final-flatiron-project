@@ -34,7 +34,7 @@ class EmbedCode extends Component {
 
   render() {
     if (this.data()) {
-      const copyData = `<iframe srcdoc="<div id='embed_container'></div><script src='https://unpkg.com/react@16/umd/react.development.js' crossorigin></script><script src='https://unpkg.com/react-dom@16/umd/react-dom.development.js' crossorigin></script><script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js' crossorigin></script><canvas id='bar-chart' width='1000px' height='800px'></canvas><script>new Chart(document.getElementById('bar-chart'),${embedCode});</script>" width="1000px" height="800px"></iframe>`
+      const copyData = `<iframe srcdoc="<div id='embed_container'></div><script src='https://unpkg.com/react@16/umd/react.development.js' crossorigin></script><script src='https://unpkg.com/react-dom@16/umd/react-dom.development.js' crossorigin></script><script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js' crossorigin></script><canvas id='salp-chart' width='800px' height='600px'></canvas><script>new Chart(document.getElementById('salp-chart'),${embedCode});</script>" width="800px" height="650px"></iframe>`
 
       return (
         <Fragment>
