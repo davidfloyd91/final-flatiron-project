@@ -6,7 +6,7 @@ A simple, intuitive chart-making application that uses Chart.js. Using Salp, you
 + turn that data into a line, bar or pie chart;
 + customize the chart's presentation;
 + save and edit charts;
-+ generate an iframe of any chart to embed on your site.
++ generate an iframe of a chart to embed on your site.
 
 ## Installation
 #### Frontend

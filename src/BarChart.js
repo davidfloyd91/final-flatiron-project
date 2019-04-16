@@ -133,7 +133,6 @@ class BarChart extends Component {
             :
           <button onClick={() => this.props.saveChart(saveData, fullData)}>Save chart</button>
         }
-        {/*<button onClick={this.props.discardChart}>Discard chart</button>*/}
       </div>
     );
   };

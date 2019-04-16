@@ -23,8 +23,11 @@ class Sandbox extends Component {
   };
 
   discardChart = () => {
+    this.props.dispatch({ type: 'SET_CHART', payload: null });
     this.props.dispatch({ type: 'SET_DEFAULT' });
+    this.props.dispatch({ type: 'SET_LONG', payload: false });
     this.props.dispatch({ type: 'TOGGLE_NEW' });
+    this.props.history.push('/charts');
   };
 
   updateChart = data => {
