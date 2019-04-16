@@ -1,41 +1,41 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 
-export default class Cell extends Component {
-  handleChange = e => {
-    this.props.newValue(e.target.value, this.props.x, this.props.y);
+const Cell = props => {
+  const handleChange = e => {
+    props.newValue(e.target.value, props.x, props.y);
   };
 
-  handleSubmit = e => {
+  const handleSubmit = e => {
     e.preventDefault();
   };
 
-  render() {
-    return (
-      <Fragment>
-        {
-          this.props.y === 1
-            ?
-          <form onSubmit={this.handleSubmit} className='cell'>
-            <input
-              type='text'
-              value={this.props.value}
-              onChange={this.handleChange}
-            />
-          </form>
-            :
-          this.props.y === 2
-            ?
-          <form onSubmit={this.handleSubmit} className='cell'>
-            <input
-              type='number'
-              value={this.props.value}
-              onChange={this.handleChange}
-            />
-          </form>
-            :
-          null
-        }
-      </Fragment>
-    );
-  };
+  return (
+    <Fragment>
+      {
+        props.y === 1
+          ?
+        <form onSubmit={handleSubmit} className='cell'>
+          <input
+            type='text'
+            value={props.value}
+            onChange={handleChange}
+          />
+        </form>
+          :
+        props.y === 2
+          ?
+        <form onSubmit={handleSubmit} className='cell'>
+          <input
+            type='number'
+            value={props.value}
+            onChange={handleChange}
+          />
+        </form>
+          :
+        null
+      }
+    </Fragment>
+  );
 };
+
+export default Cell;
