@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './App.css';
@@ -28,27 +28,42 @@ class Nav extends Component {
     return (
       <div className='nav'>
         {
-          this.props.new
+          this.props.userId > 0
             ?
+          <Fragment>
+            {
+              this.props.new
+                ?
+              <div className='navButton left'>
+                <Link to='/charts' className='white middleSmall' onClick={() => {this.clearChart(); this.toggleNew();}}>SAVED CHARTS</Link>
+              </div>
+                :
+              this.props.edit
+                ?
+              <div className='navButton left'>
+                <Link to='/charts' className='white middleSmall' onClick={() => {this.clearChart(); this.setEditToFalse();}}>SAVED CHARTS</Link>
+              </div>
+                :
+              <div className='navButton left'>
+                <Link to='/new' className='white middleSmall' onClick={() => {this.clearChart(); this.toggleNew()}}>NEW CHART</Link>
+              </div>
+            }
+          </Fragment>
+            :
           <div className='navButton left'>
-            <Link to='/charts' className='white middleSmall' onClick={() => {this.clearChart(); this.toggleNew();}}>SAVED CHARTS</Link>
+          </div>
+        } {
+          this.props.userId > 0
+            ?
+          <div className='navButtonRight right'>
+            <Link onClick={this.logout} to='/login' className='white middleSmall'>
+              LOG OUT
+            </Link>
           </div>
             :
-          this.props.edit
-            ?
-          <div className='navButton left'>
-            <Link to='/charts' className='white middleSmall' onClick={() => {this.clearChart(); this.setEditToFalse();}}>SAVED CHARTS</Link>
-          </div>
-            :
-          <div className='navButton left'>
-            <Link to='/new' className='white middleSmall' onClick={() => {this.clearChart(); this.toggleNew()}}>NEW CHART</Link>
+          <div className='navButtonRight right'>
           </div>
         }
-        <div className='navButtonRight right'>
-          <Link onClick={this.logout} to='/login' className='white middleSmall'>
-            LOG OUT
-          </Link>
-        </div>
         <div className='navButtonDead'>
           <Link to='/charts' className='white middleLarge'>
             SALP

@@ -69,6 +69,7 @@ class Dashboard extends Component {
       if (okay) {
         this.props.dispatch({ type: 'SET_CHARTS', payload: charts });
         this.props.dispatch({ type: 'SET_CHART', payload: null });
+        this.props.dispatch({ type: 'SET_LONG', payload: false });
         this.props.history.push('/charts');
       };
     });

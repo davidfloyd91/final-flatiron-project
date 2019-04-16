@@ -7,6 +7,9 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
+// test embed code:
+// https://jsfiddle.net/vLfeg5yj/1/
+
 const defaultState = {
   chartType: '',
   color: '#3c40c6',
