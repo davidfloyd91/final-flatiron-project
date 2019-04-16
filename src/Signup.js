@@ -86,7 +86,9 @@ class Signup extends Component {
               value={this.state.confirmation}
               onChange={this.handleChange}
             />
-            <button type='submit'>Submit</button>
+            <div className='center blockButton'>
+              <button type='submit'>Submit</button>
+            </div>
           </form>
         </div>
       </div>

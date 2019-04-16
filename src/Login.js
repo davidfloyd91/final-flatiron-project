@@ -64,7 +64,9 @@ class Login extends Component {
               value={this.state.password}
               onChange={this.handleChange}
             />
-            <button type='submit'>Submit</button>
+            <div className='center blockButton'>
+              <button type='submit'>Submit</button>
+            </div>
           </form>
         </div>
       </div>

@@ -49,6 +49,11 @@ a {
   text-align: center;
 }
 
+.blockButton {
+  display: block;
+  margin-top: 10px;
+}
+
 .card {
   width: 243px;
   display: inline-block;
@@ -67,8 +72,11 @@ a {
   display: inline;
 }
 
+
 .center {
-  margin: 0 auto;
+  /* margin: 0 auto; */
+  margin-left: auto;
+  margin-right: auto;
   text-align: center;
 }
 
