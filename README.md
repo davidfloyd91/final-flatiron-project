@@ -29,7 +29,7 @@ The backend lives at https://github.com/davidfloyd91/Salp-Backend. To install it
 + `$ bundle`
 + `$ rails s`
 
-The database will run at `localhost:3000`.
+The database will run at `localhost:3000`. It is configured to run Postgres [todo].
 
 #### IMPORTANT
 
