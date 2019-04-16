@@ -5,13 +5,18 @@ import LineChart from './LineChart';
 import BarChart from './BarChart';
 import PieChart from './PieChart';
 import App from './App';
-import { autoLogin } from './helpers';
+import { autoLogin, setLongIfChartType } from './helpers';
 let colors;
 
 class Sandbox extends Component {
   componentDidMount() {
     const jwt = localStorage.getItem('jwt');
     autoLogin(jwt, this.props);
+    setLongIfChartType(this.props);
+  };
+
+  componentDidUpdate() {
+    setLongIfChartType(this.props);
   };
 
   chartType = chartType => {

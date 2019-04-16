@@ -17,3 +17,9 @@ export function autoLogin(jwt, props) {
     props.history.push('/login');
   };
 };
+
+export function setLongIfChartType(props) {
+  if (props.chartType) {
+    props.dispatch({ type: 'SET_LONG', payload: true });
+  };
+};

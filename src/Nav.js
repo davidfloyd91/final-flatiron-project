@@ -6,6 +6,7 @@ import './App.css';
 class Nav extends Component {
   toggleNew = () => {
     this.props.dispatch({ type: 'TOGGLE_NEW' });
+    this.props.dispatch({ type: 'SET_LONG', payload: false });
   };
 
   clearChart = () => {

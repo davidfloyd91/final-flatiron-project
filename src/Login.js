@@ -35,8 +35,8 @@ class Login extends Component {
         alert(r.errors);
       } else {
         localStorage.setItem('jwt', r.jwt);
-        this.props.dispatch({ type: 'SET_USER_ID', payload: r.user.id });
         this.props.history.push('/charts');
+        this.props.dispatch({ type: 'SET_USER_ID', payload: r.user.id });
       };
     });
   };

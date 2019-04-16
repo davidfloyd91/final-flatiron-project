@@ -184,7 +184,11 @@ class Dashboard extends Component {
               <EmbedCode />
             </Fragment>
               :
+            this.props.charts[0]
+              ?
             <h5 className='center'>Click on a chart above to display it here</h5>
+              :
+            <h5 className='center'>Looks like you don't have any charts yet</h5>
           }
           </Fragment>
         </div>
