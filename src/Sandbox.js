@@ -26,7 +26,9 @@ class Sandbox extends Component {
     this.props.dispatch({ type: 'SET_CHART', payload: null });
     this.props.dispatch({ type: 'SET_DEFAULT' });
     this.props.dispatch({ type: 'SET_LONG', payload: false });
-    this.props.dispatch({ type: 'TOGGLE_NEW' });
+    if (this.props.edit) {
+      this.props.dispatch({ type: 'SET_EDIT', payload: false });
+    };
     this.props.history.push('/charts');
   };
 
@@ -217,6 +219,7 @@ function mapStateToProps(state) {
     colors: state.colors,
     edit: state.edit,
     horizontal: state.horizontal,
+    new: state.new,
     userId: state.userId,
     warn: state.warn
   };

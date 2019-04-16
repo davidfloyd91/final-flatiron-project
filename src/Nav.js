@@ -13,13 +13,16 @@ class Nav extends Component {
     this.props.dispatch({ type: 'SET_CHART', payload: null });
   };
 
-  setEditToFalse = () => {
+  setDefault = () => {
     this.props.dispatch({ type: 'SET_DEFAULT' });
   };
 
   logout = () => {
 		localStorage.removeItem('jwt');
     // this.props.history.push('/login');
+    this.clearChart();
+    this.setDefault();
+    this.props.dispatch({ type: 'SET_CHART_TYPE', payload: '' });
     this.props.dispatch({ type: 'SET_CHARTS', payload: [] });
 		this.props.dispatch({ type: 'SET_USER_ID', payload: 0 });
 	};
@@ -41,7 +44,7 @@ class Nav extends Component {
               this.props.edit
                 ?
               <div className='navButton left'>
-                <Link to='/charts' className='white middleSmall' onClick={() => {this.clearChart(); this.setEditToFalse();}}>SAVED CHARTS</Link>
+                <Link to='/charts' className='white middleSmall' onClick={() => {this.clearChart(); this.setDefault();}}>SAVED CHARTS</Link>
               </div>
                 :
               <div className='navButton left'>
