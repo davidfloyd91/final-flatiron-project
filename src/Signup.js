@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link, Route, Switch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class Signup extends Component {
   componentDidMount(){

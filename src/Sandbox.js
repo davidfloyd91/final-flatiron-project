@@ -4,7 +4,6 @@ import UserInput from './UserInput';
 import LineChart from './LineChart';
 import BarChart from './BarChart';
 import PieChart from './PieChart';
-import App from './App';
 import { autoLogin, setLongIfChartType } from './helpers';
 let colors;
 
@@ -144,7 +143,6 @@ class Sandbox extends Component {
       // behavior here isn't ideal: deciding which item is which color requires clicking the checkboxes in the right order
       this.props.dispatch({ type: 'SET_COLORS', payload: colors})
     } else if (name === 'horizontal') {
-      // sorry if i broke this
       this.props.dispatch({ type: 'SET_HORIZONTAL', payload: !this.props.horizontal })
     } else {
       this.props.dispatch({ type: 'SET_NAME_TO_VALUE', payload: { key: name, value: value } })
