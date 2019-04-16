@@ -30,20 +30,30 @@ class Nav extends Component {
         {
           this.props.new
             ?
-          <Link to='/charts' className='navButton left' onClick={() => {this.clearChart(); this.toggleNew();}}>SAVED CHARTS</Link>
+          <div className='navButton left'>
+            <Link to='/charts' className='white middleSmall' onClick={() => {this.clearChart(); this.toggleNew();}}>SAVED CHARTS</Link>
+          </div>
             :
           this.props.edit
             ?
-          <Link to='/charts' className='navButton left' onClick={() => {this.clearChart(); this.setEditToFalse();}}>SAVED CHARTS</Link>
+          <div className='navButton left'>
+            <Link to='/charts' className='white middleSmall' onClick={() => {this.clearChart(); this.setEditToFalse();}}>SAVED CHARTS</Link>
+          </div>
             :
-          <Link to='/new' className='navButton left' onClick={() => {this.clearChart(); this.toggleNew()}}>NEW CHART</Link>
+          <div className='navButton left'>
+            <Link to='/new' className='white middleSmall' onClick={() => {this.clearChart(); this.toggleNew()}}>NEW CHART</Link>
+          </div>
         }
-        <Link onClick={this.logout} to='/login' className='navButtonRight right'>
-          LOG OUT
-        </Link>
-        <Link to='/charts' className='navButtonDead'>
-          SALP
-        </Link>
+        <div className='navButtonRight right'>
+          <Link onClick={this.logout} to='/login' className='white middleSmall'>
+            LOG OUT
+          </Link>
+        </div>
+        <div className='navButtonDead'>
+          <Link to='/charts' className='white middleLarge'>
+            SALP
+          </Link>
+        </div>
       </div>
     );
   };

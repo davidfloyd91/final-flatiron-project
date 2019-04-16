@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Abel');
 
-* {
-  font-family: 'Abel', sans-serif;
-}
-
 .App {
   text-align: center;
 }
@@ -39,6 +35,14 @@
 }
 
 /* End default */
+
+* {
+  font-family: 'Abel', sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
 
 .bottom {
   margin: 0 auto 50px auto;
@@ -203,6 +207,16 @@
   top: 27.5%;
 }
 
+.middleLarge {
+  position: relative;
+  top: 17%;
+}
+
+.middleSmall {
+  position: relative;
+  top: 25%;
+}
+
 .navButton {
   position: relative;
   top: 0px;
@@ -214,26 +228,27 @@
   border-left: none;
   border-top: none;
   border-bottom: none;
-  color: white;
   background-color: black;
   font-size: 11pt;
   cursor: pointer;
+  text-align: center;
 }
 
 .navButtonDead {
   position: relative;
+  margin: 0 auto;
   top: 0px;
   height: 50px;
   width: 50%;
   border-color: white;
   border-width: 0.25px;
-  border-right: none;
-  border-left: none;
+  border-right: solid;
+  border-left: solid;
   border-top: none;
   border-bottom: none;
-  color: white;
   background-color: black;
   font-size: 17pt;
+  text-align: center;
 }
 
 .navButtonRight {
@@ -247,10 +262,10 @@
   border-left: solid;
   border-top: none;
   border-bottom: none;
-  color: white;
   background-color: black;
   font-size: 11pt;
   cursor: pointer;
+  text-align: center;
 }
 
 .previewContainer {
@@ -323,8 +338,12 @@
   margin-right: 5px;
 }
 
+.white {
+  color: white;
+}
+
 /* COLORS LIST */
-/* colors courtesy of https://flatuicolors.com/palette/se */
+/* courtesy of https://flatuicolors.com/palette/se */
 
 .highlighterPink {
   color: #05c46b;
