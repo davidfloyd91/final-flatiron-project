@@ -187,6 +187,17 @@
   text-align: center;
 }
 
+.footerShort {
+  position: absolute;
+  bottom: 0;
+  left: 13.875%;
+  width: 72.25%;
+  height: 50px;
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+
 .footerText {
   position: relative;
   top: 27.5%;

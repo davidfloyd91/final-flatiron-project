@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
+import { connect } from 'react-redux';
 
-export default class Footer extends Component {
+class Footer extends Component {
   render() {
+    console.log(this.props.long)
     return (
-      <div className='footer'>
+      <div className={this.props.long ? 'footer' : 'footerShort'}>
         <div className='footerText'>
           Email: davidfloyd91@gmail.com | PGP: https://davidfloyd91.github.io/2019/01/22/public-key.html
         </div>
@@ -12,3 +14,11 @@ export default class Footer extends Component {
     );
   };
 };
+
+function mapStateToProps(state) {
+  return {
+    long: state.long
+  };
+};
+
+export default connect(mapStateToProps)(Footer);

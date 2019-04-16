@@ -24,7 +24,6 @@ class Nav extends Component {
 	};
 
   render() {
-    console.log('edit:', this.props.edit, 'new:', this.props.new)
     return (
       <div className='nav'>
         {

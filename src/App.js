@@ -13,7 +13,6 @@ import { autoLogin } from './helpers';
 class App extends Component {
   componentDidMount() {
     const jwt = localStorage.getItem('jwt');
-
     autoLogin(jwt, this.props);
   };
 

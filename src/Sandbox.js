@@ -11,7 +11,6 @@ let colors;
 class Sandbox extends Component {
   componentDidMount() {
     const jwt = localStorage.getItem('jwt');
-
     autoLogin(jwt, this.props);
   };
 
@@ -25,7 +24,6 @@ class Sandbox extends Component {
   };
 
   updateChart = data => {
-    console.log('update')
     let okay = false;
     const id = this.props.chart.id;
 
@@ -47,6 +45,7 @@ class Sandbox extends Component {
     .then(data => {
       if (okay) {
         this.props.dispatch({ type: 'SET_CHART', payload: data });
+        this.props.dispatch({ type: 'SET_LONG', payload: true });
         this.props.dispatch({ type: 'SET_DEFAULT' });
         this.props.history.push(`/charts/${id}`);
       };
@@ -76,6 +75,7 @@ class Sandbox extends Component {
     .then(data => {
       if (okay) {
         this.props.dispatch({ type: 'SET_CHART', payload: data });
+        this.props.dispatch({ type: 'SET_LONG', payload: true });
         this.props.history.push(`/charts/${data.id}`);
         this.props.dispatch({ type: 'SET_DEFAULT' });
       };

@@ -36,6 +36,7 @@ const initialState = {
   charts: [],
   chartType: '',
   userId: 0,
+  long: false,
   ...defaultState
 };
 
@@ -68,6 +69,8 @@ function reducer(state = initialState, action) {
       return { ...state, input: action.payload }
     case 'SET_LABEL':
       return { ...state, label: action.payload }
+    case 'SET_LONG':
+      return {...state, long: action.payload}
     case 'SET_MAX':
       return { ...state, max: action.payload }
     case 'SET_MIN':

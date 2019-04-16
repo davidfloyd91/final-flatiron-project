@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 
 class Signup extends Component {
+  componentDidMount(){
+    this.props.dispatch({ type: 'SET_LONG', payload: false });
+  };
+  
   state = {
     username: '',
     email: '',

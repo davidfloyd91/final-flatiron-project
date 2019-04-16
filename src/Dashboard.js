@@ -14,8 +14,11 @@ class Dashboard extends Component {
 
   componentDidMount() {
     const jwt = localStorage.getItem('jwt');
-
     autoLogin(jwt, this.props);
+
+    if (!this.props.chart) {
+      this.props.dispatch({ type: 'SET_LONG', payload: false });
+    };
 
     if (this.props.userId > 0) {
       this.getCharts();
@@ -115,6 +118,9 @@ class Dashboard extends Component {
       let ticks = data.options.scales.yAxes[0].ticks.stepSize;
       this.props.dispatch({ type: 'SET_TICKS', payload: ticks });
 
+      let radius = data.data.datasets[0].pointRadius;
+      this.props.dispatch({ type: 'SET_RADIUS', payload: radius });
+
       let xLabel = data.options.scales.xAxes[0].scaleLabel.labelString;
       this.props.dispatch({ type: 'SET_X_LABEL', payload: xLabel });
 
@@ -132,6 +138,8 @@ class Dashboard extends Component {
 
     this.props.history.push(`/charts/${this.props.chart.id}/edit`);
 
+    this.props.dispatch({ type: 'SET_LONG', payload: true });
+
     this.props.dispatch({ type: 'SET_EDIT', payload: true });
     this.props.dispatch({ type: 'SET_ROWS', payload: 0 });
     this.props.dispatch({ type: 'SET_SHOW_TABLE', payload: true });
@@ -139,6 +147,7 @@ class Dashboard extends Component {
   };
 
   showChart = chart => {
+    this.props.dispatch({ type: 'SET_LONG', payload: true });
     this.props.dispatch({ type: 'SET_CHART', payload: chart });
   };
 
