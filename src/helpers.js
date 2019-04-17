@@ -41,3 +41,7 @@ export function setLong(bool, props) {
 export function setUserId(id, props) {
   props.dispatch({ type: 'SET_USER_ID', payload: id });
 };
+
+export function toggleNew(props) {
+  props.dispatch({ type: 'TOGGLE_NEW' });
+};

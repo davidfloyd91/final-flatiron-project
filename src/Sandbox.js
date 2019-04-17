@@ -4,7 +4,7 @@ import UserInput from './UserInput';
 import LineChart from './LineChart';
 import BarChart from './BarChart';
 import PieChart from './PieChart';
-import { autoLogin, setChart, setDefault, setLong } from './helpers';
+import { autoLogin, setChart, setDefault, setLong, toggleNew } from './helpers';
 let colors;
 
 // SET_GRID is happening in two different places
@@ -14,6 +14,9 @@ class Sandbox extends Component {
     const jwt = localStorage.getItem('jwt');
     autoLogin(jwt, this.props);
     this.setLongIfChart();
+    if (!this.props.new) {
+      toggleNew(this.props);
+    };
   };
 
   componentDidUpdate() {

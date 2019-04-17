@@ -2,17 +2,16 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './App.css';
-import { setChart, setCharts, setChartType, setDefault, setLong, setUserId } from './helpers';
+import { setChart, setCharts, setChartType, setDefault, setLong, setUserId, toggleNew } from './helpers';
 
 const Nav = props => {
-  const toggleNew = () => {
-    props.dispatch({ type: 'TOGGLE_NEW' });
+  const toggleNewSetShort = () => {
+    toggleNew(props);
     setLong(false, props);
   };
 
   const logout = () => {
 		localStorage.removeItem('jwt');
-    // props.history.push('/login');
     setChart(null, props);
     setDefault(props);
     setChartType('', props);
@@ -30,7 +29,7 @@ const Nav = props => {
             props.new
               ?
             <div className='navButton left'>
-              <Link to='/charts' className='white middleSmall' onClick={() => {setChart(null, props); toggleNew();}}>SAVED CHARTS</Link>
+              <Link to='/charts' className='white middleSmall' onClick={() => {setChart(null, props); toggleNewSetShort();}}>SAVED CHARTS</Link>
             </div>
               :
             props.edit
@@ -40,7 +39,7 @@ const Nav = props => {
             </div>
               :
             <div className='navButton left'>
-              <Link to='/new' className='white middleSmall' onClick={() => {setChart(null, props); toggleNew()}}>NEW CHART</Link>
+              <Link to='/new' className='white middleSmall' onClick={() => {setChart(null, props); toggleNewSetShort()}}>NEW CHART</Link>
             </div>
           }
         </Fragment>
