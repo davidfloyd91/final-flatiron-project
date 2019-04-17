@@ -90,6 +90,7 @@ a {
 
 .colorsContainer {
   width: 60%;
+  max-width: 135px;
   line-height: 18pt;
   margin: 0 auto 10px auto;
 }
