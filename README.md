@@ -8,6 +8,10 @@ A simple, intuitive chart-making application that uses Chart.js. Using Salp, you
 + save and edit charts;
 + generate an iframe of a chart to embed on your site.
 
+## Demo
+
+See [here](https://www.youtube.com/watch?v=1zRdEr1ctiY) for a video demo.
+
 ## Installation
 ### Frontend
 
@@ -42,10 +46,6 @@ and
 `JWT.decode(auth_headers, Rails.application.credentials.auth_secret)`
 
 You can either write a value for `auth_secret` into your credentials file (which is encrypted and can't be edited directly), or you can replace `Rails.application.credentials.auth_secret` in both lines with a random string (which is insecure and only suitable for futzing).
-
-## Demo
-
-See [here](https://www.youtube.com/watch?v=1zRdEr1ctiY) for a video demo.
 
 ## Known bugs
 
