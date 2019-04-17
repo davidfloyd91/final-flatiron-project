@@ -46,6 +46,16 @@ class BarChart extends Component {
 
     max = this.props.max;
     min = this.props.min;
+    chartData.forEach(d => {
+      if (d >= max) {
+        max = parseInt(d * 1.1);
+      };
+
+      if (d <= min) {
+        min = parseInt(d * 1.1);
+      };
+    });
+
     ticks = this.props.ticks;
     title = this.props.title;
 
