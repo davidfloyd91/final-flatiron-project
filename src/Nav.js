@@ -5,11 +5,6 @@ import './App.css';
 import { setChart, setCharts, setChartType, setDefault, setLong, setUserId, toggleNew } from './helpers';
 
 const Nav = props => {
-  const toggleNewSetShort = () => {
-    toggleNew(props);
-    setLong(false, props);
-  };
-
   const logout = () => {
 		localStorage.removeItem('jwt');
     setChart(null, props);
@@ -29,7 +24,7 @@ const Nav = props => {
             props.new
               ?
             <div className='navButton left'>
-              <Link to='/charts' className='white middleSmall' onClick={() => {setChart(null, props); toggleNewSetShort();}}>SAVED CHARTS</Link>
+              <Link to='/charts' className='white middleSmall' onClick={() => {setChart(null, props); /*toggleNewSetShort();*/ setDefault();}}>SAVED CHARTS</Link>
             </div>
               :
             props.edit
@@ -39,7 +34,7 @@ const Nav = props => {
             </div>
               :
             <div className='navButton left'>
-              <Link to='/new' className='white middleSmall' onClick={() => {setChart(null, props); toggleNewSetShort()}}>NEW CHART</Link>
+              <Link to='/new' className='white middleSmall' onClick={() => {setChart(null, props); toggleNew(props); setLong(false, props);}}>NEW CHART</Link>
             </div>
           }
         </Fragment>
