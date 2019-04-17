@@ -67,9 +67,17 @@ const Nav = props => {
         </div>
       }
       <div className='navButtonDead'>
-        <Link to='/charts' className='white middleLarge'>
-          SALP
-        </Link>
+        {
+          props.userId > 0
+            ?
+          <Link to='/charts' className='white middleLarge'>
+            SALP
+          </Link>
+            :
+          <Link to='/login' className='white middleLarge'>
+            SALP
+          </Link>
+        }
       </div>
     </div>
   );
