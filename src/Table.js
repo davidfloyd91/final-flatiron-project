@@ -4,6 +4,8 @@ import Row from './Row';
 import './App.css';
 let grid;
 
+// SET_GRID is happening in two different places
+
 class Table extends Component {
   componentDidMount() {
     grid = this.props.grid;

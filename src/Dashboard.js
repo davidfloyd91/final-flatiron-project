@@ -4,7 +4,7 @@ import ChartPreview from './ChartPreview';
 import UserChart from './UserChart';
 import EmbedCode from './EmbedCode';
 import './App.css';
-import { autoLogin, setLong } from './helpers';
+import { autoLogin, setChart, setCharts, setChartType, setLong } from './helpers';
 
 class Dashboard extends Component {
   state = {
@@ -39,7 +39,7 @@ class Dashboard extends Component {
     .then(r => r.json())
     .then(user => {
       let charts = user.charts;
-      this.props.dispatch({ type: 'SET_CHARTS', payload: charts });
+      setCharts(charts, this.props);
     });
   };
 
@@ -68,8 +68,8 @@ class Dashboard extends Component {
     })
     .then(data => {
       if (okay) {
-        this.props.dispatch({ type: 'SET_CHARTS', payload: charts });
-        this.props.dispatch({ type: 'SET_CHART', payload: null });
+        setCharts(charts, this.props);
+        setChart(null, this.props);
         setLong(false, this.props);
         this.props.history.push('/charts');
       };
@@ -94,7 +94,7 @@ class Dashboard extends Component {
     this.props.dispatch({ type: 'SET_TITLE', payload: title });
 
     let type = data.type;
-    this.props.dispatch({ type: 'SET_CHART_TYPE', payload: type });
+    setChartType(type, this.props);
 
     if (type !== 'line') {
       let colors = [...new Set(data.data.datasets[0].backgroundColor)];
@@ -150,7 +150,7 @@ class Dashboard extends Component {
 
   showChart = chart => {
     setLong(true, this.props);
-    this.props.dispatch({ type: 'SET_CHART', payload: chart });
+    setChart(chart, this.props);
   };
 
   renderPreviews = () => {

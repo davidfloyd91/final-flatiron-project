@@ -6,11 +6,11 @@ export function autoLogin(jwt, props) {
       }
     })
     .then(r => r.json())
-    .then(res => {
-      if (res.errors) {
-        alert(res.errors);
+    .then(r => {
+      if (r.errors) {
+        alert(r.errors);
       } else {
-        props.dispatch({ type: 'SET_USER_ID', payload: res.id })
+        setUserId(r.id, props);
       };
     });
   } else {
@@ -18,12 +18,26 @@ export function autoLogin(jwt, props) {
   };
 };
 
+export function setChart(data, props) {
+  props.dispatch({ type: 'SET_CHART', payload: data });
+};
+
+export function setCharts(charts, props) {
+  props.dispatch({ type: 'SET_CHARTS', payload: charts });
+};
+
+export function setChartType(type, props) {
+  props.dispatch({ type: 'SET_CHART_TYPE', payload: type });
+};
+
+export function setDefault(props) {
+  props.dispatch({ type: 'SET_DEFAULT' });
+};
+
 export function setLong(bool, props) {
   props.dispatch({ type: 'SET_LONG', payload: bool });
 };
 
-export function setLongIfChartType(props) {
-  if (props.chartType) {
-    setLong(true, props);
-  };
+export function setUserId(id, props) {
+  props.dispatch({ type: 'SET_USER_ID', payload: id });
 };

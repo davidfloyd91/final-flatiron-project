@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './App.css';
-import { setLong } from './helpers';
+import { setChart, setCharts, setChartType, setDefault, setLong, setUserId } from './helpers';
 
 const Nav = props => {
   const toggleNew = () => {
@@ -10,22 +10,14 @@ const Nav = props => {
     setLong(false, props);
   };
 
-  const clearChart = () => {
-    props.dispatch({ type: 'SET_CHART', payload: null });
-  };
-
-  const setDefault = () => {
-    props.dispatch({ type: 'SET_DEFAULT' });
-  };
-
   const logout = () => {
 		localStorage.removeItem('jwt');
     // props.history.push('/login');
-    clearChart();
-    setDefault();
-    props.dispatch({ type: 'SET_CHART_TYPE', payload: '' });
-    props.dispatch({ type: 'SET_CHARTS', payload: [] });
-		props.dispatch({ type: 'SET_USER_ID', payload: 0 });
+    setChart(null, props);
+    setDefault(props);
+    setChartType('', props);
+    setCharts([], props);
+    setUserId(0, props);
 	};
 
   return (
@@ -38,17 +30,17 @@ const Nav = props => {
             props.new
               ?
             <div className='navButton left'>
-              <Link to='/charts' className='white middleSmall' onClick={() => {clearChart(); toggleNew();}}>SAVED CHARTS</Link>
+              <Link to='/charts' className='white middleSmall' onClick={() => {setChart(null, props); toggleNew();}}>SAVED CHARTS</Link>
             </div>
               :
             props.edit
               ?
             <div className='navButton left'>
-              <Link to='/charts' className='white middleSmall' onClick={() => {clearChart(); setDefault();}}>SAVED CHARTS</Link>
+              <Link to='/charts' className='white middleSmall' onClick={() => {setChart(null, props); setDefault();}}>SAVED CHARTS</Link>
             </div>
               :
             <div className='navButton left'>
-              <Link to='/new' className='white middleSmall' onClick={() => {clearChart(); toggleNew()}}>NEW CHART</Link>
+              <Link to='/new' className='white middleSmall' onClick={() => {setChart(null, props); toggleNew()}}>NEW CHART</Link>
             </div>
           }
         </Fragment>

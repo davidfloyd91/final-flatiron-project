@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setLong } from './helpers';
+import { setLong, setUserId } from './helpers';
 
 class Signup extends Component {
   componentDidMount(){
@@ -39,7 +39,7 @@ class Signup extends Component {
         } else {
           localStorage.setItem('jwt', r.jwt);
           this.props.history.push('/charts');
-          this.props.dispatch({ type: 'SET_USER_ID', payload: r.user.id });
+          setUserId(r.user.id, this.props);
         };
       });
     } else {

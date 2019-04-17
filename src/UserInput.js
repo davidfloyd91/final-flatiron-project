@@ -3,24 +3,22 @@ import { connect } from 'react-redux';
 import CSVReader from 'react-csv-reader';
 import Table from './Table';
 import CustomizationFields from './CustomizationFields';
+import { setChartType } from './helpers';
+
+// SET_GRID is happening in two different places
 
 const UserInput = props => {
   const handleForce = grid => {
     props.setGrid(grid);
   };
 
-  // const clearChartType = () => {
-  //   props.changeChartType('');
-  //   props.dispatch({ type: 'SET_INPUT', payload: '' });
-  // };
-
   const handleSubmit = e => {
     e.preventDefault();
     props.dispatch({ type: 'SET_SHOW_TABLE', payload: true });
   };
 
-  const handleClick = chartType => {
-    props.dispatch({ type: 'SET_CHART_TYPE', payload: chartType });
+  const handleClick = type => {
+    setChartType(type, props);
   };
 
   const handleChange = e => {

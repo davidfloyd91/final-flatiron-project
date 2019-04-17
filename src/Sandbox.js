@@ -4,27 +4,37 @@ import UserInput from './UserInput';
 import LineChart from './LineChart';
 import BarChart from './BarChart';
 import PieChart from './PieChart';
-import { autoLogin, setLong, setLongIfChartType } from './helpers';
+import { autoLogin, setChart, setDefault, setLong } from './helpers';
 let colors;
+
+// SET_GRID is happening in two different places
 
 class Sandbox extends Component {
   componentDidMount() {
     const jwt = localStorage.getItem('jwt');
     autoLogin(jwt, this.props);
-    setLongIfChartType(this.props);
+    this.setLongIfChart();
   };
 
   componentDidUpdate() {
-    setLongIfChartType(this.props);
+    this.setLongIfChart();
   };
 
-  chartType = chartType => {
-    this.props.dispatch({ type: 'SET_CHART_TYPE', payload: chartType });
+  setLongIfChart = () => {
+    if (this.props.chart || this.props.chartType) {
+      setLong(true, this.props);
+    };
+  };
+
+  handleSave = data => {
+    setChart(data, this.props);
+    setDefault(this.props);
+    this.props.history.push(`/charts/${data.id}`);
   };
 
   discardChart = () => {
-    this.props.dispatch({ type: 'SET_CHART', payload: null });
-    this.props.dispatch({ type: 'SET_DEFAULT' });
+    setChart(null, this.props);
+    setDefault(this.props);
     setLong(false, this.props);
     if (this.props.edit) {
       this.props.dispatch({ type: 'SET_EDIT', payload: false });
@@ -53,10 +63,7 @@ class Sandbox extends Component {
     })
     .then(data => {
       if (okay) {
-        this.props.dispatch({ type: 'SET_CHART', payload: data });
-        setLong(true, this.props);
-        this.props.dispatch({ type: 'SET_DEFAULT' });
-        this.props.history.push(`/charts/${id}`);
+        this.handleSave(data);
       };
     });
   };
@@ -83,10 +90,7 @@ class Sandbox extends Component {
     })
     .then(data => {
       if (okay) {
-        this.props.dispatch({ type: 'SET_CHART', payload: data });
-        setLong(true, this.props);
-        this.props.history.push(`/charts/${data.id}`);
-        this.props.dispatch({ type: 'SET_DEFAULT' });
+        this.handleSave(data);
       };
     });
   };
@@ -95,9 +99,7 @@ class Sandbox extends Component {
     let grid = [];
     let i = 0;
 
-    this.props.dispatch({
-      type: 'WARN', payload: ''
-    });
+    this.props.dispatch({ type: 'WARN', payload: '' });
 
     firstGrid.forEach(row => {
       if (row[1] && isNaN(parseFloat(row[1]))) {
@@ -196,7 +198,6 @@ class Sandbox extends Component {
           null
         }
         <UserInput
-          changeChartType={this.chartType}
           setGrid={this.setGrid}
           customize={this.customize}
         />
