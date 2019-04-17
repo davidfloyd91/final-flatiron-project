@@ -8,6 +8,10 @@ let grid;
 
 class Table extends Component {
   componentDidMount() {
+    this.populate();
+  };
+
+  populate = () => {
     grid = this.props.grid;
     let row = [];
 
@@ -75,6 +79,7 @@ class Table extends Component {
   };
 
   render() {
+    console.log(this.props.grid)
     return (
       <div className='center'>
         <div className='table'>

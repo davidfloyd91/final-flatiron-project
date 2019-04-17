@@ -78,10 +78,10 @@ function reducer(state = initialState, action) {
       return { ...state, max: action.payload }
     case 'SET_MIN':
       return { ...state, min: action.payload }
-    case 'SET_RADIUS':
-      return { ...state, radius: action.payload }
     case 'TOGGLE_NEW':
       return { ...state, new: !state.new }
+    case 'SET_RADIUS':
+      return { ...state, radius: action.payload }
     case 'SET_ROWS':
       return { ...state, rows: action.payload }
     case 'SET_SHOW_TABLE':
