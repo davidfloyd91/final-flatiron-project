@@ -49,10 +49,12 @@ class BarChart extends Component {
     chartData.forEach(d => {
       if (d >= max) {
         max = parseInt(d * 1.1);
+        this.props.dispatch({ type: 'SET_MAX', payload: max });
       };
 
       if (d <= min) {
         min = parseInt(d * 1.1);
+        this.props.dispatch({ type: 'SET_MIN', payload: min });
       };
     });
 
