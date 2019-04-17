@@ -2,11 +2,12 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './App.css';
+import { setLong } from './helpers';
 
 const Nav = props => {
   const toggleNew = () => {
     props.dispatch({ type: 'TOGGLE_NEW' });
-    props.dispatch({ type: 'SET_LONG', payload: false });
+    setLong(false, props);
   };
 
   const clearChart = () => {

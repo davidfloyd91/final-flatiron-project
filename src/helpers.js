@@ -18,8 +18,12 @@ export function autoLogin(jwt, props) {
   };
 };
 
+export function setLong(bool, props) {
+  props.dispatch({ type: 'SET_LONG', payload: bool });
+};
+
 export function setLongIfChartType(props) {
   if (props.chartType) {
-    props.dispatch({ type: 'SET_LONG', payload: true });
+    setLong(true, props);
   };
 };

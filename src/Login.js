@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { setLong } from './helpers';
 
 class Login extends Component {
   componentDidMount(){
-    this.props.dispatch({ type: 'SET_LONG', payload: false });
+    setLong(false, this.props);
   };
 
   state = {

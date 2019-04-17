@@ -4,7 +4,7 @@ import UserInput from './UserInput';
 import LineChart from './LineChart';
 import BarChart from './BarChart';
 import PieChart from './PieChart';
-import { autoLogin, setLongIfChartType } from './helpers';
+import { autoLogin, setLong, setLongIfChartType } from './helpers';
 let colors;
 
 class Sandbox extends Component {
@@ -25,7 +25,7 @@ class Sandbox extends Component {
   discardChart = () => {
     this.props.dispatch({ type: 'SET_CHART', payload: null });
     this.props.dispatch({ type: 'SET_DEFAULT' });
-    this.props.dispatch({ type: 'SET_LONG', payload: false });
+    setLong(false, this.props);
     if (this.props.edit) {
       this.props.dispatch({ type: 'SET_EDIT', payload: false });
     };
@@ -54,7 +54,7 @@ class Sandbox extends Component {
     .then(data => {
       if (okay) {
         this.props.dispatch({ type: 'SET_CHART', payload: data });
-        this.props.dispatch({ type: 'SET_LONG', payload: true });
+        setLong(true, this.props);
         this.props.dispatch({ type: 'SET_DEFAULT' });
         this.props.history.push(`/charts/${id}`);
       };
@@ -84,7 +84,7 @@ class Sandbox extends Component {
     .then(data => {
       if (okay) {
         this.props.dispatch({ type: 'SET_CHART', payload: data });
-        this.props.dispatch({ type: 'SET_LONG', payload: true });
+        setLong(true, this.props);
         this.props.history.push(`/charts/${data.id}`);
         this.props.dispatch({ type: 'SET_DEFAULT' });
       };
