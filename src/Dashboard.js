@@ -18,7 +18,6 @@ class Dashboard extends Component {
 
     if (!this.props.chart) {
       this.props.history.push('/charts');
-      // this.props.dispatch({ type: 'SET_LONG', payload: false });
       setLong(false, this.props);
     };
 
@@ -71,7 +70,6 @@ class Dashboard extends Component {
       if (okay) {
         this.props.dispatch({ type: 'SET_CHARTS', payload: charts });
         this.props.dispatch({ type: 'SET_CHART', payload: null });
-        // this.props.dispatch({ type: 'SET_LONG', payload: false });
         setLong(false, this.props);
         this.props.history.push('/charts');
       };
@@ -142,7 +140,6 @@ class Dashboard extends Component {
 
     this.props.history.push(`/charts/${this.props.chart.id}/edit`);
 
-    // this.props.dispatch({ type: 'SET_LONG', payload: true });
     setLong(true, this.props);
 
     this.props.dispatch({ type: 'SET_EDIT', payload: true });
@@ -152,7 +149,6 @@ class Dashboard extends Component {
   };
 
   showChart = chart => {
-    // this.props.dispatch({ type: 'SET_LONG', payload: true });
     setLong(true, this.props);
     this.props.dispatch({ type: 'SET_CHART', payload: chart });
   };
