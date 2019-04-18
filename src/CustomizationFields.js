@@ -26,8 +26,10 @@ const CustomizationFields = props => {
               props.chartType !== 'pie'
                 ?
               <Fragment>
-                <label htmlFor='label' className='smallHead'> Line label </label>
+                <label htmlFor='label' className='smallHead'> Top label </label>
                 <input onChange={handleChange} name='label' value={props.label} className='customizationInput' />
+                <label htmlFor='displayLabel' className='smallHead'> Display top label? </label>
+                <input type='checkbox' onChange={handleChange} name='displayLabel' checked={props.labelDisplay} />
                 <label htmlFor='xLabel' className='smallHead'> Horizontal axis label </label>
                 <input onChange={handleChange} name='xLabel' value={props.xLabel} className='customizationInput' />
                 <label htmlFor='yLabel' className='smallHead'> Vertical axis label </label>
@@ -338,6 +340,7 @@ function mapStateToProps(state) {
     color: state.color,
     colors: state.colors,
     chartType: state.chartType,
+    labelDisplay: state.labelDisplay,
     horizontal: state.horizontal,
     label: state.label,
     max: state.max,

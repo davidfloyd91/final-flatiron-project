@@ -21,7 +21,7 @@ class BarChart extends Component {
       newChart.destroy();
     };
 
-    let chartData, colors, label, labels, max, min, ticks, title, type, xLabel, yLabel;
+    let chartData, colors, label, labelDisplay, labels, max, min, ticks, title, type, xLabel, yLabel;
 
     chartData = this.props.data.map(a => {
       return parseFloat(a[1]);
@@ -39,6 +39,7 @@ class BarChart extends Component {
     };
 
     label = this.props.label;
+    labelDisplay = this.props.labelDisplay;
 
     labels = this.props.data.map(a => {
       return a[0];
@@ -159,6 +160,7 @@ function mapStateToProps(state) {
     edit: state.edit,
     horizontal: state.horizontal,
     label: state.label,
+    labelDisplay: state.labelDisplay,
     max: state.max,
     min: state.min,
     ticks: state.ticks,

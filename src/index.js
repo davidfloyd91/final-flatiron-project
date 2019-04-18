@@ -20,6 +20,7 @@ const defaultState = {
   horizontal: false,
   input: '',
   label: '',
+  labelDisplay: true,
   max: 10,
   min: -10,
   new: false,
@@ -72,6 +73,8 @@ function reducer(state = initialState, action) {
       return { ...state, input: action.payload }
     case 'SET_LABEL':
       return { ...state, label: action.payload }
+    case 'TOGGLE_LABEL_DISPLAY':
+      return { ...state, labelDisplay: !state.labelDisplay }
     case 'SET_LONG':
       return {...state, long: action.payload}
     case 'SET_MAX':

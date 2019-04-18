@@ -154,6 +154,8 @@ class Sandbox extends Component {
       this.props.dispatch({ type: 'SET_COLORS', payload: colors})
     } else if (name === 'horizontal') {
       this.props.dispatch({ type: 'SET_HORIZONTAL', payload: !this.props.horizontal })
+    } else if (name === 'displayLabel') {
+      this.props.dispatch({ type: 'TOGGLE_LABEL_DISPLAY' });
     } else {
       this.props.dispatch({ type: 'SET_NAME_TO_VALUE', payload: { key: name, value: value } })
     };
