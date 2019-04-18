@@ -85,6 +85,9 @@ class BarChart extends Component {
         ]
       },
       options: {
+        legend: {
+          display: labelDisplay
+        },
         title: {
             display: true,
             text: title
