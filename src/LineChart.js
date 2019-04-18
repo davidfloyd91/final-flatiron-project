@@ -39,12 +39,12 @@ class LineChart extends Component {
     min = this.props.min;
     chartData.forEach(d => {
       if (d >= max) {
-        max = parseInt(d * 1.1);
+        max = d;
         this.props.dispatch({ type: 'SET_MAX', payload: max });
       };
 
       if (d <= min) {
-        min = parseInt(d * 1.1);
+        min = d;
         this.props.dispatch({ type: 'SET_MIN', payload: min });
       };
     });
@@ -132,11 +132,11 @@ class LineChart extends Component {
           this.props.edit
             ?
           <Fragment>
-            <button onClick={() => this.props.updateChart(saveData, fullData)}>Save changes</button>
-            <button onClick={() => this.props.saveChart(saveData, fullData)}>Save as new chart</button>
+            <button className='button' onClick={() => this.props.updateChart(saveData, fullData)}>Save changes</button>
+            <button className='button' onClick={() => this.props.saveChart(saveData, fullData)}>Save as new chart</button>
           </Fragment>
             :
-          <button onClick={() => this.props.saveChart(saveData, fullData)}>Save chart</button>
+          <button className='button' onClick={() => this.props.saveChart(saveData, fullData)}>Save chart</button>
         }
       </div>
     );

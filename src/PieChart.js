@@ -91,11 +91,11 @@ class PieChart extends Component {
           this.props.edit
             ?
           <Fragment>
-            <button onClick={() => this.props.updateChart(saveData, fullData)}>Save changes</button>
-            <button onClick={() => this.props.saveChart(saveData, fullData)}>Save as new chart</button>
+            <button className='button' onClick={() => this.props.updateChart(saveData, fullData)}>Save changes</button>
+            <button className='button' onClick={() => this.props.saveChart(saveData, fullData)}>Save as new chart</button>
           </Fragment>
             :
-          <button onClick={() => this.props.saveChart(saveData, fullData)}>Save chart</button>
+          <button className='button' onClick={() => this.props.saveChart(saveData, fullData)}>Save chart</button>
         }
       </div>
     );

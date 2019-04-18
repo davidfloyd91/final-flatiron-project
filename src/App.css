@@ -60,6 +60,16 @@ a {
   margin-top: 10px;
 }
 
+.button {
+  width: 100px;
+  height: 20px;
+  border-width: 1px;
+  border-radius: 5px;
+  border-color: black;
+  margin: 1px 2px;
+  color: black;
+}
+
 .card {
   width: 243px;
   display: inline-block;
@@ -115,14 +125,19 @@ a {
 
 .customizationButton {
   width: 77%;
-  margin-top: 18px;
+  margin: 18px auto;
+  height: 20px;
+  border-width: 1px;
+  border-radius: 5px;
+  border-color: black;
+  color: black;
 }
 
 .customizationCard {
   width: 30%;
   border: solid;
   border-color: black;
-  border-width: 1px;
+  border-width: 1.5px;
   border-radius: 5px;
   height: 305px;
   text-align: center;
@@ -133,7 +148,7 @@ a {
   width: 45%;
   border: solid;
   border-color: black;
-  border-width: 1px;
+  border-width: 1.5px;
   border-radius: 5px;
   height: 305px;
   text-align: center;
@@ -184,6 +199,10 @@ a {
   overflow-wrap: break-word;
   font-family: monospace;
   cursor: pointer;
+}
+
+.labelCheckBox {
+  display: inline;
 }
 
 .left {
@@ -243,6 +262,10 @@ a {
 .middleSmall {
   position: relative;
   top: 25%;
+}
+
+#myChart {
+  margin-bottom: 5px;
 }
 
 .navButton {
@@ -323,6 +346,10 @@ a {
   width: 150px;
 }
 
+.red {
+  color: red;
+}
+
 .right {
   float: right;
 }
@@ -358,9 +385,9 @@ a {
 .smallHeadInline {
   font-weight: bold;
   font-size: 9pt;
-  display: inline;
-  margin-top: 6px;
-  margin-bottom: 2px;
+  display: inline-block;
+  margin-top: 10px;
+  margin-bottom: 6px;
   margin-right: 5px;
 }
 

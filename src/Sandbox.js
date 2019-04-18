@@ -194,9 +194,9 @@ class Sandbox extends Component {
             {
               this.props.edit
                 ?
-              <button onClick={this.discardChart}>Discard changes</button>
+              <button className='button red' onClick={this.discardChart}>Discard changes</button>
                 :
-              <button onClick={this.discardChart}>Discard chart</button>
+              <button className='button red' onClick={this.discardChart}>Discard chart</button>
             }
           </Fragment>
             :

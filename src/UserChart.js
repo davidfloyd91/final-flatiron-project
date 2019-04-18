@@ -51,8 +51,8 @@ class UserChart extends Component {
             id='myChart'
             ref={this.chartRef}
           />
-          <button onClick={this.props.editChart}>Edit chart</button>
-          <button onClick={this.props.deleteChart}>Delete chart</button>
+          <button className='button' onClick={this.props.editChart}>Edit chart</button>
+          <button className='button red' onClick={this.props.deleteChart}>Delete chart</button>
         </div>
       );
     } else {
