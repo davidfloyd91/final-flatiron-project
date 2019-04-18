@@ -44,31 +44,33 @@ class Login extends Component {
 
   render() {
     return (
-      <div className='container'>
-        <div className='customizationCardPie center'>
-          <h4 className='customizationHeader'>Log in</h4>
-          <Link className='customizationHeader' to='/signup'>or sign up</Link>
-          <form onSubmit={this.handleSubmit}>
-            <label className='smallHead' htmlFor='username'>Username</label>
-            <input
-              className='customizationInput'
-              name='username'
-              type='text'
-              value={this.state.username}
-              onChange={this.handleChange}
-            />
-            <label className='smallHead' htmlFor='password'>Password</label>
-            <input
-              className='customizationInput'
-              name='password'
-              type='password'
-              value={this.state.password}
-              onChange={this.handleChange}
-            />
-            <div className='center blockButton'>
-              <button type='submit'>Submit</button>
-            </div>
-          </form>
+      <div className='loginSignup'>
+        <div className='container'>
+          <div className='customizationCardPie center'>
+            <h4 className='customizationHeader'>Log in</h4>
+            <Link className='customizationHeader' to='/signup'>or sign up</Link>
+            <form onSubmit={this.handleSubmit}>
+              <label className='smallHead' htmlFor='username'>Username</label>
+              <input
+                className='customizationInput'
+                name='username'
+                type='text'
+                value={this.state.username}
+                onChange={this.handleChange}
+              />
+              <label className='smallHead' htmlFor='password'>Password</label>
+              <input
+                className='customizationInput'
+                name='password'
+                type='password'
+                value={this.state.password}
+                onChange={this.handleChange}
+              />
+              <div className='center blockButton'>
+                <button type='submit'>Submit</button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     );
