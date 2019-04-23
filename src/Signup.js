@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setLong, setUserId, url } from './helpers';
-const store = require('store');
+import { setLong, setUserId, store, url } from './helpers';
 
 class Signup extends Component {
   componentDidMount(){

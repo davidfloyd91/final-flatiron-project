@@ -1,7 +1,11 @@
 export const url = 'https://salp-api.herokuapp.com';
 // export const url = 'http://localhost:3000';
 
-export function autoLogin(jwt, props) {
+export const store = require('store');
+
+export function autoLogin(props) {
+  const jwt = store.get('jwt');
+
   if (jwt) {
     fetch(`${url}/auto_login`, {
       headers: {

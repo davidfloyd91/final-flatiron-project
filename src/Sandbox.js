@@ -6,15 +6,12 @@ import BarChart from './BarChart';
 import PieChart from './PieChart';
 import { autoLogin, setChart, setDefault, setLong, toggleNew, url } from './helpers';
 let colors;
-const store = require('store');
 
 // SET_GRID is happening in two different places
 
 class Sandbox extends Component {
   componentDidMount() {
-    // const jwt = localStorage.getItem('jwt');
-    const jwt = store.get('jwt');
-    autoLogin(jwt, this.props);
+    autoLogin(this.props);
     this.setLongIfChart();
     if (!this.props.new) {
       toggleNew(this.props);

@@ -2,12 +2,10 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './App.css';
-import { setChart, setCharts, setChartType, setDefault, setLong, setUserId, toggleNew } from './helpers';
-const store = require('store');
+import { setChart, setCharts, setChartType, setDefault, setLong, setUserId, store, toggleNew } from './helpers';
 
 const Nav = props => {
   const logout = () => {
-		// localStorage.removeItem('jwt');
     store.remove('jwt');
     setChart(null, props);
     setDefault(props);
