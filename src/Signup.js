@@ -32,7 +32,7 @@ class Signup extends Component {
         },
         body: JSON.stringify(this.state)
       })
-      .then(r => { console.log(r); r.json() })
+      .then(r => { console.log(r); return r.json() })
       .then(r => {
         if (r.errors) {
           alert(r.errors);
