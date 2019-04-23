@@ -17,7 +17,7 @@ class App extends Component {
   };
 
   render() {
-    // console.log('new', this.props.new, 'edit', this.props.edit)
+    console.log(process.env.NODE_ENV)
     return (
       <div className='container'>
         <Nav history={this.props.history} />
