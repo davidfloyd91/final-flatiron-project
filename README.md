@@ -8,6 +8,10 @@ A simple, intuitive chart-making application that uses Chart.js. Using Salp, you
 + save and edit charts;
 + generate an iframe of a chart to embed on your site.
 
+## Live
+
+Use Salp live [here](https://salp-client.herokuapp.com/login).
+
 ## Demo
 
 See [here](https://www.youtube.com/watch?v=1zRdEr1ctiY) for a video demo.
@@ -15,12 +19,19 @@ See [here](https://www.youtube.com/watch?v=1zRdEr1ctiY) for a video demo.
 ## Installation
 ### Frontend
 
-This repository contains Salp's frontend. To install it, run the following in the terminal (in your desired directory):
+This repository contains Salp's frontend. To install it locally, run the following in the terminal (in your desired directory):
 
 + `$ git clone git@github.com:davidfloyd91/Salp.git`
 + `$ cd Salp`
+
+To run the app locally, it's necessary to make a minor change to the code:
+
++ in `src/helpers.js`, comment out line 1 (`export const url = 'https://salp-api.herokuapp.com';`) and comment in line 2 (`export const url = 'http://localhost:3000';`)
+
+Then run:
+
 + `$ npm i`
-+ `$ npm start`
++ `$ npm run local_start`
 
 Then visit `localhost:3001` in the browser.
 
@@ -30,22 +41,19 @@ The backend lives at [this repo](https://github.com/davidfloyd91/Salp-Backend). 
 
 + `$ git clone git@github.com:davidfloyd91/Salp-Backend.git`
 + `$ cd Salp-Backend`
+
+To run the app locally, it's necessary to make a few minor changes to the code:
+
++ in `app/controllers/application_controller.rb`, comment out line 8 (`JWT.decode(auth_headers, ENV['AUTH_SECRET'])`) and comment in line 7 (`JWT.decode(auth_headers, 'unsafe_secret_replacement')`)
++ do the same with lines 13 and 14 (this replaces the secret key necessary to encode and decode JWT tokens with an unsafe string, enabling you to log in or sign up -- unsafely)
++ in `config/initializers/cors.rb`, comment out line 10 (`origins 'https://salp-client.herokuapp.com'`) and comment in line 11 (`origins 'http://localhost:3001'`)
+
+Then run:
+
 + `$ bundle`
 + `$ rails s`
 
-The database will run at `localhost:3000`. It is configured to run Postgres [todo].
-
-#### IMPORTANT
-
-Note that the secret key necessary to encode and decode JWT tokens is not included in this repository, which will break the following lines in `app/controllers/application_controller.rb` and prevent login or signup:
-
-`JWT.encode(payload, Rails.application.credentials.auth_secret)`
-
-and
-
-`JWT.decode(auth_headers, Rails.application.credentials.auth_secret)`
-
-You can either write a value for `auth_secret` into your credentials file (which is encrypted and can't be edited directly), or you can replace `Rails.application.credentials.auth_secret` in both lines with a random string (which is insecure and only suitable for futzing).
+The database will run at `localhost:3000`. It is configured to run Postgres.
 
 ## Known bugs
 
