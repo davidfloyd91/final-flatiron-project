@@ -10,7 +10,7 @@ A simple, intuitive chart-making application that uses Chart.js. Using Salp, you
 
 ## Live
 
-Use Salp live [here](https://salp-client.herokuapp.com/login) (currently only compatible with Chrome and Firefox).
+Use Salp live [here](https://salp-client.herokuapp.com/login) (currently only <strike>compatible with</strike> halfway decent-looking on Chrome and Firefox).
 
 ## Demo
 
