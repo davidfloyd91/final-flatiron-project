@@ -4,7 +4,7 @@ import ChartPreview from './ChartPreview';
 import UserChart from './UserChart';
 import EmbedCode from './EmbedCode';
 import './App.css';
-import { autoLogin, setChart, setCharts, setChartType, setLong } from './helpers';
+import { autoLogin, setChart, setCharts, setChartType, setLong, url } from './helpers';
 
 class Dashboard extends Component {
   state = {
@@ -35,7 +35,7 @@ class Dashboard extends Component {
   };
 
   getCharts = () => {
-    fetch(`http://localhost:3000/users/${this.props.userId}`)
+    fetch(`${url}/users/${this.props.userId}`)
     .then(r => r.json())
     .then(user => {
       let charts = user.charts;
@@ -54,7 +54,7 @@ class Dashboard extends Component {
       ...this.props.charts.slice(index + 1)
     ];
 
-    fetch(`http://localhost:3000/charts/${this.props.chart.id}`, {
+    fetch(`${url}/charts/${this.props.chart.id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'

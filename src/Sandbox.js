@@ -4,7 +4,7 @@ import UserInput from './UserInput';
 import LineChart from './LineChart';
 import BarChart from './BarChart';
 import PieChart from './PieChart';
-import { autoLogin, setChart, setDefault, setLong, toggleNew } from './helpers';
+import { autoLogin, setChart, setDefault, setLong, toggleNew, url } from './helpers';
 let colors;
 
 // SET_GRID is happening in two different places
@@ -49,7 +49,7 @@ class Sandbox extends Component {
     let okay = false;
     const id = this.props.chart.id;
 
-    fetch(`http://localhost:3000/charts/${id}`, {
+    fetch(`${url}/charts/${id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'
@@ -74,7 +74,7 @@ class Sandbox extends Component {
   saveChart = data => {
     let okay = false;
 
-    fetch('http://localhost:3000/charts', {
+    fetch(`${url}/charts`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setLong, setUserId } from './helpers';
+import { setLong, setUserId, url } from './helpers';
 
 class Signup extends Component {
   componentDidMount(){
@@ -24,7 +24,7 @@ class Signup extends Component {
   handleSubmit = e => {
     e.preventDefault();
     if (this.state.password === this.state.confirmation) {
-      fetch('http://localhost:3000/users', {
+      fetch(`${url}/users`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setLong, setUserId } from './helpers';
+import { setLong, setUserId, url } from './helpers';
 
 class Login extends Component {
   componentDidMount(){
@@ -22,7 +22,7 @@ class Login extends Component {
   handleSubmit = e => {
     e.preventDefault();
 
-    fetch('http://localhost:3000/login', {
+    fetch(`${url}/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
