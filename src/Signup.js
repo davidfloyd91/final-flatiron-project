@@ -12,7 +12,7 @@ class Signup extends Component {
     username: '',
     email: '',
     password: '',
-    confirmation: ''
+    password_confirmation: ''
   };
 
   handleChange = e => {
@@ -23,7 +23,7 @@ class Signup extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    if (this.state.password === this.state.confirmation) {
+    if (this.state.password === this.state.password_confirmation) {
       fetch(`${url}/users`, {
         method: 'POST',
         headers: {
@@ -32,7 +32,7 @@ class Signup extends Component {
         },
         body: JSON.stringify(this.state)
       })
-      .then(r => { console.log(r); return r.json() })
+      .then(r => r.json())
       .then(r => {
         if (r.errors) {
           alert(r.errors);
@@ -85,7 +85,7 @@ class Signup extends Component {
                 className='customizationInput'
                 name='confirmation'
                 type='password'
-                value={this.state.confirmation}
+                value={this.state.password_confirmation}
                 onChange={this.handleChange}
               />
               <div className='center blockButton'>
