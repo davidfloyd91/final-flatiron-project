@@ -11,6 +11,98 @@ const CustomizationFields = props => {
     props.customize(e);
   };
 
+  // const colorsArray = [
+  //   .highlighterPink {
+  //     color: #ef5777;
+  //     background-color: #ef5777;
+  //   }
+  //
+  //   .darkPeriwinkle {
+  //     color: #575fcf;
+  //     background-color: #575fcf;
+  //   }
+  //
+  //   .megaman {
+  //     color: #4bcffa;
+  //     background-color: #4bcffa;
+  //   }
+  //
+  //   .freshTurquoise {
+  //     color: #34e7e4;
+  //     background-color: #34e7e4;
+  //   }
+  //
+  //   .mintGreen {
+  //     color: #0be881;
+  //     background-color: #0be881;
+  //   }
+  //
+  //   .sizzlingRed {
+  //     color: #f53b57;
+  //     background-color: #f53b57;
+  //   }
+  //
+  //   .freeSpeechBlue {
+  //     color: #3c40c6;
+  //     background-color: #3c40c6;
+  //   }
+  //
+  //   .spiroDiscoBall {
+  //     color: #0fbcf9;
+  //     background-color: #0fbcf9;
+  //   }
+  //
+  //   .jadeDust {
+  //     color: #00d8d6;
+  //     background-color: #00d8d6;
+  //   }
+  //
+  //   .greenTeal {
+  //     color: #05c46b;
+  //     background-color: #05c46b;
+  //   }
+  //
+  //   .narenjiOrange {
+  //     color: #ffc048;
+  //     background-color: #ffc048;
+  //   }
+  //
+  //   .yrielYellow {
+  //     color: #ffdd59;
+  //     background-color: #ffdd59;
+  //   }
+  //
+  //   .sunsetOrange {
+  //     color: #ff5e57;
+  //     background-color: #ff5e57;
+  //   }
+  //
+  //   .chromeYellow {
+  //     color: #ffa801;
+  //     background-color: #ffa801;
+  //   }
+  //
+  //   .vibrantYellow {
+  //     color: #ffd32a;
+  //     background-color: #ffd32a;
+  //   }
+  //
+  //   .redOrange {
+  //     color: #ff3f34;
+  //     background-color: #ff3f34;
+  //   }
+  //
+  //   .londonSquare {
+  //     color: #808e9b;
+  //     background-color: #808e9b;
+  //   }
+  //
+  //   .hintOfElusiveBlue {
+  //     color: #d2dae2;
+  //     background-color: #d2dae2;
+  //   }
+  // ];
+
   return (
     <div className={(props.chartType === 'pie' || (props.chartType === 'bar' && props.horizontal)) ? 'customizationPanePie' : 'customizationPane'}>
       <h4 className='customizationPaneHeader'>Customize your chart</h4>
@@ -70,7 +162,7 @@ const CustomizationFields = props => {
                     onChange={handleChange}
                     type='radio'
                     name='color'
-                    value='#05c46b'
+                    value='#ef5777'
                   /><div className='colorBox highlighterPink'>HOWDY!!!</div>
                   <input
                     onChange={handleChange}
@@ -184,8 +276,8 @@ const CustomizationFields = props => {
                   onChange={handleChange}
                   type='checkbox'
                   name='colors'
-                  value='#05c46b'
-                  checked={props.colors.includes('#05c46b')}
+                  value='#ef5777'
+                  checked={props.colors.includes('#ef5777')}
                 /><div className='colorBox highlighterPink'>HOWDY!!!</div>
                 <input
                   onChange={handleChange}
