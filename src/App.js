@@ -9,10 +9,12 @@ import Nav from './Nav';
 import Footer from './Footer';
 import './App.css';
 import { autoLogin } from './helpers';
+const store = require('store');
 
 class App extends Component {
   componentDidMount() {
-    const jwt = localStorage.getItem('jwt');
+    // const jwt = localStorage.getItem('jwt');
+    const jwt = store.get('jwt');
     autoLogin(jwt, this.props);
   };
 

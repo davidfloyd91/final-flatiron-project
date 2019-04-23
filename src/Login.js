@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { setLong, setUserId, url } from './helpers';
+const store = require('store');
 
 class Login extends Component {
   componentDidMount(){
@@ -35,7 +36,8 @@ class Login extends Component {
       if (r.errors) {
         alert(r.errors);
       } else {
-        localStorage.setItem('jwt', r.jwt);
+        // localStorage.setItem('jwt', r.jwt);
+        store.set('jwt', r.jwt);
         this.props.history.push('/charts');
         setUserId(r.user.id, this.props);
       };

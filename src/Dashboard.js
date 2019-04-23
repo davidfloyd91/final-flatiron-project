@@ -5,6 +5,7 @@ import UserChart from './UserChart';
 import EmbedCode from './EmbedCode';
 import './App.css';
 import { autoLogin, setChart, setCharts, setChartType, setLong, url } from './helpers';
+const store = require('store');
 
 class Dashboard extends Component {
   state = {
@@ -13,7 +14,8 @@ class Dashboard extends Component {
   };
 
   componentDidMount() {
-    const jwt = localStorage.getItem('jwt');
+    // const jwt = localStorage.getItem('jwt');
+    const jwt = store.get('jwt');
     autoLogin(jwt, this.props);
 
     if (!this.props.chart) {
