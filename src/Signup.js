@@ -83,7 +83,7 @@ class Signup extends Component {
               <label className='smallHead' htmlFor='password'>Confirm password</label>
               <input
                 className='customizationInput'
-                name='confirmation'
+                name='password_confirmation'
                 type='password'
                 value={this.state.password_confirmation}
                 onChange={this.handleChange}
