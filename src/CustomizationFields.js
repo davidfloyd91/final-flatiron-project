@@ -3,105 +3,102 @@ import { connect } from 'react-redux';
 
 // currently you can't set min, max or tick size on horizontal charts -- why/how to fix?
 
-// also you need to generally have fields here fill in with the current state values -- when you toggle between vertical and horizontal bars (maybe other situations), the fields are empty but the old values are still in state
-
 const CustomizationFields = props => {
 
   const handleChange = e => {
     props.customize(e);
   };
 
-  // const colorsArray = [
-  //   .highlighterPink {
-  //     color: #ef5777;
-  //     background-color: #ef5777;
-  //   }
-  //
-  //   .darkPeriwinkle {
-  //     color: #575fcf;
-  //     background-color: #575fcf;
-  //   }
-  //
-  //   .megaman {
-  //     color: #4bcffa;
-  //     background-color: #4bcffa;
-  //   }
-  //
-  //   .freshTurquoise {
-  //     color: #34e7e4;
-  //     background-color: #34e7e4;
-  //   }
-  //
-  //   .mintGreen {
-  //     color: #0be881;
-  //     background-color: #0be881;
-  //   }
-  //
-  //   .sizzlingRed {
-  //     color: #f53b57;
-  //     background-color: #f53b57;
-  //   }
-  //
-  //   .freeSpeechBlue {
-  //     color: #3c40c6;
-  //     background-color: #3c40c6;
-  //   }
-  //
-  //   .spiroDiscoBall {
-  //     color: #0fbcf9;
-  //     background-color: #0fbcf9;
-  //   }
-  //
-  //   .jadeDust {
-  //     color: #00d8d6;
-  //     background-color: #00d8d6;
-  //   }
-  //
-  //   .greenTeal {
-  //     color: #05c46b;
-  //     background-color: #05c46b;
-  //   }
-  //
-  //   .narenjiOrange {
-  //     color: #ffc048;
-  //     background-color: #ffc048;
-  //   }
-  //
-  //   .yrielYellow {
-  //     color: #ffdd59;
-  //     background-color: #ffdd59;
-  //   }
-  //
-  //   .sunsetOrange {
-  //     color: #ff5e57;
-  //     background-color: #ff5e57;
-  //   }
-  //
-  //   .chromeYellow {
-  //     color: #ffa801;
-  //     background-color: #ffa801;
-  //   }
-  //
-  //   .vibrantYellow {
-  //     color: #ffd32a;
-  //     background-color: #ffd32a;
-  //   }
-  //
-  //   .redOrange {
-  //     color: #ff3f34;
-  //     background-color: #ff3f34;
-  //   }
-  //
-  //   .londonSquare {
-  //     color: #808e9b;
-  //     background-color: #808e9b;
-  //   }
-  //
-  //   .hintOfElusiveBlue {
-  //     color: #d2dae2;
-  //     background-color: #d2dae2;
-  //   }
-  // ];
+  const colorsArray = [
+    {
+      name: 'highlighterPink',
+      hex: '#ef5777'
+    }, {
+      name: 'darkPeriwinkle',
+      hex: '#575fcf'
+    }, {
+      name: 'megaman',
+      hex: '#4bcffa'
+    }, {
+      name: 'freshTurquoise',
+      hex: '#34e7e4'
+    }, {
+      name: 'mintGreen',
+      hex: '#0be881'
+    }, {
+      name: 'sizzlingRed',
+      hex: '#f53b57'
+    }, {
+      name: 'freeSpeechBlue',
+      hex: '#3c40c6'
+    }, {
+      name: 'spiroDiscoBall',
+      hex: '#0fbcf9'
+    }, {
+      name: 'jadeDust',
+      hex: '#00d8d6'
+    }, {
+      name: 'greenTeal',
+      hex: '#05c46b'
+    }, {
+      name: 'narenjiOrange',
+      hex: '#ffc048'
+    }, {
+      name: 'yrielYellow',
+      hex: '#ffdd59'
+    }, {
+      name: 'sunsetOrange',
+      hex: '#ff5e57'
+    }, {
+      name: 'chromeYellow',
+      hex: '#ffa801'
+    }, {
+      name: 'vibrantYellow',
+      hex: '#ffd32a'
+    }, {
+      name: 'redOrange',
+      hex: '#ff3f34'
+    }, {
+      name: 'londonSquare',
+      hex: '#808e9b'
+    }, {
+      name: 'hintOfElusiveBlue',
+      hex: '#d2dae2'
+    }
+  ];
+
+  const renderRadios = () => {
+    return colorsArray.map(color => {
+      return (
+          <Fragment>
+            <input
+              onChange={handleChange}
+              type='radio'
+              name='color'
+              value={color.hex}
+            />
+            <div className={color.name + ' colorBox'}>HOWDY!!!</div>
+          </Fragment>
+      );
+    });
+  };
+
+  const renderCheckboxes = () => {
+    return colorsArray.map(color => {
+      return (
+          <Fragment>
+            <input
+              onChange={handleChange}
+              type='checkbox'
+              name='colors'
+              value={color.hex}
+              checked={props.colors.includes(color.hex)}
+            />
+            <div className={color.name + ' colorBox'}>HOWDY!!!</div>
+          </Fragment>
+      );
+    });
+  };
 
   return (
     <div className={(props.chartType === 'pie' || (props.chartType === 'bar' && props.horizontal)) ? 'customizationPanePie' : 'customizationPane'}>
@@ -158,246 +155,14 @@ const CustomizationFields = props => {
                 <input onChange={handleChange} name='radius' placeholder={props.radius} className='customizationInput' />
                 <label htmlFor='color' className='smallHead'> Color </label>
                 <div className='colorsContainer'>
-                  <input
-                    onChange={handleChange}
-                    type='radio'
-                    name='color'
-                    value='#ef5777'
-                  /><div className='colorBox highlighterPink'>HOWDY!!!</div>
-                  <input
-                    onChange={handleChange}
-                    type='radio'
-                    name='color'
-                    value='#575fcf'
-                  /><div className='colorBox darkPeriwinkle'>HOWDY!!!</div>
-                  <input
-                    onChange={handleChange}
-                    type='radio'
-                    name='color'
-                    value='#4bcffa'
-                  /><div className='colorBox megaman'>HOWDY!!!</div>
-                  <input
-                    onChange={handleChange}
-                    type='radio'
-                    name='color'
-                    value='#34e7e4'
-                  /><div className='colorBox freshTurquoise'>HOWDY!!!</div>
-                  <input
-                    onChange={handleChange}
-                    type='radio'
-                    name='color'
-                    value='#0be881'
-                  /><div className='colorBox mintGreen'>HOWDY!!!</div>
-                  <input
-                    onChange={handleChange}
-                    type='radio'
-                    name='color'
-                    value='#f53b57'
-                  /><div className='colorBox sizzlingRed'>HOWDY!!!</div>
-                  <input
-                    onChange={handleChange}
-                    type='radio'
-                    name='color'
-                    value='#3c40c6'
-                  /><div className='colorBox freeSpeechBlue'>HOWDY!!!</div>
-                  <input
-                    onChange={handleChange}
-                    type='radio'
-                    name='color'
-                    value='#0fbcf9'
-                  /><div className='colorBox spiroDiscoBall'>HOWDY!!!</div>
-                  <input
-                    onChange={handleChange}
-                    type='radio'
-                    name='color'
-                    value='#00d8d6'
-                  /><div className='colorBox jadeDust'>HOWDY!!!</div>
-                  <input
-                    onChange={handleChange}
-                    type='radio'
-                    name='color'
-                    value='#05c46b'
-                  /><div className='colorBox greenTeal'>HOWDY!!!</div>
-                  <input
-                    onChange={handleChange}
-                    type='radio'
-                    name='color'
-                    value='#ffc048'
-                  /><div className='colorBox narenjiOrange'>HOWDY!!!</div>
-                  <input
-                    onChange={handleChange}
-                    type='radio'
-                    name='color'
-                    value='#ffdd59'
-                  /><div className='colorBox yrielYellow'>HOWDY!!!</div>
-                  <input
-                    onChange={handleChange}
-                    type='radio'
-                    name='color'
-                    value='#ff5e57'
-                  /><div className='colorBox sunsetOrange'>HOWDY!!!</div>
-                  <input
-                    onChange={handleChange}
-                    type='radio'
-                    name='color'
-                    value='#ffa801'
-                  /><div className='colorBox chromeYellow'>HOWDY!!!</div>
-                  <input
-                    onChange={handleChange}
-                    type='radio'
-                    name='color'
-                    value='#ffd32a'
-                  /><div className='colorBox vibrantYellow'>HOWDY!!!</div>
-                  <input
-                    onChange={handleChange}
-                    type='radio'
-                    name='color'
-                    value='#ff3f34'
-                  /><div className='colorBox redOrange'>HOWDY!!!</div>
-                  <input
-                    onChange={handleChange}
-                    type='radio'
-                    name='color'
-                    value='#808e9b'
-                  /><div className='colorBox londonSquare'>HOWDY!!!</div>
-                  <input
-                    onChange={handleChange}
-                    type='radio'
-                    name='color'
-                    value='#d2dae2'
-                  /><div className='colorBox hintOfElusiveBlue'>HOWDY!!!</div>
+                {renderRadios()}
                 </div>
               </Fragment>
                 :
               <Fragment>
                 <label className='smallHead'> Colors </label>
                 <div className={(props.chartType === 'pie' || (props.chartType === 'bar' && props.horizontal)) ? 'colorsContainerPie' : 'colorsContainer'}>
-                <input
-                  onChange={handleChange}
-                  type='checkbox'
-                  name='colors'
-                  value='#ef5777'
-                  checked={props.colors.includes('#ef5777')}
-                /><div className='colorBox highlighterPink'>HOWDY!!!</div>
-                <input
-                  onChange={handleChange}
-                  type='checkbox'
-                  name='colors'
-                  value='#575fcf'
-                  checked={props.colors.includes('#575fcf')}
-                /><div className='colorBox darkPeriwinkle'>HOWDY!!!</div>
-                <input
-                  onChange={handleChange}
-                  type='checkbox'
-                  name='colors'
-                  value='#4bcffa'
-                  checked={props.colors.includes('#4bcffa')}
-                /><div className='colorBox megaman'>HOWDY!!!</div>
-                <input
-                  onChange={handleChange}
-                  type='checkbox'
-                  name='colors'
-                  value='#34e7e4'
-                  checked={props.colors.includes('#34e7e4')}
-                /><div className='colorBox freshTurquoise'>HOWDY!!!</div>
-                <input
-                  onChange={handleChange}
-                  type='checkbox'
-                  name='colors'
-                  value='#0be881'
-                  checked={props.colors.includes('#0be881')}
-                /><div className='colorBox mintGreen'>HOWDY!!!</div>
-                <input
-                  onChange={handleChange}
-                  type='checkbox'
-                  name='colors'
-                  value='#f53b57'
-                  checked={props.colors.includes('#f53b57')}
-                /><div className='colorBox sizzlingRed'>HOWDY!!!</div>
-                <input
-                  onChange={handleChange}
-                  type='checkbox'
-                  name='colors'
-                  value='#3c40c6'
-                  checked={props.colors.includes('#3c40c6')}
-                /><div className='colorBox freeSpeechBlue'>HOWDY!!!</div>
-                <input
-                  onChange={handleChange}
-                  type='checkbox'
-                  name='colors'
-                  value='#0fbcf9'
-                  checked={props.colors.includes('#0fbcf9')}
-                /><div className='colorBox spiroDiscoBall'>HOWDY!!!</div>
-                <input
-                  onChange={handleChange}
-                  type='checkbox'
-                  name='colors'
-                  value='#00d8d6'
-                  checked={props.colors.includes('#00d8d6')}
-                /><div className='colorBox jadeDust'>HOWDY!!!</div>
-                <input
-                  onChange={handleChange}
-                  type='checkbox'
-                  name='colors'
-                  value='#05c46b'
-                  checked={props.colors.includes('#05c46b')}
-                /><div className='colorBox greenTeal'>HOWDY!!!</div>
-                <input
-                  onChange={handleChange}
-                  type='checkbox'
-                  name='colors'
-                  value='#ffc048'
-                  checked={props.colors.includes('#ffc048')}
-                /><div className='colorBox narenjiOrange'>HOWDY!!!</div>
-                <input
-                  onChange={handleChange}
-                  type='checkbox'
-                  name='colors'
-                  value='#ffdd59'
-                  checked={props.colors.includes('#ffdd59')}
-                /><div className='colorBox yrielYellow'>HOWDY!!!</div>
-                <input
-                  onChange={handleChange}
-                  type='checkbox'
-                  name='colors'
-                  value='#ff5e57'
-                  checked={props.colors.includes('#ff5e57')}
-                /><div className='colorBox sunsetOrange'>HOWDY!!!</div>
-                <input
-                  onChange={handleChange}
-                  type='checkbox'
-                  name='colors'
-                  value='#ffa801'
-                  checked={props.colors.includes('#ffa801')}
-                /><div className='colorBox chromeYellow'>HOWDY!!!</div>
-                <input
-                  onChange={handleChange}
-                  type='checkbox'
-                  name='colors'
-                  value='#ffd32a'
-                  checked={props.colors.includes('#ffd32a')}
-                /><div className='colorBox vibrantYellow'>HOWDY!!!</div>
-                <input
-                  onChange={handleChange}
-                  type='checkbox'
-                  name='colors'
-                  value='#ff3f34'
-                  checked={props.colors.includes('#ff3f34')}
-                /><div className='colorBox redOrange'>HOWDY!!!</div>
-                <input
-                  onChange={handleChange}
-                  type='checkbox'
-                  name='colors'
-                  value='#808e9b'
-                  checked={props.colors.includes('#808e9b')}
-                /><div className='colorBox londonSquare'>HOWDY!!!</div>
-                <input
-                  onChange={handleChange}
-                  type='checkbox'
-                  name='colors'
-                  value='#d2dae2'
-                  checked={props.colors.includes('#d2dae2')}
-                /><div className='colorBox hintOfElusiveBlue'>HOWDY!!!</div>
+                {renderCheckboxes()}
                 </div>
               </Fragment>
             }
