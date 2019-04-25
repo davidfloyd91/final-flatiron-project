@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Switch, Route } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import Sandbox from './Sandbox';
 import Dashboard from './Dashboard';
 import Login from './Login';
@@ -9,6 +9,7 @@ import Nav from './Nav';
 import Footer from './Footer';
 import './App.css';
 import { autoLogin } from './helpers';
+export const store = require('store');
 
 class App extends Component {
   componentDidMount() {
@@ -55,6 +56,10 @@ class App extends Component {
             render={routerProps => {
               return <Signup {...routerProps} />
             }}
+          />
+          <Redirect exact
+            from='/'
+            to='/charts'
           />
         </Switch>
         <Footer />
