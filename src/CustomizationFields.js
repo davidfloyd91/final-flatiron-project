@@ -72,6 +72,7 @@ const CustomizationFields = props => {
       return (
           <Fragment>
             <input
+              className={color.name + ' colorRadio'}
               onChange={handleChange}
               type='radio'
               name='color'

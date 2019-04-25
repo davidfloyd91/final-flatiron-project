@@ -35,7 +35,6 @@ class Login extends Component {
       if (r.errors) {
         alert(r.errors);
       } else {
-        // localStorage.setItem('jwt', r.jwt);
         store.set('jwt', r.jwt);
         this.props.history.push('/charts');
         setUserId(r.user.id, this.props);

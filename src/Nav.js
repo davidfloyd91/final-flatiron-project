@@ -24,13 +24,13 @@ const Nav = props => {
             props.new
               ?
             <div className='navButton left'>
-              <Link to='/charts' className='white middleSmall' onClick={() => {setChart(null, props); /*toggleNewSetShort();*/ setDefault();}}>SAVED CHARTS</Link>
+              <Link to='/charts' className='white middleSmall' onClick={() => {setChart(null, props); setDefault(props);}}>SAVED CHARTS</Link>
             </div>
               :
             props.edit
               ?
             <div className='navButton left'>
-              <Link to='/charts' className='white middleSmall' onClick={() => {setChart(null, props); setDefault();}}>SAVED CHARTS</Link>
+              <Link to='/charts' className='white middleSmall' onClick={() => {setChart(null, props); setDefault(props);}}>SAVED CHARTS</Link>
             </div>
               :
             <div className='navButton left'>

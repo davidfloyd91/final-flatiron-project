@@ -206,7 +206,7 @@ class Sandbox extends Component {
           customize={this.customize}
         />
         {
-          this.props.warn[0]
+          this.props.warn && this.props.warn[0]
             ?
           <h5>{this.props.warn}</h5>
             :
