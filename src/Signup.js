@@ -12,7 +12,8 @@ class Signup extends Component {
     username: '',
     email: '',
     password: '',
-    password_confirmation: ''
+    password_confirmation: '',
+    submitted: false
   };
 
   handleChange = e => {
@@ -23,6 +24,8 @@ class Signup extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    this.setState({ submitted: true });
+
     if (this.state.password === this.state.password_confirmation) {
       fetch(`${url}/users`, {
         method: 'POST',
@@ -45,6 +48,7 @@ class Signup extends Component {
     } else {
       alert('Sorry, those passwords don\'t match');
     };
+    this.setState({ submitted: false });
   };
 
   render() {
@@ -87,9 +91,17 @@ class Signup extends Component {
               value={this.state.password_confirmation}
               onChange={this.handleChange}
             />
-            <div className='center blockButton'>
-              <button className='button' type='submit'>Submit</button>
-            </div>
+            {
+              !this.state.submitted
+                ?
+              <div className='center blockButton'>
+                <button className='button' type='submit'>Submit</button>
+              </div>
+                :
+              <div className='center blockGif'>
+                <img src='/assets/ajaxLoader.gif' />
+              </div>
+            }
           </form>
         </div>
       </div>

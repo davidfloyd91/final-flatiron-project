@@ -10,7 +10,8 @@ class Login extends Component {
 
   state = {
     username: '',
-    password: ''
+    password: '',
+    submitted: false
   };
 
   handleChange = e => {
@@ -21,6 +22,7 @@ class Login extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    this.setState({ submitted: true });
 
     fetch(`${url}/login`, {
       method: 'POST',
@@ -40,6 +42,7 @@ class Login extends Component {
         setUserId(r.user.id, this.props);
       };
     });
+    this.setState({ submitted: false });
   };
 
   render() {
@@ -65,9 +68,17 @@ class Login extends Component {
               value={this.state.password}
               onChange={this.handleChange}
             />
-            <div className='center blockButton'>
-              <button className='button' type='submit'>Submit</button>
-            </div>
+            {
+              !this.state.submitted
+                ?
+              <div className='center blockButton'>
+                <button className='button' type='submit'>Submit</button>
+              </div>
+                :
+              <div className='center blockGif'>
+                <img src='/assets/ajaxLoader.gif' />
+              </div>
+            }
           </form>
         </div>
       </div>
