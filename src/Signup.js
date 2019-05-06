@@ -38,8 +38,10 @@ class Signup extends Component {
       .then(r => r.json())
       .then(r => {
         if (r.errors) {
+          this.setState({ submitted: false });
           alert(r.errors);
         } else {
+          this.setState({ submitted: false });
           store.set('jwt', r.jwt);
           this.props.history.push('/charts');
           setUserId(r.user.id, this.props);
@@ -48,7 +50,6 @@ class Signup extends Component {
     } else {
       alert('Sorry, those passwords don\'t match');
     };
-    this.setState({ submitted: false });
   };
 
   render() {

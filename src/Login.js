@@ -35,14 +35,15 @@ class Login extends Component {
     .then(r => r.json())
     .then(r => {
       if (r.errors) {
+        this.setState({ submitted: false });
         alert(r.errors);
       } else {
+        this.setState({ submitted: false });
         store.set('jwt', r.jwt);
         this.props.history.push('/charts');
         setUserId(r.user.id, this.props);
       };
     });
-    this.setState({ submitted: false });
   };
 
   render() {
