@@ -48,6 +48,7 @@ class Signup extends Component {
         };
       });
     } else {
+      this.setState({ submitted: false });
       alert('Sorry, those passwords don\'t match');
     };
   };
