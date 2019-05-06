@@ -1,4 +1,4 @@
-// export const url = 'https://salp-api.herokuapp.com';
+export const url = 'https://salp-api.herokuapp.com';
 export const url = 'http://localhost:3000';
 
 export const store = require('store');
