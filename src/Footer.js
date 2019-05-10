@@ -5,9 +5,11 @@ import { connect } from 'react-redux';
 
 const Footer = props => {
   return (
-    <div className={props.long ? 'footer' : 'footerShort'}>
-      <div className='footerText'>
-        © 2019 David Floyd | MIT License | davidfloyd91 at gmail | <a className='white' href='https://davidfloyd91.github.io/2019/01/22/public-key.html' target='_blank' rel='noopener noreferrer'>PGP key</a>
+    <div className={props.long ? 'footerBackground' : 'footerBackgroundShort'}>
+      <div className={props.long ? 'footer' : 'footerShort'}>
+        <div className='footerText'>
+          <a className='white' href='https://davidfloyd91.github.io/about/' target='_blank' rel='noopener noreferrer'>© 2019 David Floyd</a> | MIT License | davidfloyd91 at gmail | <a className='white' href='https://davidfloyd91.github.io/pgp/' target='_blank' rel='noopener noreferrer'>PGP key</a>
+        </div>
       </div>
     </div>
   );

@@ -50,11 +50,6 @@ a {
   width: 100%;
 }
 
-.bottom {
-  margin: 0 auto 50px auto;
-  text-align: center;
-}
-
 .blockButton {
   display: block;
   margin-top: 10px;
@@ -63,6 +58,11 @@ a {
 .blockGif {
   display: block;
   margin-top: 15px;
+}
+
+.bottom {
+  margin: 0 auto 50px auto;
+  text-align: center;
 }
 
 .button {
@@ -206,45 +206,57 @@ a {
   cursor: pointer;
 }
 
+.footer {
+  position: relative;
+  bottom: 0;
+  margin: 0 auto;
+  width: 85%;
+  height: 100%;
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+
+.footerBackground {
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-color: black;
+}
+
+.footerBackgroundShort {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  background-color: black;
+}
+
+.footerShort {
+  position: absolute;
+  bottom: 0;
+  margin: 0 auto;
+  width: 85%;
+  height: 100%;
+  background-color: black;
+  color: white;
+  text-align: center;
+  left: 13.875%;
+  width: 72.25%;
+}
+
+.footerText {
+  position: relative;
+  top: 27.5%;
+}
+
 .labelCheckBox {
   display: inline;
 }
 
 .left {
   float: left;
-}
-
-.nav {
-  width: 85%;
-  margin: 0 auto 15px auto;
-  height: 50px;
-}
-
-.footer {
-  position: relative;
-  bottom: 0;
-  margin: 0 auto;
-  width: 85%;
-  height: 50px;
-  background-color: black;
-  color: white;
-  text-align: center;
-}
-
-.footerShort {
-  position: absolute;
-  bottom: 0;
-  left: 13.875%;
-  width: 72.25%;
-  height: 50px;
-  background-color: black;
-  color: white;
-  text-align: center;
-}
-
-.footerText {
-  position: relative;
-  top: 27.5%;
 }
 
 .middleLarge {
@@ -259,6 +271,20 @@ a {
 
 #myChart {
   margin-bottom: 5px;
+}
+
+.nav {
+  width: 85%;
+  margin: 0 auto 15px auto;
+  height: 50px;
+  height: 100%;
+}
+
+.navBackground {
+  width: 100%;
+  height: 50px;
+  margin-bottom: 15px;
+  background-color: black;
 }
 
 .navButton {
