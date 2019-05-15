@@ -8,12 +8,14 @@ import Signup from './Signup';
 import Nav from './Nav';
 import Footer from './Footer';
 import './App.css';
-import { autoLogin } from './helpers';
+import { autoLogin, startKeepAlive } from './helpers';
 export const store = require('store');
+const http = require('http');
 
 class App extends Component {
   componentDidMount() {
     autoLogin(this.props);
+    startKeepAlive();
   };
 
   render() {

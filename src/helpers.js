@@ -52,3 +52,26 @@ export function setUserId(id, props) {
 export function toggleNew(props) {
   props.dispatch({ type: 'TOGGLE_NEW' });
 };
+
+// https://stackoverflow.com/a/17357553
+export function startKeepAlive() {
+  setInterval(function() {
+    var options = {
+      host: 'salp-client.herokuapp.com',
+      port: 80,
+      path: '/login'
+    };
+
+    http.get(options, function(res) {
+      res.on('data', function(chunk) {
+          try {
+            console.log("HEROKU RESPONSE: " + chunk);
+          } catch (err) {
+            console.log(err.message);
+          }
+      });
+    }).on('error', function(err) {
+      console.log("Error: " + err.message);
+    });
+  }, 15 * 60 * 1000);
+}
