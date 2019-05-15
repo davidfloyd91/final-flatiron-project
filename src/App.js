@@ -8,12 +8,11 @@ import Signup from './Signup';
 import Nav from './Nav';
 import Footer from './Footer';
 import './App.css';
-import { autoLogin, startKeepAlive } from './helpers';
+import { autoLogin } from './helpers';
 
 class App extends Component {
   componentDidMount() {
     autoLogin(this.props);
-    startKeepAlive();
   };
 
   render() {
