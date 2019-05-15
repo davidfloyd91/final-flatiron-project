@@ -60,7 +60,7 @@ export function startKeepAlive() {
 
   setInterval(function() {
     var options = {
-      host: url,
+      host: 'https://salp-client.herokuapp.com',
       port: 80,
       path: '/login'
     };
