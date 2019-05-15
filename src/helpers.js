@@ -59,13 +59,7 @@ export function startKeepAlive() {
   const http = require('http');
 
   setInterval(function() {
-    var options = {
-      host: 'https://salp-client.herokuapp.com',
-      port: 80,
-      path: '/login'
-    };
-
-    http.get(options, function(res) {
+    http.get('https://salp-client.herokuapp.com/login', function(res) {
       res.on('data', function(chunk) {
           try {
             console.log("HEROKU RESPONSE: " + chunk);
