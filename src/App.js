@@ -9,8 +9,6 @@ import Nav from './Nav';
 import Footer from './Footer';
 import './App.css';
 import { autoLogin, startKeepAlive } from './helpers';
-export const store = require('store');
-const http = require('http');
 
 class App extends Component {
   componentDidMount() {

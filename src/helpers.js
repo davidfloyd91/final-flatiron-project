@@ -2,6 +2,7 @@ export const url = 'https://salp-api.herokuapp.com';
 // export const url = 'http://localhost:3000';
 
 export const store = require('store');
+export const http = require('http');
 
 export function autoLogin(props) {
   const jwt = store.get('jwt');
@@ -55,9 +56,11 @@ export function toggleNew(props) {
 
 // https://stackoverflow.com/a/17357553
 export function startKeepAlive() {
+  const http = require('http');
+
   setInterval(function() {
     var options = {
-      host: 'salp-client.herokuapp.com',
+      host: url,
       port: 80,
       path: '/login'
     };
@@ -73,5 +76,5 @@ export function startKeepAlive() {
     }).on('error', function(err) {
       console.log("Error: " + err.message);
     });
-  }, 15 * 60 * 1000);
+  }, 10 * 1000);
 }
