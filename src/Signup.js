@@ -101,7 +101,7 @@ class Signup extends Component {
               </div>
                 :
               <div className='center blockGif'>
-                <img src='/assets/ajaxLoader.gif' />
+                <img src='/assets/ajaxLoader.gif' alt='loading' />
               </div>
             }
           </form>

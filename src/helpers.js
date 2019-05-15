@@ -19,6 +19,9 @@ export function autoLogin(props) {
         alert(r.errors);
       } else {
         setUserId(r.id, props);
+        if (props.history.location.pathname === '/login' || props.history.location.pathname === '/signup') {
+          props.history.push('/charts');
+        };
       };
     });
   } else {
