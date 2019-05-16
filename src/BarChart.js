@@ -134,7 +134,7 @@ class BarChart extends Component {
 
   render() {
     return (
-      <div className='chart'>
+      <div>
         <canvas
           id="myChart"
           ref={this.chartRef}

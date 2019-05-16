@@ -5,7 +5,7 @@ import LineChart from './LineChart';
 import BarChart from './BarChart';
 import PieChart from './PieChart';
 import { autoLogin, setChart, setDefault, setLong, toggleNew, url } from './helpers';
-let colors;
+let colors, pageScroll;
 
 // SET_GRID is happening in two different places
 
@@ -20,6 +20,7 @@ class Sandbox extends Component {
 
   componentDidUpdate() {
     this.setLongIfChart();
+    window.scrollTo(0,pageScroll);
   };
 
   setLongIfChart = () => {
@@ -123,9 +124,10 @@ class Sandbox extends Component {
     };
   };
 
-  customize = (e) => {
+  customize = (e, scroll) => {
     let name = e.target.name;
     let value = e.target.value;
+    pageScroll = scroll;
 
     if ((name === 'min') &&
     (isNaN(value) || value === '' || value.match(/\s+/))) {
@@ -163,13 +165,13 @@ class Sandbox extends Component {
   render() {
     return (
       <div className='container'>
-        {/*
+        {
           this.props.edit
             ?
           <h4 className='customizationPaneHeader'>Edit {this.props.chartType} chart</h4>
             :
           <h4 className='customizationPaneHeader'>New {this.props.chartType} chart</h4>
-        */} {
+        } {
             this.props.chartType === 'line'
             ? <LineChart
                 saveChart={this.saveChart}

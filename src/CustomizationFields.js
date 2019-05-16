@@ -1,12 +1,14 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
+let scroll;
 
 // currently you can't set min, max or tick size on horizontal charts -- why/how to fix?
 
 const CustomizationFields = props => {
 
   const handleChange = e => {
-    props.customize(e);
+    scroll = window.pageYOffset;
+    props.customize(e, scroll);
   };
 
   const colorsArray = [
