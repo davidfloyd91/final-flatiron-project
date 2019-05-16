@@ -73,6 +73,8 @@ function reducer(state = initialState, action) {
       return { ...state, input: action.payload }
     case 'SET_LABEL':
       return { ...state, label: action.payload }
+    case 'SET_LABEL_DISPLAY':
+      return { ...state, labelDisplay: action.payload }
     case 'TOGGLE_LABEL_DISPLAY':
       return { ...state, labelDisplay: !state.labelDisplay }
     case 'SET_LONG':

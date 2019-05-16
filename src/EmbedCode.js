@@ -38,7 +38,7 @@ const EmbedCode = props => {
     return (
       <Fragment>
         <h5>Click below to copy your chart's embed code:</h5>
-        <textarea className='embedCode' value={copyData} onClick={handleClick} ref={code => {embedRef = code;}} />
+        <textarea className='embedCode' value={copyData} onClick={handleClick} ref={code => {embedRef = code;}} readOnly />
       </Fragment>
     );
   } else {

@@ -79,7 +79,6 @@ class Table extends Component {
   };
 
   render() {
-    console.log(this.props.grid)
     return (
       <div className='center'>
         <div className='table'>

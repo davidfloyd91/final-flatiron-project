@@ -70,7 +70,7 @@ const CustomizationFields = props => {
   const renderRadios = () => {
     return colorsArray.map(color => {
       return (
-          <Fragment>
+          <div key={color.hex}>
             <input
               className={color.name + ' colorRadio'}
               onChange={handleChange}
@@ -79,7 +79,7 @@ const CustomizationFields = props => {
               value={color.hex}
             />
             <div className={color.name + ' colorBox'}>HOWDY!!!</div>
-          </Fragment>
+          </div>
       );
     });
   };
@@ -87,7 +87,7 @@ const CustomizationFields = props => {
   const renderCheckboxes = () => {
     return colorsArray.map(color => {
       return (
-          <Fragment>
+          <div key={color.hex}>
             <input
               onChange={handleChange}
               type='checkbox'
@@ -96,7 +96,7 @@ const CustomizationFields = props => {
               checked={props.colors.includes(color.hex)}
             />
             <div className={color.name + ' colorBox'}>HOWDY!!!</div>
-          </Fragment>
+          </div>
       );
     });
   };

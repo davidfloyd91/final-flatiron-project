@@ -163,13 +163,13 @@ class Sandbox extends Component {
   render() {
     return (
       <div className='container'>
-        {
+        {/*
           this.props.edit
             ?
           <h4 className='customizationPaneHeader'>Edit {this.props.chartType} chart</h4>
             :
           <h4 className='customizationPaneHeader'>New {this.props.chartType} chart</h4>
-        } {
+        */} {
             this.props.chartType === 'line'
             ? <LineChart
                 saveChart={this.saveChart}

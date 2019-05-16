@@ -110,17 +110,20 @@ class Dashboard extends Component {
       let label = data.data.datasets[0].label;
       this.props.dispatch({ type: 'SET_LABEL', payload: label });
 
+      let labelDisplay = data.options.legend.display;
+      this.props.dispatch({ type: 'SET_LABEL_DISPLAY', payload: labelDisplay });
+
       let max = data.options.scales.yAxes[0].ticks.max;
       this.props.dispatch({ type: 'SET_MAX', payload: max });
 
       let min = data.options.scales.yAxes[0].ticks.min;
       this.props.dispatch({ type: 'SET_MIN', payload: min });
 
-      let ticks = data.options.scales.yAxes[0].ticks.stepSize;
-      this.props.dispatch({ type: 'SET_TICKS', payload: ticks });
-
       let radius = data.data.datasets[0].pointRadius;
       this.props.dispatch({ type: 'SET_RADIUS', payload: radius });
+
+      let ticks = data.options.scales.yAxes[0].ticks.stepSize;
+      this.props.dispatch({ type: 'SET_TICKS', payload: ticks });
 
       let xLabel = data.options.scales.xAxes[0].scaleLabel.labelString;
       this.props.dispatch({ type: 'SET_X_LABEL', payload: xLabel });
