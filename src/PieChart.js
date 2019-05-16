@@ -12,6 +12,9 @@ class PieChart extends Component {
 
   componentDidUpdate() {
     this.buildChart();
+    if (this.props.pageScroll) {
+      window.scrollTo(0, this.props.pageScroll);
+    };
   };
 
   buildChart = () => {
@@ -107,6 +110,7 @@ function mapStateToProps(state) {
     chart: state.chart,
     data: state.grid,
     edit: state.edit,
+    pageScroll: state.pageScroll,
     title: state.title,
     colors: state.colors
   };

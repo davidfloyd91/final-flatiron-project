@@ -41,6 +41,7 @@ const initialState = {
   chartType: '',
   userId: 0,
   long: false,
+  pageScroll: null,
   ...defaultState
 };
 
@@ -85,6 +86,8 @@ function reducer(state = initialState, action) {
       return { ...state, min: action.payload }
     case 'TOGGLE_NEW':
       return { ...state, new: !state.new }
+    case 'SET_PAGE_SCROLL':
+      return { ...state, pageScroll: action.payload }
     case 'SET_RADIUS':
       return { ...state, radius: action.payload }
     case 'SET_ROWS':

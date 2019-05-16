@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Row from './Row';
 import './App.css';
-let grid;
+let grid, pageScroll;
 
 // SET_GRID is happening in two different places
 
@@ -46,7 +46,7 @@ class Table extends Component {
     };
   };
 
-  newValue = (value, x, y) => {
+  newValue = (value, x, y, scroll) => {
     grid = [
       ...grid.slice(0, x - 1),
       [
@@ -58,6 +58,10 @@ class Table extends Component {
     ];
 
     this.props.dispatch({ type: 'SET_GRID', payload: grid });
+
+    pageScroll = scroll;
+
+    this.props.dispatch({ type: 'SET_PAGE_SCROLL', payload: pageScroll });
   };
 
   addRow = () => {
@@ -67,6 +71,10 @@ class Table extends Component {
 
     // not sure if this is necesary
     this.props.dispatch({ type: 'SET_ROWS', payload: grid.length });
+
+    pageScroll = window.pageYOffset;
+
+    this.props.dispatch({ type: 'SET_PAGE_SCROLL', payload: pageScroll });
   };
 
   removeRow = x => {
@@ -76,6 +84,10 @@ class Table extends Component {
 
     // not sure if this is necesary
     this.props.dispatch({ type: 'SET_ROWS', payload: grid.length });
+
+    pageScroll = window.pageYOffset;
+
+    this.props.dispatch({ type: 'SET_PAGE_SCROLL', payload: pageScroll });
   };
 
   render() {

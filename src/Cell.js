@@ -1,8 +1,10 @@
 import React, { Fragment } from 'react';
+let scroll;
 
 const Cell = props => {
   const handleChange = e => {
-    props.newValue(e.target.value, props.x, props.y);
+    scroll = window.pageYOffset;
+    props.newValue(e.target.value, props.x, props.y, scroll);
   };
 
   const handleSubmit = e => {

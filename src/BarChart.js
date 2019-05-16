@@ -12,6 +12,9 @@ class BarChart extends Component {
 
   componentDidUpdate() {
     this.buildChart();
+    if (this.props.pageScroll) {
+      window.scrollTo(0, this.props.pageScroll);
+    };
   };
 
   buildChart = () => {
@@ -166,6 +169,7 @@ function mapStateToProps(state) {
     labelDisplay: state.labelDisplay,
     max: state.max,
     min: state.min,
+    pageScroll: state.pageScroll,
     ticks: state.ticks,
     title: state.title,
     xLabel: state.xLabel,
