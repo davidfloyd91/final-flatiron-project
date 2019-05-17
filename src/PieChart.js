@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import Chart from 'chart.js';
+import { convertToFullData } from './helpers';
 let newChart, saveData, fullData;
 
 class PieChart extends Component {
@@ -66,19 +67,7 @@ class PieChart extends Component {
       }
     };
 
-    fullData = {...saveData};
-
-    delete fullData.data;
-    fullData.data = {
-      labels: labels,
-      datasets: [
-        {
-          fill: false,
-          data: chartData,
-          backgroundColor: colors
-        }
-      ]
-    };
+    fullData = convertToFullData(saveData);
 
     newChart = new Chart(myChartRef, fullData);
   };

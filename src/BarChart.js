@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import Chart from 'chart.js';
+import { convertToFullData } from './helpers';
 let newChart, saveData, fullData;
 
 class BarChart extends Component {
@@ -117,20 +118,7 @@ class BarChart extends Component {
       }
     };
 
-    fullData = {...saveData};
-
-    delete fullData.data;
-    fullData.data = {
-      labels: labels,
-      datasets: [
-        {
-          label: label,
-          fill: false,
-          data: chartData,
-          backgroundColor: colors
-        }
-      ]
-    };
+    fullData = convertToFullData(saveData);
 
     newChart = new Chart(myChartRef, fullData);
   };

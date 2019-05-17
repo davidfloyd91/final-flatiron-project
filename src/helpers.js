@@ -30,6 +30,15 @@ export function autoLogin(props) {
   };
 };
 
+export function convertToFullData(saveData) {
+  let fullData = _.cloneDeep({...saveData});
+  const datasets = fullData.data._datasets;
+  delete fullData.data._datasets;
+  fullData.data.datasets = datasets;
+
+  return fullData;
+};
+
 export function setChart(data, props) {
   props.dispatch({ type: 'SET_CHART', payload: data });
 };

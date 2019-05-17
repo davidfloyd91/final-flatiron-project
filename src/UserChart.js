@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Chart from 'chart.js';
-let newChart, displayData;
+import { _ } from './helpers';
+let newChart;
 
 class UserChart extends Component {
   chartRef = React.createRef();
@@ -21,10 +22,13 @@ class UserChart extends Component {
   };
 
   getDisplayData = () => {
+    let displayData;
+
     if (this.props.chart) {
-      displayData = {...this.props.chart.data};
-      if (this.props.chart.data.data._datasets) {
-        let datasets = [...this.props.chart.data.data._datasets];
+      displayData = _.cloneDeep({...this.props.chart.data});
+
+      if (displayData.data._datasets) {
+        const datasets = displayData.data._datasets;
         delete displayData.data._datasets;
         displayData.data.datasets = datasets;
       };

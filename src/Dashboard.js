@@ -75,6 +75,7 @@ class Dashboard extends Component {
     });
   };
 
+  // prior to _.cloneDeep, all `_datasets[0]` were `datasets[0]` -- unclear why props changed
   editChart = () => {
     let data = this.props.chart.data;
 
@@ -84,7 +85,7 @@ class Dashboard extends Component {
     });
 
     for (let i = 0; i < grid.length; i++) {
-      grid[i] = [...grid[i], data.data.datasets[0].data[i]]
+      grid[i] = [...grid[i], data.data._datasets[0].data[i]]
     };
 
     this.props.dispatch({ type: 'SET_GRID', payload: grid });
@@ -96,7 +97,7 @@ class Dashboard extends Component {
     setChartType(type, this.props);
 
     if (type !== 'line') {
-      let colors = [...new Set(data.data.datasets[0].backgroundColor)];
+      let colors = [...new Set(data.data._datasets[0].backgroundColor)];
       this.props.dispatch({ type: 'SET_COLORS', payload: colors });
     };
 
@@ -107,7 +108,7 @@ class Dashboard extends Component {
       };
       this.props.dispatch({ type: 'SET_HORIZONTAL', payload: horizontal });
 
-      let label = data.data.datasets[0].label;
+      let label = data.data._datasets[0].label;
       this.props.dispatch({ type: 'SET_LABEL', payload: label });
 
       let labelDisplay = data.options.legend.display;
@@ -119,7 +120,7 @@ class Dashboard extends Component {
       let min = data.options.scales.yAxes[0].ticks.min;
       this.props.dispatch({ type: 'SET_MIN', payload: min });
 
-      let radius = data.data.datasets[0].pointRadius;
+      let radius = data.data._datasets[0].pointRadius;
       this.props.dispatch({ type: 'SET_RADIUS', payload: radius });
 
       let ticks = data.options.scales.yAxes[0].ticks.stepSize;
@@ -133,10 +134,10 @@ class Dashboard extends Component {
     };
 
     if (type === 'line') {
-      let color = data.data.datasets[0].borderColor;
+      let color = data.data._datasets[0].borderColor;
       this.props.dispatch({type: 'SET_COLOR', payload: color });
 
-      let tension = data.data.datasets[0].lineTension;
+      let tension = data.data._datasets[0].lineTension;
       this.props.dispatch({ type: 'SET_TENSION', payload: tension });
     };
 
