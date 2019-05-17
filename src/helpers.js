@@ -5,31 +5,6 @@ export const store = require('store');
 export const http = require('http');
 export const _ = require('lodash');
 
-export function autoLogin(props) {
-  const jwt = store.get('jwt');
-
-  if (jwt) {
-    fetch(`${url}/auto_login`, {
-      headers: {
-        'Authorization': jwt
-      }
-    })
-    .then(r => r.json())
-    .then(r => {
-      if (r.errors) {
-        alert(r.errors);
-      } else {
-        setUserId(r.id, props);
-        if (props.history.location.pathname === '/login' || props.history.location.pathname === '/signup') {
-          props.history.push('/charts');
-        };
-      };
-    });
-  } else {
-    props.history.push('/login');
-  };
-};
-
 export function convertToFullData(saveData) {
   let fullData = _.cloneDeep({...saveData});
   const datasets = fullData.data._datasets;
@@ -65,4 +40,31 @@ export function setUserId(id, props) {
 
 export function toggleNew(props) {
   props.dispatch({ type: 'TOGGLE_NEW' });
+};
+
+export function autoLogin(props) {
+  const jwt = store.get('jwt');
+
+  if (jwt) {
+    fetch(`${url}/auto_login`, {
+      headers: {
+        'Authorization': jwt
+      }
+    })
+    .then(r => r.json())
+    .then(r => {
+      if (r.errors) {
+        alert(r.errors);
+      } else {
+        setUserId(r.id, props);
+        if (props.history.location.pathname === '/login' || props.history.location.pathname === '/signup') {
+          props.history.push('/charts');
+        };
+      };
+    });
+  } else {
+    // line 67 is new
+    setUserId(0, props);
+    props.history.push('/login');
+  };
 };
