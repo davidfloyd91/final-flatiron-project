@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
+import { _ } from './helpers';
 let embedCode;
 
 const EmbedCode = props => {
@@ -7,14 +8,19 @@ const EmbedCode = props => {
 
   const data = () => {
     if (props.chart) {
-      let data = {...props.chart.data};
-      if (props.chart.data.data.datasets) {
-        const datasets = [...props.chart.data.data.datasets];
-        delete data.data.datasets;
-        data.data._datasets = datasets;
+      let decircularizedData = _.cloneDeep({...props.chart.data});
+      if (decircularizedData.data.datasets) {
+        const datasets = decircularizedData.data.datasets;
+        delete decircularizedData.data.datasets;
+        decircularizedData.data._datasets = datasets;
       };
-
-      embedCode = convertToEmbedCode(data);
+  //     if (props.chart.data.data.datasets) {
+  //       const datasets = [...props.chart.data.data.datasets];
+  //       delete data.data.datasets;
+  //       data.data._datasets = datasets;
+  //     };
+  //
+      embedCode = convertToEmbedCode(decircularizedData);
     };
 
     return embedCode;

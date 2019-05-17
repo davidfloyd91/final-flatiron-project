@@ -3,6 +3,7 @@ export const url = 'https://salp-api.herokuapp.com';
 
 export const store = require('store');
 export const http = require('http');
+export const _ = require('lodash');
 
 export function autoLogin(props) {
   const jwt = store.get('jwt');
