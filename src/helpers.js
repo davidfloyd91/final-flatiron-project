@@ -65,6 +65,8 @@ export function autoLogin(props) {
   } else {
     // line 67 is new
     setUserId(0, props);
-    props.history.push('/login');
+    if (props.history.location.pathname !== '/signup') {
+      props.history.push('/login');
+    };
   };
 };
