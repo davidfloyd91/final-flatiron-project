@@ -25,7 +25,7 @@
   },
   "scripts": {
     "local_start": "PORT=3001 react-scripts start",
-    "start": "react-scripts start",
+    "start": "node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
