@@ -24,7 +24,7 @@ This repository contains Salp's frontend. To install it locally, run the followi
 + `$ git clone git@github.com:davidfloyd91/Salp.git`
 + `$ cd Salp`
 
-To run the app locally, it's necessary to make a minor change to the code:
+To run the app locally, you'll need to make a minor change to the code:
 
 + in `src/helpers.js`, comment out line 1 (`export const url = 'https://salp-api.herokuapp.com';`) and comment in line 2 (`export const url = 'http://localhost:3000';`)
 
