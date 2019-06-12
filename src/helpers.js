@@ -7,6 +7,7 @@ export const _ = require('lodash');
 
 export function convertToFullData(saveData) {
   let fullData = _.cloneDeep({...saveData});
+  fullData.options.animation = false;
   const datasets = fullData.data._datasets;
   delete fullData.data._datasets;
   fullData.data.datasets = datasets;
